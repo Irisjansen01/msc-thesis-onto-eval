@@ -1,0 +1,1714 @@
+{
+  "ontology_1": {
+    "basic": {
+      "method_name": "Basic Ontology Statistics",
+      "result": {
+        "named_classes": 25,
+        "object_properties": 35,
+        "datatype_properties": 18,
+        "annotation_properties": 0,
+        "named_individuals": 0,
+        "named_subClassOf": 13,
+        "bnode_subClassOf": 5,
+        "equivalentClass": 7,
+        "disjointWith": 11,
+        "inverseOf": 10,
+        "domain_axioms": 60,
+        "range_axioms": 56,
+        "rdfs_label": 109,
+        "rdfs_comment": 5,
+        "restrictions": 5,
+        "total_triples": 653
+      }
+    },
+    "stats": {
+      "method_name": "RDF syntax parseability (RDFLib)",
+      "method_number": 1,
+      "result": {
+        "status": "PASS"
+      }
+    },
+    "ontoqa": {
+      "method_name": "OntoQA Schema-level Metrics",
+      "method_number": 3,
+      "result": {
+        "RR": 0.7292,
+        "AR": 0.72,
+        "IR": 0.52,
+        "CR": 0.72
+      }
+    },
+    "yang": {
+      "method_name": "Ontology Complexity Metrics",
+      "method_number": 4,
+      "result": {
+        "T": 0.12,
+        "ABF": 3.25,
+        "LR": 0.84,
+        "max_depth": 2,
+        "avg_depth": 0.44
+      }
+    },
+    "consistency": {
+      "method_name": "Logical Consistency Check (placeholder)",
+      "result": {
+        "status": "SKIPPED",
+        "reason": "not_implemented"
+      }
+    },
+    "sparql": {
+      "method_name": "SPARQL-Based Structural Constraint Checks",
+      "method_number": 7,
+      "result": {
+        "op_no_domain": [],
+        "op_no_range": [],
+        "dp_no_domain": [],
+        "dp_no_range": [],
+        "isolated_roots": [
+          "Cl_SongInPerformance",
+          "Cl_Performance",
+          "Cl_Role",
+          "Cl_Membership",
+          "Cl_City",
+          "Cl_TimeInterval",
+          "Cl_Region",
+          "Cl_BandMembership",
+          "Cl_Location",
+          "Cl_Event",
+          "Cl_Track",
+          "Cl_Instrument",
+          "Cl_AlbumRecording"
+        ]
+      }
+    },
+    "shacl": {
+      "method_name": "SHACL Shapes Constraint Language Validation",
+      "method_number": 8,
+      "result": {
+        "status": "SKIPPED",
+        "reason": "requires_manual_shapes"
+      }
+    },
+    "unit_tests": {
+      "method_name": "Unit Tests for Ontologies",
+      "method_number": 9,
+      "result": {
+        "passed": 99,
+        "total": 99,
+        "tests": [
+          {
+            "desc": "Cl_Statement subClassOf Cl_Entity",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "Cl_Song subClassOf Cl_Entity",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "Cl_Person subClassOf Cl_Entity",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "Cl_Musician subClassOf Cl_Artist",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "Cl_Record subClassOf Cl_Entity",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "Cl_Band subClassOf Cl_Entity",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "Cl_Musician subClassOf Cl_Person",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "Cl_Critic subClassOf Cl_Entity",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "Cl_Album subClassOf Cl_Entity",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "Cl_CompositionEvent subClassOf Cl_Entity",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "Cl_Person subClassOf Cl_Artist",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "Cl_Band subClassOf Cl_Artist",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "Cl_CriticRecordStatement subClassOf Cl_Statement",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "Cl_Song disjointWith Cl_CompositionEvent",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "Cl_Person disjointWith Cl_CompositionEvent",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "Cl_Album disjointWith Cl_CompositionEvent",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasCritic domain = Cl_CriticRecordStatement",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasCritic range = Cl_Critic",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "composesSong domain = Cl_CompositionEvent",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "composesSong range = Cl_Song",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasMembership domain = Cl_Band",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasMembership range = Cl_BandMembership",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "trackOf domain = Cl_Track",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "trackOf range = Cl_Album",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "containsSong domain = Cl_Album",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "containsSong range = Cl_Song",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "isTrackOf domain = Cl_Track",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "isTrackOf range = Cl_Album",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasRecord domain = Cl_CriticRecordStatement",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasRecord range = Cl_Record",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "performanceOfBand domain = Cl_Performance",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "performanceOfBand range = Cl_Band",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "locatedIn domain = Cl_City",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "locatedIn range = Cl_Region",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasRole domain = Cl_Membership",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasRole range = Cl_Role",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasTrack domain = Cl_Album",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasTrack domain = Cl_Record",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasTrack range = Cl_Track",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "recordedAlbum domain = Cl_AlbumRecording",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "recordedAlbum range = Cl_Album",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "playsInstrument domain = Cl_Musician",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "playsInstrument range = Cl_Instrument",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasSong domain = Cl_SongInPerformance",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasSong range = Cl_Track",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasBand domain = Cl_Membership",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasBand range = Cl_Band",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "performs domain = Cl_Band",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "performs range = Cl_Performance",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasRecordingEvent domain = Cl_Album",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasRecordingEvent range = Cl_AlbumRecording",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "memberOfMembership domain = Cl_Musician",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "memberOfMembership range = Cl_BandMembership",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasLocation domain = Cl_Performance",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasLocation range = Cl_Location",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasTimeInterval domain = Cl_Membership",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasTimeInterval range = Cl_TimeInterval",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "performedSong domain = Cl_Performance",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "performedSong range = Cl_Track",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "performedIn domain = Cl_Track",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "performedIn range = Cl_Performance",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasPerformance domain = Cl_Band",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasPerformance domain = Cl_SongInPerformance",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasPerformance range = Cl_Performance",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "recordedDuring domain = Cl_Album",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "recordedDuring range = Cl_Event",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "trackOfAlbum domain = Cl_Track",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "trackOfAlbum range = Cl_Album",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasCompositionEvent domain = Cl_Song",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasCompositionEvent range = Cl_CompositionEvent",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "performedAt domain = Cl_Performance",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "performedAt range = string",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasMember domain = Cl_Band",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasMember domain = Cl_BandMembership",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasMember domain = Cl_Membership",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasMember range = Cl_Artist",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasMember range = Cl_Musician",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasMember range = Cl_Person",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasState domain = Cl_City",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasState range = Cl_Region",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasAlbum domain = Cl_Band",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasAlbum range = Cl_Album",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "performedTrack domain = Cl_Performance",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "performedTrack range = Cl_Track",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "performedBy domain = Cl_Album",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "performedBy domain = Cl_Performance",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "performedBy range = Cl_Artist",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "performedBy range = Cl_Band",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "reviewedBy domain = Cl_Album",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "reviewedBy range = Cl_Critic",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "membershipOfBand domain = Cl_BandMembership",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "membershipOfBand range = Cl_Band",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "memberOf domain = Cl_Artist",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "memberOf domain = Cl_Musician",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "memberOf domain = Cl_Person",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "memberOf range = Cl_Band",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasMembership inverseOf membershipOfBand",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "NEGATIVE: Cl_Role NOT subClassOf Cl_Membership",
+            "expected": false,
+            "got": false,
+            "status": "PASS"
+          },
+          {
+            "desc": "NEGATIVE: Cl_Role NOT subClassOf Cl_Album",
+            "expected": false,
+            "got": false,
+            "status": "PASS"
+          }
+        ]
+      }
+    },
+    "cq_coverage": {
+      "method_name": "Competency Question Coverage",
+      "method_number": 11,
+      "result": {
+        "satisfied": 12,
+        "total": 15,
+        "coverage_pct": 80.0
+      }
+    },
+    "oquare": {
+      "method_name": "OQuaRE Ontology Quality Model",
+      "result": {
+        "raw": {
+          "ANOnto": 1.44,
+          "AROnto": 0.72,
+          "CROnto": 0.0,
+          "DITOnto": 2,
+          "INROnto": 0.0,
+          "LCOMOnto": 0.87,
+          "NACOnto": 0.6,
+          "NOCOnto": 0.52,
+          "NOMOnto": 53.0,
+          "PROnto": 1.0,
+          "RFCOnto": 3.4,
+          "TMOnto": 0.12,
+          "WMCOnto": 2.12,
+          "CBOOnto": 2.56,
+          "POnto": 0.75
+        },
+        "scaled": {
+          "ANOnto": 5,
+          "AROnto": 5,
+          "CROnto": 2,
+          "DITOnto": 3,
+          "INROnto": 2,
+          "LCOMOnto": 2,
+          "NACOnto": 2,
+          "NOCOnto": 3,
+          "NOMOnto": 5,
+          "PROnto": 5,
+          "RFCOnto": 5,
+          "TMOnto": 4,
+          "WMCOnto": 5,
+          "CBOOnto": 2,
+          "POnto": 5
+        },
+        "subchars": {
+          "Formal adequacy": 5.0,
+          "Domain adequacy": 3.0,
+          "Formal correctness": 2.667,
+          "Consistency": 2.667,
+          "Modularity": 3.333,
+          "Reusability": 4.0,
+          "Understandability": 3.333,
+          "Operability": 2.0,
+          "Adaptability": 2.667,
+          "Replaceability": 4.0
+        },
+        "chars": {
+          "Functional adequacy": 3.556,
+          "Reliability": 2.667,
+          "Usability": 2.667,
+          "Maintainability": 3.0,
+          "Portability": 4.0
+        }
+      }
+    },
+    "completeness": {
+      "method_name": "Column Completeness / Annotation Completeness",
+      "method_number": 12,
+      "result": {
+        "rdfs:label": {
+          "count": 70,
+          "total": 78,
+          "pct": 89.7
+        },
+        "rdfs:comment": {
+          "count": 5,
+          "total": 78,
+          "pct": 6.4
+        },
+        "owl:deprecated": {
+          "count": 0,
+          "total": 78,
+          "pct": 0.0
+        }
+      }
+    },
+    "ext_vocab": {
+      "method_name": "External Vocabulary Usage Rate",
+      "method_number": 13,
+      "result": {
+        "ext_rate_pct": 85.0,
+        "proprietary": 98,
+        "total": 653
+      }
+    },
+    "literals": {
+      "method_name": "Syntactic Validity of Typed Literals",
+      "method_number": 14,
+      "result": {
+        "typed": 39,
+        "invalid": 0
+      }
+    }
+  },
+  "ontology_2": {
+    "basic": {
+      "method_name": "Basic Ontology Statistics",
+      "result": {
+        "named_classes": 33,
+        "object_properties": 45,
+        "datatype_properties": 19,
+        "annotation_properties": 0,
+        "named_individuals": 0,
+        "named_subClassOf": 20,
+        "bnode_subClassOf": 4,
+        "equivalentClass": 11,
+        "disjointWith": 16,
+        "inverseOf": 15,
+        "domain_axioms": 66,
+        "range_axioms": 64,
+        "rdfs_label": 122,
+        "rdfs_comment": 13,
+        "restrictions": 4,
+        "total_triples": 715
+      }
+    },
+    "stats": {
+      "method_name": "RDF syntax parseability (RDFLib)",
+      "method_number": 1,
+      "result": {
+        "status": "PASS"
+      }
+    },
+    "ontoqa": {
+      "method_name": "OntoQA Schema-level Metrics",
+      "method_number": 3,
+      "result": {
+        "RR": 0.6923,
+        "AR": 0.5152,
+        "IR": 0.6061,
+        "CR": 0.4242
+      }
+    },
+    "yang": {
+      "method_name": "Ontology Complexity Metrics",
+      "method_number": 4,
+      "result": {
+        "T": 0.1212,
+        "ABF": 2.2222,
+        "LR": 0.7273,
+        "max_depth": 2,
+        "avg_depth": 0.6061
+      }
+    },
+    "consistency": {
+      "method_name": "Logical Consistency Check (placeholder)",
+      "result": {
+        "status": "SKIPPED",
+        "reason": "not_implemented"
+      }
+    },
+    "sparql": {
+      "method_name": "SPARQL-Based Structural Constraint Checks",
+      "method_number": 7,
+      "result": {
+        "op_no_domain": [],
+        "op_no_range": [],
+        "dp_no_domain": [],
+        "dp_no_range": [],
+        "isolated_roots": [
+          "Cl_EvaluationStatement",
+          "Cl_EmploymentEvent",
+          "Cl_Article",
+          "Cl_ArticlePresentation",
+          "Cl_UnionMembership",
+          "Cl_Institution",
+          "Cl_SeminarOccurrence",
+          "Cl_Library",
+          "Cl_PersonDegree",
+          "Cl_Union",
+          "Cl_Evaluation"
+        ]
+      }
+    },
+    "shacl": {
+      "method_name": "SHACL Shapes Constraint Language Validation",
+      "method_number": 8,
+      "result": {
+        "status": "SKIPPED",
+        "reason": "requires_manual_shapes"
+      }
+    },
+    "unit_tests": {
+      "method_name": "Unit Tests for Ontologies",
+      "method_number": 9,
+      "result": {
+        "passed": 118,
+        "total": 118,
+        "tests": [
+          {
+            "desc": "Cl_Nurse subClassOf Cl_Employee",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "Cl_Doctor subClassOf Cl_Employee",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "Cl_Book subClassOf Cl_ArticleCollection",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "Cl_City subClassOf Cl_Location",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "Cl_UnionGroup subClassOf Cl_Organization",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "Cl_Employee subClassOf Cl_Person",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "Cl_Hospital subClassOf Cl_Location",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "Cl_Person subClassOf Cl_Agent",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "Cl_Seminar subClassOf Cl_Event",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "Cl_Book subClassOf Cl_Publication",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "Cl_CD subClassOf Cl_ArticleCollection",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "Cl_Role subClassOf Cl_Agent",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "Cl_Nurse subClassOf Cl_Person",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "Cl_ArticleCollection subClassOf Cl_Publication",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "Cl_Doctor subClassOf Cl_Person",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "Cl_CertifiedNurseDegree subClassOf Cl_MedicalDegree",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "Cl_UnionRepresentative subClassOf Cl_Person",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "Cl_NursingAssistantDegree subClassOf Cl_MedicalDegree",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "Cl_Country subClassOf Cl_Location",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "Cl_CD subClassOf Cl_Publication",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "Cl_Doctor disjointWith Cl_Employee",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "Cl_City disjointWith Cl_Article",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "Cl_Hospital disjointWith Cl_Article",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "containsArticle domain = Cl_ArticleCollection",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "containsArticle range = Cl_Article",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "op_heldAt domain = Cl_Seminar",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "op_heldAt range = Cl_Hospital",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "degreeOf domain = Cl_MedicalDegree",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "degreeOf range = Cl_Person",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "representsUnion domain = Cl_UnionRepresentative",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "representsUnion range = Cl_Union",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasEvaluator domain = Cl_EvaluationStatement",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasEvaluator range = Cl_Doctor",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "presentedAtSeminar domain = Cl_Article",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "presentedAtSeminar range = Cl_Seminar",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "op_hasCity domain = Cl_Country",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "op_hasCity range = Cl_City",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "isPresentedIn domain = Cl_Article",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "isPresentedIn range = Cl_ArticlePresentation",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "holdsDegreeAssociation domain = Cl_Person",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "holdsDegreeAssociation range = Cl_PersonDegree",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasUnion domain = Cl_UnionMembership",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasUnion range = Cl_UnionGroup",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "isEmployeeOf domain = Cl_Person",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "isEmployeeOf range = Cl_EmploymentEvent",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "membershipOfUnion domain = Cl_UnionMembership",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "membershipOfUnion range = Cl_Union",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "heldBy domain = Cl_PersonDegree",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "heldBy range = Cl_Person",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasEvaluatee domain = Cl_EvaluationStatement",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasEvaluatee range = Cl_Employee",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "storedInLibrary domain = Cl_Evaluation",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "storedInLibrary range = Cl_Library",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "membershipOfPerson domain = Cl_UnionMembership",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "membershipOfPerson range = Cl_Person",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasPresentedArticle domain = Cl_ArticlePresentation",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasPresentedArticle range = Cl_Article",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "isMemberOf domain = Cl_Person",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "isMemberOf range = Cl_UnionMembership",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasArticleCollection domain = Cl_Article",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasArticleCollection range = Cl_ArticleCollection",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasMembership domain = Cl_Person",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasMembership range = Cl_UnionMembership",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "evaluates domain = Cl_Doctor",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "evaluates range = Cl_Person",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "isUnionOf domain = Cl_UnionGroup",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "isUnionOf range = Cl_UnionMembership",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasEmployer domain = Cl_EmploymentEvent",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasEmployer range = Cl_Hospital",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasMember domain = Cl_UnionMembership",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasMember range = Cl_Person",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "memberOfUnion domain = Cl_Person",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "memberOfUnion range = Cl_Union",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasOccurrence domain = Cl_Seminar",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasOccurrence range = Cl_SeminarOccurrence",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "awardedBy domain = Cl_PersonDegree",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "awardedBy range = Cl_Institution",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "occurrenceAtLocation domain = Cl_SeminarOccurrence",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "occurrenceAtLocation range = Cl_Location",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasDegree domain = Cl_Person",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasDegree domain = Cl_PersonDegree",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasDegree range = Cl_MedicalDegree",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasVersion domain = Cl_ArticleCollection",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasVersion range = Cl_Publication",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "locatedInCity domain = Cl_Hospital",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "locatedInCity range = Cl_City",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasEmployee domain = Cl_EmploymentEvent",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasEmployee domain = Cl_Hospital",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasEmployee range = Cl_Person",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "heldAtHospital domain = Cl_Seminar",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "heldAtHospital range = Cl_Hospital",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasUnionMembership domain = Cl_Union",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasUnionMembership range = Cl_UnionMembership",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "isEmployerOf domain = Cl_Hospital",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "isEmployerOf range = Cl_EmploymentEvent",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasRole domain = Cl_UnionMembership",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasRole range = Cl_Role",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "presentedBy domain = Cl_ArticlePresentation",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "presentedBy range = Cl_Person",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "presentedPresentation domain = Cl_Person",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "presentedPresentation range = Cl_ArticlePresentation",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "isRoleOf domain = Cl_Role",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "isRoleOf range = Cl_UnionMembership",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasPresentationVenue domain = Cl_ArticlePresentation",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasPresentationVenue range = Cl_Seminar",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "occurrenceOfSeminar domain = Cl_SeminarOccurrence",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "occurrenceOfSeminar range = Cl_Seminar",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasPresentation domain = Cl_Seminar",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasPresentation range = Cl_ArticlePresentation",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "employedAt domain = Cl_Person",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "employedAt range = Cl_Hospital",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "op_isLocatedInCountry domain = Cl_City",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "op_isLocatedInCountry range = Cl_Country",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasArticle domain = Cl_ArticleCollection",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "hasArticle range = Cl_Article",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "employedAt inverseOf hasEmployee",
+            "expected": true,
+            "got": true,
+            "status": "PASS"
+          },
+          {
+            "desc": "NEGATIVE: Cl_Seminar NOT subClassOf Cl_MedicalDegree",
+            "expected": false,
+            "got": false,
+            "status": "PASS"
+          },
+          {
+            "desc": "NEGATIVE: Cl_Seminar NOT subClassOf Cl_EvaluationStatement",
+            "expected": false,
+            "got": false,
+            "status": "PASS"
+          }
+        ]
+      }
+    },
+    "cq_coverage": {
+      "method_name": "Competency Question Coverage",
+      "method_number": 11,
+      "result": {
+        "satisfied": 9,
+        "total": 15,
+        "coverage_pct": 60.0
+      }
+    },
+    "oquare": {
+      "method_name": "OQuaRE Ontology Quality Model",
+      "result": {
+        "raw": {
+          "ANOnto": 1.5454545454545454,
+          "AROnto": 2.515151515151515,
+          "CROnto": 0.0,
+          "DITOnto": 3,
+          "INROnto": 0.0,
+          "LCOMOnto": 0.946969696969697,
+          "NACOnto": 0.7272727272727273,
+          "NOCOnto": 0.6060606060606061,
+          "NOMOnto": 64.0,
+          "PROnto": 1.0,
+          "RFCOnto": 2.727272727272727,
+          "TMOnto": 0.12121212121212122,
+          "WMCOnto": 1.9393939393939394,
+          "CBOOnto": 1.696969696969697,
+          "POnto": 0.0
+        },
+        "scaled": {
+          "ANOnto": 5,
+          "AROnto": 5,
+          "CROnto": 2,
+          "DITOnto": 4,
+          "INROnto": 2,
+          "LCOMOnto": 1,
+          "NACOnto": 2,
+          "NOCOnto": 3,
+          "NOMOnto": 5,
+          "PROnto": 5,
+          "RFCOnto": 5,
+          "TMOnto": 4,
+          "WMCOnto": 5,
+          "CBOOnto": 3,
+          "POnto": 2
+        },
+        "subchars": {
+          "Formal adequacy": 5.0,
+          "Domain adequacy": 3.0,
+          "Formal correctness": 3.0,
+          "Consistency": 2.667,
+          "Modularity": 3.667,
+          "Reusability": 4.333,
+          "Understandability": 3.333,
+          "Operability": 2.0,
+          "Adaptability": 3.0,
+          "Replaceability": 2.5
+        },
+        "chars": {
+          "Functional adequacy": 3.667,
+          "Reliability": 2.667,
+          "Usability": 2.667,
+          "Maintainability": 3.333,
+          "Portability": 3.417
+        }
+      }
+    },
+    "completeness": {
+      "method_name": "Column Completeness / Annotation Completeness",
+      "method_number": 12,
+      "result": {
+        "rdfs:label": {
+          "count": 94,
+          "total": 97,
+          "pct": 96.9
+        },
+        "rdfs:comment": {
+          "count": 13,
+          "total": 97,
+          "pct": 13.4
+        },
+        "owl:deprecated": {
+          "count": 0,
+          "total": 97,
+          "pct": 0.0
+        }
+      }
+    },
+    "ext_vocab": {
+      "method_name": "External Vocabulary Usage Rate",
+      "method_number": 13,
+      "result": {
+        "ext_rate_pct": 95.0,
+        "proprietary": 36,
+        "total": 715
+      }
+    },
+    "literals": {
+      "method_name": "Syntactic Validity of Typed Literals",
+      "method_number": 14,
+      "result": {
+        "typed": 25,
+        "invalid": 0
+      }
+    }
+  }
+}
