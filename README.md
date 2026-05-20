@@ -16,26 +16,23 @@ This project therefore separates three layers:
 
 ## Repository structure
 
+```text
 .
 ├── card-sort/
 │   ├── index.html
 │   └── master-key/
-│
 ├── data/
 │   ├── ontologies/
 │   ├── competency-questions/
 │   └── reference-material/
-│
 ├── evaluation/
 │   ├── scripts/
 │   └── notebooks/
-│
 ├── results/
 │   ├── raw/
 │   ├── processed/
 │   └── tables/
-│
 ├── docs/
 │   └── supporting-material/
-│
 └── README.md
+```
