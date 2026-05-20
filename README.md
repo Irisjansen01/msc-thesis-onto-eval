@@ -16,6 +16,7 @@ This project therefore separates three layers:
 
 ## Repository structure
 
+.
 ├── card-sort/
 │   ├── index.html
 │   └── master-key/
@@ -38,4 +39,3 @@ This project therefore separates three layers:
 │   └── supporting-material/
 │
 └── README.md
-
