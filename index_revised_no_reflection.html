@@ -1,0 +1,2236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card Sort Study: Ontology Evaluation Methods</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+           background: #f0f2f5; height: 100vh; overflow: hidden; color: #222; font-size: 14px; }
+    .app { display: flex; flex-direction: column; height: 100vh; }
+    .header { background: #16213e; color: white; padding: 0 20px; height: 52px;
+              display: flex; align-items: center; justify-content: space-between;
+              flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.25); gap: 12px; }
+    .header-left { display: flex; align-items: center; gap: 12px; }
+    .header-title { font-size: 1rem; font-weight: 600; }
+    .progress-pill { font-size: 0.72rem; color: rgba(255,255,255,0.6);
+                     background: rgba(255,255,255,0.1); padding: 3px 10px;
+                     border-radius: 12px; white-space: nowrap; }
+    .timer-pill { font-size: 0.72rem; color: rgba(255,255,255,0.85);
+                  background: rgba(255,255,255,0.13); padding: 3px 10px;
+                  border-radius: 12px; white-space: nowrap; font-variant-numeric: tabular-nums;
+                  letter-spacing: 0.03em; }
+    .header-actions { display: flex; gap: 8px; flex-shrink: 0; }
+
+    .main { display: flex; flex: 1; overflow: hidden; }
+
+    /* ── LEFT RAIL : unsorted + set-aside ───────────── */
+    .unsorted-panel { width: 320px; min-width: 290px; background: #e8eaf0;
+                      border-right: 1px solid #d0d3dc; display: flex;
+                      flex-direction: column; flex-shrink: 0; }
+    .panel-header { padding: 10px 14px; background: white;
+                    border-bottom: 1px solid #e0e3ec; display: flex;
+                    justify-content: space-between; align-items: center;
+                    flex-shrink: 0; }
+    .panel-title { font-weight: 700; font-size: 0.72rem; color: #666;
+                   text-transform: uppercase; letter-spacing: 0.07em; }
+    .panel-count { font-size: 0.78rem; color: #888; background: #f0f2f5;
+                   padding: 2px 8px; border-radius: 10px; font-weight: 600; }
+    .add-wrap { padding: 10px 10px 12px; background: #e8eaf0;
+                border-bottom: 1px solid #dcdfe6; flex-shrink: 0; }
+    .cards-scroll { flex: 1; overflow-y: auto; padding: 10px;
+                    display: flex; flex-direction: column; gap: 8px; }
+    .cards-scroll.drag-over { background: #dde8f8; }
+
+    /* ── Set-aside box as final grid card ───────────────── */
+    .aside-top-cat {
+      --tc: #c79a3a;
+      background: #fffaf0;
+      border-color: #f0d7a4;
+    }
+
+    .aside-top-cat.drag-over {
+      border-color: #c79a3a;
+      background: #fff3dc;
+    }
+
+    .aside-top-cat .top-cat-name {
+      color: #5e4710;
+    }
+
+    .aside-top-cat .top-cat-desc {
+      color: #7b5b17;
+    }
+
+    .aside-zone {
+      flex: 1;
+      padding: 8px 0 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-height: 110px;
+      border-radius: 5px;
+      border: 1.5px dashed transparent;
+      transition: border-color 0.15s, background 0.15s;
+    }
+
+    .aside-zone.drag-over {
+      border-color: #c79a3a;
+      background: #fff3dc;
+    }
+
+    .aside-empty {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #b59458;
+      font-size: 0.74rem;
+      border: 2px dashed #f0d7a4;
+      border-radius: 6px;
+      min-height: 64px;
+      text-align: center;
+      padding: 12px;
+      line-height: 1.5;
+    }
+
+    .aside-card-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .aside-reason-row {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      padding: 0 4px 6px;
+    }
+
+    .aside-reason-row select,
+    .aside-reason-row input {
+      font-size: 0.72rem;
+      padding: 3px 6px;
+      border: 1px solid #e6c98a;
+      border-radius: 4px;
+      background: white;
+      font-family: inherit;
+      color: #5e4710;
+      outline: none;
+    }
+
+    .aside-reason-row select:focus,
+    .aside-reason-row input:focus {
+      border-color: #c79a3a;
+    }
+
+    .aside-reason-label {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: #946206;
+      text-transform: uppercase;
+    }
+
+    .aside-card-wrap { display: flex; flex-direction: column; gap: 4px; }
+    .aside-reason-row { display: flex; flex-direction: column; gap: 3px;
+                        padding: 0 4px 2px; }
+    .aside-reason-row select, .aside-reason-row input {
+      font-size: 0.72rem; padding: 3px 6px; border: 1px solid #e6c98a;
+      border-radius: 4px; background: white; font-family: inherit;
+      color: #5e4710; outline: none; }
+    .aside-reason-row select:focus, .aside-reason-row input:focus {
+      border-color: #c79a3a; }
+    .aside-reason-label { font-size: 0.62rem; font-weight: 700;
+                          letter-spacing: 0.06em; color: #946206;
+                          text-transform: uppercase; }
+
+    /* ── CENTRE : top-category bins ─────────────────── */
+    .categories-area { flex: 1; overflow-y: auto; padding: 14px 14px 30px;
+                       display: flex; flex-direction: column; gap: 12px; }
+    .cat-toolbar { display: flex; justify-content: space-between;
+                   align-items: center; flex-shrink: 0; gap: 12px;
+                   padding-bottom: 4px; flex-wrap: wrap; }
+    .cat-toolbar-label { font-weight: 700; font-size: 0.72rem; color: #888;
+                         text-transform: uppercase; letter-spacing: 0.07em; }
+    .cat-toolbar-hint { font-size: 0.72rem; color: #777; }
+    .cat-grid { display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+                gap: 14px; align-content: start; }
+
+    .top-cat { background: white; border-radius: 10px; border: 2px solid #e4e6ec;
+               display: flex; flex-direction: column; min-height: 240px;
+               overflow: hidden; transition: border-color 0.15s; }
+    .top-cat-color-bar { height: 4px; background: var(--tc, #aaa); flex-shrink: 0; }
+    .top-cat.drag-over { border-color: var(--tc, #4a90d9); background: #f6faff; }
+    .top-cat-header { padding: 11px 13px 8px; border-bottom: 1px solid #f0f2f5;
+                      flex-shrink: 0; }
+    .top-cat-title-row { display: flex; align-items: center; gap: 7px;
+                         margin-bottom: 5px; }
+    .top-cat-letter { width: 24px; height: 24px; border-radius: 5px;
+                      background: var(--tc, #aaa); color: white;
+                      display: inline-flex; align-items: center;
+                      justify-content: center; font-weight: 700;
+                      font-size: 0.84rem; flex-shrink: 0; }
+    .top-cat-name { flex: 1; font-weight: 700; font-size: 0.88rem;
+                    color: #16213e; line-height: 1.32; min-width: 0; }
+    .top-cat-count { font-size: 0.7rem; color: #999; background: #f0f2f5;
+                     padding: 1px 7px; border-radius: 10px; font-weight: 600;
+                     flex-shrink: 0; }
+    .top-cat-desc { font-size: 0.74rem; line-height: 1.5; color: #666;
+                    padding-top: 2px; }
+
+    .top-cat-body { flex: 1; padding: 8px 8px 4px; display: flex;
+                    flex-direction: column; gap: 6px; min-height: 110px; }
+    .top-cat-drop-hint { display: flex; align-items: center;
+                         justify-content: center; color: #ccc;
+                         font-size: 0.74rem; border: 2px dashed #eee;
+                         border-radius: 6px; min-height: 64px;
+                         text-align: center; padding: 12px;
+                         pointer-events: none; line-height: 1.5; }
+    .top-cat.drag-over .top-cat-drop-hint { border-color: var(--tc, #4a90d9);
+                                            color: var(--tc, #4a90d9); }
+
+    .direct-zone { display: flex; flex-direction: column; gap: 4px;
+                   padding: 4px 0; min-height: 40px; border-radius: 5px;
+                   border: 1.5px dashed transparent; transition: border-color 0.15s, background 0.15s; }
+    .direct-zone.drag-over { border-color: var(--tc, #4a90d9); background: #f6faff; }
+    .direct-zone-label { font-size: 0.62rem; font-weight: 700;
+                         letter-spacing: 0.07em; color: #b0b6c2;
+                         text-transform: uppercase; padding: 0 4px 2px; }
+
+    .sub-inst { background: #f8f9fc; border: 1.5px solid #e1e6ee;
+                border-left: 3px solid var(--tc, #4a90d9); border-radius: 6px;
+                padding: 0; overflow: hidden; }
+    .sub-inst.drag-over { background: #eef5ff; border-color: var(--tc, #4a90d9); }
+    .sub-inst-header { display: flex; align-items: center; gap: 6px;
+                       padding: 6px 9px; user-select: none;
+                       background: #f1f4fa; border-bottom: 1px solid #e8ecf3; }
+    .sub-inst-dot { width: 7px; height: 7px; border-radius: 50%;
+                    background: var(--tc, #4a90d9); flex-shrink: 0; }
+    .sub-inst-label { flex: 1; font-weight: 600; font-size: 0.78rem;
+                      color: #2a3b5e; line-height: 1.3; }
+    .sub-inst-count { font-size: 0.68rem; color: #777; background: white;
+                      padding: 1px 6px; border-radius: 9px; font-weight: 600;
+                      flex-shrink: 0; }
+    .sub-inst-del { background: none; border: none; cursor: pointer;
+                    color: #b0b6c2; font-size: 0.8rem; line-height: 1;
+                    padding: 2px 4px; }
+    .sub-inst-del:hover { color: #e74c3c; }
+    .sub-inst-cards { padding: 6px 8px 8px; display: flex;
+                      flex-direction: column; gap: 4px; min-height: 22px; }
+    .sub-inst-empty { font-size: 0.7rem; color: #b8c0cf;
+                      text-align: center; padding: 6px 8px;
+                      pointer-events: none; }
+
+    /* "+ Add subcategory" button + picker */
+    .add-sub-wrap { padding: 4px 6px 10px; }
+    .add-sub-btn { background: white; border: 1.5px dashed #d0d3dc;
+                   border-radius: 6px; padding: 6px 10px; cursor: pointer;
+                   font-size: 0.74rem; font-weight: 600; color: #888;
+                   font-family: inherit; width: 100%; text-align: left;
+                   transition: all 0.15s; }
+    .add-sub-btn:hover { border-color: var(--tc, #4a90d9);
+                         color: var(--tc, #4a90d9); background: #fafbfd; }
+
+    .sub-picker { background: #f9fafd; border: 1.5px solid var(--tc, #4a90d9);
+                  border-radius: 6px; padding: 8px; display: flex;
+                  flex-direction: column; gap: 6px; }
+    .sub-picker-title { font-size: 0.66rem; font-weight: 800;
+                        letter-spacing: 0.08em; color: var(--tc, #4a90d9);
+                        text-transform: uppercase; }
+    .sub-picker-grid { display: flex; flex-direction: column; gap: 3px;
+                       max-height: 260px; overflow-y: auto; }
+    .sub-suggest { display: flex; flex-direction: column; gap: 2px;
+                   text-align: left; padding: 7px 10px;
+                   border: 1px solid #d0d3dc; border-radius: 6px;
+                   background: white; cursor: pointer; font-family: inherit;
+                   transition: all 0.12s; }
+    .sub-suggest-label { font-size: 0.76rem; font-weight: 600;
+                         color: #16213e; line-height: 1.3; }
+    .sub-suggest-desc  { font-size: 0.68rem; color: #666; line-height: 1.45;
+                         font-weight: 400; }
+    .sub-suggest:hover { border-color: var(--tc, #4a90d9); background: #f6faff; }
+    .sub-suggest:hover .sub-suggest-label { color: var(--tc, #4a90d9); }
+    .sub-suggest:hover .sub-suggest-desc  { color: #555; }
+    .sub-suggest[disabled] { cursor: not-allowed; background: #f3f4f8; }
+    .sub-suggest[disabled] .sub-suggest-label { color: #bbb; }
+    .sub-suggest[disabled] .sub-suggest-desc  { color: #ccc; }
+    .sub-suggest[disabled]:hover { border-color: #d0d3dc; background: #f3f4f8; }
+    .sub-picker-custom { display: flex; gap: 4px; }
+    .sub-picker-custom input { flex: 1; font-size: 0.74rem; padding: 4px 7px;
+                               border: 1px solid #d0d3dc; border-radius: 4px;
+                               font-family: inherit; outline: none; }
+    .sub-picker-custom input:focus { border-color: var(--tc, #4a90d9); }
+    .sub-picker-actions { display: flex; justify-content: flex-end; gap: 4px; }
+
+    /* ── Cards ──────────────────────────────────────── */
+    .card { background: white; border-radius: 10px; padding: 13px 14px 12px;
+            border: 1.5px solid #d6dcf5; border-top: 3px solid #6c8adb;
+            cursor: grab;
+            transition: box-shadow 0.15s, border-color 0.15s, transform 0.1s;
+            box-shadow: 0 1px 5px rgba(80,100,200,0.09); user-select: none;
+            position: relative; }
+    .card:hover { border-color: #4a6fd4; border-top-color: #4a6fd4;
+                  box-shadow: 0 4px 14px rgba(74,111,212,0.2);
+                  transform: translateY(-2px); }
+    .card:focus-within { outline: 2px solid #4a6fd4; outline-offset: 1px; }
+    .card.is-dragging { opacity: 0.35; cursor: grabbing; transform: none; }
+    .card-title { font-weight: 700; font-size: 0.84rem; line-height: 1.4;
+                  color: #16213e; margin-bottom: 9px; padding-right: 56px;
+                  padding-left: 10px; border-left: 3px solid #6c8adb; }
+    .card-section { margin-top: 6px; background: #edf1fc; border-radius: 7px;
+                    padding: 7px 10px; }
+    .section-label { display: inline-flex; align-items: center; gap: 5px;
+                     font-size: 0.6rem; font-weight: 800;
+                     letter-spacing: 0.07em; color: #3d55b0; text-transform: uppercase;
+                     margin-bottom: 3px; }
+    .section-icon { font-size: 0.72rem; opacity: 0.75; }
+    .section-text { font-size: 0.77rem; line-height: 1.55; color: #3a3a4a; }
+    .card-actions { position: absolute; top: 6px; right: 6px;
+                    display: flex; gap: 2px; }
+
+    .small-card { background: #f5f7ff; border: 1.5px solid #d6dcf5;
+                  border-left: 3px solid var(--tc, #aaa); border-radius: 6px;
+                  cursor: grab; user-select: none; overflow: hidden;
+                  transition: box-shadow 0.12s; position: relative; }
+    .small-card:hover { box-shadow: 0 2px 7px rgba(80,100,200,0.13); }
+    .small-card.is-dragging { opacity: 0.35; cursor: grabbing; }
+    .small-card-summary { display: flex; align-items: center; gap: 6px;
+                          padding: 6px 9px; }
+    .small-card-title { flex: 1; font-size: 0.77rem; font-weight: 600;
+                        color: #16213e; line-height: 1.32; }
+    .small-card-detail { padding: 0 9px 9px; display: none;
+                         border-top: 1px solid #d6dcf5; padding-top: 8px; }
+    .small-card-detail .card-section { margin-top: 5px; }
+    .small-card-detail .section-label { font-size: 0.57rem; }
+    .small-card-detail .section-text { font-size: 0.72rem; }
+    .small-card.expanded .small-card-detail { display: block; }
+    .small-card-actions { display: flex; gap: 1px; flex-shrink: 0; }
+    .small-card-actions .icon-btn { width: 22px; height: 22px; font-size: 0.78rem; }
+
+    .icon-btn { background: none; border: none; cursor: pointer;
+                width: 26px; height: 26px; border-radius: 4px;
+                color: #b0b6c2; font-size: 0.85rem; line-height: 1;
+                display: inline-flex; align-items: center;
+                justify-content: center; transition: all 0.15s; }
+    .icon-btn:hover { background: #eef2f9; color: #16213e; }
+    .icon-btn.delete:hover { background: #fde8e8; color: #e74c3c; }
+
+    /* Move-to popover */
+    .move-pop { position: fixed; z-index: 30;
+                background: white; border: 1px solid #d0d3dc;
+                border-radius: 6px; box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+                min-width: 260px; max-height: 360px; overflow-y: auto; }
+    .move-pop-section { padding: 6px 10px 3px; font-size: 0.66rem;
+                        text-transform: uppercase; letter-spacing: 0.08em;
+                        color: #888; font-weight: 700;
+                        background: #f8f9fc; border-bottom: 1px solid #eef0f5; }
+    .move-pop-item { padding: 7px 12px; font-size: 0.76rem; cursor: pointer;
+                     color: #333; border-bottom: 1px solid #f0f2f5; }
+    .move-pop-item:last-child { border-bottom: none; }
+    .move-pop-item:hover { background: #f0f6ff; color: #16213e; }
+    .move-pop-item.disabled { color: #ccc; cursor: default; background: #fafafa; }
+
+    /* Buttons */
+    .btn { padding: 7px 14px; border-radius: 6px; border: none; cursor: pointer;
+           font-size: 0.82rem; font-weight: 500; font-family: inherit;
+           transition: all 0.15s; display: inline-flex; align-items: center;
+           gap: 5px; white-space: nowrap; }
+    .btn-primary { background: #4a90d9; color: white; }
+    .btn-primary:hover { background: #3a7bc8; }
+    .btn-success { background: #27ae60; color: white; }
+    .btn-success:hover { background: #219a52; }
+    .btn-outline { background: white; border: 1.5px solid #ccc; color: #444; }
+    .btn-outline:hover { border-color: #999; color: #222; }
+    .btn-ghost { background: transparent; color: rgba(255,255,255,0.85);
+                 border: 1.5px solid rgba(255,255,255,0.22); }
+    .btn-ghost:hover { background: rgba(255,255,255,0.1); color: white; }
+    .btn-mini { padding: 3px 9px; font-size: 0.72rem; }
+
+    /* Modal */
+    .modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.45);
+                      display: flex; align-items: center; justify-content: center;
+                      z-index: 50; }
+    .modal-backdrop.hidden { display: none; }
+    .modal { background: white; border-radius: 12px; width: 700px;
+             max-width: calc(100vw - 40px); max-height: 88vh; display: flex;
+             flex-direction: column; box-shadow: 0 24px 64px rgba(0,0,0,0.22); }
+    .modal-header { padding: 18px 22px 14px; border-bottom: 1px solid #eee;
+                    display: flex; justify-content: space-between; align-items: center;
+                    flex-shrink: 0; }
+    .modal-header h2 { font-size: 1.05rem; color: #16213e; }
+    .modal-body { padding: 18px 22px; overflow-y: auto; flex: 1;
+                  font-size: 0.86rem; line-height: 1.6; color: #333; }
+    .modal-body h3 { font-size: 0.95rem; color: #16213e; margin: 14px 0 6px; }
+    .modal-body p { margin-bottom: 10px; }
+    .modal-body ul { margin: 8px 0 12px 22px; }
+    .modal-body li { margin-bottom: 4px; }
+    .modal-footer { padding: 12px 22px; border-top: 1px solid #eee;
+                    display: flex; justify-content: flex-end; gap: 8px;
+                    flex-shrink: 0; }
+    .thanks-modal-body { display: flex; flex-direction: column; gap: 16px; }
+    .thanks-hero { display: flex; align-items: center; gap: 14px; }
+    .thanks-icon { width: 46px; height: 46px; border-radius: 50%; background: #27ae60; color: white;
+                   display: inline-flex; align-items: center; justify-content: center;
+                   font-size: 1.2rem; flex-shrink: 0; }
+    .thanks-emphasis { font-size: 0.98rem; font-weight: 700; color: #16213e; margin-bottom: 4px; }
+    .thanks-subtitle { margin: 0; color: #5f6a78; font-size: 0.88rem; }
+    .thanks-note { font-size: 0.85rem; color: #5f6a78; line-height: 1.5; }
+    .thanks-modal-body a { color: #2f74c0; text-decoration: none; }
+    .thanks-modal-body a:hover { text-decoration: underline; }
+    .consent-box { background: #f8f9fc; border: 1px solid #e0e3ec;
+                   border-radius: 6px; padding: 12px; margin-top: 14px;
+                   font-size: 0.82rem; }
+    .consent-box label { display: flex; gap: 8px; cursor: pointer; }
+    .consent-box input { margin-top: 3px; }
+    .add-card-btn { width: 100%; background: white; border: 2px dashed #d0d3dc;
+                    border-radius: 8px; padding: 9px 14px; cursor: pointer;
+                    font-size: 0.8rem; font-weight: 600; color: #888;
+                    text-align: left; font-family: inherit; display: flex;
+                    align-items: center; gap: 6px; transition: all 0.15s;
+                    flex-shrink: 0; }
+    .add-card-btn:hover { border-color: #4a90d9; color: #4a90d9; background: #f6faff; }
+    .add-form { background: white; border-radius: 8px; border: 2px solid #4a90d9;
+                padding: 13px 14px; display: flex; flex-direction: column; gap: 8px;
+                flex-shrink: 0; max-height: 60vh; overflow-y: auto; }
+    .ac-field { display: flex; flex-direction: column; gap: 3px; }
+    .ac-field label { font-size: 0.66rem; font-weight: 800; letter-spacing: 0.09em;
+                      color: #8090aa; text-transform: uppercase; }
+    .ac-field input, .ac-field textarea { border: 1.5px solid #e0e3ec;
+                      border-radius: 5px; padding: 6px 8px; font-size: 0.78rem;
+                      font-family: inherit; line-height: 1.5; outline: none;
+                      resize: none; color: #16213e; transition: border-color 0.15s; }
+    .ac-field input:focus, .ac-field textarea:focus { border-color: #4a90d9; }
+    .ac-field input.error { border-color: #e74c3c; }
+    .ac-actions { display: flex; gap: 6px; justify-content: flex-end; margin-top: 2px; }
+
+    .empty-state { display: flex; flex-direction: column; align-items: center;
+                   justify-content: center; text-align: center; padding: 30px 20px;
+                   color: #bbb; }
+    .empty-icon { font-size: 2rem; margin-bottom: 10px; }
+    .empty-text { font-size: 0.82rem; line-height: 1.6; color: #aaa; }
+
+    .toast { position: fixed; bottom: 22px; right: 22px; background: #16213e;
+             color: white; padding: 9px 16px; border-radius: 8px; font-size: 0.82rem;
+             z-index: 200; opacity: 0; transform: translateY(6px);
+             transition: all 0.22s; pointer-events: none; max-width: 380px; }
+    .toast.show { opacity: 1; transform: translateY(0); }
+
+    .cards-scroll::-webkit-scrollbar, .categories-area::-webkit-scrollbar,
+    .modal-body::-webkit-scrollbar, .aside-zone::-webkit-scrollbar { width: 5px; }
+    .cards-scroll::-webkit-scrollbar-thumb, .categories-area::-webkit-scrollbar-thumb,
+    .modal-body::-webkit-scrollbar-thumb, .aside-zone::-webkit-scrollbar-thumb {
+      background: #ccc; border-radius: 3px; }
+
+    /* ── Interactive tour ───────────────────────── */
+    #tour-overlay { position: fixed; inset: 0; z-index: 998;
+                    pointer-events: none; display: none; }
+    #tour-overlay.active { display: block; pointer-events: all; }
+    #tour-spotlight { position: fixed; z-index: 999; border-radius: 8px;
+                      pointer-events: none; display: none;
+                      box-shadow: 0 0 0 4px rgba(255,255,255,0.95),
+                                  0 0 0 9999px rgba(0,0,0,0.58);
+                      transition: top 0.28s ease, left 0.28s ease,
+                                  width 0.28s ease, height 0.28s ease; }
+    #tour-spotlight.active { display: block; }
+    #tour-tooltip { position: fixed; z-index: 1000; background: white;
+                    border-radius: 12px; padding: 20px 22px 16px; width: 330px;
+                    display: none; box-shadow: 0 10px 48px rgba(0,0,0,0.28);
+                    font-size: 0.86rem; line-height: 1.6; color: #333; }
+    #tour-tooltip.active { display: block; }
+    .tour-step-tag { font-size: 0.62rem; font-weight: 800; letter-spacing: 0.1em;
+                     text-transform: uppercase; color: #4a90d9; margin-bottom: 5px; }
+    .tour-title { font-size: 1rem; font-weight: 700; color: #16213e; margin-bottom: 9px; }
+    .tour-body { font-size: 0.83rem; line-height: 1.65; color: #444; margin-bottom: 14px; }
+    .tour-nav { display: flex; justify-content: space-between; align-items: center;
+                border-top: 1px solid #f0f2f5; padding-top: 12px; gap: 8px; }
+    .tour-dots { display: flex; gap: 5px; align-items: center; flex-wrap: wrap; }
+    .tour-dot { width: 7px; height: 7px; border-radius: 50%; background: #dde;
+                transition: all 0.22s; flex-shrink: 0; }
+    .tour-dot.active { background: #4a90d9; width: 18px; border-radius: 4px; }
+    .tour-skip { font-size: 0.72rem; color: #aaa; background: none; border: none;
+                 cursor: pointer; padding: 2px 4px; font-family: inherit; }
+    .tour-skip:hover { color: #777; }
+  </style>
+</head>
+<body>
+
+<!-- WELCOME / CONSENT MODAL ─────────────────────────── -->
+<div class="modal-backdrop" id="welcome-modal">
+  <div class="modal" style="width: 600px;">
+    <div class="modal-header">
+      <h2>Before you begin: data &amp; consent</h2>
+    </div>
+    <div class="modal-body">
+      <p style="font-size:0.78rem;color:#666;margin-bottom:14px;">
+        <strong>Card sort study.</strong>
+        Researcher: I.F. Jansen, MSc Information Studies, University of
+        Amsterdam (iris.jansen6@student.uva.nl). Supervisor: Dr. L. Stork.
+      </p>
+
+      <p>This study investigates how experts categorise automated ontology evaluation methods. The task takes approximately <strong>15 minutes</strong>. If you have any questions, contact the researcher at iris.jansen6@student.uva.nl.</p>
+
+      <h3>How your data is handled</h3>
+      <ul>
+        <li>Your in-progress sort is stored only in your own browser. Nothing is uploaded automatically.</li>
+        <li>When you click Finish &amp; download, a JSON file is saved locally; you then email it to the researcher.</li>
+        <li>Reopening the same browser may restore earlier work. Use the reset button if you need to start over.</li>
+        <li>Anonymised data is retained on University of Amsterdam secure storage for the thesis project plus one year, and may appear in the MSc thesis and follow-up publications, always anonymised.</li>
+      </ul>
+
+      <h3>Your rights</h3>
+      <ul>
+        <li>Participation is voluntary. You can stop at any time without giving a reason. You can withdraw your data within two weeks of the session by emailing the researcher.</li>
+      </ul>
+
+      <div class="consent-box">
+        <label>
+          <input type="checkbox" id="c1" class="consent-required">
+          <span>I understand how my data will be handled and my rights as a participant, and I consent to take part in this card sort study.</span>
+        </label>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary" id="welcome-begin" disabled>Continue &#8594;</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOUR OVERLAY ──────────────────────────────────── -->
+<div id="tour-overlay"></div>
+<div id="tour-spotlight"></div>
+<div id="tour-tooltip">
+  <div class="tour-step-tag" id="tour-step-tag">Step 1 of 8</div>
+  <div class="tour-title" id="tour-title"></div>
+  <div class="tour-body" id="tour-body"></div>
+  <div class="tour-nav">
+    <div class="tour-dots" id="tour-dots"></div>
+    <div style="display:flex;gap:6px;align-items:center;">
+      <button class="tour-skip" onclick="endTour()" title="Skip tour">Skip</button>
+      <button class="btn btn-outline btn-mini" id="tour-back" onclick="tourNav(-1)">&#8592; Back</button>
+      <button class="btn btn-primary btn-mini" id="tour-next" onclick="tourNav(1)">Next &#8594;</button>
+    </div>
+  </div>
+</div>
+
+<!-- THANK-YOU MODAL ────────────────────────────────── -->
+<div class="modal-backdrop hidden" id="thanks-modal">
+  <div class="modal" style="width: 600px; max-width: 95vw;">
+    <div class="modal-header"><h2>Thank you!</h2></div>
+    <div class="modal-body thanks-modal-body">
+      <div class="thanks-hero">
+        <div class="thanks-icon">✔</div>
+        <div>
+          <p class="thanks-emphasis">Your card sort has been saved successfully.</p>
+          <p class="thanks-subtitle">A JSON file is waiting in your downloads folder.</p>
+        </div>
+      </div>
+      <p>Please email that file to <a href="mailto:iris.jansen6@student.uva.nl">iris.jansen6@student.uva.nl</a> so it can be included in the analysis.</p>
+      <p class="thanks-note">If you want to revise your answers, reopen this page in the same browser. Your work is still saved locally and can be resumed.</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary" onclick="closeThanks()">Done</button>
+    </div>
+  </div>
+</div>
+
+<!-- APP ─────────────────────────────────────────────── -->
+<!-- APP ─────────────────────────────────────────────── -->
+<div class="app">
+  <header class="header">
+    <div class="header-left">
+      <span class="header-title">Card Sort: Ontology Evaluation Methods</span>
+      <span class="progress-pill" id="progress-pill">0 of 0 sorted</span>
+      <span class="timer-pill" id="timer-display" style="display:none;">⏱ 00:00</span>
+    </div>
+    <div class="header-actions">
+      <button class="btn btn-ghost" onclick="showHelp()" title="Re-read instructions">?</button>
+      <button class="btn btn-ghost" onclick="resetSort()" title="Reset sort">&#8635;</button>
+      <button class="btn btn-success" onclick="finishAndDownload()">&#8595; Finish &amp; download</button>
+    </div>
+  </header>
+
+  <div class="main">
+
+    <!-- LEFT PANEL: only unsorted cards -->
+    <div class="unsorted-panel">
+      <div class="panel-header">
+        <span class="panel-title">Unsorted Cards</span>
+        <span class="panel-count" id="unsorted-count">0</span>
+      </div>
+
+      <div class="add-wrap" id="add-wrap"></div>
+
+      <div class="cards-scroll" id="unsorted-zone"></div>
+    </div>
+
+    <!-- MAIN AREA: all top categories + set-aside box -->
+    <div class="categories-area">
+      <div class="cat-toolbar">
+        <span class="cat-toolbar-label">Top categories: pre-named evaluation approaches</span>
+        <span class="cat-toolbar-hint">
+          <strong>Top category = main evaluation basis.</strong> Subcategory = quality concern. Sort by the card description, not by recognised tool names.
+        </span>
+      </div>
+
+      <div class="cat-grid" id="cat-grid"></div>
+    </div>
+
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ═══════════════════════════════════════════════
+// Card data (39 cards). Participant-facing anonymised display fields only.
+// ═══════════════════════════════════════════════
+const SAMPLES = [
+  {
+    "id": "M01",
+    "anon": "Input format check",
+    "input": "Ontology file in a standard format.",
+    "procedure": "Load the file with a parser and check whether the file can be read.",
+    "output": "Pass/fail result plus number of parsed statements."
+  },
+  {
+    "id": "M02",
+    "anon": "Basic ontology statistics",
+    "input": "Ontology file.",
+    "procedure": "Count the main entity types and statement types in the ontology, such as classes, properties, individuals, subclass statements, equivalence statements, domain statements, and range statements.",
+    "output": "Counts per entity type and statement type."
+  },
+  {
+    "id": "M03",
+    "anon": "Formal construct profile check",
+    "input": "Ontology file.",
+    "procedure": "Check which formal constructs the ontology uses, such as inverse properties, disjointness, equivalence, or cardinality restrictions.",
+    "output": "Report describing which formal constructs are used."
+  },
+  {
+    "id": "M04",
+    "anon": "Allowed formal construct check",
+    "input": "Ontology file plus a target set of allowed formal constructs.",
+    "procedure": "Check each statement against the target set and identify statements that use constructs outside that set.",
+    "output": "Pass/fail result plus list of statements using disallowed constructs."
+  },
+  {
+    "id": "M05",
+    "anon": "Relation and attribute density check",
+    "input": "Ontology schema with its classes and properties.",
+    "procedure": "Measure how often the schema uses non-hierarchical relations and attributes compared with its size.",
+    "output": "Ratios describing relation and attribute density."
+  },
+  {
+    "id": "M06",
+    "anon": "Hierarchy depth and branching check",
+    "input": "Class hierarchy, asserted or inferred.",
+    "procedure": "Measure the size, depth, branching, leaf classes, and root-to-leaf paths of the hierarchy.",
+    "output": "Numeric measures describing hierarchy depth and branching."
+  },
+  {
+    "id": "M07",
+    "anon": "Hierarchy imbalance check",
+    "input": "Class hierarchy, asserted or inferred.",
+    "procedure": "Measure whether the hierarchy is unevenly shaped by checking multiple inheritance and variation in the number of direct subclasses per parent class.",
+    "output": "Numeric measures of multiple inheritance and subclass-distribution imbalance."
+  },
+  {
+    "id": "M08",
+    "anon": "Quality-model aggregation",
+    "input": "Ontology file plus a predefined quality model and the lower-level measures required by that model.",
+    "procedure": "Compute or collect the required lower-level measures, map them to quality dimensions, and aggregate them using the model's scoring rules.",
+    "output": "Scores per quality dimension, and optionally an overall quality score."
+  },
+  {
+    "id": "M09",
+    "anon": "Name regularity check",
+    "input": "Human-readable labels and local names in the ontology.",
+    "procedure": "Check whether names follow agreed naming rules, such as casing, length, and allowed characters.",
+    "output": "List of names that violate the naming rules."
+  },
+  {
+    "id": "M10",
+    "anon": "Description coverage check",
+    "input": "Ontology file.",
+    "procedure": "Check how many classes, properties, and individuals have a human-readable name and a textual description.",
+    "output": "Ratios for name coverage and description coverage."
+  },
+  {
+    "id": "M11",
+    "anon": "Circular hierarchy path check",
+    "input": "Class hierarchy, asserted or inferred.",
+    "procedure": "Search the subclass graph for cycles, where a class eventually becomes a subclass of itself through a chain of subclass relations.",
+    "output": "List of detected cycles."
+  },
+  {
+    "id": "M12",
+    "anon": "Contradiction and unusable-class check",
+    "input": "Ontology file.",
+    "procedure": "Run an inference engine to check whether the ontology contains contradictions and whether each named class can have possible instances.",
+    "output": "Pass/fail result plus list of classes that cannot have instances."
+  },
+  {
+    "id": "M13",
+    "anon": "Asserted and inferred hierarchy comparison",
+    "input": "Ontology file.",
+    "procedure": "Use an inference engine to compute the hierarchy implied by the ontology, then compare it with the hierarchy stated explicitly.",
+    "output": "Inferred hierarchy plus count of differences from the asserted hierarchy."
+  },
+  {
+    "id": "M14",
+    "anon": "Expected entailment check",
+    "input": "Ontology plus a set of expected formal statements.",
+    "procedure": "For each expected statement, run an inference engine to check whether the ontology logically implies it.",
+    "output": "Yes/no result per expected statement."
+  },
+  {
+    "id": "M15",
+    "anon": "Evaluator-defined condition checks",
+    "input": "Ontology graph plus a set of conditions written by the evaluator.",
+    "procedure": "The evaluator writes conditions that the ontology should satisfy — for example, that every class has at least one property, or that no property is used as both a domain and a range. Each condition is expressed as a query and run against the ontology. Returned results indicate places where the ontology violates the condition.",
+    "output": "List of condition violations, one entry per violated condition and affected element."
+  },
+  {
+    "id": "M16",
+    "anon": "Graph constraint conformance check",
+    "input": "Ontology graph plus constraints derived from the ontology's own declared axioms.",
+    "procedure": "Extract constraints directly from what the ontology itself declares — for example, that a property has a specific domain class, that a class must have at least one value for a given property, or that two classes are declared disjoint. Check whether the schema elements and any individuals in the ontology actually conform to these declared constraints.",
+    "output": "Validation report listing elements that violate a constraint the ontology itself declares, with the specific constraint that failed."
+  },
+  {
+    "id": "M17",
+    "anon": "Known design error catalogue check",
+    "input": "Ontology file.",
+    "procedure": "Check the ontology against a predefined list of known design errors. Examples include schema elements with no human-readable name, properties declared without specifying which classes they connect, classes with no connection to the rest of the schema, and classes that appear within their own definition.",
+    "output": "List of detected design errors, grouped by type, with an indication of severity where available."
+  },
+  {
+    "id": "M18",
+    "anon": "Logical error pattern check",
+    "input": "Ontology file.",
+    "procedure": "Search for recurring formal modelling mistakes involving logical constructs, class definitions, property axioms, or restriction statements.",
+    "output": "List of detected logical error patterns and the ontology statements involved."
+  },
+  {
+    "id": "M19",
+    "anon": "Reusable modelling-template check",
+    "input": "Ontology plus a library of reusable modelling templates.",
+    "procedure": "Check which templates from the library appear in the ontology and where they appear.",
+    "output": "List of detected templates and their locations in the ontology."
+  },
+  {
+    "id": "M20",
+    "anon": "Lexical error pattern check",
+    "input": "Labels and local names in the ontology.",
+    "procedure": "Check for naming patterns known to create modelling ambiguity, such as duplicated names, misleading negation, mixed singular and plural forms, or inconsistent noun and verb use across classes and properties.",
+    "output": "List of labels or local names matching known problematic naming patterns."
+  },
+  {
+    "id": "M21",
+    "anon": "Multi-measure similarity to other ontology",
+    "input": "Two ontologies.",two ontologies along three independent dimensions. First, measure how similar concept names are by computing character-level edit distances between
+    "procedure": "Compare the  labels, normalised to a 0–1 scale. Second, measure how much the class hierarchy overlaps by comparing the set of ancestors and descendants of shared concepts in each ontology. Third, measure how much the property connection structure overlaps by comparing how properties relate classes across both ontologies. Each dimension is computed in both comparison directions and averaged.",
+    "output": "Three numeric scores between 0 and 1, one per dimension, each reported in both directions and as a symmetric average."
+  },
+  {
+    "id": "M22",
+    "anon": "Expected parent-child link comparison",
+    "input": "Evaluated taxonomy plus an expected taxonomy treated as the correct reference.",
+    "procedure": "Check which parent-child links in the evaluated taxonomy also appear in the expected taxonomy, and which expected links are missing.",
+    "output": "Correctness score, completeness score, and combined score for parent-child links."
+  },
+  {
+    "id": "M23",
+    "anon": "Expected mapping evaluation",
+    "input": "A set of produced mappings between two ontologies and a set of expected correct mappings.",
+    "procedure": "Compare each produced mapping against the expected set. Compute what fraction of produced mappings are correct and what fraction of expected mappings were recovered. Optionally, a produced mapping may also count as correct if the expected mappings and the two ontologies together logically entail it.",
+    "output": "Correctness score, completeness score, and combined score."
+  },
+  {
+    "id": "M24",
+    "anon": "Graph edit distance from comparison source",
+    "input": "Two ontology graphs.",
+    "procedure": "Compute the minimum number of node and edge changes needed to transform one graph into the other.",
+    "output": "Integer distance value."
+  },
+  {
+    "id": "M25",
+    "anon": "Embedding-based similarity to comparison ontology",
+    "input": "Evaluated ontology and comparison ontology.",
+    "procedure": "Represent ontology entities as numerical vectors based on graph structure and compare paired entities across the two ontologies.",
+    "output": "Similarity or distance scores per paired entity, and optionally an aggregated similarity score."
+  },
+  {
+    "id": "M26",
+    "anon": "Mapping-based reference comparison",
+    "input": "Evaluated ontology and reference ontology.",
+    "procedure": "Generate candidate mappings between entities in the two ontologies using lexical, structural, or logical evidence, then use the mappings to estimate overlap.",
+    "output": "Candidate mappings plus an overlap or coverage score."
+  },
+  {
+    "id": "M27",
+    "anon": "Expected domain term coverage",
+    "input": "Ontology plus a comparison ontology listing expected domain terms.",
+    "procedure": "Check how many expected classes and properties from the comparison ontology are present in the evaluated ontology.",
+    "output": "Coverage ratio for expected domain terms."
+  },
+  {
+    "id": "M28",
+    "anon": "Source-text term coverage",
+    "input": "Ontology plus a domain text corpus.",
+    "procedure": "Extract important terms from the corpus and check which of those terms are represented by ontology labels.",
+    "output": "Coverage ratio for source-text terms plus list of missing terms."
+  },
+  {
+    "id": "M29",
+    "anon": "Reuse of established shared terms",
+    "input": "Ontology schema plus a catalogue of established shared vocabularies.",
+    "procedure": "Count how many established shared vocabularies the ontology imports or references, and what fraction of its terms come from those vocabularies.",
+    "output": "Counts and ratios describing shared-term reuse."
+  },
+  {
+    "id": "M30",
+    "anon": "External reference resolvability check",
+    "input": "Ontology plus access to the internet.",
+    "procedure": "Find references in the ontology that point outside its own namespace. Check whether each referenced address can be accessed.",
+    "output": "Counts of reachable and unreachable external references."
+  },
+  {
+    "id": "M31",
+    "anon": "Vocabulary-profile similarity to source text",
+    "input": "Ontology labels plus terms extracted from domain texts.",
+    "procedure": "Compare the overall distribution of ontology vocabulary with the vocabulary extracted from the source texts.",
+    "output": "Lexical similarity score between the ontology vocabulary profile and the source-text vocabulary profile."
+  },
+  {
+    "id": "M32",
+    "anon": "Expected question answerability check",
+    "input": "Ontology plus a set of expected questions, each translated into a query.",
+    "procedure": "Run each query against the ontology and check whether the ontology returns or implies an answer.",
+    "output": "Pass/fail result per question plus overall answerability ratio."
+  },
+  {
+    "id": "M33",
+    "anon": "Ontology unit test suite",
+    "input": "Ontology plus a predefined suite of pass/fail tests.",
+    "procedure": "Run each test against the ontology and record whether the ontology behaves as expected.",
+    "output": "Pass/fail report per test plus overall pass rate."
+  },
+  {
+    "id": "M34",
+    "anon": "Requirement-based test generation",
+    "input": "Ontology plus expected requirements written in a fixed format.",
+    "procedure": "Convert each requirement into an executable ontology test and run the resulting tests against the ontology.",
+    "output": "Pass/fail report per requirement-derived test."
+  },
+  {
+    "id": "M35",
+    "anon": "Publication and identifier readiness check",
+    "input": "Ontology file.",
+    "procedure": "Check whether the ontology includes required descriptive information such as a title, description, creator, and licence declaration. Check whether the ontology uses a stable, recognised web address scheme for its identifier. Check whether the ontology reuses or links to established external vocabulary resources.",
+    "output": "Scores per readiness criterion and an overall percentage."
+  },
+  {
+    "id": "M36",
+    "anon": "Source and change-history check",
+    "input": "Ontology file plus terms for recording source, creator, version, derivation, or change-history information.",
+    "procedure": "Check whether ontology entities or statements include source-attribution or change-history information. Where references are web addresses, check whether they can be accessed.",
+    "output": "Coverage ratios for source and change-history information, plus unreachable references where applicable."
+  },
+  {
+    "id": "M37",
+    "anon": "Scope coverage and out-of-scope term check",
+    "input": "Ontology labels plus a domain scope description or expected-use description.",
+    "procedure": "Extract key terms from the scope description and compare them with ontology classes, properties, and relations. Also identify ontology terms that have no clear match in the stated scope.",
+    "output": "Coverage ratio for scope terms plus list of ontology terms with no clear scope match."
+  },
+  {
+    "id": "M38",
+    "anon": "Unused schema element check",
+    "input": "Ontology schema with its declared classes and properties.",
+    "procedure": "For each declared class and property, check whether it appears in at least one statement other than its own declaration — for example as a domain, range, subclass target, equivalence target, or restriction filler. Count the elements that appear only in their own declaration.",
+    "output": "Count and ratio of declared schema elements with no use outside their own declaration."
+  },
+  {
+    "id": "M39",
+    "anon": "Constraint axiom coverage check",
+    "input": "Ontology schema.",
+    "procedure": "For each declared object property and datatype property, check whether both a domain class and a range type are explicitly stated. For each group of sibling classes sharing the same parent class, check whether explicit statements are present declaring that membership in one class excludes membership in another. Compute a coverage ratio for each check separately.",
+    "output": "Domain and range declaration coverage ratio for declared properties, and sibling class separation coverage ratio for classes sharing a parent."
+  }
+];
+
+// Researcher-only support note. Participant-facing cards are anonymised.
+// The active participant-facing set contains 39 cards in this version, so no inactive participant-facing card IDs are exported.
+const INACTIVE_CARDS = [];
+const EXPECTED_ACTIVE_CARD_IDS = SAMPLES.map(c => c.id);
+
+// ═══════════════════════════════════════════════
+// Fixed top categories (axis b, evaluation approach). 4 bins (A-D).
+// Letter is the stable researcher ID; participants see only name+description.
+// Display order is fixed as A-D to match the literature-derived taxonomy order.
+// ═══════════════════════════════════════════════
+const TOP_CATEGORIES_BASE = [
+  { letter: 'A', color: '#3498db',
+    name: 'Reference-based evaluation',
+    description: 'Methods that evaluate an ontology by comparing it with another ontology, taxonomy, mapping set, or expected reference structure.' },
+  { letter: 'B', color: '#27ae60',
+    name: 'Corpus/data-based evaluation',
+    description: 'Methods that evaluate an ontology by comparing it with source texts, domain documents, extracted terms, or a corpus representing the domain.' },
+  { letter: 'C', color: '#e67e22',
+    name: 'Task/application-based evaluation',
+    description: 'Methods that evaluate an ontology through its ability to support a task, use case, competency questions, requirements, or application behaviour.' },
+  { letter: 'D', color: '#9b59b6',
+    name: 'Criteria-based evaluation',
+    description: 'Methods that evaluate an ontology against predefined quality criteria, structural properties, formal conditions, metadata requirements, modelling principles, or quality models.' }
+];
+
+// ═══════════════════════════════════════════════
+// Suggested subcategory labels (quality concern / pitfall).
+// Closed-suggested: a fixed shortlist participants can pick from, plus a free-text
+// field for custom labels. The shortlist's provenance is recorded only in the
+// researcher master key.
+// ═══════════════════════════════════════════════
+// Shared subcategory suggestions (quality concerns), available across all top categories.
+const SUBCATEGORY_SUGGESTIONS = [
+  { id: 'Q01', label: 'Language and formal compliance',
+    description: 'Whether the ontology follows required syntax, language rules, profile constraints, or formal representation requirements.' },
+  { id: 'Q02', label: 'Internal logical consistency',
+    description: 'Whether the ontology avoids contradictions, unsatisfiable classes, incompatible axioms, or other formal inconsistencies.' },
+  { id: 'Q03', label: 'Structural complexity',
+    description: 'Whether the ontology\'s hierarchy, relations, attributes, axioms, or graph structure have measurable structural properties.' },
+  { id: 'Q04', label: 'Modularity',
+    description: 'Whether the ontology is organised into separable, coherent, or reusable parts.' },
+  { id: 'Q05', label: 'Conciseness and non-redundancy',
+    description: 'Whether the ontology avoids unnecessary, duplicate, redundant, or unsupported elements.' },
+  { id: 'Q06', label: 'Coverage and completeness',
+    description: 'Whether the ontology includes the expected domain content, such as relevant concepts, relations, constraints, terms, or mappings.' },
+  { id: 'Q07', label: 'Accuracy and correctness',
+    description: 'Whether the ontology represents the intended domain correctly.' },
+  { id: 'Q08', label: 'Comprehensibility and intelligibility',
+    description: 'Whether human users can understand the ontology through clear labels, definitions, naming, documentation, and modelling choices.' },
+  { id: 'Q09', label: 'Reusability',
+    description: 'Whether the ontology, or parts of it, can be reused beyond the original context.' },
+  { id: 'Q10', label: 'Adaptability and extendibility',
+    description: 'Whether the ontology can be extended, modified, or specialised without damaging existing commitments.' },
+  { id: 'Q11', label: 'Functional adequacy and task fitness',
+    description: 'Whether the ontology supports the intended task, application, requirement, or competency questions.' },
+  { id: 'Q12', label: 'Efficiency and scalability',
+    description: 'Whether the ontology or its automated evaluation remains computationally feasible in terms of time, size, memory, or processing limits.' },
+  { id: 'Q13', label: 'Provenance, credibility, and maintenance',
+    description: 'Whether the ontology records source, authorship, version, derivation, change-history, or other trust-related information.' },
+  { id: 'Q14', label: 'Accessibility, findability, and publication readiness',
+    description: 'Whether the ontology can be found, accessed, resolved, linked, cited, and reused as a published artefact.' }
+];
+
+const ASIDE_REASONS = [
+  { value: '',                       label: '(no reason given)' },
+  { value: 'unclear_wording',        label: 'Unclear wording' },
+  { value: 'too_broad',              label: 'Too broad' },
+  { value: 'fits_multiple_groups',   label: 'Could fit multiple top categories' },
+  { value: 'do_not_recognise',       label: 'Do not recognise the method' },
+  { value: 'not_an_evaluation',      label: 'Does not seem like an evaluation method' },
+  { value: 'no_fitting_top_cat',     label: 'Fits no current top category; would propose a new one' },
+  { value: 'other',                  label: 'Other (note below)' }
+];
+
+// ═══════════════════════════════════════════════
+// Card builder & state
+// ═══════════════════════════════════════════════
+function buildCard(c) {
+  return { id: c.id, title: c.anon, input: c.input,
+           procedure: c.procedure, output: c.output };
+}
+
+let S = {
+  cards: {},
+  topCategories: [],          // [{ letter, color, name, description,
+                              //   directCardIds: [...],
+                              //   subInstances: [{ instanceId, sourceChipId|null,
+                              //                     label, cardIds }] }]
+  topCategoryOrder: [],
+  unsorted: [],
+  unsortedDisplayOrder: [],
+  setAside: [],
+  asideReasons: {},
+  reflection: {},
+  drag: null,
+  userCounter: 0,
+  consent: false,
+  startedAt: null,
+  schemaVersion: 'card-sort/v10-closed-hybrid-cleaned'
+};
+
+function isUserCard(c) {
+  if (!c) return false;
+  if (c.userCreated === true) return true;
+  return typeof c.id === 'string' && c.id.startsWith('u');
+}
+
+// ═══════════════════════════════════════════════
+// Init / persistence
+// ═══════════════════════════════════════════════
+function init() {
+  try {
+    const saved = localStorage.getItem('cardSortState_v9hybrid');
+    if (saved) S = JSON.parse(saved);
+  } catch(e) {}
+
+  const savedIds = S.cards ? Object.keys(S.cards).filter(id => !id.startsWith('u')).sort() : [];
+  const expectedIds = [...EXPECTED_ACTIVE_CARD_IDS].sort();
+  const activeSetMatches = savedIds.length === expectedIds.length &&
+    savedIds.every((id, idx) => id === expectedIds[idx]);
+  if (!S.cards || Object.keys(S.cards).length === 0 ||
+      !S.topCategories || S.topCategories.length === 0 ||
+      S.schemaVersion !== 'card-sort/v10-closed-hybrid-cleaned' ||
+      !activeSetMatches) {
+    applySamples();
+  }
+
+  if (!S.setAside) S.setAside = [];
+  if (!S.asideReasons) S.asideReasons = {};
+  if (!S.reflection) S.reflection = {};
+  if (!S.userCounter) S.userCounter = 0;
+  if (!S.startedAt) S.startedAt = new Date().toISOString();
+
+  // Force fixed alphabetical category order, even when loading a saved state
+  S.topCategoryOrder = S.topCategories.map(t => t.letter).sort();
+
+  S.drag = null;
+
+  if (!S.consent) {
+    setupWelcome();
+  } else {
+    document.getElementById('welcome-modal').classList.add('hidden');
+    render();
+    startTimer();   // resume timer if page was reloaded mid-session
+  }
+}
+
+function setupWelcome() {
+  const modal = document.getElementById('welcome-modal');
+  const btn = document.getElementById('welcome-begin');
+  const required = modal.querySelectorAll('.consent-required');
+
+  modal.classList.remove('hidden');
+  btn.innerHTML = 'Continue &#8594;';
+  btn.disabled = true;
+
+  const refresh = () => {
+    btn.disabled = !Array.from(required).every(x => x.checked);
+  };
+
+  required.forEach(x => {
+    x.checked = false;
+    x.onchange = refresh;
+  });
+
+  refresh();
+
+  btn.onclick = () => {
+    if (!Array.from(required).every(x => x.checked)) return;
+
+    S.consent = true;
+    S.startedAt = new Date().toISOString();
+    persist();
+
+    modal.classList.add('hidden');
+    render();
+    startTour();
+  };
+}
+
+function persist() {
+  try { localStorage.setItem('cardSortState_v9hybrid', JSON.stringify(S)); }
+  catch(e) {}
+}
+
+// ═══════════════════════════════════════════════
+// Timer
+// ═══════════════════════════════════════════════
+let _timerInterval = null;
+
+function _fmtHMS(sec) {
+  const h = Math.floor(sec / 3600);
+  const m = Math.floor((sec % 3600) / 60);
+  const s = sec % 60;
+  if (h > 0) return `${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  return `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+}
+
+function startTimer() {
+  const el = document.getElementById('timer-display');
+  if (el) el.style.display = 'inline-block';
+  if (_timerInterval) clearInterval(_timerInterval);
+  _timerInterval = setInterval(() => {
+    if (!S.startedAt) return;
+    const sec = Math.floor((Date.now() - new Date(S.startedAt).getTime()) / 1000);
+    const el = document.getElementById('timer-display');
+    if (el) el.textContent = '⏱ ' + _fmtHMS(Math.max(0, sec));
+  }, 1000);
+}
+
+function stopTimer() {
+  if (_timerInterval) { clearInterval(_timerInterval); _timerInterval = null; }
+  const el = document.getElementById('timer-display');
+  if (el) { el.style.display = 'none'; el.textContent = '⏱ 00:00'; }
+}
+
+function applySamples() {
+  const map = {};
+  const ids = SAMPLES.map(c => c.id);
+
+  SAMPLES.forEach(c => {
+    map[c.id] = buildCard(c);
+  });
+
+  S.cards = map;
+  S.unsorted = shuffle([...ids]);
+  S.unsortedDisplayOrder = [...S.unsorted];
+  S.setAside = [];
+  S.asideReasons = {};
+
+  S.topCategories = TOP_CATEGORIES_BASE.map(t => ({
+    letter: t.letter,
+    color: t.color,
+    name: t.name,
+    description: t.description,
+    directCardIds: [],
+    subInstances: []
+  }));
+
+  S.topCategoryOrder = S.topCategories.map(t => t.letter).sort();
+
+  S.userCounter = 0;
+  S.reflection = {};
+  S.startedAt = new Date().toISOString();
+}
+
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+function getTopByLetter(letter) {
+  return S.topCategories.find(t => t.letter === letter);
+}
+function getSubInstance(letter, instanceId) {
+  const t = getTopByLetter(letter);
+  if (!t) return null;
+  return t.subInstances.find(si => si.instanceId === instanceId);
+}
+function newInstanceId(letter, sourceChipId) {
+  return `${letter}_${sourceChipId || 'cus'}_${Date.now().toString(36)}${Math.random().toString(36).slice(2,6)}`;
+}
+
+// ═══════════════════════════════════════════════
+// Render
+// ═══════════════════════════════════════════════
+function render() {
+  renderAddArea();
+  renderUnsorted();
+  renderTopCategories();
+  renderProgress();
+  persist();
+}
+
+function renderProgress() {
+  const total = Object.keys(S.cards).length;
+  let placed = 0;
+
+  S.topCategories.forEach(t => {
+    placed += t.directCardIds.length;
+    t.subInstances.forEach(si => {
+      placed += si.cardIds.length;
+    });
+  });
+
+  document.getElementById('progress-pill').textContent =
+    `${placed} of ${total} sorted (${S.setAside.length} set aside)`;
+
+  document.getElementById('unsorted-count').textContent = S.unsorted.length;
+}
+
+function renderAddArea() {
+  const wrap = document.getElementById('add-wrap');
+  if (wrap.querySelector('.add-form')) return;
+  wrap.innerHTML = '';
+  wrap.appendChild(makeAddBtn());
+}
+
+function makeAddBtn() {
+  const b = document.createElement('button');
+  b.className = 'add-card-btn';
+  b.innerHTML = '&#43; Suggest a missing method';
+  b.title = 'Use this only if you believe a method is missing from the set.';
+  b.addEventListener('click', () => showAddForm(b));
+  return b;
+}
+
+function showAddForm(btn) {
+  const f = document.createElement('div');
+  f.className = 'add-form';
+  f.innerHTML = `
+    <p style="font-size:0.74rem;color:#777;line-height:1.55;">
+      Use this only to suggest a method you think is missing from the set.
+      Provide a short name and explain what it does.
+    </p>
+    <div class="ac-field"><label>Method name <span style="color:#e74c3c">*</span></label>
+      <input id="ac-name" type="text" autocomplete="off"></div>
+    <div class="ac-field"><label>Why this method belongs in the set</label>
+      <textarea id="ac-reason" rows="2" placeholder="Optional. What does it evaluate that other cards do not?"></textarea></div>
+    <div class="ac-field"><label>Input</label>
+      <textarea id="ac-input" rows="2" placeholder="What goes in"></textarea></div>
+    <div class="ac-field"><label>Procedure</label>
+      <textarea id="ac-proc" rows="2" placeholder="What is done"></textarea></div>
+    <div class="ac-field"><label>Output</label>
+      <textarea id="ac-output" rows="2" placeholder="What comes out"></textarea></div>
+    <div class="ac-actions">
+      <button class="btn btn-outline" id="ac-cancel">Cancel</button>
+      <button class="btn btn-primary" id="ac-save">Add</button>
+    </div>`;
+  btn.replaceWith(f);
+  const name = f.querySelector('#ac-name'); name.focus();
+  name.addEventListener('input', () => name.classList.remove('error'));
+  f.querySelector('#ac-cancel').addEventListener('click',
+    () => f.replaceWith(makeAddBtn()));
+  f.querySelector('#ac-save').addEventListener('click', () => {
+    const t = name.value.trim();
+    if (!t) { name.classList.add('error'); name.focus(); return; }
+    S.userCounter += 1;
+    const id = 'u' + Date.now();
+    const card = { id, title: t, userCreated: true, uNumber: S.userCounter };
+    const r = f.querySelector('#ac-reason').value.trim();
+    const i = f.querySelector('#ac-input').value.trim();
+    const p = f.querySelector('#ac-proc').value.trim();
+    const o = f.querySelector('#ac-output').value.trim();
+    if (r) card.reason = r;
+    if (i) card.input = i;
+    if (p) card.procedure = p;
+    if (o) card.output = o;
+    S.cards[id] = card;
+    S.unsorted.push(id);
+    f.replaceWith(makeAddBtn());
+    render();
+    toast('Suggested method added');
+  });
+}
+
+function renderUnsorted() {
+  const z = document.getElementById('unsorted-zone');
+  z.innerHTML = '';
+  if (Object.keys(S.cards).length === 0) {
+    z.innerHTML = `<div class="empty-state"><div class="empty-icon">&#128194;</div>
+      <div class="empty-text">No cards loaded.</div></div>`;
+  } else if (S.unsorted.length === 0) {
+    z.innerHTML = `<div class="empty-state"><div class="empty-icon">&#10003;</div>
+      <div class="empty-text">All cards sorted or set aside.</div></div>`;
+  } else {
+    S.unsorted.forEach(id => {
+      const el = renderFullCard(S.cards[id], { src: 'unsorted' });
+      if (el) z.appendChild(el);
+    });
+  }
+  attachCardDropZone(z, { toType: 'unsorted' });
+}
+
+function renderSetAsideBox() {
+  const el = document.createElement('div');
+  el.className = 'top-cat aside-top-cat';
+  el.id = 'top-aside';
+  el.style.setProperty('--tc', '#c79a3a');
+
+  el.innerHTML = `
+    <div class="top-cat-color-bar"></div>
+    <div class="top-cat-header">
+      <div class="top-cat-title-row">
+        <span class="top-cat-name">Set aside</span>
+        <span class="top-cat-count">${S.setAside.length}</span>
+      </div>
+      <div class="top-cat-desc">
+        Use this box for cards that are unclear, difficult to place, or do not seem to fit any top category.
+      </div>
+    </div>
+    <div class="top-cat-body">
+      <div class="aside-zone" id="aside-zone"></div>
+    </div>`;
+
+  const z = el.querySelector('#aside-zone');
+
+  if (S.setAside.length === 0) {
+    z.innerHTML = `
+      <div class="aside-empty">
+        Drop cards here if they are unclear or cannot be placed.<br>
+        You can add a reason after dropping a card.
+      </div>`;
+  } else {
+    S.setAside.forEach(id => {
+      const wrap = document.createElement('div');
+      wrap.className = 'aside-card-wrap';
+
+      const cardEl = renderSmallCard(S.cards[id], { src: 'aside' });
+      if (cardEl) {
+        cardEl.style.setProperty('--tc', '#c79a3a');
+        wrap.appendChild(cardEl);
+      }
+
+      wrap.appendChild(renderAsideReasonRow(id));
+      z.appendChild(wrap);
+    });
+  }
+
+  attachCardDropZone(z, { toType: 'aside' });
+
+  el.addEventListener('dragover', e => {
+    if (!S.drag || S.drag.type !== 'card') return;
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+    el.classList.add('drag-over');
+  });
+
+  el.addEventListener('dragleave', e => {
+    if (!el.contains(e.relatedTarget)) el.classList.remove('drag-over');
+  });
+
+  el.addEventListener('drop', e => {
+    if (e.defaultPrevented) return;
+    if (!S.drag || S.drag.type !== 'card') return;
+    e.preventDefault();
+    el.classList.remove('drag-over');
+
+    const p = S.drag.payload;
+    const srcOpts = {
+      src: p.src,
+      topLetter: p.topLetter,
+      instanceId: p.instanceId
+    };
+
+    moveCardTo(p.cardId, srcOpts, { toType: 'aside' });
+  });
+
+  return el;
+}
+
+function renderAsideReasonRow(cardId) {
+  const row = document.createElement('div');
+  row.className = 'aside-reason-row';
+  const cur = S.asideReasons[cardId] || { reason: '', note: '' };
+  const label = document.createElement('span');
+  label.className = 'aside-reason-label';
+  label.textContent = 'Reason and optional note';
+  row.appendChild(label);
+
+  const sel = document.createElement('select');
+  ASIDE_REASONS.forEach(r => {
+    const opt = document.createElement('option');
+    opt.value = r.value; opt.textContent = r.label;
+    if (r.value === cur.reason) opt.selected = true;
+    sel.appendChild(opt);
+  });
+  row.appendChild(sel);
+
+  const note = document.createElement('input');
+  note.type = 'text';
+  note.placeholder = 'Optional note / categories considered';
+  note.value = cur.note || '';
+  note.style.display = (cur.reason === 'other' || cur.reason === 'no_fitting_top_cat' ||
+                       cur.reason === 'fits_multiple_groups' || cur.note) ? '' : 'none';
+  row.appendChild(note);
+
+  sel.addEventListener('change', e => {
+    const v = e.target.value;
+    S.asideReasons[cardId] = S.asideReasons[cardId] || { reason: '', note: '' };
+    S.asideReasons[cardId].reason = v;
+    note.style.display = (v === 'other' || v === 'no_fitting_top_cat' || v === 'fits_multiple_groups' || note.value) ? '' : 'none';
+    persist();
+  });
+  note.addEventListener('input', e => {
+    S.asideReasons[cardId] = S.asideReasons[cardId] || { reason: '', note: '' };
+    S.asideReasons[cardId].note = e.target.value;
+    persist();
+  });
+  return row;
+}
+
+function renderTopCategories() {
+  const grid = document.getElementById('cat-grid');
+  grid.innerHTML = '';
+
+  S.topCategoryOrder.forEach(letter => {
+    const t = getTopByLetter(letter);
+    if (!t) return;
+    grid.appendChild(renderTopCatEl(t));
+  });
+
+  grid.appendChild(renderSetAsideBox());
+}
+
+function renderTopCatEl(t) {
+  const el = document.createElement('div');
+  el.className = 'top-cat';
+  el.id = 'top-' + t.letter;
+  el.style.setProperty('--tc', t.color);
+  el.dataset.letter = t.letter;
+
+  const totalInCat = t.directCardIds.length +
+                     t.subInstances.reduce((a, si) => a + si.cardIds.length, 0);
+
+  el.innerHTML = `
+    <div class="top-cat-color-bar"></div>
+    <div class="top-cat-header">
+      <div class="top-cat-title-row">
+        <span class="top-cat-letter">${esc(t.letter)}</span>
+        <span class="top-cat-name">${esc(t.name)}</span>
+        <span class="top-cat-count">${totalInCat}</span>
+      </div>
+      <div class="top-cat-desc">${esc(t.description)}</div>
+    </div>
+    <div class="top-cat-body"></div>
+    <div class="add-sub-wrap" id="addsub-wrap-${t.letter}"></div>`;
+
+  const body = el.querySelector('.top-cat-body');
+
+  // Direct zone (cards placed directly under top, no subgroup)
+  const directZone = document.createElement('div');
+  directZone.className = 'direct-zone';
+  directZone.dataset.role = 'direct';
+  if (t.directCardIds.length === 0 && t.subInstances.length === 0) {
+    const hint = document.createElement('div');
+    hint.className = 'top-cat-drop-hint';
+    hint.innerHTML = `Drop cards here. You can add subcategories later. Don't forget to move the cards to the subcategories.`;
+    directZone.appendChild(hint);
+  } else if (t.directCardIds.length === 0) {
+    const label = document.createElement('div');
+    label.className = 'direct-zone-label';
+    label.textContent = 'No subcategory yet (drop cards here to leave them ungrouped)';
+    directZone.appendChild(label);
+  } else {
+    const label = document.createElement('div');
+    label.className = 'direct-zone-label';
+    label.textContent = 'No subcategory yet';
+    directZone.appendChild(label);
+    t.directCardIds.forEach(cid => {
+      const el = renderSmallCard(S.cards[cid],
+        { src: 'direct', topLetter: t.letter });
+      if (el) directZone.appendChild(el);
+    });
+  }
+  attachCardDropZone(directZone, { toType: 'direct', topLetter: t.letter });
+  body.appendChild(directZone);
+
+  // Sub-instance blocks
+  t.subInstances.forEach(si => {
+    body.appendChild(renderSubInstance(si, t));
+  });
+
+  // "+ Add subcategory" button (or picker if open)
+  const addSubWrap = el.querySelector('.add-sub-wrap');
+  addSubWrap.appendChild(makeAddSubBtn(t));
+
+  // Top-cat as a generic drop zone accepts cards too (forwarded to direct zone)
+  attachTopCatDropZone(el, t.letter);
+  return el;
+}
+
+function makeAddSubBtn(t) {
+  const b = document.createElement('button');
+  b.className = 'add-sub-btn';
+  b.innerHTML = '&#43; Add subcategory';
+  b.title = 'Add a quality-concern subcategory inside this top category.';
+  b.addEventListener('click', () => openSubPicker(t));
+  return b;
+}
+
+function openSubPicker(t) {
+  const wrap = document.getElementById('addsub-wrap-' + t.letter);
+  if (!wrap) return;
+  wrap.innerHTML = '';
+
+  const picker = document.createElement('div');
+  picker.className = 'sub-picker';
+  picker.style.setProperty('--tc', t.color);
+
+  const title = document.createElement('div');
+  title.className = 'sub-picker-title';
+  title.textContent = 'Pick a quality concern (or type your own)';
+  const hint = document.createElement('div');
+  hint.style.cssText = 'font-size:0.7rem;color:#777;line-height:1.45;margin-top:1px;';
+  hint.textContent = 'Some subcategories fit many top-level categories; others may rarely apply. You do not need to use every suggestion.';
+  picker.appendChild(hint);
+  picker.appendChild(title);
+
+  // Disable suggestions already used in this top-cat (to avoid trivially
+  // duplicate same-name subs under the same parent).
+  const usedLabels = new Set(t.subInstances.map(si =>
+    (si.label || '').trim().toLowerCase()));
+
+  const grid = document.createElement('div');
+  grid.className = 'sub-picker-grid';
+  SUBCATEGORY_SUGGESTIONS.forEach(s => {
+    const b = document.createElement('button');
+    b.className = 'sub-suggest';
+    b.type = 'button';
+    b.innerHTML = `<span class="sub-suggest-label">${esc(s.label)}</span>`
+                + (s.description ? `<span class="sub-suggest-desc">${esc(s.description)}</span>` : '');
+    if (usedLabels.has(s.label.toLowerCase())) {
+      b.disabled = true;
+      b.title = 'Already used in this top category';
+    } else {
+      b.addEventListener('click', () => {
+        createSubInstance(t.letter, s.id, s.label);
+        wrap.innerHTML = '';
+        wrap.appendChild(makeAddSubBtn(t));
+        render();
+        toast(`"${s.label}" added under ${t.letter}`);
+      });
+    }
+    grid.appendChild(b);
+  });
+  picker.appendChild(grid);
+
+  const customRow = document.createElement('div');
+  customRow.className = 'sub-picker-custom';
+  const inp = document.createElement('input');
+  inp.type = 'text';
+  inp.placeholder = 'Or type a custom subcategory name';
+  customRow.appendChild(inp);
+  const addBtn = document.createElement('button');
+  addBtn.className = 'btn btn-primary btn-mini';
+  addBtn.type = 'button';
+  addBtn.textContent = 'Add';
+  customRow.appendChild(addBtn);
+  picker.appendChild(customRow);
+
+  const actions = document.createElement('div');
+  actions.className = 'sub-picker-actions';
+  const cancel = document.createElement('button');
+  cancel.className = 'btn btn-outline btn-mini';
+  cancel.type = 'button';
+  cancel.textContent = 'Cancel';
+  cancel.addEventListener('click', () => {
+    wrap.innerHTML = '';
+    wrap.appendChild(makeAddSubBtn(t));
+  });
+  actions.appendChild(cancel);
+  picker.appendChild(actions);
+
+  const submitCustom = () => {
+    const v = inp.value.trim();
+    if (!v) { inp.focus(); return; }
+    createSubInstance(t.letter, null, v);
+    wrap.innerHTML = '';
+    wrap.appendChild(makeAddSubBtn(t));
+    render();
+    toast(`"${v}" added under ${t.letter}`);
+  };
+  addBtn.addEventListener('click', submitCustom);
+  inp.addEventListener('keydown', e => {
+    if (e.key === 'Enter') { e.preventDefault(); submitCustom(); }
+    if (e.key === 'Escape') { cancel.click(); }
+  });
+
+  wrap.appendChild(picker);
+  inp.focus();
+}
+
+function renderSubInstance(si, t) {
+  const el = document.createElement('div');
+  el.className = 'sub-inst';
+  el.dataset.letter = t.letter;
+  el.dataset.instanceId = si.instanceId;
+  el.style.setProperty('--tc', t.color);
+
+  el.innerHTML = `
+    <div class="sub-inst-header">
+      <span class="sub-inst-dot"></span>
+      <span class="sub-inst-label">${esc(si.label)}</span>
+      <span class="sub-inst-count">${si.cardIds.length}</span>
+      <button class="sub-inst-del" title="Remove this subcategory (cards return to the bin's ungrouped area)">&#10005;</button>
+    </div>
+    <div class="sub-inst-cards"></div>`;
+
+  el.querySelector('.sub-inst-del').addEventListener('click', e => {
+    e.stopPropagation();
+    deleteSubInstance(t.letter, si.instanceId);
+  });
+
+  const cardsZone = el.querySelector('.sub-inst-cards');
+  if (si.cardIds.length === 0) {
+    const empty = document.createElement('div');
+    empty.className = 'sub-inst-empty';
+    empty.textContent = 'Drop cards here';
+    cardsZone.appendChild(empty);
+  } else {
+    si.cardIds.forEach(cid => {
+      const c = renderSmallCard(S.cards[cid],
+        { src: 'sub', topLetter: t.letter, instanceId: si.instanceId });
+      if (c) cardsZone.appendChild(c);
+    });
+  }
+
+  attachCardDropZone(el, { toType: 'sub', topLetter: t.letter,
+                           instanceId: si.instanceId });
+  return el;
+}
+
+// ═══════════════════════════════════════════════
+// Card / sub-instance element helpers
+// ═══════════════════════════════════════════════
+function esc(s) {
+  if (s == null) return '';
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')
+                  .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function renderFullCard(card, opts) {
+  if (!card) return null;
+  const el = document.createElement('div');
+  el.className = 'card';
+  el.draggable = true;
+  el.dataset.cid = card.id;
+  el.dataset.src = opts.src;
+  el.tabIndex = 0;
+  el.innerHTML = `
+    <div class="card-actions"></div>
+    <div class="card-title">${esc(card.title)}</div>
+    ${section('Input', card.input)}
+    ${section('Procedure', card.procedure)}
+    ${section('Output', card.output)}`;
+  fillCardActions(el, card, opts, false);
+  attachCardDragEvents(el, opts);
+  return el;
+}
+
+function renderSmallCard(card, opts) {
+  if (!card) return null;
+  const t = getTopByLetter(opts.topLetter);
+  const el = document.createElement('div');
+  el.className = 'small-card';
+  el.draggable = true;
+  el.dataset.cid = card.id;
+  el.dataset.src = opts.src;
+  if (opts.topLetter) el.dataset.topLetter = opts.topLetter;
+  if (opts.instanceId) el.dataset.instanceId = opts.instanceId;
+  el.style.setProperty('--tc', t ? t.color : '#aaa');
+  el.tabIndex = 0;
+  el.innerHTML = `
+    <div class="small-card-summary">
+      <span class="small-card-title">${esc(card.title)}</span>
+      <span class="small-card-actions"></span>
+    </div>
+    <div class="small-card-detail">
+      ${section('Input', card.input)}
+      ${section('Procedure', card.procedure)}
+      ${section('Output', card.output)}
+    </div>`;
+  fillCardActions(el, card, opts, true);
+  attachCardDragEvents(el, opts);
+  return el;
+}
+
+const SECTION_ICONS = { 'Input': '▸', 'Procedure': '⚙', 'Output': '◂' };
+function section(label, val) {
+  if (!val) return '';
+  const icon = SECTION_ICONS[label] || '·';
+  return `<div class="card-section"><div class="section-label"><span class="section-icon">${icon}</span>${label}</div>
+          <div class="section-text">${esc(val)}</div></div>`;
+}
+
+function fillCardActions(el, card, opts, isSmall) {
+  const actions = el.querySelector(isSmall ? '.small-card-actions' : '.card-actions');
+  if (!actions) return;
+  actions.innerHTML = '';
+
+  const moveBtn = document.createElement('button');
+  moveBtn.className = 'icon-btn';
+  moveBtn.title = 'Move to ...';
+  moveBtn.setAttribute('aria-label', 'Move card to another location');
+  moveBtn.innerHTML = '&#8594;';
+  moveBtn.addEventListener('click', e => {
+    e.stopPropagation();
+    openMovePop(el, card.id, opts);
+  });
+  actions.appendChild(moveBtn);
+
+  if (isSmall) {
+    const exp = document.createElement('button');
+    exp.className = 'icon-btn';
+    exp.title = 'Show/hide details';
+    exp.innerHTML = '&#9660;';
+    exp.addEventListener('click', e => {
+      e.stopPropagation();
+      el.classList.toggle('expanded');
+      exp.innerHTML = el.classList.contains('expanded') ? '&#9650;' : '&#9660;';
+    });
+    actions.appendChild(exp);
+  }
+
+  if (isUserCard(card)) {
+    const del = document.createElement('button');
+    del.className = 'icon-btn delete';
+    del.title = 'Delete this card';
+    del.setAttribute('aria-label', 'Delete card');
+    del.innerHTML = '&#10005;';
+    del.addEventListener('click', e => {
+      e.stopPropagation(); deleteCard(card.id);
+    });
+    actions.appendChild(del);
+  }
+}
+
+// ═══════════════════════════════════════════════
+// Move popover (keyboard alternative to dragging)
+// ═══════════════════════════════════════════════
+let _openPop = null;
+function closePop() { if (_openPop) { _openPop.remove(); _openPop = null; } }
+document.addEventListener('click', closePop);
+
+function openMovePop(anchor, cardId, srcOpts) {
+  closePop();
+  const pop = document.createElement('div');
+  pop.className = 'move-pop';
+  pop.addEventListener('click', e => e.stopPropagation());
+
+  const isCurrent = (toType, topLetter, instanceId) => {
+    if (toType === 'unsorted') return srcOpts.src === 'unsorted';
+    if (toType === 'aside')    return srcOpts.src === 'aside';
+    if (toType === 'direct')   return srcOpts.src === 'direct' &&
+                                       srcOpts.topLetter === topLetter;
+    if (toType === 'sub')      return srcOpts.src === 'sub' &&
+                                       srcOpts.topLetter === topLetter &&
+                                       srcOpts.instanceId === instanceId;
+    return false;
+  };
+  const addItem = (txt, onClick, disabled) => {
+    const it = document.createElement('div');
+    it.className = 'move-pop-item' + (disabled ? ' disabled' : '');
+    it.textContent = disabled ? txt + ' (current)' : txt;
+    if (!disabled) it.addEventListener('click', () => { onClick(); closePop(); });
+    pop.appendChild(it);
+  };
+  const addSection = (txt) => {
+    const it = document.createElement('div');
+    it.className = 'move-pop-section';
+    it.textContent = txt;
+    pop.appendChild(it);
+  };
+
+  addItem('Unsorted', () => moveCardTo(cardId, srcOpts, { toType: 'unsorted' }),
+          isCurrent('unsorted'));
+  addItem('Set aside', () => moveCardTo(cardId, srcOpts, { toType: 'aside' }),
+          isCurrent('aside'));
+
+  S.topCategoryOrder.forEach(letter => {
+    const t = getTopByLetter(letter);
+    if (!t) return;
+    addSection(`Top ${letter}: ${t.name}`);
+    addItem(`→ ${letter} (no subcategory)`,
+      () => moveCardTo(cardId, srcOpts,
+        { toType: 'direct', topLetter: letter }),
+      isCurrent('direct', letter));
+    t.subInstances.forEach(si => {
+      addItem(`→ ${letter} / ${si.label}`,
+        () => moveCardTo(cardId, srcOpts,
+          { toType: 'sub', topLetter: letter, instanceId: si.instanceId }),
+        isCurrent('sub', letter, si.instanceId));
+    });
+  });
+
+  document.body.appendChild(pop);
+  const r = anchor.getBoundingClientRect();
+  pop.style.top = (r.bottom + 4) + 'px';
+  pop.style.left = Math.max(8, r.right - 280) + 'px';
+  _openPop = pop;
+}
+
+// ═══════════════════════════════════════════════
+// Card move primitives
+// ═══════════════════════════════════════════════
+function removeCardFromAnywhere(cid) {
+  S.unsorted = S.unsorted.filter(id => id !== cid);
+  S.setAside = S.setAside.filter(id => id !== cid);
+  S.topCategories.forEach(t => {
+    t.directCardIds = t.directCardIds.filter(id => id !== cid);
+    t.subInstances.forEach(si => {
+      si.cardIds = si.cardIds.filter(id => id !== cid);
+    });
+  });
+}
+function placeCard(cid, dest) {
+  if (dest.toType === 'unsorted') {
+    if (!S.unsorted.includes(cid)) S.unsorted.push(cid);
+  } else if (dest.toType === 'aside') {
+    if (!S.setAside.includes(cid)) S.setAside.push(cid);
+    if (!S.asideReasons[cid]) S.asideReasons[cid] = { reason: '', note: '' };
+  } else if (dest.toType === 'direct') {
+    const t = getTopByLetter(dest.topLetter);
+    if (t && !t.directCardIds.includes(cid)) t.directCardIds.push(cid);
+  } else if (dest.toType === 'sub') {
+    const si = getSubInstance(dest.topLetter, dest.instanceId);
+    if (si && !si.cardIds.includes(cid)) si.cardIds.push(cid);
+  }
+}
+function moveCardTo(cid, srcOpts, dest) {
+  const wasInAside = (srcOpts.src === 'aside');
+  removeCardFromAnywhere(cid);
+  placeCard(cid, dest);
+  if (wasInAside && dest.toType !== 'aside') {
+    delete S.asideReasons[cid];
+  }
+  render();
+}
+
+// ═══════════════════════════════════════════════
+// Sub-instance ops
+// ═══════════════════════════════════════════════
+function createSubInstance(letter, sourceChipId, label) {
+  const t = getTopByLetter(letter);
+  if (!t) return null;
+  const si = {
+    instanceId: newInstanceId(letter, sourceChipId),
+    sourceChipId: sourceChipId || null,
+    label, cardIds: []
+  };
+  t.subInstances.push(si);
+  return si;
+}
+
+function deleteSubInstance(letter, instanceId) {
+  const t = getTopByLetter(letter);
+  if (!t) return;
+  const idx = t.subInstances.findIndex(si => si.instanceId === instanceId);
+  if (idx < 0) return;
+  const si = t.subInstances[idx];
+  if (si.cardIds.length > 0 &&
+      !confirm(`This subcategory contains ${si.cardIds.length} card(s). ` +
+               `Remove the subcategory and return the cards to the bin's ungrouped area?`))
+    return;
+  // Return cards to top-cat direct zone (NOT unsorted); they're still assigned
+  // to this top category, just no longer subcategorised.
+  si.cardIds.forEach(cid => {
+    if (!t.directCardIds.includes(cid)) t.directCardIds.push(cid);
+  });
+  t.subInstances.splice(idx, 1);
+  render();
+}
+
+function deleteCard(cid) {
+  const c = S.cards[cid];
+  if (!c) return;
+  if (!isUserCard(c)) { toast('Only user-suggested cards can be deleted'); return; }
+  if (!confirm(`Delete "${c.title}"?`)) return;
+  delete S.cards[cid];
+  removeCardFromAnywhere(cid);
+  delete S.asideReasons[cid];
+  render();
+  toast('Card deleted');
+}
+
+// ═══════════════════════════════════════════════
+// Drag wiring (cards only; subcategories are not drag-created)
+// ═══════════════════════════════════════════════
+function attachCardDragEvents(el, srcOpts) {
+  el.addEventListener('dragstart', e => {
+    S.drag = { type: 'card', payload: {
+      cardId: el.dataset.cid,
+      src: srcOpts.src,
+      topLetter: srcOpts.topLetter || null,
+      instanceId: srcOpts.instanceId || null
+    }};
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/plain', el.dataset.cid);
+    setTimeout(() => el.classList.add('is-dragging'), 0);
+    e.stopPropagation();
+  });
+  el.addEventListener('dragend', () => {
+    el.classList.remove('is-dragging');
+    S.drag = null;
+    document.querySelectorAll('.drag-over').forEach(x =>
+      x.classList.remove('drag-over'));
+  });
+}
+
+function attachCardDropZone(el, dest) {
+  el.addEventListener('dragover', e => {
+    if (!S.drag || S.drag.type !== 'card') return;
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+    el.classList.add('drag-over');
+  });
+  el.addEventListener('dragleave', e => {
+    if (!el.contains(e.relatedTarget)) el.classList.remove('drag-over');
+  });
+  el.addEventListener('drop', e => {
+    if (!S.drag || S.drag.type !== 'card') return;
+    e.preventDefault();
+    e.stopPropagation();
+    el.classList.remove('drag-over');
+    const p = S.drag.payload;
+    const srcOpts = { src: p.src, topLetter: p.topLetter, instanceId: p.instanceId };
+    moveCardTo(p.cardId, srcOpts, dest);
+  });
+}
+
+// Top-cat catches stray drops outside its inner zones; forward card drops
+// to the "direct" zone, so the participant doesn't have to aim precisely.
+function attachTopCatDropZone(el, topLetter) {
+  el.addEventListener('dragover', e => {
+    if (!S.drag || S.drag.type !== 'card') return;
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+    el.classList.add('drag-over');
+  });
+  el.addEventListener('dragleave', e => {
+    if (!el.contains(e.relatedTarget)) el.classList.remove('drag-over');
+  });
+  el.addEventListener('drop', e => {
+    if (e.defaultPrevented) return;
+    if (!S.drag || S.drag.type !== 'card') return;
+    e.preventDefault();
+    el.classList.remove('drag-over');
+    const p = S.drag.payload;
+    const srcOpts = { src: p.src, topLetter: p.topLetter, instanceId: p.instanceId };
+    moveCardTo(p.cardId, srcOpts, { toType: 'direct', topLetter });
+  });
+}
+
+// ═══════════════════════════════════════════════
+// Reset
+// ═══════════════════════════════════════════════
+function resetSort() {
+  if (Object.keys(S.cards).length === 0) return;
+  const ans = prompt(
+    'This will return every card to Unsorted, remove every subcategory you have created, ' +
+    'and clear the current sort.\n\nType "reset" (without quotes) to confirm:'
+  );
+  if (ans === null) return;
+  if (ans.trim().toLowerCase() !== 'reset') {
+    toast('Reset cancelled');
+    return;
+  }
+  S.unsorted = shuffle(Object.keys(S.cards));
+  S.unsortedDisplayOrder = [...S.unsorted];
+  S.setAside = [];
+  S.asideReasons = {};
+  S.topCategories.forEach(t => {
+    t.directCardIds = [];
+    t.subInstances = [];
+  });
+S.topCategoryOrder = S.topCategories.map(t => t.letter).sort();
+  S.reflection = {};
+  S.startedAt = new Date().toISOString();
+  stopTimer();
+  render();
+  toast('Sort reset');
+}
+
+// ═══════════════════════════════════════════════
+// Help / re-read instructions
+// ═══════════════════════════════════════════════
+function showHelp() {
+  startTour();
+}
+function closeThanks() { document.getElementById('thanks-modal').classList.add('hidden'); }
+
+// ═══════════════════════════════════════════════
+// Finish & download
+// ═══════════════════════════════════════════════
+function finishAndDownload() {
+  if (Object.keys(S.cards).length === 0) { toast('Nothing to submit'); return; }
+  if (S.unsorted.length > 0) {
+    if (!confirm(`You still have ${S.unsorted.length} unsorted card(s). ` +
+                 `Submit anyway? Unsorted cards will be recorded as "unsorted".`))
+      return;
+  }
+  actuallyDownload();
+}
+
+function actuallyDownload() {
+  const fmt = id => {
+    const c = S.cards[id]; if (!c) return { id };
+    const out = { id, title: c.title || id };
+    if (isUserCard(c)) {
+      out.user_suggested = true;
+      out.suggestion_id = 'U' + (c.uNumber || '?');
+      if (c.reason) out.reason = c.reason;
+      if (c.input) out.input = c.input;
+      if (c.procedure) out.procedure = c.procedure;
+      if (c.output) out.output = c.output;
+    }
+    return out;
+  };
+  const fmtAside = id => {
+    const base = fmt(id);
+    const r = S.asideReasons[id];
+    if (r && (r.reason || r.note)) {
+      base.set_aside_reason = r.reason || null;
+      if (r.note) base.set_aside_note = r.note;
+    }
+    return base;
+  };
+
+  const top_categories = S.topCategories.map(t => ({
+    letter: t.letter,
+    name: t.name,
+    description: t.description,
+    direct_cards: t.directCardIds.map(fmt),
+    subcategory_instances: t.subInstances.map(si => ({
+      instance_id: si.instanceId,
+      source_chip_id: si.sourceChipId || null,
+      is_custom_label: !si.sourceChipId,
+      label: si.label,
+      cards: si.cardIds.map(fmt)
+    }))
+  }));
+
+  const exportedAt = new Date().toISOString();
+  const durationSec = S.startedAt
+    ? Math.max(0, Math.floor((new Date(exportedAt) - new Date(S.startedAt)) / 1000))
+    : null;
+
+  const result = {
+    schema: S.schemaVersion,
+    schemaVersion: S.schemaVersion,
+    sort_kind: 'closed-hybrid',
+    exported_at: exportedAt,
+    started_at: S.startedAt || null,
+    duration_seconds: durationSec,
+    duration_hms: durationSec !== null ? _fmtHMS(durationSec) : null,
+    consent_given: !!S.consent,
+    active_card_count: EXPECTED_ACTIVE_CARD_IDS.length,
+    active_card_ids: EXPECTED_ACTIVE_CARD_IDS,
+    inactive_cards: INACTIVE_CARDS,
+    top_category_display_order: S.topCategoryOrder,
+    subcategory_suggestion_set: SUBCATEGORY_SUGGESTIONS,   // shared across all top categories
+    top_categories,
+    set_aside: S.setAside.map(fmtAside),
+    unsorted: S.unsorted.map(fmt),
+    unsorted_display_order_at_start: S.unsortedDisplayOrder,
+    suggested_methods: Object.values(S.cards).filter(isUserCard).map(c => ({
+      suggestion_id: 'U' + (c.uNumber || '?'),
+      title: c.title || '',
+      reason: c.reason || '',
+      input: c.input || '',
+      procedure: c.procedure || '',
+      output: c.output || ''
+    }))
+  };
+
+  const blob = new Blob([JSON.stringify(result, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'card-sort-closed-' + new Date().toISOString().slice(0,10) + '.json';
+  a.click();
+  URL.revokeObjectURL(url);
+  document.getElementById('thanks-modal').classList.remove('hidden');
+}
+
+// ═══════════════════════════════════════════════
+// Toast
+// ═══════════════════════════════════════════════
+let _toastTimer;
+function toast(msg) {
+  const el = document.getElementById('toast');
+  if (!el) { console.log(msg); return; }
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(_toastTimer);
+  _toastTimer = setTimeout(() => el.classList.remove('show'), 2600);
+}
+
+// ═══════════════════════════════════════════════
+// Interactive tour
+// ═══════════════════════════════════════════════
+const TOUR_STEPS = [
+  {
+    title: 'Welcome to the card sort!',
+    body: 'Here\'s a quick tour of the interface; it takes about one minute. Use <strong>Next</strong> to step through, or <strong>Skip</strong> to go straight to sorting.',
+    target: null,
+    position: 'center'
+  },
+  {
+    title: 'Your unsorted cards',
+    body: 'The <strong>left panel</strong> holds all 39 cards. Each card describes one automated ontology evaluation method. Scroll down to see them all.',
+    target: '.unsorted-panel',
+    position: 'right'
+  },
+  {
+    title: 'Reading a card',
+    body: 'Each card has three sections: <strong>▸ Input</strong> (what goes in), <strong>⚙ Procedure</strong> (what is done), and <strong>◂ Output</strong> (what comes out).<br><br>Sort by these descriptions, not by any method or tool name you may recognise.',
+    targetFn: () => document.querySelector('#unsorted-zone .card'),
+    position: 'right'
+  },
+  {
+    title: 'Suggest a missing method',
+    body: 'If you believe a relevant automated evaluation method is missing from the set, click <strong>+ Suggest a missing method</strong> at the top of the left panel. Fill in a name and description and it will be added as a card you can sort.',
+    targetFn: () => document.querySelector('.add-card-btn'),
+    position: 'right'
+  },
+  {
+    title: 'Top-level categories',
+    body: 'The centre area holds <strong>four pre-named categories</strong>, each representing a different evaluation approach (evidence basis).<br><br><strong>Drag a card</strong> from the left panel and <strong>drop it</strong> into the best-fitting category.',
+    targetFn: () => document.querySelector('.cat-grid .top-cat:not(.aside-top-cat)'),
+    position: 'right'
+  },
+  {
+    title: 'Subcategories (optional)',
+    body: 'Inside each top category you can add <strong>subcategories</strong>: these capture the specific quality concern the method addresses.<br><br>Click <strong>+ Add subcategory</strong> to pick from a suggested list or type a custom label. Subcategories are entirely optional.',
+    targetFn: () => document.querySelector('.add-sub-wrap'),
+    position: 'right'
+  },
+  {
+    title: 'Set aside',
+    body: 'If a card is <strong>unclear</strong>, too broad, or could genuinely fit <strong>multiple top categories</strong>, drag it to the <strong>Set aside</strong> box and choose a brief reason.<br><br>This is valid data; don\'t force a placement.',
+    target: '#top-aside',
+    position: 'left'
+  },
+  {
+    title: 'Finishing up',
+    body: 'When you have sorted all cards, click <strong>Finish &amp; download</strong> to save your results as a JSON file, then email it to the researcher.<br><br>Use the <strong>&#8635;</strong> button to reset and start over. The <strong>?</strong> button replays this tour at any time.',
+    target: '.header-actions',
+    position: 'bottom'
+  },
+  {
+    title: 'Ready to sort!',
+    body: 'The task takes about <strong>15 minutes</strong>. There are no right or wrong answers; sort by your expert judgement.<br><br>Empty categories, direct placement without subcategories, and unused subcategories are all fine.',
+    target: null,
+    position: 'center',
+    isLast: true
+  }
+];
+
+let _tourStep = 0;
+
+function startTour() {
+  _tourStep = 0;
+  document.getElementById('tour-overlay').classList.add('active');
+  showTourStep(0);
+}
+
+function showTourStep(n) {
+  const step = TOUR_STEPS[n];
+  if (!step) return;
+
+  document.getElementById('tour-step-tag').textContent = `Step ${n + 1} of ${TOUR_STEPS.length}`;
+  document.getElementById('tour-title').textContent = step.title;
+  document.getElementById('tour-body').innerHTML = step.body;
+
+  // Dots
+  const dots = document.getElementById('tour-dots');
+  dots.innerHTML = '';
+  TOUR_STEPS.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'tour-dot' + (i === n ? ' active' : '');
+    dots.appendChild(d);
+  });
+
+  // Back button
+  document.getElementById('tour-back').style.display = n === 0 ? 'none' : '';
+
+  // Next button label
+  const nextBtn = document.getElementById('tour-next');
+  nextBtn.innerHTML = step.isLast ? 'Start sorting &#8594;' : 'Next &#8594;';
+
+  // Resolve target
+  let targetEl = null;
+  if (step.targetFn) {
+    targetEl = step.targetFn();
+  } else if (step.target) {
+    targetEl = document.querySelector(step.target);
+  }
+
+  positionTour(targetEl, step.position);
+}
+
+function positionTour(targetEl, position) {
+  const tooltip  = document.getElementById('tour-tooltip');
+  const spotlight = document.getElementById('tour-spotlight');
+  const pad = 18;
+  const ttW = 330;
+
+  tooltip.classList.add('active');
+
+  if (!targetEl) {
+    spotlight.className = '';
+    tooltip.style.transform = 'translate(-50%, -50%)';
+    tooltip.style.top  = '50%';
+    tooltip.style.left = '50%';
+    return;
+  }
+
+  tooltip.style.transform = '';
+
+  // Scroll target into view inside its own scroll container, then position
+  targetEl.scrollIntoView({ behavior: 'instant', block: 'nearest' });
+
+  requestAnimationFrame(() => {
+    const rect = targetEl.getBoundingClientRect();
+    const vpW  = window.innerWidth;
+    const vpH  = window.innerHeight;
+
+    // Spotlight ring
+    spotlight.className = 'active';
+    spotlight.style.top    = (rect.top    - 7) + 'px';
+    spotlight.style.left   = (rect.left   - 7) + 'px';
+    spotlight.style.width  = (rect.width  + 14) + 'px';
+    spotlight.style.height = (rect.height + 14) + 'px';
+
+    const ttH = tooltip.offsetHeight || 210;
+    let top, left;
+
+    if (position === 'right') {
+      left = rect.right + pad;
+      top  = rect.top + rect.height / 2 - ttH / 2;
+    } else if (position === 'left') {
+      left = rect.left - ttW - pad;
+      top  = rect.top + rect.height / 2 - ttH / 2;
+    } else if (position === 'bottom') {
+      left = rect.left + rect.width / 2 - ttW / 2;
+      top  = rect.bottom + pad;
+    } else if (position === 'top') {
+      left = rect.left + rect.width / 2 - ttW / 2;
+      top  = rect.top - ttH - pad;
+    } else {
+      left = vpW / 2 - ttW / 2;
+      top  = vpH / 2 - ttH / 2;
+    }
+
+    // Clamp to viewport (leave room for header)
+    left = Math.max(12, Math.min(left, vpW - ttW - 12));
+    top  = Math.max(62, Math.min(top,  vpH - ttH - 12));
+
+    tooltip.style.left = left + 'px';
+    tooltip.style.top  = top  + 'px';
+  });
+}
+
+function tourNav(dir) {
+  const step = TOUR_STEPS[_tourStep];
+  if (dir > 0 && step && step.isLast) {
+    endTour();
+    return;
+  }
+  _tourStep = Math.max(0, Math.min(_tourStep + dir, TOUR_STEPS.length - 1));
+  showTourStep(_tourStep);
+}
+
+function endTour() {
+  document.getElementById('tour-overlay').classList.remove('active');
+  document.getElementById('tour-spotlight').className = '';
+  document.getElementById('tour-tooltip').classList.remove('active');
+  document.getElementById('tour-tooltip').style.cssText = '';
+  S.startedAt = new Date().toISOString();
+  persist();
+  startTimer();
+}
+
+init();
+</script>
+</body>
+</html>

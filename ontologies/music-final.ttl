@@ -1,0 +1,710 @@
+@prefix ns1: <http://www.example.org/ontology/music#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ns1:Recording_Stadium_Arcadium a ns1:Cl_Event ;
+    rdfs:label "Recording of Stadium Arcadium (Sept 2004)" ;
+    ns1:recordedDuring ns1:Stadium_Arcadium .
+
+ns1:RedHotChiliPeppers a ns1:Cl_Band ;
+    ns1:hasAlbum ns1:Stadium_Arcadium ;
+    ns1:hasMember ns1:Anthony_Kiedis,
+        ns1:Chad_Smith,
+        ns1:Flea,
+        ns1:John_Frusciante ;
+    ns1:hasPerformance ns1:Performance_Portland_2006 .
+
+ns1:SongInPerf_1 a ns1:Cl_SongInPerformance ;
+    ns1:hasPerformance ns1:Performance_Portland_2006 ;
+    ns1:hasSong ns1:Hump_de_Bump .
+
+ns1:Statement1 a ns1:Cl_CriticRecordStatement ;
+    ns1:hasCritic ns1:Crian_Hiatt ;
+    ns1:hasRecord ns1:Stadium_Arcadium ;
+    ns1:statementText "the most ambitious work in his twenty-three-year career"@en .
+
+ns1:albumReleaseDate a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "album release date",
+        "album release date"@en ;
+    rdfs:domain ns1:Cl_Album ;
+    rdfs:range xsd:date .
+
+ns1:composedDate a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "date of composition" ;
+    rdfs:domain ns1:Cl_Track ;
+    rdfs:range xsd:date .
+
+ns1:composesSong a owl:ObjectProperty ;
+    rdfs:label "composes song" ;
+    rdfs:domain ns1:Cl_CompositionEvent ;
+    rdfs:range ns1:Cl_Song .
+
+ns1:containsSong a owl:ObjectProperty ;
+    rdfs:label "contains song" ;
+    rdfs:domain ns1:Cl_Album ;
+    rdfs:range ns1:Cl_Song .
+
+ns1:endDate a owl:DatatypeProperty ;
+    rdfs:label "end date (optional)" ;
+    rdfs:domain ns1:Cl_TimeInterval ;
+    rdfs:range xsd:date ;
+    owl:FunctionalProperty true .
+
+ns1:hasAlbum a owl:ObjectProperty ;
+    rdfs:label "has album" ;
+    rdfs:domain ns1:Cl_Band ;
+    rdfs:range ns1:Cl_Album .
+
+ns1:hasCompositionDate a owl:DatatypeProperty ;
+    rdfs:label "has composition date" ;
+    rdfs:domain ns1:Cl_CompositionEvent ;
+    rdfs:range xsd:date .
+
+ns1:hasCompositionEvent a owl:ObjectProperty ;
+    rdfs:label "has composition event" ;
+    rdfs:domain ns1:Cl_Song ;
+    rdfs:range ns1:Cl_CompositionEvent .
+
+ns1:hasCritic a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:domain ns1:Cl_CriticRecordStatement ;
+    rdfs:range ns1:Cl_Critic .
+
+ns1:hasLocation a owl:ObjectProperty ;
+    rdfs:label "has location"@en ;
+    rdfs:domain ns1:Cl_Performance ;
+    rdfs:range ns1:Cl_Location .
+
+ns1:hasMembership a owl:ObjectProperty ;
+    rdfs:label "has membership" ;
+    rdfs:domain ns1:Cl_Band ;
+    rdfs:range ns1:Cl_BandMembership ;
+    owl:inverseOf ns1:membershipOfBand .
+
+ns1:hasName a owl:DatatypeProperty ;
+    rdfs:label "has name"@en ;
+    rdfs:domain ns1:Cl_Person ;
+    rdfs:range xsd:string .
+
+ns1:hasRecord a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:domain ns1:Cl_CriticRecordStatement ;
+    rdfs:range ns1:Cl_Record .
+
+ns1:hasState a owl:ObjectProperty ;
+    rdfs:label "has state"@en ;
+    rdfs:comment "Specialized form of locatedIn when the region is a state."@en ;
+    rdfs:domain ns1:Cl_City ;
+    rdfs:range ns1:Cl_Region ;
+    rdfs:subPropertyOf ns1:locatedIn .
+
+ns1:instrumentName a owl:DatatypeProperty ;
+    rdfs:label "instrument name"@en ;
+    rdfs:domain ns1:Cl_Instrument ;
+    rdfs:range xsd:string .
+
+ns1:isTrackOf a owl:ObjectProperty ;
+    rdfs:label "is track of"@en ;
+    rdfs:domain ns1:Cl_Track ;
+    rdfs:range ns1:Cl_Album .
+
+ns1:membershipEndDate a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "membership end date" ;
+    rdfs:domain ns1:Cl_BandMembership ;
+    rdfs:range xsd:date .
+
+ns1:membership_Anthony_Kiedis_RHCP a ns1:Cl_Membership ;
+    ns1:hasBand ns1:Red_Hot_Chili_Peppers ;
+    ns1:hasMember ns1:Anthony_Kiedis ;
+    ns1:hasRole ns1:Vocals ;
+    ns1:hasTimeInterval ns1:ti_Anthony_Kiedis_RHCP .
+
+ns1:membership_Chad_Drums_RHCP a ns1:Cl_Membership ;
+    ns1:hasBand ns1:Red_Hot_Chili_Peppers ;
+    ns1:hasMember ns1:Chad_Smith ;
+    ns1:hasRole ns1:Drums ;
+    ns1:hasTimeInterval ns1:ti_Chad_Drums_RHCP .
+
+ns1:membership_Flea_Keyboard_RHCP a ns1:Cl_Membership ;
+    ns1:hasBand ns1:Red_Hot_Chili_Peppers ;
+    ns1:hasMember ns1:Flea ;
+    ns1:hasRole ns1:Keyboards ;
+    ns1:hasTimeInterval ns1:ti_Flea_RHCP .
+
+ns1:membership_Flea_RHCP a ns1:Cl_Membership ;
+    ns1:hasBand ns1:Red_Hot_Chili_Peppers ;
+    ns1:hasMember ns1:Flea ;
+    ns1:hasRole ns1:Bass ;
+    ns1:hasTimeInterval ns1:ti_Flea_RHCP .
+
+ns1:membership_Flea_Trumpet_RHCP a ns1:Cl_Membership ;
+    ns1:hasBand ns1:Red_Hot_Chili_Peppers ;
+    ns1:hasMember ns1:Flea ;
+    ns1:hasRole ns1:Trumpet ;
+    ns1:hasTimeInterval ns1:ti_Flea_RHCP .
+
+ns1:membership_Hillel_Guitar_RHCP a ns1:Cl_Membership ;
+    ns1:hasBand ns1:Red_Hot_Chili_Peppers ;
+    ns1:hasMember ns1:Hillel_Slovak ;
+    ns1:hasRole ns1:Guitar ;
+    ns1:hasTimeInterval ns1:ti_Hillel_Guitar_RHCP .
+
+ns1:membership_Jack_Drums_RHCP a ns1:Cl_Membership ;
+    ns1:hasBand ns1:Red_Hot_Chili_Peppers ;
+    ns1:hasMember ns1:Jack_Irons ;
+    ns1:hasRole ns1:Drums ;
+    ns1:hasTimeInterval ns1:ti_Jack_Drums_RHCP .
+
+ns1:membership_John_Guitar_RHCP a ns1:Cl_Membership ;
+    ns1:hasBand ns1:Red_Hot_Chili_Peppers ;
+    ns1:hasMember ns1:John_Frusciante ;
+    ns1:hasRole ns1:Guitar ;
+    ns1:hasTimeInterval ns1:ti_John_Guitar_RHCP .
+
+ns1:membership_John_Vocals_MarsVolta a ns1:Cl_Membership ;
+    ns1:hasBand ns1:The_Mars_Volta ;
+    ns1:hasMember ns1:John_Frusciante ;
+    ns1:hasRole ns1:Vocals ;
+    ns1:hasTimeInterval ns1:ti_John_Vocals_MarsVolta .
+
+ns1:membership_Peligo_Drums_RHCP a ns1:Cl_Membership ;
+    ns1:hasBand ns1:Red_Hot_Chili_Peppers ;
+    ns1:hasMember ns1:D_H_Peligo ;
+    ns1:hasRole ns1:Drums ;
+    ns1:hasTimeInterval ns1:ti_Peligo_Drums_RHCP .
+
+ns1:performanceLocation a owl:DatatypeProperty ;
+    rdfs:label "performance location (city, state, country)" ;
+    rdfs:domain ns1:Cl_Performance ;
+    rdfs:range xsd:string .
+
+ns1:performanceOfBand a owl:ObjectProperty ;
+    rdfs:label "performance of band" ;
+    rdfs:domain ns1:Cl_Performance ;
+    rdfs:range ns1:Cl_Band ;
+    owl:inverseOf ns1:hasPerformance .
+
+ns1:performedAt a owl:ObjectProperty ;
+    rdfs:label "performed at" ;
+    rdfs:domain ns1:Cl_Performance ;
+    rdfs:range xsd:string .
+
+ns1:performedTrack a owl:ObjectProperty ;
+    rdfs:label "performed track"@en ;
+    rdfs:domain ns1:Cl_Performance ;
+    rdfs:range ns1:Cl_Track ;
+    rdfs:subPropertyOf ns1:hasPart .
+
+ns1:performs a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "performs"@en ;
+    rdfs:domain ns1:Cl_Band ;
+    rdfs:range ns1:Cl_Performance ;
+    owl:inverseOf ns1:performedBy .
+
+ns1:recordedDuring a owl:ObjectProperty ;
+    rdfs:label "recorded during" ;
+    rdfs:domain ns1:Cl_Album ;
+    rdfs:range ns1:Cl_Event .
+
+ns1:reviewedBy a owl:ObjectProperty ;
+    rdfs:label "reviewed by" ;
+    rdfs:domain ns1:Cl_Album ;
+    rdfs:range ns1:Cl_Critic .
+
+ns1:role a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "role in band" ;
+    rdfs:domain ns1:Cl_BandMembership ;
+    rdfs:range xsd:string .
+
+ns1:startDate a owl:DatatypeProperty ;
+    rdfs:label "start date" ;
+    rdfs:domain ns1:Cl_TimeInterval ;
+    rdfs:range xsd:date ;
+    owl:FunctionalProperty true .
+
+ns1:statementText a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:domain ns1:Cl_CriticRecordStatement ;
+    rdfs:range xsd:string .
+
+ns1:trackCompositionDate a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "track composition date"@en ;
+    rdfs:domain ns1:Cl_Track ;
+    rdfs:range xsd:date .
+
+ns1:trackOfAlbum a owl:ObjectProperty ;
+    rdfs:label "track of album" ;
+    rdfs:domain ns1:Cl_Track ;
+    rdfs:range ns1:Cl_Album ;
+    owl:inverseOf ns1:hasTrack .
+
+ns1:trackReleaseDate a owl:DatatypeProperty ;
+    rdfs:label "track release / composition date" ;
+    rdfs:domain ns1:Cl_Track ;
+    rdfs:range xsd:date .
+
+ns1:Cl_Location a owl:Class ;
+    rdfs:label "Location"@en .
+
+ns1:Cl_Statement a owl:Class ;
+    rdfs:subClassOf ns1:Cl_Entity .
+
+ns1:CompEvent_Hump_de_Bump a ns1:Cl_CompositionEvent ;
+    ns1:composesSong ns1:Hump_de_Bump ;
+    ns1:hasCompositionDate "2004-01-26"^^xsd:date .
+
+ns1:Crian_Hiatt a ns1:Cl_Critic ;
+    rdfs:label "Crian Hiatt"@en .
+
+ns1:D_H_Peligo a ns1:Cl_Person ;
+    rdfs:label "D.H. Peligo" .
+
+ns1:Hillel_Slovak a ns1:Cl_Person ;
+    rdfs:label "Hillel Slovak" .
+
+ns1:Jack_Irons a ns1:Cl_Person ;
+    rdfs:label "Jack Irons" .
+
+ns1:Stadium_Arcadium_Recording a ns1:Cl_AlbumRecording ;
+    ns1:recordedAlbum ns1:Stadium_Arcadium ;
+    ns1:recordingEndDate "2006-05-05"^^xsd:date ;
+    ns1:recordingStartDate "2004-09-01"^^xsd:date .
+
+ns1:The_Mars_Volta a ns1:Cl_Band ;
+    rdfs:label "The Mars Volta" .
+
+ns1:hasRecordingEvent a owl:ObjectProperty ;
+    rdfs:label "has recording event"@en ;
+    rdfs:domain ns1:Cl_Album ;
+    rdfs:range ns1:Cl_AlbumRecording ;
+    owl:inverseOf ns1:recordedAlbum .
+
+ns1:hasRole a owl:ObjectProperty ;
+    rdfs:label "has role (musical function)" ;
+    rdfs:domain ns1:Cl_Membership ;
+    rdfs:range ns1:Cl_Role ;
+    owl:FunctionalProperty true .
+
+ns1:hasTimeInterval a owl:ObjectProperty ;
+    rdfs:label "has time interval" ;
+    rdfs:domain ns1:Cl_Membership ;
+    rdfs:range ns1:Cl_TimeInterval ;
+    owl:FunctionalProperty true .
+
+ns1:locatedIn a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "located in"@en ;
+    rdfs:comment "Relates a city to the region in which it is situated."@en ;
+    rdfs:domain ns1:Cl_City ;
+    rdfs:range ns1:Cl_Region .
+
+ns1:memberOf a owl:ObjectProperty ;
+    rdfs:label "member of",
+        "member of"@en ;
+    rdfs:domain ns1:Cl_Artist,
+        ns1:Cl_Musician,
+        ns1:Cl_Person ;
+    rdfs:range ns1:Cl_Band .
+
+ns1:memberOfMembership a owl:ObjectProperty ;
+    rdfs:label "member of membership" ;
+    rdfs:domain ns1:Cl_Musician ;
+    rdfs:range ns1:Cl_BandMembership .
+
+ns1:membershipOfBand a owl:ObjectProperty ;
+    rdfs:label "membership of band" ;
+    rdfs:domain ns1:Cl_BandMembership ;
+    rdfs:range ns1:Cl_Band .
+
+ns1:membershipStartDate a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "membership start date" ;
+    rdfs:domain ns1:Cl_BandMembership ;
+    rdfs:range xsd:date .
+
+ns1:performedIn a owl:ObjectProperty ;
+    rdfs:label "performed in" ;
+    rdfs:domain ns1:Cl_Track ;
+    rdfs:range ns1:Cl_Performance .
+
+ns1:performedSong a owl:ObjectProperty ;
+    rdfs:label "performed song" ;
+    rdfs:domain ns1:Cl_Performance ;
+    rdfs:range ns1:Cl_Track ;
+    owl:inverseOf ns1:performedIn .
+
+ns1:playsInstrument a owl:ObjectProperty ;
+    rdfs:label "plays instrument"@en ;
+    rdfs:domain ns1:Cl_Musician ;
+    rdfs:range ns1:Cl_Instrument .
+
+ns1:recordingEndDate a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "recording end date"@en ;
+    rdfs:domain ns1:Cl_AlbumRecording ;
+    rdfs:range xsd:date .
+
+ns1:recordingStartDate a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "recording start date"@en ;
+    rdfs:domain ns1:Cl_AlbumRecording ;
+    rdfs:range xsd:date .
+
+ns1:releaseDate a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "release date" ;
+    rdfs:domain ns1:Cl_Album ;
+    rdfs:range xsd:date .
+
+ns1:ti_Anthony_Kiedis_RHCP a ns1:Cl_TimeInterval ;
+    ns1:startDate "1983-01-01"^^xsd:date .
+
+ns1:ti_Chad_Drums_RHCP a ns1:Cl_TimeInterval ;
+    ns1:startDate "1990-01-01"^^xsd:date .
+
+ns1:ti_Hillel_Guitar_RHCP a ns1:Cl_TimeInterval ;
+    ns1:endDate "1988-01-01"^^xsd:date ;
+    ns1:startDate "1983-01-01"^^xsd:date .
+
+ns1:ti_Jack_Drums_RHCP a ns1:Cl_TimeInterval ;
+    ns1:endDate "1990-01-01"^^xsd:date ;
+    ns1:startDate "1983-01-01"^^xsd:date .
+
+ns1:ti_John_Guitar_RHCP a ns1:Cl_TimeInterval ;
+    ns1:startDate "1988-01-01"^^xsd:date .
+
+ns1:ti_John_Vocals_MarsVolta a ns1:Cl_TimeInterval ;
+    ns1:startDate "2000-01-01"^^xsd:date .
+
+ns1:ti_Peligo_Drums_RHCP a ns1:Cl_TimeInterval ;
+    ns1:endDate "1990-06-01"^^xsd:date ;
+    ns1:startDate "1990-01-01"^^xsd:date .
+
+ns1:trackOf a owl:ObjectProperty ;
+    rdfs:label "track of" ;
+    rdfs:domain ns1:Cl_Track ;
+    rdfs:range ns1:Cl_Album .
+
+ns1:Anthony_Kiedis a ns1:Cl_Musician,
+        ns1:Cl_Person ;
+    rdfs:label "Anthony Kiedis" ;
+    ns1:hasName "Anthony Kiedis"^^xsd:string ;
+    ns1:playsInstrument ns1:Vocals .
+
+ns1:Bass a ns1:Cl_Instrument,
+        ns1:Cl_Role ;
+    rdfs:label "bass" ;
+    ns1:instrumentName "Bass"^^xsd:string .
+
+ns1:Chad_Smith a ns1:Cl_Musician,
+        ns1:Cl_Person ;
+    rdfs:label "Chad Smith" ;
+    ns1:hasName "Chad Smith"^^xsd:string ;
+    ns1:playsInstrument ns1:Drums .
+
+ns1:Cl_City a owl:Class ;
+    rdfs:label "City"@en ;
+    rdfs:comment "A populated place, typically an urban settlement."@en .
+
+ns1:Cl_Event a owl:Class ;
+    rdfs:label "Event (e.g., concert, recording session)" .
+
+ns1:Cl_Region a owl:Class ;
+    rdfs:label "Region"@en ;
+    rdfs:comment "A geographical area that can contain cities, such as a state, province, or other administrative division."@en .
+
+ns1:Keyboards a ns1:Cl_Instrument,
+        ns1:Cl_Role ;
+    rdfs:label "keyboards" ;
+    ns1:instrumentName "Keyboards"^^xsd:string .
+
+ns1:Performance_Portland_2006 a ns1:Cl_Performance ;
+    ns1:performanceDate "2006-08-11"^^xsd:date ;
+    ns1:performanceLocation "Portland, Oregon, US" ;
+    ns1:performedSong ns1:Hump_de_Bump .
+
+ns1:Trumpet a ns1:Cl_Instrument,
+        ns1:Cl_Role ;
+    rdfs:label "trumpet" ;
+    ns1:instrumentName "Trumpet"^^xsd:string .
+
+ns1:hasBand a owl:ObjectProperty ;
+    rdfs:label "has band" ;
+    rdfs:domain ns1:Cl_Membership ;
+    rdfs:range ns1:Cl_Band ;
+    owl:FunctionalProperty true .
+
+ns1:hasMember a owl:ObjectProperty ;
+    rdfs:label "has member",
+        "has member (person)",
+        "has member"@en ;
+    rdfs:domain ns1:Cl_Band,
+        ns1:Cl_BandMembership,
+        ns1:Cl_Membership ;
+    rdfs:range ns1:Cl_Artist,
+        ns1:Cl_Musician,
+        ns1:Cl_Person ;
+    owl:FunctionalProperty true ;
+    owl:inverseOf ns1:memberOf,
+        ns1:memberOfMembership .
+
+ns1:hasSong a owl:ObjectProperty ;
+    rdfs:label "song (in SongInPerformance)" ;
+    rdfs:domain ns1:Cl_SongInPerformance ;
+    rdfs:range ns1:Cl_Track .
+
+ns1:hasTrack a owl:ObjectProperty ;
+    rdfs:label "has track",
+        "has track"@en ;
+    rdfs:domain ns1:Cl_Album,
+        ns1:Cl_Record ;
+    rdfs:range ns1:Cl_Track ;
+    owl:inverseOf ns1:trackOf .
+
+ns1:performanceDate a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "performance date",
+        "performance date"@en ;
+    rdfs:domain ns1:Cl_Performance ;
+    rdfs:range xsd:date .
+
+ns1:performedBy a owl:ObjectProperty ;
+    rdfs:label "performed by",
+        "performed by"@en ;
+    rdfs:domain ns1:Cl_Album,
+        ns1:Cl_Performance ;
+    rdfs:range ns1:Cl_Artist,
+        ns1:Cl_Band .
+
+ns1:recordedAlbum a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "recorded album"@en ;
+    rdfs:domain ns1:Cl_AlbumRecording ;
+    rdfs:range ns1:Cl_Album ;
+    owl:inverseOf ns1:hasRecordingEvent .
+
+ns1:Cl_Critic a owl:Class ;
+    rdfs:label "Critic" ;
+    rdfs:subClassOf ns1:Cl_Entity .
+
+ns1:Cl_Record a owl:Class ;
+    rdfs:label "Record"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty ns1:hasTrack ;
+            owl:someValuesFrom ns1:Cl_Track ],
+        ns1:Cl_Entity .
+
+ns1:Guitar a ns1:Cl_Instrument,
+        ns1:Cl_Role ;
+    rdfs:label "guitar" ;
+    ns1:instrumentName "Guitar"^^xsd:string .
+
+ns1:John_Frusciante a ns1:Cl_Musician,
+        ns1:Cl_Person ;
+    rdfs:label "John Frusciante" ;
+    ns1:hasName "John Frusciante"^^xsd:string ;
+    ns1:playsInstrument ns1:Guitar .
+
+ns1:hasPerformance a owl:ObjectProperty ;
+    rdfs:label "has performance",
+        "performance (in SongInPerformance)" ;
+    rdfs:domain ns1:Cl_Band,
+        ns1:Cl_SongInPerformance ;
+    rdfs:range ns1:Cl_Performance .
+
+ns1:ti_Flea_RHCP a ns1:Cl_TimeInterval ;
+    ns1:startDate "1983-01-01"^^xsd:date .
+
+ns1:Cl_CriticRecordStatement a owl:Class ;
+    rdfs:subClassOf ns1:Cl_Statement .
+
+ns1:Cl_SongInPerformance a owl:Class ;
+    rdfs:label "Song‑in‑Performance" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass ns1:Cl_Performance ;
+            owl:onProperty ns1:hasPerformance ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass ns1:Cl_Track ;
+            owl:onProperty ns1:hasSong ] ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( ns1:Cl_SongInPerformance [ a owl:Restriction ;
+                        owl:onProperty ns1:hasPerformance ;
+                        owl:someValuesFrom ns1:Cl_Performance ] [ a owl:Restriction ;
+                        owl:onProperty ns1:hasSong ;
+                        owl:someValuesFrom ns1:Cl_Track ] ) ] .
+
+ns1:Drums a ns1:Cl_Instrument,
+        ns1:Cl_Role ;
+    rdfs:label "drums" ;
+    ns1:instrumentName "Drums"^^xsd:string .
+
+ns1:Flea a ns1:Cl_Musician,
+        ns1:Cl_Person ;
+    rdfs:label "Flea" ;
+    ns1:hasName "Flea"^^xsd:string ;
+    ns1:playsInstrument ns1:Bass,
+        ns1:Keyboards,
+        ns1:Trumpet,
+        ns1:Vocals .
+
+ns1:Vocals a ns1:Cl_Instrument,
+        ns1:Cl_Role ;
+    rdfs:label "vocals" ;
+    ns1:instrumentName "Vocals"^^xsd:string .
+
+ns1:Cl_AlbumRecording a owl:Class ;
+    rdfs:label "Album Recording Event"@en ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty ns1:recordedAlbum ;
+                        owl:someValuesFrom ns1:Cl_Album ] [ a owl:Restriction ;
+                        owl:onProperty ns1:recordingStartDate ;
+                        owl:someValuesFrom xsd:date ] [ a owl:Restriction ;
+                        owl:onProperty ns1:recordingEndDate ;
+                        owl:someValuesFrom xsd:date ] ) ] .
+
+ns1:Hump_de_Bump a ns1:Cl_Song,
+        ns1:Cl_Track ;
+    ns1:composedDate "2004-01-26"^^xsd:date ;
+    ns1:hasCompositionEvent ns1:CompEvent_Hump_de_Bump ;
+    ns1:trackOfAlbum ns1:Stadium_Arcadium ;
+    ns1:trackReleaseDate "2004-01-26"^^xsd:date .
+
+ns1:Stadium_Arcadium a ns1:Cl_Album,
+        ns1:Cl_Record ;
+    rdfs:label "Stadium Arcadium"@en ;
+    ns1:albumReleaseDate "2006-05-05"^^xsd:date ;
+    ns1:containsSong ns1:Hump_de_Bump ;
+    ns1:hasRecordingEvent ns1:Stadium_Arcadium_Recording ;
+    ns1:hasTrack ns1:Hump_de_Bump ;
+    ns1:performedBy ns1:Red_Hot_Chili_Peppers ;
+    ns1:releaseDate "2006-05-05"^^xsd:date .
+
+ns1:Cl_Artist a owl:Class ;
+    rdfs:label "Artist (person or group)",
+        "Artist"@en .
+
+ns1:Cl_BandMembership a owl:Class ;
+    rdfs:label "Band Membership (reified)" ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty ns1:hasBand ;
+                        owl:someValuesFrom ns1:Cl_Band ] [ a owl:Restriction ;
+                        owl:onProperty ns1:hasMember ;
+                        owl:someValuesFrom ns1:Cl_Musician ] [ a owl:Restriction ;
+                        owl:onProperty ns1:membershipStartDate ;
+                        owl:someValuesFrom xsd:date ] ) ] .
+
+ns1:Cl_Song a owl:Class ;
+    rdfs:subClassOf ns1:Cl_Entity ;
+    owl:disjointWith ns1:Cl_CompositionEvent .
+
+ns1:Cl_CompositionEvent a owl:Class ;
+    rdfs:subClassOf ns1:Cl_Entity .
+
+ns1:Cl_Entity a owl:Class .
+
+ns1:Cl_Role a owl:Class ;
+    rdfs:label "Role (musical function)" .
+
+ns1:Cl_Instrument a owl:Class ;
+    rdfs:label "Instrument"@en .
+
+ns1:Cl_Musician a owl:Class ;
+    rdfs:label "Musician",
+        "Musician"@en ;
+    rdfs:subClassOf ns1:Cl_Artist,
+        ns1:Cl_Person ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( ns1:Cl_Person [ a owl:Restriction ;
+                        owl:onProperty ns1:playsInstrument ;
+                        owl:someValuesFrom ns1:Cl_Instrument ] ) ] .
+
+ns1:Red_Hot_Chili_Peppers a ns1:Cl_Band ;
+    rdfs:label "Red Hot Chili Peppers" .
+
+ns1:Cl_TimeInterval a owl:Class ;
+    rdfs:label "Time interval" .
+
+ns1:Cl_Person a owl:Class ;
+    rdfs:label "Individual musician",
+        "Person",
+        "Person"@en ;
+    rdfs:subClassOf ns1:Cl_Artist,
+        ns1:Cl_Entity ;
+    owl:disjointWith ns1:Cl_Album,
+        ns1:Cl_Band,
+        ns1:Cl_CompositionEvent,
+        ns1:Cl_Song .
+
+ns1:Cl_Membership a owl:Class ;
+    rdfs:label "Band membership (person‑role‑band‑time)" ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( ns1:Cl_Membership [ a owl:Restriction ;
+                        owl:onProperty ns1:hasMember ;
+                        owl:someValuesFrom ns1:Cl_Person ] [ a owl:Restriction ;
+                        owl:onProperty ns1:hasBand ;
+                        owl:someValuesFrom ns1:Cl_Band ] [ a owl:Restriction ;
+                        owl:onProperty ns1:hasRole ;
+                        owl:someValuesFrom ns1:Cl_Role ] [ a owl:Restriction ;
+                        owl:onProperty ns1:hasTimeInterval ;
+                        owl:someValuesFrom ns1:Cl_TimeInterval ] ) ] .
+
+ns1:Cl_Performance a owl:Class ;
+    rdfs:label "Live Performance",
+        "Performance (Live Event)",
+        "Performance"@en ;
+    rdfs:comment "Reifies a concrete live performance event linking a band, a location, a date and optionally performed tracks." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass ns1:Cl_Track ;
+            owl:onProperty ns1:performedSong ] ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( ns1:Cl_Performance [ a owl:Restriction ;
+                        owl:onProperty ns1:performanceDate ;
+                        owl:someValuesFrom xsd:date ] [ a owl:Restriction ;
+                        owl:cardinality "1"^^xsd:nonNegativeInteger ;
+                        owl:onProperty ns1:performanceDate ] ) ],
+        [ a owl:Class ;
+            owl:intersectionOf ( ns1:Cl_Performance [ a owl:Restriction ;
+                        owl:onProperty ns1:performedBy ;
+                        owl:someValuesFrom ns1:Cl_Band ] ) ] .
+
+ns1:Cl_Track a owl:Class ;
+    rdfs:label "Track",
+        "Track (Song)",
+        "Track / song",
+        "Track"@en .
+
+ns1:Cl_Album a owl:Class ;
+    rdfs:label "Album",
+        "Music album",
+        "Album"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty ns1:releaseDate ;
+            owl:someValuesFrom xsd:date ],
+        ns1:Cl_Entity ;
+    owl:disjointWith ns1:Cl_Artist,
+        ns1:Cl_CompositionEvent,
+        ns1:Cl_Song .
+
+ns1:Cl_Band a owl:Class ;
+    rdfs:label "Band",
+        "Musical group / band",
+        "Band"@en ;
+    rdfs:subClassOf ns1:Cl_Artist,
+        ns1:Cl_Entity ;
+    owl:disjointWith ns1:Cl_Album,
+        ns1:Cl_CompositionEvent,
+        ns1:Cl_Song .
+

@@ -1,0 +1,705 @@
+@prefix ns1: <http://www.example.org/ontology/hospital#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ns1:ArticleCollection_2008 a ns1:Cl_Book ;
+    ns1:containsArticle ns1:Article_By_Pasquale ;
+    ns1:hasName "Nurse practices in cancer patient care – longitudinal studies at Italian hospitals" ;
+    ns1:hasPageCount 346 .
+
+ns1:Book_NursePractices2008 a ns1:Cl_Book ;
+    rdfs:label "Nurse practices in cancer patient care – longitudinal studies at Italian hospitals (book)"@en ;
+    ns1:hasPublicationDate "2008-01-01"^^xsd:date .
+
+ns1:Cl_CD a owl:Class ;
+    rdfs:label "CD",
+        "CD"@en ;
+    rdfs:comment "A compact disc containing an electronic version of an article collection."@en ;
+    rdfs:subClassOf ns1:Cl_ArticleCollection,
+        ns1:Cl_Publication .
+
+ns1:Cl_CertifiedNurseDegree a owl:Class ;
+    rdfs:label "Certified Nurse Degree"@en ;
+    rdfs:subClassOf ns1:Cl_MedicalDegree .
+
+ns1:Cl_NursingAssistantDegree a owl:Class ;
+    rdfs:label "Nursing Assistant Degree"@en ;
+    rdfs:subClassOf ns1:Cl_MedicalDegree .
+
+ns1:Employment_Pasquale_Ospedale_Riunito_2001-09-21 a ns1:Cl_EmploymentEvent ;
+    ns1:hasEmployee ns1:Pasquale_Di_Gennaro ;
+    ns1:hasEmployer ns1:Ospedale_Riunito_delle_Tre_Valli ;
+    ns1:startDate "2001-09-21"^^xsd:date .
+
+ns1:Presentation_1 a ns1:Cl_ArticlePresentation ;
+    ns1:hasPresentationVenue ns1:Seminar_Dec2008 ;
+    ns1:hasPresentedArticle ns1:Article_Pasquale_2008 ;
+    ns1:presentedBy ns1:Pasquale_Di_Gennaro .
+
+ns1:awardedBy a owl:ObjectProperty ;
+    rdfs:label "awarded by"@en ;
+    rdfs:domain ns1:Cl_PersonDegree ;
+    rdfs:range ns1:Cl_Institution .
+
+ns1:containsArticle a owl:ObjectProperty ;
+    rdfs:label "contains article" ;
+    rdfs:domain ns1:Cl_ArticleCollection ;
+    rdfs:range ns1:Cl_Article .
+
+ns1:degreeDate a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "degree date"@en ;
+    rdfs:domain ns1:Cl_PersonDegree ;
+    rdfs:range xsd:date .
+
+ns1:dp_cityName a owl:DatatypeProperty ;
+    rdfs:label "city name"@en ;
+    rdfs:comment "The official name of the city."@en ;
+    rdfs:domain ns1:Cl_City ;
+    rdfs:range xsd:string .
+
+ns1:dp_countryName a owl:DatatypeProperty ;
+    rdfs:label "country name"@en ;
+    rdfs:comment "The official name of the country."@en ;
+    rdfs:domain ns1:Cl_Country ;
+    rdfs:range xsd:string .
+
+ns1:dp_hasDate a owl:DatatypeProperty ;
+    rdfs:label "has date"@en ;
+    rdfs:domain ns1:Cl_Seminar ;
+    rdfs:range xsd:date ;
+    owl:FunctionalProperty true .
+
+ns1:dp_pageCount a owl:DatatypeProperty ;
+    rdfs:label "page count" ;
+    rdfs:domain ns1:Cl_Book ;
+    rdfs:range xsd:integer ;
+    owl:FunctionalProperty true .
+
+ns1:employedAt a owl:ObjectProperty ;
+    rdfs:label "employed at" ;
+    rdfs:domain ns1:Cl_Person ;
+    rdfs:range ns1:Cl_Hospital ;
+    owl:inverseOf ns1:hasEmployee .
+
+ns1:evaluates a owl:ObjectProperty ;
+    rdfs:label "evaluates" ;
+    rdfs:domain ns1:Cl_Doctor ;
+    rdfs:range ns1:Cl_Person .
+
+ns1:hasArticle a owl:ObjectProperty ;
+    rdfs:label "has article",
+        "has article"@en ;
+    rdfs:comment "Links an article collection to the individual articles it contains."@en ;
+    rdfs:domain ns1:Cl_ArticleCollection ;
+    rdfs:range ns1:Cl_Article .
+
+ns1:hasArticleCollection a owl:ObjectProperty ;
+    rdfs:label "is part of article collection" ;
+    rdfs:domain ns1:Cl_Article ;
+    rdfs:range ns1:Cl_ArticleCollection .
+
+ns1:hasEvaluationDate a owl:DatatypeProperty ;
+    rdfs:label "has evaluation date"@en ;
+    rdfs:domain ns1:Cl_EvaluationStatement ;
+    rdfs:range xsd:dateTime .
+
+ns1:hasName a owl:DatatypeProperty ;
+    rdfs:label "has name" ;
+    rdfs:domain [ owl:unionOf ( ns1:Cl_Hospital ns1:Cl_City ns1:Cl_Person ns1:Cl_Union ns1:Cl_Article ns1:Cl_Seminar ) ] ;
+    rdfs:range xsd:string .
+
+ns1:hasPageCount a owl:DatatypeProperty ;
+    rdfs:label "has page count" ;
+    rdfs:domain ns1:Cl_Book ;
+    rdfs:range xsd:integer .
+
+ns1:hasPublicationDate a owl:DatatypeProperty ;
+    rdfs:label "has publication date"@en ;
+    rdfs:comment "The date on which a publication (book or CD) was made publicly available."@en ;
+    rdfs:domain ns1:Cl_Publication ;
+    rdfs:range xsd:date ;
+    owl:FunctionalProperty true .
+
+ns1:hasStartDate a owl:DatatypeProperty ;
+    rdfs:label "has start date" ;
+    rdfs:domain ns1:Cl_Seminar ;
+    rdfs:range xsd:date .
+
+ns1:hasTitle a owl:DatatypeProperty ;
+    rdfs:label "title" ;
+    rdfs:domain [ owl:unionOf ( ns1:Cl_Article ns1:Cl_ArticleCollection ns1:Cl_Seminar ) ] ;
+    rdfs:range xsd:string ;
+    owl:FunctionalProperty true .
+
+ns1:hasVersion a owl:ObjectProperty ;
+    rdfs:label "has version"@en ;
+    rdfs:comment "Relates an article collection to a concrete version (book or CD)."@en ;
+    rdfs:domain ns1:Cl_ArticleCollection ;
+    rdfs:range ns1:Cl_Publication .
+
+ns1:heldAtHospital a owl:ObjectProperty ;
+    rdfs:label "held at hospital" ;
+    rdfs:domain ns1:Cl_Seminar ;
+    rdfs:range ns1:Cl_Hospital .
+
+ns1:isMemberOf a owl:ObjectProperty ;
+    rdfs:domain ns1:Cl_Person ;
+    rdfs:inverseOf ns1:hasMember ;
+    rdfs:range ns1:Cl_UnionMembership .
+
+ns1:isRoleOf a owl:ObjectProperty ;
+    rdfs:domain ns1:Cl_Role ;
+    rdfs:inverseOf ns1:hasRole ;
+    rdfs:range ns1:Cl_UnionMembership .
+
+ns1:isUnionOf a owl:ObjectProperty ;
+    rdfs:domain ns1:Cl_UnionGroup ;
+    rdfs:inverseOf ns1:hasUnion ;
+    rdfs:range ns1:Cl_UnionMembership .
+
+ns1:locatedInCity a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "located in city" ;
+    rdfs:domain ns1:Cl_Hospital ;
+    rdfs:range ns1:Cl_City .
+
+ns1:memberOfUnion a owl:ObjectProperty ;
+    rdfs:label "member of union" ;
+    rdfs:domain ns1:Cl_Person ;
+    rdfs:range ns1:Cl_Union .
+
+ns1:membershipEndDate a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "membership end date"@en ;
+    rdfs:domain ns1:Cl_UnionMembership ;
+    rdfs:range xsd:date .
+
+ns1:occurrenceDate a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "date of the seminar occurrence"@en ;
+    rdfs:domain ns1:Cl_SeminarOccurrence ;
+    rdfs:range xsd:date .
+
+ns1:op_heldAt a owl:ObjectProperty ;
+    rdfs:label "held at"@en ;
+    rdfs:domain ns1:Cl_Seminar ;
+    rdfs:range ns1:Cl_Hospital ;
+    owl:FunctionalProperty true .
+
+ns1:pageCount a owl:DatatypeProperty ;
+    rdfs:label "page count" ;
+    rdfs:domain ns1:Cl_ArticleCollection ;
+    rdfs:range xsd:integer ;
+    owl:FunctionalProperty true .
+
+ns1:presentedAtSeminar a owl:ObjectProperty ;
+    rdfs:label "presented at seminar" ;
+    rdfs:domain ns1:Cl_Article ;
+    rdfs:range ns1:Cl_Seminar .
+
+ns1:presentedBy a owl:ObjectProperty ;
+    rdfs:label "presented by" ;
+    rdfs:domain ns1:Cl_ArticlePresentation ;
+    rdfs:range ns1:Cl_Person ;
+    owl:inverseOf ns1:presentedPresentation .
+
+ns1:publicationYear a owl:DatatypeProperty ;
+    rdfs:label "publication year" ;
+    rdfs:domain ns1:Cl_Article ;
+    rdfs:range xsd:gYear ;
+    owl:FunctionalProperty true .
+
+ns1:representsUnion a owl:ObjectProperty ;
+    rdfs:label "represents union" ;
+    rdfs:domain ns1:Cl_UnionRepresentative ;
+    rdfs:range ns1:Cl_Union .
+
+ns1:seminarDate a owl:DatatypeProperty ;
+    rdfs:label "seminar date" ;
+    rdfs:domain ns1:Cl_Seminar ;
+    rdfs:range xsd:date ;
+    owl:FunctionalProperty true .
+
+ns1:storedInLibrary a owl:ObjectProperty ;
+    rdfs:label "stored in library" ;
+    rdfs:domain ns1:Cl_Evaluation ;
+    rdfs:range ns1:Cl_Library .
+
+ns1:Article_By_Pasquale a ns1:Cl_Article ;
+    ns1:hasName "A 5 year‑program for improving cancer care – experiences and future directions" ;
+    ns1:presentedAtSeminar ns1:Seminar_Dec2008 .
+
+ns1:Article_Pasquale_2008 a ns1:Cl_Article ;
+    ns1:hasTitle "A 5 year‑program for improving cancer care – experiences and future directions" ;
+    ns1:publicationYear "2008"^^xsd:gYear .
+
+ns1:Cl_Evaluation a owl:Class ;
+    rdfs:label "Evaluation" .
+
+ns1:Cl_Event a owl:Class ;
+    rdfs:label "Event"@en .
+
+ns1:Cl_Institution a owl:Class ;
+    rdfs:label "Institution"@en .
+
+ns1:Cl_Library a owl:Class ;
+    rdfs:label "Library" .
+
+ns1:Cl_Nurse a owl:Class ;
+    rdfs:label "Nurse",
+        "Nurse"@en ;
+    rdfs:subClassOf ns1:Cl_Employee,
+        ns1:Cl_Person .
+
+ns1:Cl_Organization a owl:Class ;
+    rdfs:label "Organization"@en .
+
+ns1:Cl_UnionRepresentative a owl:Class ;
+    rdfs:label "Union Representative" ;
+    rdfs:subClassOf ns1:Cl_Person .
+
+ns1:Hospital_Ospedale_Riunito_delle_Tre_Valli a ns1:Cl_Hospital ;
+    rdfs:label "Ospedale Riunito delle Tre Valli"@en .
+
+ns1:Membership_Pasquale_MaleNurses_2002 a ns1:Cl_UnionMembership ;
+    ns1:hasMember ns1:Pasquale_Di_Gennaro ;
+    ns1:hasRole ns1:UnionRepresentative_MaleNurses ;
+    ns1:hasUnion ns1:Union_MaleNurses,
+        ns1:Union_MaleNurses_OspedaleRiunito ;
+    ns1:membershipStartDate "2002-01-01"^^xsd:date .
+
+ns1:Nocera_Inferiore a ns1:Cl_City ;
+    rdfs:label "Nocera Inferiore"@en ;
+    ns1:hasName "Nocera Inferiore" .
+
+ns1:SeminarOcc_2008_Dec a ns1:Cl_SeminarOccurrence ;
+    ns1:occurrenceAtLocation ns1:Ospedale_Riunito_delle_Tre_Valli ;
+    ns1:occurrenceDate "2008-12-01"^^xsd:date ;
+    ns1:occurrenceOfSeminar ns1:Seminar_2008_December .
+
+ns1:Seminar_2008_December a ns1:Cl_Seminar ;
+    rdfs:label "December 2008 Seminar on Article Discussion"@en ;
+    ns1:hasOccurrence ns1:SeminarOcc_2008_Dec .
+
+ns1:UnionRepresentative_MaleNurses a ns1:Cl_Role ;
+    rdfs:label "Union Representative for Male Nurses"@en .
+
+ns1:Union_MaleNurses a ns1:Cl_Union ;
+    rdfs:label "Male Nurses Union at Ospedale Riunito delle Tre Valli"@en .
+
+ns1:Union_MaleNurses_OspedaleRiunito a ns1:Cl_UnionGroup ;
+    rdfs:label "Male Nurses Union at Ospedale Riunito delle Tre Valli"@en .
+
+ns1:degreeOf a owl:ObjectProperty ;
+    rdfs:label "degree of"@en ;
+    rdfs:domain ns1:Cl_MedicalDegree ;
+    rdfs:range ns1:Cl_Person .
+
+ns1:hasEvaluatee a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "has evaluatee (employee)"@en ;
+    rdfs:domain ns1:Cl_EvaluationStatement ;
+    rdfs:range ns1:Cl_Employee .
+
+ns1:hasEvaluator a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "has evaluator (doctor)"@en ;
+    rdfs:domain ns1:Cl_EvaluationStatement ;
+    rdfs:range ns1:Cl_Doctor .
+
+ns1:hasMembership a owl:ObjectProperty ;
+    rdfs:label "has membership"@en ;
+    rdfs:domain ns1:Cl_Person ;
+    rdfs:range ns1:Cl_UnionMembership ;
+    owl:inverseOf ns1:membershipOfPerson .
+
+ns1:hasPresentation a owl:ObjectProperty ;
+    rdfs:label "has presentation" ;
+    rdfs:domain ns1:Cl_Seminar ;
+    rdfs:range ns1:Cl_ArticlePresentation .
+
+ns1:hasPresentationVenue a owl:ObjectProperty ;
+    rdfs:label "presentation venue" ;
+    rdfs:domain ns1:Cl_ArticlePresentation ;
+    rdfs:range ns1:Cl_Seminar ;
+    owl:inverseOf ns1:hasPresentation .
+
+ns1:hasPresentedArticle a owl:ObjectProperty ;
+    rdfs:label "presented article" ;
+    rdfs:domain ns1:Cl_ArticlePresentation ;
+    rdfs:range ns1:Cl_Article ;
+    owl:inverseOf ns1:isPresentedIn .
+
+ns1:hasStatement a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "has evaluation statement"@en ;
+    rdfs:domain ns1:Cl_EvaluationStatement ;
+    rdfs:range xsd:string .
+
+ns1:hasUnionMembership a owl:ObjectProperty ;
+    rdfs:label "has union membership"@en ;
+    rdfs:domain ns1:Cl_Union ;
+    rdfs:range ns1:Cl_UnionMembership ;
+    owl:inverseOf ns1:membershipOfUnion .
+
+ns1:holdsDegreeAssociation a owl:ObjectProperty ;
+    rdfs:label "holds degree association"@en ;
+    rdfs:domain ns1:Cl_Person ;
+    rdfs:range ns1:Cl_PersonDegree .
+
+ns1:isEmployeeOf a owl:ObjectProperty ;
+    rdfs:label "is employee of" ;
+    rdfs:domain ns1:Cl_Person ;
+    rdfs:range ns1:Cl_EmploymentEvent ;
+    owl:inverseOf ns1:hasEmployee .
+
+ns1:isEmployerOf a owl:ObjectProperty ;
+    rdfs:label "is employer of" ;
+    rdfs:domain ns1:Cl_Hospital ;
+    rdfs:range ns1:Cl_EmploymentEvent ;
+    owl:inverseOf ns1:hasEmployer .
+
+ns1:isPresentedIn a owl:ObjectProperty ;
+    rdfs:label "is presented in" ;
+    rdfs:domain ns1:Cl_Article ;
+    rdfs:range ns1:Cl_ArticlePresentation .
+
+ns1:occurrenceAtLocation a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "occurrence at location"@en ;
+    rdfs:domain ns1:Cl_SeminarOccurrence ;
+    rdfs:range ns1:Cl_Location .
+
+ns1:op_isLocatedInCountry a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "is located in country"@en ;
+    rdfs:comment "Relates a city to the country in which it is situated."@en ;
+    rdfs:domain ns1:Cl_City ;
+    rdfs:range ns1:Cl_Country ;
+    owl:inverseOf ns1:op_hasCity .
+
+ns1:presentedPresentation a owl:ObjectProperty ;
+    rdfs:label "presented presentation" ;
+    rdfs:domain ns1:Cl_Person ;
+    rdfs:range ns1:Cl_ArticlePresentation .
+
+ns1:startDate a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "employment start date" ;
+    rdfs:domain ns1:Cl_EmploymentEvent ;
+    rdfs:range xsd:date .
+
+ns1:Cl_Agent a owl:Class ;
+    rdfs:label "Agent"@en .
+
+ns1:Seminar_Dec2008 a ns1:Cl_Seminar ;
+    rdfs:label "December 2008 Seminar on Article Discussion"@en ;
+    ns1:dp_hasDate "2008-12-01"^^xsd:date ;
+    ns1:hasName "December 2008 Seminar" ;
+    ns1:hasStartDate "2008-12-01"^^xsd:date ;
+    ns1:hasTitle "December 2008 Seminar on Cancer Care Articles" ;
+    ns1:heldAtHospital ns1:Ospedale_Riunito_delle_Tre_Valli ;
+    ns1:op_heldAt ns1:Hospital_Ospedale_Riunito_delle_Tre_Valli ;
+    ns1:seminarDate "2008-12-01"^^xsd:date .
+
+ns1:hasEmployer a owl:ObjectProperty ;
+    rdfs:label "has employer" ;
+    rdfs:domain ns1:Cl_EmploymentEvent ;
+    rdfs:range ns1:Cl_Hospital ;
+    owl:inverseOf ns1:isEmployerOf .
+
+ns1:hasOccurrence a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "has occurrence"@en ;
+    rdfs:domain ns1:Cl_Seminar ;
+    rdfs:range ns1:Cl_SeminarOccurrence ;
+    owl:inverseOf ns1:occurrenceOfSeminar .
+
+ns1:heldBy a owl:ObjectProperty ;
+    rdfs:label "held by"@en ;
+    rdfs:domain ns1:Cl_PersonDegree ;
+    rdfs:range ns1:Cl_Person ;
+    owl:inverseOf ns1:holdsDegreeAssociation .
+
+ns1:membershipOfPerson a owl:ObjectProperty ;
+    rdfs:label "membership of person"@en ;
+    rdfs:domain ns1:Cl_UnionMembership ;
+    rdfs:range ns1:Cl_Person .
+
+ns1:membershipOfUnion a owl:ObjectProperty ;
+    rdfs:label "membership of union"@en ;
+    rdfs:domain ns1:Cl_UnionMembership ;
+    rdfs:range ns1:Cl_Union .
+
+ns1:occurrenceOfSeminar a owl:ObjectProperty ;
+    rdfs:label "occurrence of seminar"@en ;
+    rdfs:domain ns1:Cl_SeminarOccurrence ;
+    rdfs:range ns1:Cl_Seminar ;
+    owl:inverseOf ns1:hasOccurrence .
+
+ns1:op_hasCity a owl:ObjectProperty ;
+    rdfs:label "has city"@en ;
+    rdfs:comment "Inverse of isLocatedInCountry; relates a country to one of its cities."@en ;
+    rdfs:domain ns1:Cl_Country ;
+    rdfs:range ns1:Cl_City .
+
+ns1:Cl_Doctor a owl:Class ;
+    rdfs:label "Doctor",
+        "Doctor"@en ;
+    rdfs:subClassOf ns1:Cl_Employee,
+        ns1:Cl_Person ;
+    owl:disjointWith ns1:Cl_Employee .
+
+ns1:Pasquale_Di_Gennaro a ns1:Cl_Nurse,
+        ns1:Cl_Person ;
+    rdfs:label "Pasquale Di Gennaro",
+        "Pasquale Di Gennaro"@en ;
+    ns1:employedAt ns1:Ospedale_Riunito_delle_Tre_Valli ;
+    ns1:hasMembership ns1:Membership_Pasquale_MaleNurses_2002 ;
+    ns1:hasName "Pasquale Di Gennaro" .
+
+ns1:hasDegree a owl:ObjectProperty ;
+    rdfs:label "has degree"@en,
+        "has degree (reified)"@en ;
+    rdfs:domain ns1:Cl_Person,
+        ns1:Cl_PersonDegree ;
+    rdfs:range ns1:Cl_MedicalDegree ;
+    owl:inverseOf ns1:degreeOf .
+
+ns1:hasEmployee a owl:ObjectProperty ;
+    rdfs:label "has employee" ;
+    rdfs:domain ns1:Cl_EmploymentEvent,
+        ns1:Cl_Hospital ;
+    rdfs:range ns1:Cl_Person ;
+    owl:inverseOf ns1:isEmployeeOf .
+
+ns1:hasRole a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "has role"@en ;
+    rdfs:domain ns1:Cl_UnionMembership ;
+    rdfs:range ns1:Cl_Role .
+
+ns1:membershipStartDate a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "membership start date"@en ;
+    rdfs:domain ns1:Cl_UnionMembership ;
+    rdfs:range xsd:date .
+
+ns1:Cl_Book a owl:Class ;
+    rdfs:label "Book",
+        "Book"@en ;
+    rdfs:comment "A printed (or electronic) book that is part of an article collection."@en ;
+    rdfs:subClassOf ns1:Cl_ArticleCollection,
+        ns1:Cl_Publication .
+
+ns1:Cl_EvaluationStatement a owl:Class ;
+    rdfs:label "Evaluation Statement"@en ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty ns1:hasEvaluator ;
+                        owl:someValuesFrom ns1:Cl_Doctor ] [ a owl:Restriction ;
+                        owl:onProperty ns1:hasEvaluatee ;
+                        owl:someValuesFrom ns1:Cl_Employee ] [ a owl:Restriction ;
+                        owl:onProperty ns1:hasStatement ;
+                        owl:someValuesFrom xsd:string ] ) ] .
+
+ns1:Cl_Role a owl:Class ;
+    rdfs:label "Role"@en ;
+    rdfs:subClassOf ns1:Cl_Agent .
+
+ns1:Cl_UnionGroup a owl:Class ;
+    rdfs:label "Union Group"@en ;
+    rdfs:subClassOf ns1:Cl_Organization .
+
+ns1:Ospedale_Riunito_delle_Tre_Valli a ns1:Cl_Hospital ;
+    rdfs:label "Ospedale Riunito delle Tre Valli",
+        "Ospedale Riunito delle Tre Valli"@en ;
+    ns1:hasName "Ospedale Riunito delle Tre Valli" ;
+    ns1:locatedInCity ns1:Nocera_Inferiore .
+
+ns1:hasMember a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "has member"@en,
+        "has member (person)"@en ;
+    rdfs:domain ns1:Cl_UnionMembership ;
+    rdfs:range ns1:Cl_Person ;
+    rdfs:subPropertyOf ns1:membershipOfPerson .
+
+ns1:hasUnion a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "has union"@en,
+        "has union (organization)"@en ;
+    rdfs:domain ns1:Cl_UnionMembership ;
+    rdfs:range ns1:Cl_UnionGroup ;
+    rdfs:subPropertyOf ns1:membershipOfUnion .
+
+ns1:Cl_Country a owl:Class ;
+    rdfs:label "Country"@en ;
+    rdfs:subClassOf ns1:Cl_Location ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( ns1:Cl_Country [ a owl:Restriction ;
+                        owl:onProperty ns1:op_hasCity ;
+                        owl:someValuesFrom ns1:Cl_City ] ) ] .
+
+ns1:Cl_Employee a owl:Class ;
+    rdfs:label "Employee"@en ;
+    rdfs:subClassOf ns1:Cl_Person .
+
+ns1:Cl_Location a owl:Class ;
+    rdfs:label "Location"@en .
+
+ns1:Cl_Publication a owl:Class ;
+    rdfs:label "Publication"@en ;
+    rdfs:comment "A generic class for any published material such as books or CDs."@en .
+
+ns1:Cl_EmploymentEvent a owl:Class ;
+    rdfs:label "Employment Event" ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty ns1:hasEmployee ;
+                        owl:someValuesFrom ns1:Cl_Person ] [ a owl:Restriction ;
+                        owl:onProperty ns1:hasEmployer ;
+                        owl:someValuesFrom ns1:Cl_Hospital ] [ a owl:Restriction ;
+                        owl:onProperty ns1:startDate ;
+                        owl:someValuesFrom xsd:date ] ) ] .
+
+ns1:Cl_MedicalDegree a owl:Class ;
+    rdfs:label "Medical Degree"@en .
+
+ns1:Cl_PersonDegree a owl:Class ;
+    rdfs:label "Person‑Degree Association"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty ns1:heldBy ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty ns1:hasDegree ] ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( ns1:Cl_PersonDegree [ a owl:Restriction ;
+                        owl:onProperty ns1:hasDegree ;
+                        owl:someValuesFrom ns1:Cl_MedicalDegree ] [ a owl:Restriction ;
+                        owl:onProperty ns1:heldBy ;
+                        owl:someValuesFrom ns1:Cl_Person ] ) ] .
+
+ns1:Cl_SeminarOccurrence a owl:Class ;
+    rdfs:label "Seminar Occurrence"@en ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( ns1:Cl_SeminarOccurrence [ a owl:Restriction ;
+                        owl:cardinality "1"^^xsd:nonNegativeInteger ;
+                        owl:onProperty ns1:occurrenceOfSeminar ;
+                        owl:someValuesFrom ns1:Cl_Seminar ] [ a owl:Restriction ;
+                        owl:cardinality "1"^^xsd:nonNegativeInteger ;
+                        owl:onProperty ns1:occurrenceAtLocation ;
+                        owl:someValuesFrom ns1:Cl_Location ] ) ] .
+
+ns1:Cl_ArticleCollection a owl:Class ;
+    rdfs:label "Article Collection",
+        "Article Collection"@en ;
+    rdfs:comment "A collection of research articles, which may be available as a book or a CD."@en ;
+    rdfs:subClassOf ns1:Cl_Publication .
+
+ns1:Cl_ArticlePresentation a owl:Class ;
+    rdfs:label "Article Presentation" ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( ns1:Cl_ArticlePresentation [ a owl:Restriction ;
+                        owl:onProperty ns1:hasPresentedArticle ;
+                        owl:someValuesFrom ns1:Cl_Article ] [ a owl:Restriction ;
+                        owl:onProperty ns1:hasPresentationVenue ;
+                        owl:someValuesFrom ns1:Cl_Seminar ] ) ] .
+
+ns1:Cl_City a owl:Class ;
+    rdfs:label "City",
+        "City"@en ;
+    rdfs:subClassOf ns1:Cl_Location ;
+    owl:disjointWith ns1:Cl_Article,
+        ns1:Cl_Person,
+        ns1:Cl_Seminar,
+        ns1:Cl_Union ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( ns1:Cl_City [ a owl:Restriction ;
+                        owl:onProperty ns1:op_isLocatedInCountry ;
+                        owl:someValuesFrom ns1:Cl_Country ] ) ] .
+
+ns1:Cl_Hospital a owl:Class ;
+    rdfs:label "Hospital",
+        "Hospital"@en ;
+    rdfs:subClassOf ns1:Cl_Location ;
+    owl:disjointWith ns1:Cl_Article,
+        ns1:Cl_City,
+        ns1:Cl_Person,
+        ns1:Cl_Seminar,
+        ns1:Cl_Union .
+
+ns1:Cl_Union a owl:Class ;
+    rdfs:label "Union",
+        "Union"@en ;
+    owl:disjointWith ns1:Cl_Article,
+        ns1:Cl_Person,
+        ns1:Cl_Seminar ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( ns1:Cl_Union [ a owl:Restriction ;
+                        owl:onProperty ns1:hasUnionMembership ;
+                        owl:someValuesFrom ns1:Cl_UnionMembership ] ) ] .
+
+ns1:Cl_UnionMembership a owl:Class ;
+    rdfs:label "Union Membership"@en,
+        "Union Membership (temporal)"@en ;
+    rdfs:comment "Reified association that records which person holds which role in which union group and during which time interval."@en ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty ns1:hasMember ;
+                        owl:someValuesFrom ns1:Cl_Person ] [ a owl:Restriction ;
+                        owl:cardinality "1"^^xsd:nonNegativeInteger ;
+                        owl:onProperty ns1:hasMember ] [ a owl:Restriction ;
+                        owl:onProperty ns1:hasUnion ;
+                        owl:someValuesFrom ns1:Cl_UnionGroup ] [ a owl:Restriction ;
+                        owl:cardinality "1"^^xsd:nonNegativeInteger ;
+                        owl:onProperty ns1:hasUnion ] [ a owl:Restriction ;
+                        owl:onProperty ns1:hasRole ;
+                        owl:someValuesFrom ns1:Cl_Role ] [ a owl:Restriction ;
+                        owl:cardinality "1"^^xsd:nonNegativeInteger ;
+                        owl:onProperty ns1:hasRole ] [ a owl:Restriction ;
+                        owl:onProperty ns1:membershipStartDate ;
+                        owl:someValuesFrom xsd:date ] [ a owl:Restriction ;
+                        owl:cardinality "1"^^xsd:nonNegativeInteger ;
+                        owl:onProperty ns1:membershipStartDate ] ) ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty ns1:hasMember ;
+                        owl:someValuesFrom ns1:Cl_Person ] [ a owl:Restriction ;
+                        owl:onProperty ns1:hasUnion ;
+                        owl:someValuesFrom ns1:Cl_Union ] [ a owl:Restriction ;
+                        owl:onProperty ns1:membershipStartDate ;
+                        owl:someValuesFrom xsd:date ] ) ] .
+
+ns1:Cl_Article a owl:Class ;
+    rdfs:label "Article",
+        "Article"@en ;
+    rdfs:comment "A single research article contained in an article collection."@en .
+
+ns1:Cl_Seminar a owl:Class ;
+    rdfs:label "Seminar",
+        "Seminar"@en ;
+    rdfs:subClassOf ns1:Cl_Event ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( ns1:Cl_Seminar [ a owl:Restriction ;
+                        owl:onProperty ns1:hasOccurrence ;
+                        owl:someValuesFrom ns1:Cl_SeminarOccurrence ] ) ] .
+
+ns1:Cl_Person a owl:Class ;
+    rdfs:label "Person",
+        "Person"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty ns1:hasDegree ;
+            owl:someValuesFrom ns1:Cl_MedicalDegree ],
+        [ a owl:Restriction ;
+            owl:onProperty ns1:hasMembership ;
+            owl:someValuesFrom ns1:Cl_UnionMembership ],
+        ns1:Cl_Agent ;
+    owl:disjointWith ns1:Cl_Article,
+        ns1:Cl_Seminar,
+        ns1:Cl_Union .
+
