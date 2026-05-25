@@ -17,6 +17,7 @@ from metrics import parseability as parseability_metric
 from metrics import shacl_validation as shacl_validation_metric
 from metrics import structural_constraints as structural_constraints_metric
 from metrics import unit_tests as unit_tests_metric
+from metrics import vocabulary_profile_similarity as vocabulary_profile_metric
 from metrics import yang_complexity as yang_complexity_metric
 from metrics.maedche_staab_similarity import run_maedche_staab_evaluation
 
@@ -31,6 +32,19 @@ ONTOLOGIES = {
     "ref_ontology_1": "data/ontologies/music-ref.rdfs",
     "ref_ontology_2": "data/ontologies/hospital-ref.owl",
 }
+
+DOMAIN_STORY_COMPARISONS = [
+    {
+        "comparison": "music_final_vs_music_story",
+        "ontology_key": "ontology_1",
+        "story_path": "data/domain story/music-story.txt",
+    },
+    {
+        "comparison": "hospital_final_vs_hospital_story",
+        "ontology_key": "ontology_2",
+        "story_path": "data/domain story/hospital-story.txt",
+    },
+]
 
 RDF_FORMATS = {
     ".ttl": "turtle",
@@ -60,6 +74,8 @@ METHODS = [
     ("ext_vocab", "External Vocabulary Usage Rate", 13, external_vocab_metric.method_external_vocab),
     ("literals", "Syntactic Validity of Typed Literals", 14, literal_validation_metric.method_literal_validation),
 ]
+
+VOCABULARY_PROFILE_METHOD_NAME = "Vocabulary-profile similarity to source text"
 
 
 def wrap_method(result, name, number=None):
@@ -120,9 +136,44 @@ def write_metric_outputs(results_by_metric):
     literal_validation_metric.write_literal_validation_outputs(results_by_metric["literals"], Path("results") / "literal_validation")
 
 
+def run_vocabulary_profile_story_comparisons(loaded_ontologies=None):
+    loaded_ontologies = loaded_ontologies or {
+        label: load_ontology(path)
+        for label, path in ONTOLOGIES.items()
+        if label in {comparison["ontology_key"] for comparison in DOMAIN_STORY_COMPARISONS}
+    }
+    results = []
+    for comparison in DOMAIN_STORY_COMPARISONS:
+        label = comparison["ontology_key"]
+        comparison_name = comparison["comparison"]
+        story_path = comparison["story_path"]
+        print(f"\n{SEP}")
+        print(f"VOCABULARY-PROFILE SIMILARITY TO SOURCE TEXT [{comparison_name}]")
+        print(SEP)
+        result = vocabulary_profile_metric.compute_vocabulary_profile_similarity(
+            loaded_ontologies[label],
+            comparison_name,
+            story_path,
+        )
+        result["summary"]["ontology_key"] = label
+        summary = result["summary"]
+        print(f"  Story: {story_path}")
+        print(f"  Cosine similarity: {summary.get('cosine_similarity', 0):.4f}")
+        print(f"  Weighted precision: {summary.get('weighted_precision_ontology_terms_in_source', 0):.4f}")
+        print(f"  Weighted recall: {summary.get('weighted_recall_source_terms_in_ontology', 0):.4f}")
+        print(f"  Weighted F1: {summary.get('weighted_f1', 0):.4f}")
+        results.append(result)
+    vocabulary_profile_metric.write_vocabulary_profile_outputs(
+        results,
+        Path("results") / "vocabulary_profile_similarity",
+    )
+    return results
+
+
 def run_default_evaluation():
     all_results = {}
     results_by_metric = {key: {} for key, *_ in METHODS}
+    loaded_ontologies = {}
 
     for ont_label, ont_path in ONTOLOGIES.items():
         print(f"\n\n{'#' * 72}")
@@ -131,6 +182,7 @@ def run_default_evaluation():
         print(f"{'#' * 72}")
 
         ontology = load_ontology(ont_path)
+        loaded_ontologies[ont_label] = ontology
         ontology_results = {}
         for key, method_name, method_number, function in METHODS:
             result = function(ontology, ont_label)
@@ -144,6 +196,16 @@ def run_default_evaluation():
         json.dump(all_results, f, indent=2, default=str)
 
     write_metric_outputs(results_by_metric)
+    vocabulary_profile_results = run_vocabulary_profile_story_comparisons(loaded_ontologies)
+    for result in vocabulary_profile_results:
+        label = result["summary"]["ontology"]
+        all_results[label]["vocabulary_profile_similarity"] = wrap_method(
+            result["summary"],
+            VOCABULARY_PROFILE_METHOD_NAME,
+            31,
+        )
+    with open(results_path, "w", encoding="utf-8") as f:
+        json.dump(all_results, f, indent=2, default=str)
     print(f"\n\nResults saved to {results_path}")
     print("Per-metric CSV outputs saved to results/<metric_name>/")
 
@@ -162,6 +224,11 @@ def parse_args():
         action="store_true",
         help="Run music-final vs music-ref and hospital-final vs hospital-ref.",
     )
+    parser.add_argument(
+        "--vocabulary-profile-stories",
+        action="store_true",
+        help="Run M31 vocabulary-profile similarity for final ontologies against domain stories.",
+    )
     return parser.parse_args()
 
 
@@ -169,6 +236,8 @@ def main():
     args = parse_args()
     if args.maedche_references:
         run_maedche_reference_comparisons()
+    elif args.vocabulary_profile_stories:
+        run_vocabulary_profile_story_comparisons()
     elif args.generated_ontology or args.reference_ontology:
         if not args.generated_ontology or not args.reference_ontology:
             raise SystemExit("Use both --generated-ontology and --reference-ontology.")

@@ -1,473 +1,473 @@
 ontology,desc,expected,got,status
-ontology_1,Cl_Album subClassOf Cl_Entity,True,True,PASS
-ontology_1,Cl_CriticRecordStatement subClassOf Cl_Statement,True,True,PASS
-ontology_1,Cl_Musician subClassOf Cl_Person,True,True,PASS
 ontology_1,Cl_Record subClassOf Cl_Entity,True,True,PASS
-ontology_1,Cl_Band subClassOf Cl_Entity,True,True,PASS
-ontology_1,Cl_Song subClassOf Cl_Entity,True,True,PASS
 ontology_1,Cl_Musician subClassOf Cl_Artist,True,True,PASS
-ontology_1,Cl_Person subClassOf Cl_Artist,True,True,PASS
 ontology_1,Cl_Band subClassOf Cl_Artist,True,True,PASS
-ontology_1,Cl_CompositionEvent subClassOf Cl_Entity,True,True,PASS
-ontology_1,Cl_Critic subClassOf Cl_Entity,True,True,PASS
+ontology_1,Cl_Musician subClassOf Cl_Person,True,True,PASS
+ontology_1,Cl_Song subClassOf Cl_Entity,True,True,PASS
+ontology_1,Cl_CriticRecordStatement subClassOf Cl_Statement,True,True,PASS
+ontology_1,Cl_Album subClassOf Cl_Entity,True,True,PASS
 ontology_1,Cl_Person subClassOf Cl_Entity,True,True,PASS
 ontology_1,Cl_Statement subClassOf Cl_Entity,True,True,PASS
+ontology_1,Cl_Person subClassOf Cl_Artist,True,True,PASS
+ontology_1,Cl_Band subClassOf Cl_Entity,True,True,PASS
+ontology_1,Cl_CompositionEvent subClassOf Cl_Entity,True,True,PASS
+ontology_1,Cl_Critic subClassOf Cl_Entity,True,True,PASS
 ontology_1,Cl_Song disjointWith Cl_CompositionEvent,True,True,PASS
 ontology_1,Cl_Person disjointWith Cl_CompositionEvent,True,True,PASS
 ontology_1,Cl_Album disjointWith Cl_CompositionEvent,True,True,PASS
-ontology_1,trackOfAlbum domain = Cl_Track,True,True,PASS
-ontology_1,trackOfAlbum range = Cl_Album,True,True,PASS
-ontology_1,containsSong domain = Cl_Album,True,True,PASS
-ontology_1,containsSong range = Cl_Song,True,True,PASS
-ontology_1,composesSong domain = Cl_CompositionEvent,True,True,PASS
-ontology_1,composesSong range = Cl_Song,True,True,PASS
-ontology_1,reviewedBy domain = Cl_Album,True,True,PASS
-ontology_1,reviewedBy range = Cl_Critic,True,True,PASS
-ontology_1,recordedDuring domain = Cl_Album,True,True,PASS
-ontology_1,recordedDuring range = Cl_Event,True,True,PASS
-ontology_1,hasCritic domain = Cl_CriticRecordStatement,True,True,PASS
-ontology_1,hasCritic range = Cl_Critic,True,True,PASS
-ontology_1,performs domain = Cl_Band,True,True,PASS
-ontology_1,performs range = Cl_Performance,True,True,PASS
-ontology_1,memberOf domain = Cl_Artist,True,True,PASS
-ontology_1,memberOf domain = Cl_Musician,True,True,PASS
-ontology_1,memberOf domain = Cl_Person,True,True,PASS
-ontology_1,memberOf range = Cl_Band,True,True,PASS
-ontology_1,playsInstrument domain = Cl_Musician,True,True,PASS
-ontology_1,playsInstrument range = Cl_Instrument,True,True,PASS
 ontology_1,hasTimeInterval domain = Cl_Membership,True,True,PASS
 ontology_1,hasTimeInterval range = Cl_TimeInterval,True,True,PASS
-ontology_1,performedSong domain = Cl_Performance,True,True,PASS
-ontology_1,performedSong range = Cl_Track,True,True,PASS
+ontology_1,hasTrack domain = Cl_Album,True,True,PASS
+ontology_1,hasTrack domain = Cl_Record,True,True,PASS
+ontology_1,hasTrack range = Cl_Track,True,True,PASS
+ontology_1,locatedIn domain = Cl_City,True,True,PASS
+ontology_1,locatedIn range = Cl_Region,True,True,PASS
+ontology_1,performanceOfBand domain = Cl_Performance,True,True,PASS
+ontology_1,performanceOfBand range = Cl_Band,True,True,PASS
+ontology_1,playsInstrument domain = Cl_Musician,True,True,PASS
+ontology_1,playsInstrument range = Cl_Instrument,True,True,PASS
+ontology_1,hasRole domain = Cl_Membership,True,True,PASS
+ontology_1,hasRole range = Cl_Role,True,True,PASS
+ontology_1,isTrackOf domain = Cl_Track,True,True,PASS
+ontology_1,isTrackOf range = Cl_Album,True,True,PASS
+ontology_1,reviewedBy domain = Cl_Album,True,True,PASS
+ontology_1,reviewedBy range = Cl_Critic,True,True,PASS
 ontology_1,hasMember domain = Cl_Band,True,True,PASS
 ontology_1,hasMember domain = Cl_BandMembership,True,True,PASS
 ontology_1,hasMember domain = Cl_Membership,True,True,PASS
 ontology_1,hasMember range = Cl_Artist,True,True,PASS
 ontology_1,hasMember range = Cl_Musician,True,True,PASS
 ontology_1,hasMember range = Cl_Person,True,True,PASS
-ontology_1,hasSong domain = Cl_SongInPerformance,True,True,PASS
-ontology_1,hasSong range = Cl_Track,True,True,PASS
-ontology_1,recordedAlbum domain = Cl_AlbumRecording,True,True,PASS
-ontology_1,recordedAlbum range = Cl_Album,True,True,PASS
-ontology_1,isTrackOf domain = Cl_Track,True,True,PASS
-ontology_1,isTrackOf range = Cl_Album,True,True,PASS
-ontology_1,hasBand domain = Cl_Membership,True,True,PASS
-ontology_1,hasBand range = Cl_Band,True,True,PASS
-ontology_1,performedAt domain = Cl_Performance,True,True,PASS
-ontology_1,performedAt range = string,True,True,PASS
 ontology_1,hasCompositionEvent domain = Cl_Song,True,True,PASS
 ontology_1,hasCompositionEvent range = Cl_CompositionEvent,True,True,PASS
-ontology_1,hasRecordingEvent domain = Cl_Album,True,True,PASS
-ontology_1,hasRecordingEvent range = Cl_AlbumRecording,True,True,PASS
-ontology_1,hasLocation domain = Cl_Performance,True,True,PASS
-ontology_1,hasLocation range = Cl_Location,True,True,PASS
+ontology_1,hasState domain = Cl_City,True,True,PASS
+ontology_1,hasState range = Cl_Region,True,True,PASS
+ontology_1,membershipOfBand domain = Cl_BandMembership,True,True,PASS
+ontology_1,membershipOfBand range = Cl_Band,True,True,PASS
+ontology_1,performs domain = Cl_Band,True,True,PASS
+ontology_1,performs range = Cl_Performance,True,True,PASS
+ontology_1,memberOf domain = Cl_Artist,True,True,PASS
+ontology_1,memberOf domain = Cl_Musician,True,True,PASS
+ontology_1,memberOf domain = Cl_Person,True,True,PASS
+ontology_1,memberOf range = Cl_Band,True,True,PASS
+ontology_1,performedSong domain = Cl_Performance,True,True,PASS
+ontology_1,performedSong range = Cl_Track,True,True,PASS
+ontology_1,hasBand domain = Cl_Membership,True,True,PASS
+ontology_1,hasBand range = Cl_Band,True,True,PASS
+ontology_1,recordedDuring domain = Cl_Album,True,True,PASS
+ontology_1,recordedDuring range = Cl_Event,True,True,PASS
+ontology_1,performedAt domain = Cl_Performance,True,True,PASS
+ontology_1,performedAt range = string,True,True,PASS
+ontology_1,hasRecord domain = Cl_CriticRecordStatement,True,True,PASS
+ontology_1,hasRecord range = Cl_Record,True,True,PASS
 ontology_1,performedIn domain = Cl_Track,True,True,PASS
 ontology_1,performedIn range = Cl_Performance,True,True,PASS
 ontology_1,trackOf domain = Cl_Track,True,True,PASS
 ontology_1,trackOf range = Cl_Album,True,True,PASS
-ontology_1,hasRecord domain = Cl_CriticRecordStatement,True,True,PASS
-ontology_1,hasRecord range = Cl_Record,True,True,PASS
-ontology_1,membershipOfBand domain = Cl_BandMembership,True,True,PASS
-ontology_1,membershipOfBand range = Cl_Band,True,True,PASS
-ontology_1,locatedIn domain = Cl_City,True,True,PASS
-ontology_1,locatedIn range = Cl_Region,True,True,PASS
+ontology_1,recordedAlbum domain = Cl_AlbumRecording,True,True,PASS
+ontology_1,recordedAlbum range = Cl_Album,True,True,PASS
 ontology_1,hasPerformance domain = Cl_Band,True,True,PASS
 ontology_1,hasPerformance domain = Cl_SongInPerformance,True,True,PASS
 ontology_1,hasPerformance range = Cl_Performance,True,True,PASS
-ontology_1,hasRole domain = Cl_Membership,True,True,PASS
-ontology_1,hasRole range = Cl_Role,True,True,PASS
-ontology_1,performanceOfBand domain = Cl_Performance,True,True,PASS
-ontology_1,performanceOfBand range = Cl_Band,True,True,PASS
-ontology_1,memberOfMembership domain = Cl_Musician,True,True,PASS
-ontology_1,memberOfMembership range = Cl_BandMembership,True,True,PASS
-ontology_1,performedTrack domain = Cl_Performance,True,True,PASS
-ontology_1,performedTrack range = Cl_Track,True,True,PASS
-ontology_1,hasMembership domain = Cl_Band,True,True,PASS
-ontology_1,hasMembership range = Cl_BandMembership,True,True,PASS
+ontology_1,hasLocation domain = Cl_Performance,True,True,PASS
+ontology_1,hasLocation range = Cl_Location,True,True,PASS
+ontology_1,composesSong domain = Cl_CompositionEvent,True,True,PASS
+ontology_1,composesSong range = Cl_Song,True,True,PASS
+ontology_1,trackOfAlbum domain = Cl_Track,True,True,PASS
+ontology_1,trackOfAlbum range = Cl_Album,True,True,PASS
+ontology_1,hasCritic domain = Cl_CriticRecordStatement,True,True,PASS
+ontology_1,hasCritic range = Cl_Critic,True,True,PASS
+ontology_1,hasRecordingEvent domain = Cl_Album,True,True,PASS
+ontology_1,hasRecordingEvent range = Cl_AlbumRecording,True,True,PASS
 ontology_1,hasAlbum domain = Cl_Band,True,True,PASS
 ontology_1,hasAlbum range = Cl_Album,True,True,PASS
-ontology_1,hasState domain = Cl_City,True,True,PASS
-ontology_1,hasState range = Cl_Region,True,True,PASS
-ontology_1,hasTrack domain = Cl_Album,True,True,PASS
-ontology_1,hasTrack domain = Cl_Record,True,True,PASS
-ontology_1,hasTrack range = Cl_Track,True,True,PASS
+ontology_1,hasSong domain = Cl_SongInPerformance,True,True,PASS
+ontology_1,hasSong range = Cl_Track,True,True,PASS
+ontology_1,performedTrack domain = Cl_Performance,True,True,PASS
+ontology_1,performedTrack range = Cl_Track,True,True,PASS
 ontology_1,performedBy domain = Cl_Album,True,True,PASS
 ontology_1,performedBy domain = Cl_Performance,True,True,PASS
 ontology_1,performedBy range = Cl_Artist,True,True,PASS
 ontology_1,performedBy range = Cl_Band,True,True,PASS
+ontology_1,memberOfMembership domain = Cl_Musician,True,True,PASS
+ontology_1,memberOfMembership range = Cl_BandMembership,True,True,PASS
+ontology_1,containsSong domain = Cl_Album,True,True,PASS
+ontology_1,containsSong range = Cl_Song,True,True,PASS
+ontology_1,hasMembership domain = Cl_Band,True,True,PASS
+ontology_1,hasMembership range = Cl_BandMembership,True,True,PASS
 ontology_1,hasMembership inverseOf membershipOfBand,True,True,PASS
-ontology_1,NEGATIVE: Cl_BandMembership NOT subClassOf Cl_Instrument,False,False,PASS
-ontology_1,NEGATIVE: Cl_BandMembership NOT subClassOf Cl_Musician,False,False,PASS
-ontology_2,Cl_Role subClassOf Cl_Agent,True,True,PASS
-ontology_2,Cl_Hospital subClassOf Cl_Location,True,True,PASS
+ontology_1,NEGATIVE: Cl_City NOT subClassOf Cl_Location,False,False,PASS
+ontology_1,NEGATIVE: Cl_City NOT subClassOf Cl_Track,False,False,PASS
 ontology_2,Cl_Nurse subClassOf Cl_Person,True,True,PASS
-ontology_2,Cl_Seminar subClassOf Cl_Event,True,True,PASS
-ontology_2,Cl_CertifiedNurseDegree subClassOf Cl_MedicalDegree,True,True,PASS
-ontology_2,Cl_UnionGroup subClassOf Cl_Organization,True,True,PASS
-ontology_2,Cl_NursingAssistantDegree subClassOf Cl_MedicalDegree,True,True,PASS
+ontology_2,Cl_Employee subClassOf Cl_Person,True,True,PASS
+ontology_2,Cl_Person subClassOf Cl_Agent,True,True,PASS
+ontology_2,Cl_City subClassOf Cl_Location,True,True,PASS
 ontology_2,Cl_UnionRepresentative subClassOf Cl_Person,True,True,PASS
-ontology_2,Cl_CD subClassOf Cl_ArticleCollection,True,True,PASS
+ontology_2,Cl_Seminar subClassOf Cl_Event,True,True,PASS
+ontology_2,Cl_Country subClassOf Cl_Location,True,True,PASS
 ontology_2,Cl_Doctor subClassOf Cl_Person,True,True,PASS
 ontology_2,Cl_Nurse subClassOf Cl_Employee,True,True,PASS
+ontology_2,Cl_CertifiedNurseDegree subClassOf Cl_MedicalDegree,True,True,PASS
 ontology_2,Cl_Book subClassOf Cl_ArticleCollection,True,True,PASS
-ontology_2,Cl_Country subClassOf Cl_Location,True,True,PASS
-ontology_2,Cl_City subClassOf Cl_Location,True,True,PASS
-ontology_2,Cl_CD subClassOf Cl_Publication,True,True,PASS
+ontology_2,Cl_UnionGroup subClassOf Cl_Organization,True,True,PASS
 ontology_2,Cl_Doctor subClassOf Cl_Employee,True,True,PASS
-ontology_2,Cl_Person subClassOf Cl_Agent,True,True,PASS
-ontology_2,Cl_Employee subClassOf Cl_Person,True,True,PASS
-ontology_2,Cl_ArticleCollection subClassOf Cl_Publication,True,True,PASS
 ontology_2,Cl_Book subClassOf Cl_Publication,True,True,PASS
+ontology_2,Cl_CD subClassOf Cl_ArticleCollection,True,True,PASS
+ontology_2,Cl_Role subClassOf Cl_Agent,True,True,PASS
+ontology_2,Cl_Hospital subClassOf Cl_Location,True,True,PASS
+ontology_2,Cl_ArticleCollection subClassOf Cl_Publication,True,True,PASS
+ontology_2,Cl_NursingAssistantDegree subClassOf Cl_MedicalDegree,True,True,PASS
+ontology_2,Cl_CD subClassOf Cl_Publication,True,True,PASS
 ontology_2,Cl_Doctor disjointWith Cl_Employee,True,True,PASS
 ontology_2,Cl_City disjointWith Cl_Article,True,True,PASS
 ontology_2,Cl_Hospital disjointWith Cl_Article,True,True,PASS
-ontology_2,presentedAtSeminar domain = Cl_Article,True,True,PASS
-ontology_2,presentedAtSeminar range = Cl_Seminar,True,True,PASS
-ontology_2,isPresentedIn domain = Cl_Article,True,True,PASS
-ontology_2,isPresentedIn range = Cl_ArticlePresentation,True,True,PASS
-ontology_2,op_hasCity domain = Cl_Country,True,True,PASS
-ontology_2,op_hasCity range = Cl_City,True,True,PASS
-ontology_2,locatedInCity domain = Cl_Hospital,True,True,PASS
-ontology_2,locatedInCity range = Cl_City,True,True,PASS
-ontology_2,hasUnionMembership domain = Cl_Union,True,True,PASS
-ontology_2,hasUnionMembership range = Cl_UnionMembership,True,True,PASS
-ontology_2,storedInLibrary domain = Cl_Evaluation,True,True,PASS
-ontology_2,storedInLibrary range = Cl_Library,True,True,PASS
+ontology_2,awardedBy domain = Cl_PersonDegree,True,True,PASS
+ontology_2,awardedBy range = Cl_Institution,True,True,PASS
 ontology_2,hasArticle domain = Cl_ArticleCollection,True,True,PASS
 ontology_2,hasArticle range = Cl_Article,True,True,PASS
-ontology_2,containsArticle domain = Cl_ArticleCollection,True,True,PASS
-ontology_2,containsArticle range = Cl_Article,True,True,PASS
-ontology_2,hasPresentedArticle domain = Cl_ArticlePresentation,True,True,PASS
-ontology_2,hasPresentedArticle range = Cl_Article,True,True,PASS
-ontology_2,hasEvaluator domain = Cl_EvaluationStatement,True,True,PASS
-ontology_2,hasEvaluator range = Cl_Doctor,True,True,PASS
-ontology_2,hasVersion domain = Cl_ArticleCollection,True,True,PASS
-ontology_2,hasVersion range = Cl_Publication,True,True,PASS
-ontology_2,degreeOf domain = Cl_MedicalDegree,True,True,PASS
-ontology_2,degreeOf range = Cl_Person,True,True,PASS
-ontology_2,hasPresentation domain = Cl_Seminar,True,True,PASS
-ontology_2,hasPresentation range = Cl_ArticlePresentation,True,True,PASS
-ontology_2,hasPresentationVenue domain = Cl_ArticlePresentation,True,True,PASS
-ontology_2,hasPresentationVenue range = Cl_Seminar,True,True,PASS
-ontology_2,hasUnion domain = Cl_UnionMembership,True,True,PASS
-ontology_2,hasUnion range = Cl_UnionGroup,True,True,PASS
+ontology_2,isMemberOf domain = Cl_Person,True,True,PASS
+ontology_2,isMemberOf range = Cl_UnionMembership,True,True,PASS
+ontology_2,hasEmployer domain = Cl_EmploymentEvent,True,True,PASS
+ontology_2,hasEmployer range = Cl_Hospital,True,True,PASS
 ontology_2,hasRole domain = Cl_UnionMembership,True,True,PASS
 ontology_2,hasRole range = Cl_Role,True,True,PASS
+ontology_2,holdsDegreeAssociation domain = Cl_Person,True,True,PASS
+ontology_2,holdsDegreeAssociation range = Cl_PersonDegree,True,True,PASS
+ontology_2,hasMember domain = Cl_UnionMembership,True,True,PASS
+ontology_2,hasMember range = Cl_Person,True,True,PASS
+ontology_2,hasPresentation domain = Cl_Seminar,True,True,PASS
+ontology_2,hasPresentation range = Cl_ArticlePresentation,True,True,PASS
+ontology_2,isEmployerOf domain = Cl_Hospital,True,True,PASS
+ontology_2,isEmployerOf range = Cl_EmploymentEvent,True,True,PASS
+ontology_2,isUnionOf domain = Cl_UnionGroup,True,True,PASS
+ontology_2,isUnionOf range = Cl_UnionMembership,True,True,PASS
+ontology_2,heldAtHospital domain = Cl_Seminar,True,True,PASS
+ontology_2,heldAtHospital range = Cl_Hospital,True,True,PASS
+ontology_2,isPresentedIn domain = Cl_Article,True,True,PASS
+ontology_2,isPresentedIn range = Cl_ArticlePresentation,True,True,PASS
+ontology_2,op_isLocatedInCountry domain = Cl_City,True,True,PASS
+ontology_2,op_isLocatedInCountry range = Cl_Country,True,True,PASS
+ontology_2,presentedAtSeminar domain = Cl_Article,True,True,PASS
+ontology_2,presentedAtSeminar range = Cl_Seminar,True,True,PASS
+ontology_2,heldBy domain = Cl_PersonDegree,True,True,PASS
+ontology_2,heldBy range = Cl_Person,True,True,PASS
+ontology_2,containsArticle domain = Cl_ArticleCollection,True,True,PASS
+ontology_2,containsArticle range = Cl_Article,True,True,PASS
+ontology_2,isEmployeeOf domain = Cl_Person,True,True,PASS
+ontology_2,isEmployeeOf range = Cl_EmploymentEvent,True,True,PASS
 ontology_2,op_heldAt domain = Cl_Seminar,True,True,PASS
 ontology_2,op_heldAt range = Cl_Hospital,True,True,PASS
+ontology_2,hasArticleCollection domain = Cl_Article,True,True,PASS
+ontology_2,hasArticleCollection range = Cl_ArticleCollection,True,True,PASS
+ontology_2,hasMembership domain = Cl_Person,True,True,PASS
+ontology_2,hasMembership range = Cl_UnionMembership,True,True,PASS
+ontology_2,occurrenceOfSeminar domain = Cl_SeminarOccurrence,True,True,PASS
+ontology_2,occurrenceOfSeminar range = Cl_Seminar,True,True,PASS
+ontology_2,hasPresentedArticle domain = Cl_ArticlePresentation,True,True,PASS
+ontology_2,hasPresentedArticle range = Cl_Article,True,True,PASS
+ontology_2,hasPresentationVenue domain = Cl_ArticlePresentation,True,True,PASS
+ontology_2,hasPresentationVenue range = Cl_Seminar,True,True,PASS
+ontology_2,hasOccurrence domain = Cl_Seminar,True,True,PASS
+ontology_2,hasOccurrence range = Cl_SeminarOccurrence,True,True,PASS
 ontology_2,hasEmployee domain = Cl_EmploymentEvent,True,True,PASS
 ontology_2,hasEmployee domain = Cl_Hospital,True,True,PASS
 ontology_2,hasEmployee range = Cl_Person,True,True,PASS
-ontology_2,hasArticleCollection domain = Cl_Article,True,True,PASS
-ontology_2,hasArticleCollection range = Cl_ArticleCollection,True,True,PASS
-ontology_2,hasDegree domain = Cl_Person,True,True,PASS
-ontology_2,hasDegree domain = Cl_PersonDegree,True,True,PASS
-ontology_2,hasDegree range = Cl_MedicalDegree,True,True,PASS
-ontology_2,presentedBy domain = Cl_ArticlePresentation,True,True,PASS
-ontology_2,presentedBy range = Cl_Person,True,True,PASS
-ontology_2,occurrenceOfSeminar domain = Cl_SeminarOccurrence,True,True,PASS
-ontology_2,occurrenceOfSeminar range = Cl_Seminar,True,True,PASS
-ontology_2,memberOfUnion domain = Cl_Person,True,True,PASS
-ontology_2,memberOfUnion range = Cl_Union,True,True,PASS
-ontology_2,heldAtHospital domain = Cl_Seminar,True,True,PASS
-ontology_2,heldAtHospital range = Cl_Hospital,True,True,PASS
-ontology_2,hasMember domain = Cl_UnionMembership,True,True,PASS
-ontology_2,hasMember range = Cl_Person,True,True,PASS
-ontology_2,op_isLocatedInCountry domain = Cl_City,True,True,PASS
-ontology_2,op_isLocatedInCountry range = Cl_Country,True,True,PASS
+ontology_2,op_hasCity domain = Cl_Country,True,True,PASS
+ontology_2,op_hasCity range = Cl_City,True,True,PASS
 ontology_2,occurrenceAtLocation domain = Cl_SeminarOccurrence,True,True,PASS
 ontology_2,occurrenceAtLocation range = Cl_Location,True,True,PASS
 ontology_2,representsUnion domain = Cl_UnionRepresentative,True,True,PASS
 ontology_2,representsUnion range = Cl_Union,True,True,PASS
-ontology_2,isMemberOf domain = Cl_Person,True,True,PASS
-ontology_2,isMemberOf range = Cl_UnionMembership,True,True,PASS
-ontology_2,isEmployerOf domain = Cl_Hospital,True,True,PASS
-ontology_2,isEmployerOf range = Cl_EmploymentEvent,True,True,PASS
-ontology_2,hasEmployer domain = Cl_EmploymentEvent,True,True,PASS
-ontology_2,hasEmployer range = Cl_Hospital,True,True,PASS
-ontology_2,hasMembership domain = Cl_Person,True,True,PASS
-ontology_2,hasMembership range = Cl_UnionMembership,True,True,PASS
-ontology_2,presentedPresentation domain = Cl_Person,True,True,PASS
-ontology_2,presentedPresentation range = Cl_ArticlePresentation,True,True,PASS
-ontology_2,heldBy domain = Cl_PersonDegree,True,True,PASS
-ontology_2,heldBy range = Cl_Person,True,True,PASS
-ontology_2,hasEvaluatee domain = Cl_EvaluationStatement,True,True,PASS
-ontology_2,hasEvaluatee range = Cl_Employee,True,True,PASS
-ontology_2,isUnionOf domain = Cl_UnionGroup,True,True,PASS
-ontology_2,isUnionOf range = Cl_UnionMembership,True,True,PASS
-ontology_2,awardedBy domain = Cl_PersonDegree,True,True,PASS
-ontology_2,awardedBy range = Cl_Institution,True,True,PASS
-ontology_2,isEmployeeOf domain = Cl_Person,True,True,PASS
-ontology_2,isEmployeeOf range = Cl_EmploymentEvent,True,True,PASS
-ontology_2,hasOccurrence domain = Cl_Seminar,True,True,PASS
-ontology_2,hasOccurrence range = Cl_SeminarOccurrence,True,True,PASS
-ontology_2,membershipOfPerson domain = Cl_UnionMembership,True,True,PASS
-ontology_2,membershipOfPerson range = Cl_Person,True,True,PASS
-ontology_2,isRoleOf domain = Cl_Role,True,True,PASS
-ontology_2,isRoleOf range = Cl_UnionMembership,True,True,PASS
-ontology_2,evaluates domain = Cl_Doctor,True,True,PASS
-ontology_2,evaluates range = Cl_Person,True,True,PASS
+ontology_2,degreeOf domain = Cl_MedicalDegree,True,True,PASS
+ontology_2,degreeOf range = Cl_Person,True,True,PASS
 ontology_2,employedAt domain = Cl_Person,True,True,PASS
 ontology_2,employedAt range = Cl_Hospital,True,True,PASS
+ontology_2,hasVersion domain = Cl_ArticleCollection,True,True,PASS
+ontology_2,hasVersion range = Cl_Publication,True,True,PASS
+ontology_2,presentedPresentation domain = Cl_Person,True,True,PASS
+ontology_2,presentedPresentation range = Cl_ArticlePresentation,True,True,PASS
+ontology_2,memberOfUnion domain = Cl_Person,True,True,PASS
+ontology_2,memberOfUnion range = Cl_Union,True,True,PASS
+ontology_2,locatedInCity domain = Cl_Hospital,True,True,PASS
+ontology_2,locatedInCity range = Cl_City,True,True,PASS
+ontology_2,hasEvaluator domain = Cl_EvaluationStatement,True,True,PASS
+ontology_2,hasEvaluator range = Cl_Doctor,True,True,PASS
+ontology_2,storedInLibrary domain = Cl_Evaluation,True,True,PASS
+ontology_2,storedInLibrary range = Cl_Library,True,True,PASS
+ontology_2,hasUnionMembership domain = Cl_Union,True,True,PASS
+ontology_2,hasUnionMembership range = Cl_UnionMembership,True,True,PASS
+ontology_2,presentedBy domain = Cl_ArticlePresentation,True,True,PASS
+ontology_2,presentedBy range = Cl_Person,True,True,PASS
+ontology_2,membershipOfPerson domain = Cl_UnionMembership,True,True,PASS
+ontology_2,membershipOfPerson range = Cl_Person,True,True,PASS
+ontology_2,evaluates domain = Cl_Doctor,True,True,PASS
+ontology_2,evaluates range = Cl_Person,True,True,PASS
+ontology_2,hasUnion domain = Cl_UnionMembership,True,True,PASS
+ontology_2,hasUnion range = Cl_UnionGroup,True,True,PASS
 ontology_2,membershipOfUnion domain = Cl_UnionMembership,True,True,PASS
 ontology_2,membershipOfUnion range = Cl_Union,True,True,PASS
-ontology_2,holdsDegreeAssociation domain = Cl_Person,True,True,PASS
-ontology_2,holdsDegreeAssociation range = Cl_PersonDegree,True,True,PASS
+ontology_2,isRoleOf domain = Cl_Role,True,True,PASS
+ontology_2,isRoleOf range = Cl_UnionMembership,True,True,PASS
+ontology_2,hasEvaluatee domain = Cl_EvaluationStatement,True,True,PASS
+ontology_2,hasEvaluatee range = Cl_Employee,True,True,PASS
+ontology_2,hasDegree domain = Cl_Person,True,True,PASS
+ontology_2,hasDegree domain = Cl_PersonDegree,True,True,PASS
+ontology_2,hasDegree range = Cl_MedicalDegree,True,True,PASS
 ontology_2,employedAt inverseOf hasEmployee,True,True,PASS
-ontology_2,NEGATIVE: Cl_UnionGroup NOT subClassOf Cl_UnionRepresentative,False,False,PASS
-ontology_2,NEGATIVE: Cl_UnionGroup NOT subClassOf Cl_ArticleCollection,False,False,PASS
-ref_ontology_1,PublishedScore subClassOf MusicalManifestation,True,True,PASS
-ref_ontology_1,Composer subClassOf Agent,True,True,PASS
-ref_ontology_1,AnalogSignal subClassOf Signal,True,True,PASS
-ref_ontology_1,MusicGroup subClassOf MusicArtist,True,True,PASS
-ref_ontology_1,Show subClassOf Event,True,True,PASS
-ref_ontology_1,DAT subClassOf Medium,True,True,PASS
-ref_ontology_1,Score subClassOf MusicalExpression,True,True,PASS
-ref_ontology_1,AudioFile subClassOf Document,True,True,PASS
-ref_ontology_1,Orchestration subClassOf Arrangement,True,True,PASS
-ref_ontology_1,ReleaseEvent subClassOf Event,True,True,PASS
-ref_ontology_1,DigitalSignal subClassOf Signal,True,True,PASS
-ref_ontology_1,SoloMusicArtist subClassOf Person,True,True,PASS
-ref_ontology_1,Conductor subClassOf Agent,True,True,PASS
-ref_ontology_1,SoloMusicArtist subClassOf MusicArtist,True,True,PASS
-ref_ontology_1,Torrent subClassOf Medium,True,True,PASS
-ref_ontology_1,Composition subClassOf Event,True,True,PASS
+ontology_2,NEGATIVE: Cl_UnionGroup NOT subClassOf Cl_PersonDegree,False,False,PASS
+ontology_2,NEGATIVE: Cl_UnionGroup NOT subClassOf Cl_EmploymentEvent,False,False,PASS
 ref_ontology_1,DCC subClassOf Medium,True,True,PASS
-ref_ontology_1,Listener subClassOf Agent,True,True,PASS
-ref_ontology_1,SignalGroup subClassOf MusicalExpression,True,True,PASS
-ref_ontology_1,SoundEngineer subClassOf Agent,True,True,PASS
-ref_ontology_1,Release subClassOf MusicalManifestation,True,True,PASS
-ref_ontology_1,Festival subClassOf Event,True,True,PASS
-ref_ontology_1,MagneticTape subClassOf Medium,True,True,PASS
-ref_ontology_1,Label subClassOf CorporateBody,True,True,PASS
-ref_ontology_1,Recording subClassOf Event,True,True,PASS
-ref_ontology_1,Lyrics subClassOf MusicalExpression,True,True,PASS
-ref_ontology_1,Vinyl subClassOf Medium,True,True,PASS
-ref_ontology_1,Signal subClassOf MusicalExpression,True,True,PASS
-ref_ontology_1,Performance subClassOf Event,True,True,PASS
-ref_ontology_1,Stream subClassOf Medium,True,True,PASS
 ref_ontology_1,CD subClassOf Medium,True,True,PASS
-ref_ontology_1,Track subClassOf MusicalManifestation,True,True,PASS
-ref_ontology_1,MusicGroup subClassOf Group,True,True,PASS
-ref_ontology_1,AudioFile subClassOf Medium,True,True,PASS
-ref_ontology_1,Transcription subClassOf Event,True,True,PASS
+ref_ontology_1,Conductor subClassOf Agent,True,True,PASS
 ref_ontology_1,RecordingSession subClassOf Event,True,True,PASS
-ref_ontology_1,Activity subClassOf Event,True,True,PASS
-ref_ontology_1,Sound subClassOf Event,True,True,PASS
 ref_ontology_1,PublishedLyrics subClassOf MusicalManifestation,True,True,PASS
-ref_ontology_1,MusicalManifestation subClassOf Manifestation,True,True,PASS
-ref_ontology_1,MusicalWork subClassOf Work,True,True,PASS
-ref_ontology_1,CorporateBody subClassOf Organization,True,True,PASS
+ref_ontology_1,Activity subClassOf Event,True,True,PASS
 ref_ontology_1,MusicalExpression subClassOf Expression,True,True,PASS
-ref_ontology_1,Performer subClassOf Agent,True,True,PASS
-ref_ontology_1,MD subClassOf Medium,True,True,PASS
-ref_ontology_1,Libretto subClassOf MusicalExpression,True,True,PASS
-ref_ontology_1,Membership subClassOf Event,True,True,PASS
-ref_ontology_1,SACD subClassOf Medium,True,True,PASS
-ref_ontology_1,Sound subClassOf MusicalExpression,True,True,PASS
-ref_ontology_1,Movement subClassOf MusicalWork,True,True,PASS
+ref_ontology_1,MusicalWork subClassOf Work,True,True,PASS
 ref_ontology_1,DVDA subClassOf Medium,True,True,PASS
 ref_ontology_1,Medium subClassOf MusicalItem,True,True,PASS
-ref_ontology_1,ED2K subClassOf Medium,True,True,PASS
+ref_ontology_1,Sound subClassOf MusicalExpression,True,True,PASS
 ref_ontology_1,Arranger subClassOf Agent,True,True,PASS
-ref_ontology_1,Instrumentation subClassOf Arrangement,True,True,PASS
-ref_ontology_1,PublishedLibretto subClassOf MusicalManifestation,True,True,PASS
+ref_ontology_1,Score subClassOf MusicalExpression,True,True,PASS
+ref_ontology_1,Orchestration subClassOf Arrangement,True,True,PASS
+ref_ontology_1,Transcription subClassOf Event,True,True,PASS
+ref_ontology_1,Signal subClassOf MusicalExpression,True,True,PASS
+ref_ontology_1,Show subClassOf Event,True,True,PASS
+ref_ontology_1,PublishedScore subClassOf MusicalManifestation,True,True,PASS
 ref_ontology_1,Record subClassOf MusicalManifestation,True,True,PASS
-ref_ontology_1,MusicArtist subClassOf Agent,True,True,PASS
+ref_ontology_1,Membership subClassOf Event,True,True,PASS
+ref_ontology_1,ED2K subClassOf Medium,True,True,PASS
+ref_ontology_1,Release subClassOf MusicalManifestation,True,True,PASS
+ref_ontology_1,Composer subClassOf Agent,True,True,PASS
+ref_ontology_1,SoloMusicArtist subClassOf MusicArtist,True,True,PASS
+ref_ontology_1,SoloMusicArtist subClassOf Person,True,True,PASS
+ref_ontology_1,Listener subClassOf Agent,True,True,PASS
+ref_ontology_1,Composition subClassOf Event,True,True,PASS
+ref_ontology_1,Sound subClassOf Event,True,True,PASS
+ref_ontology_1,MusicGroup subClassOf MusicArtist,True,True,PASS
+ref_ontology_1,MusicalManifestation subClassOf Manifestation,True,True,PASS
+ref_ontology_1,Recording subClassOf Event,True,True,PASS
+ref_ontology_1,Label subClassOf CorporateBody,True,True,PASS
+ref_ontology_1,Track subClassOf MusicalManifestation,True,True,PASS
+ref_ontology_1,MagneticTape subClassOf Medium,True,True,PASS
+ref_ontology_1,Libretto subClassOf MusicalExpression,True,True,PASS
 ref_ontology_1,Arrangement subClassOf Event,True,True,PASS
+ref_ontology_1,MusicGroup subClassOf Group,True,True,PASS
+ref_ontology_1,CorporateBody subClassOf Organization,True,True,PASS
+ref_ontology_1,PublishedLibretto subClassOf MusicalManifestation,True,True,PASS
+ref_ontology_1,MD subClassOf Medium,True,True,PASS
+ref_ontology_1,Stream subClassOf Medium,True,True,PASS
+ref_ontology_1,SignalGroup subClassOf MusicalExpression,True,True,PASS
+ref_ontology_1,AnalogSignal subClassOf Signal,True,True,PASS
+ref_ontology_1,AudioFile subClassOf Document,True,True,PASS
+ref_ontology_1,Performance subClassOf Event,True,True,PASS
+ref_ontology_1,Torrent subClassOf Medium,True,True,PASS
+ref_ontology_1,Festival subClassOf Event,True,True,PASS
+ref_ontology_1,DigitalSignal subClassOf Signal,True,True,PASS
+ref_ontology_1,Instrumentation subClassOf Arrangement,True,True,PASS
+ref_ontology_1,Performer subClassOf Agent,True,True,PASS
+ref_ontology_1,SoundEngineer subClassOf Agent,True,True,PASS
+ref_ontology_1,SACD subClassOf Medium,True,True,PASS
+ref_ontology_1,MusicArtist subClassOf Agent,True,True,PASS
+ref_ontology_1,ReleaseEvent subClassOf Event,True,True,PASS
+ref_ontology_1,Lyrics subClassOf MusicalExpression,True,True,PASS
+ref_ontology_1,Movement subClassOf MusicalWork,True,True,PASS
+ref_ontology_1,AudioFile subClassOf Medium,True,True,PASS
+ref_ontology_1,Vinyl subClassOf Medium,True,True,PASS
+ref_ontology_1,DAT subClassOf Medium,True,True,PASS
 ref_ontology_1,AnalogSignal disjointWith DigitalSignal,True,True,PASS
 ref_ontology_1,DigitalSignal disjointWith AnalogSignal,True,True,PASS
-ref_ontology_1,collaborated_with domain = Agent,True,True,PASS
-ref_ontology_1,collaborated_with range = Agent,True,True,PASS
-ref_ontology_1,sampled_version domain = AnalogSignal,True,True,PASS
-ref_ontology_1,sampled_version range = DigitalSignal,True,True,PASS
-ref_ontology_1,produced domain = Agent,True,True,PASS
-ref_ontology_1,produced range = MusicalManifestation,True,True,PASS
-ref_ontology_1,olga domain = Track,True,True,PASS
-ref_ontology_1,olga range = Document,True,True,PASS
-ref_ontology_1,available_as domain = MusicalManifestation,True,True,PASS
-ref_ontology_1,available_as range = MusicalItem,True,True,PASS
-ref_ontology_1,myspace domain = Agent,True,True,PASS
-ref_ontology_1,myspace range = Document,True,True,PASS
-ref_ontology_1,review range = Document,True,True,PASS
-ref_ontology_1,sampled_version_of domain = DigitalSignal,True,True,PASS
-ref_ontology_1,sampled_version_of range = AnalogSignal,True,True,PASS
-ref_ontology_1,publishing_location domain = MusicalManifestation,True,True,PASS
-ref_ontology_1,publishing_location range = SpatialThing,True,True,PASS
-ref_ontology_1,lyrics domain = MusicalWork,True,True,PASS
-ref_ontology_1,lyrics range = Lyrics,True,True,PASS
-ref_ontology_1,genre range = Genre,True,True,PASS
-ref_ontology_1,wikipedia range = Document,True,True,PASS
-ref_ontology_1,arrangement_of domain = Arrangement,True,True,PASS
-ref_ontology_1,arrangement_of range = MusicalWork,True,True,PASS
-ref_ontology_1,preview_download range = Document,True,True,PASS
-ref_ontology_1,composed_in domain = MusicalWork,True,True,PASS
-ref_ontology_1,composed_in range = Composition,True,True,PASS
-ref_ontology_1,recorded_as domain = Performance,True,True,PASS
-ref_ontology_1,recorded_as range = Signal,True,True,PASS
-ref_ontology_1,composer domain = Composition,True,True,PASS
-ref_ontology_1,composer range = Agent,True,True,PASS
-ref_ontology_1,activity domain = MusicArtist,True,True,PASS
-ref_ontology_1,activity range = Activity,True,True,PASS
-ref_ontology_1,producer domain = MusicalManifestation,True,True,PASS
-ref_ontology_1,producer range = Agent,True,True,PASS
-ref_ontology_1,group domain = Membership,True,True,PASS
-ref_ontology_1,group range = Group,True,True,PASS
-ref_ontology_1,movement domain = MusicalWork,True,True,PASS
-ref_ontology_1,movement range = Movement,True,True,PASS
-ref_ontology_1,biography domain = MusicArtist,True,True,PASS
-ref_ontology_1,biography range = Document,True,True,PASS
-ref_ontology_1,compiled domain = MusicArtist,True,True,PASS
-ref_ontology_1,compiled range = MusicalManifestation,True,True,PASS
-ref_ontology_1,produced_score range = Score,True,True,PASS
-ref_ontology_1,derived_from domain = Signal,True,True,PASS
-ref_ontology_1,derived_from range = Signal,True,True,PASS
-ref_ontology_1,engineered domain = Agent,True,True,PASS
-ref_ontology_1,member domain = MusicGroup,True,True,PASS
-ref_ontology_1,member range = Agent,True,True,PASS
-ref_ontology_1,release_type domain = MusicalManifestation,True,True,PASS
-ref_ontology_1,release_type range = ReleaseType,True,True,PASS
-ref_ontology_1,recorded_in domain = Sound,True,True,PASS
-ref_ontology_1,recorded_in range = Recording,True,True,PASS
-ref_ontology_1,compiler domain = MusicalManifestation,True,True,PASS
-ref_ontology_1,compiler range = MusicArtist,True,True,PASS
-ref_ontology_1,publication_of domain = MusicalManifestation,True,True,PASS
-ref_ontology_1,publication_of range = MusicalExpression,True,True,PASS
-ref_ontology_1,download range = Document,True,True,PASS
-ref_ontology_1,mailorder range = Document,True,True,PASS
-ref_ontology_1,translation_of domain = Expression,True,True,PASS
-ref_ontology_1,translation_of range = Expression,True,True,PASS
-ref_ontology_1,encodes domain = MusicalItem,True,True,PASS
-ref_ontology_1,encodes range = Signal,True,True,PASS
-ref_ontology_1,djmixed domain = MusicArtist,True,True,PASS
-ref_ontology_1,djmixed range = Signal,True,True,PASS
-ref_ontology_1,membership domain = Agent,True,True,PASS
-ref_ontology_1,membership range = Membership,True,True,PASS
-ref_ontology_1,media_type domain = MusicalManifestation,True,True,PASS
-ref_ontology_1,media_type range = MediaType,True,True,PASS
-ref_ontology_1,compilation_of domain = MusicalManifestation,True,True,PASS
-ref_ontology_1,compilation_of range = Signal,True,True,PASS
-ref_ontology_1,key range = Key,True,True,PASS
-ref_ontology_1,fanpage domain = MusicArtist,True,True,PASS
-ref_ontology_1,fanpage range = Document,True,True,PASS
-ref_ontology_1,tribute_to domain = MusicalManifestation,True,True,PASS
-ref_ontology_1,tribute_to range = MusicArtist,True,True,PASS
-ref_ontology_1,possess_item domain = Agent,True,True,PASS
-ref_ontology_1,possess_item range = Item,True,True,PASS
-ref_ontology_1,produced_work domain = Composition,True,True,PASS
-ref_ontology_1,produced_work range = MusicalWork,True,True,PASS
-ref_ontology_1,origin domain = MusicArtist,True,True,PASS
-ref_ontology_1,origin range = SpatialThing,True,True,PASS
-ref_ontology_1,recording_of domain = Recording,True,True,PASS
-ref_ontology_1,recording_of range = Sound,True,True,PASS
-ref_ontology_1,time domain = Signal,True,True,PASS
-ref_ontology_1,time range = TemporalEntity,True,True,PASS
-ref_ontology_1,produced_signal domain = Recording,True,True,PASS
-ref_ontology_1,produced_signal range = Signal,True,True,PASS
-ref_ontology_1,arranged_in domain = MusicalWork,True,True,PASS
-ref_ontology_1,arranged_in range = Arrangement,True,True,PASS
-ref_ontology_1,published_as domain = MusicalExpression,True,True,PASS
-ref_ontology_1,published_as range = MusicalManifestation,True,True,PASS
-ref_ontology_1,image range = Image,True,True,PASS
-ref_ontology_1,produced_signal_group domain = RecordingSession,True,True,PASS
-ref_ontology_1,produced_signal_group range = SignalGroup,True,True,PASS
-ref_ontology_1,performed domain = Agent,True,True,PASS
-ref_ontology_1,performed range = Performance,True,True,PASS
-ref_ontology_1,want_item domain = Agent,True,True,PASS
-ref_ontology_1,want_item range = Item,True,True,PASS
-ref_ontology_1,record domain = Release,True,True,PASS
-ref_ontology_1,record range = Record,True,True,PASS
-ref_ontology_1,sell_item domain = Agent,True,True,PASS
-ref_ontology_1,sell_item range = Item,True,True,PASS
-ref_ontology_1,performed_in range = Performance,True,True,PASS
-ref_ontology_1,conductor domain = Performance,True,True,PASS
-ref_ontology_1,conductor range = Agent,True,True,PASS
-ref_ontology_1,discography domain = MusicArtist,True,True,PASS
-ref_ontology_1,discography range = Document,True,True,PASS
-ref_ontology_1,sampled domain = MusicArtist,True,True,PASS
-ref_ontology_1,sampled range = Signal,True,True,PASS
-ref_ontology_1,supporting_musician domain = MusicArtist,True,True,PASS
-ref_ontology_1,supporting_musician range = MusicArtist,True,True,PASS
-ref_ontology_1,imdb range = Document,True,True,PASS
-ref_ontology_1,engineer range = Agent,True,True,PASS
-ref_ontology_1,produced_sound domain = Performance,True,True,PASS
-ref_ontology_1,produced_sound range = Sound,True,True,PASS
-ref_ontology_1,interpreter domain = Signal,True,True,PASS
-ref_ontology_1,interpreter range = MusicArtist,True,True,PASS
-ref_ontology_1,label range = Label,True,True,PASS
-ref_ontology_1,other_release_of domain = MusicalManifestation,True,True,PASS
-ref_ontology_1,other_release_of range = MusicalManifestation,True,True,PASS
 ref_ontology_1,records domain = Signal,True,True,PASS
 ref_ontology_1,records range = Performance,True,True,PASS
-ref_ontology_1,licence range = License,True,True,PASS
-ref_ontology_1,onlinecommunity domain = Agent,True,True,PASS
-ref_ontology_1,onlinecommunity range = Document,True,True,PASS
-ref_ontology_1,amazon_asin range = Document,True,True,PASS
-ref_ontology_1,musicmoz range = Document,True,True,PASS
-ref_ontology_1,performance_of domain = Performance,True,True,PASS
-ref_ontology_1,listened domain = Agent,True,True,PASS
-ref_ontology_1,listened range = Performance,True,True,PASS
-ref_ontology_1,free_download range = Document,True,True,PASS
-ref_ontology_1,release_status domain = MusicalManifestation,True,True,PASS
-ref_ontology_1,release_status range = ReleaseStatus,True,True,PASS
-ref_ontology_1,event_homepage domain = Event,True,True,PASS
-ref_ontology_1,event_homepage range = Document,True,True,PASS
-ref_ontology_1,member_of domain = Agent,True,True,PASS
-ref_ontology_1,member_of range = Group,True,True,PASS
-ref_ontology_1,musicbrainz range = Document,True,True,PASS
-ref_ontology_1,discogs range = Document,True,True,PASS
-ref_ontology_1,homepage range = Document,True,True,PASS
-ref_ontology_1,published domain = Agent,True,True,PASS
-ref_ontology_1,published range = MusicalManifestation,True,True,PASS
-ref_ontology_1,djmixed_by domain = Signal,True,True,PASS
-ref_ontology_1,djmixed_by range = MusicArtist,True,True,PASS
-ref_ontology_1,exchange_item domain = Agent,True,True,PASS
-ref_ontology_1,exchange_item range = Item,True,True,PASS
-ref_ontology_1,instrument domain = Performance,True,True,PASS
-ref_ontology_1,instrument range = Instrument,True,True,PASS
-ref_ontology_1,preview domain = MusicalManifestation,True,True,PASS
-ref_ontology_1,preview range = MusicalItem,True,True,PASS
-ref_ontology_1,listener domain = Performance,True,True,PASS
-ref_ontology_1,listener range = Agent,True,True,PASS
-ref_ontology_1,paid_download range = Document,True,True,PASS
-ref_ontology_1,publisher domain = MusicalManifestation,True,True,PASS
-ref_ontology_1,publisher range = Agent,True,True,PASS
-ref_ontology_1,primary_instrument range = Instrument,True,True,PASS
-ref_ontology_1,artist domain = Membership,True,True,PASS
-ref_ontology_1,artist range = Agent,True,True,PASS
-ref_ontology_1,performer domain = Performance,True,True,PASS
-ref_ontology_1,performer range = Agent,True,True,PASS
-ref_ontology_1,remixed domain = MusicArtist,True,True,PASS
-ref_ontology_1,remixed range = Signal,True,True,PASS
 ref_ontology_1,release domain = ReleaseEvent,True,True,PASS
 ref_ontology_1,release range = Release,True,True,PASS
+ref_ontology_1,arranged_in domain = MusicalWork,True,True,PASS
+ref_ontology_1,arranged_in range = Arrangement,True,True,PASS
+ref_ontology_1,download range = Document,True,True,PASS
+ref_ontology_1,free_download range = Document,True,True,PASS
 ref_ontology_1,item domain = MusicalManifestation,True,True,PASS
 ref_ontology_1,item range = MusicalItem,True,True,PASS
-ref_ontology_1,conducted domain = Agent,True,True,PASS
-ref_ontology_1,conducted range = Performance,True,True,PASS
-ref_ontology_1,singer domain = Performance,True,True,PASS
-ref_ontology_1,singer range = Agent,True,True,PASS
-ref_ontology_1,track domain = Record,True,True,PASS
-ref_ontology_1,track range = Track,True,True,PASS
+ref_ontology_1,engineer range = Agent,True,True,PASS
+ref_ontology_1,review range = Document,True,True,PASS
+ref_ontology_1,listener domain = Performance,True,True,PASS
+ref_ontology_1,listener range = Agent,True,True,PASS
+ref_ontology_1,member_of domain = Agent,True,True,PASS
+ref_ontology_1,member_of range = Group,True,True,PASS
+ref_ontology_1,fanpage domain = MusicArtist,True,True,PASS
+ref_ontology_1,fanpage range = Document,True,True,PASS
+ref_ontology_1,recording_of domain = Recording,True,True,PASS
+ref_ontology_1,recording_of range = Sound,True,True,PASS
+ref_ontology_1,want_item domain = Agent,True,True,PASS
+ref_ontology_1,want_item range = Item,True,True,PASS
+ref_ontology_1,genre range = Genre,True,True,PASS
+ref_ontology_1,possess_item domain = Agent,True,True,PASS
+ref_ontology_1,possess_item range = Item,True,True,PASS
+ref_ontology_1,sell_item domain = Agent,True,True,PASS
+ref_ontology_1,sell_item range = Item,True,True,PASS
+ref_ontology_1,olga domain = Track,True,True,PASS
+ref_ontology_1,olga range = Document,True,True,PASS
+ref_ontology_1,publishing_location domain = MusicalManifestation,True,True,PASS
+ref_ontology_1,publishing_location range = SpatialThing,True,True,PASS
+ref_ontology_1,paid_download range = Document,True,True,PASS
+ref_ontology_1,member domain = MusicGroup,True,True,PASS
+ref_ontology_1,member range = Agent,True,True,PASS
+ref_ontology_1,djmixed domain = MusicArtist,True,True,PASS
+ref_ontology_1,djmixed range = Signal,True,True,PASS
+ref_ontology_1,supporting_musician domain = MusicArtist,True,True,PASS
+ref_ontology_1,supporting_musician range = MusicArtist,True,True,PASS
+ref_ontology_1,exchange_item domain = Agent,True,True,PASS
+ref_ontology_1,exchange_item range = Item,True,True,PASS
+ref_ontology_1,compiled domain = MusicArtist,True,True,PASS
+ref_ontology_1,compiled range = MusicalManifestation,True,True,PASS
+ref_ontology_1,djmixed_by domain = Signal,True,True,PASS
+ref_ontology_1,djmixed_by range = MusicArtist,True,True,PASS
+ref_ontology_1,event_homepage domain = Event,True,True,PASS
+ref_ontology_1,event_homepage range = Document,True,True,PASS
+ref_ontology_1,origin domain = MusicArtist,True,True,PASS
+ref_ontology_1,origin range = SpatialThing,True,True,PASS
+ref_ontology_1,available_as domain = MusicalManifestation,True,True,PASS
+ref_ontology_1,available_as range = MusicalItem,True,True,PASS
+ref_ontology_1,composer domain = Composition,True,True,PASS
+ref_ontology_1,composer range = Agent,True,True,PASS
+ref_ontology_1,mailorder range = Document,True,True,PASS
+ref_ontology_1,key range = Key,True,True,PASS
+ref_ontology_1,label range = Label,True,True,PASS
+ref_ontology_1,recorded_as domain = Performance,True,True,PASS
+ref_ontology_1,recorded_as range = Signal,True,True,PASS
+ref_ontology_1,artist domain = Membership,True,True,PASS
+ref_ontology_1,artist range = Agent,True,True,PASS
+ref_ontology_1,interpreter domain = Signal,True,True,PASS
+ref_ontology_1,interpreter range = MusicArtist,True,True,PASS
+ref_ontology_1,preview_download range = Document,True,True,PASS
+ref_ontology_1,release_status domain = MusicalManifestation,True,True,PASS
+ref_ontology_1,release_status range = ReleaseStatus,True,True,PASS
+ref_ontology_1,onlinecommunity domain = Agent,True,True,PASS
+ref_ontology_1,onlinecommunity range = Document,True,True,PASS
+ref_ontology_1,release_type domain = MusicalManifestation,True,True,PASS
+ref_ontology_1,release_type range = ReleaseType,True,True,PASS
+ref_ontology_1,sampled domain = MusicArtist,True,True,PASS
+ref_ontology_1,sampled range = Signal,True,True,PASS
+ref_ontology_1,time domain = Signal,True,True,PASS
+ref_ontology_1,time range = TemporalEntity,True,True,PASS
+ref_ontology_1,licence range = License,True,True,PASS
+ref_ontology_1,produced_score range = Score,True,True,PASS
+ref_ontology_1,instrument domain = Performance,True,True,PASS
+ref_ontology_1,instrument range = Instrument,True,True,PASS
+ref_ontology_1,compiler domain = MusicalManifestation,True,True,PASS
+ref_ontology_1,compiler range = MusicArtist,True,True,PASS
+ref_ontology_1,derived_from domain = Signal,True,True,PASS
+ref_ontology_1,derived_from range = Signal,True,True,PASS
+ref_ontology_1,sampled_version_of domain = DigitalSignal,True,True,PASS
+ref_ontology_1,sampled_version_of range = AnalogSignal,True,True,PASS
+ref_ontology_1,produced_sound domain = Performance,True,True,PASS
+ref_ontology_1,produced_sound range = Sound,True,True,PASS
+ref_ontology_1,produced_work domain = Composition,True,True,PASS
+ref_ontology_1,produced_work range = MusicalWork,True,True,PASS
+ref_ontology_1,biography domain = MusicArtist,True,True,PASS
+ref_ontology_1,biography range = Document,True,True,PASS
+ref_ontology_1,compilation_of domain = MusicalManifestation,True,True,PASS
+ref_ontology_1,compilation_of range = Signal,True,True,PASS
+ref_ontology_1,activity domain = MusicArtist,True,True,PASS
+ref_ontology_1,activity range = Activity,True,True,PASS
+ref_ontology_1,lyrics domain = MusicalWork,True,True,PASS
+ref_ontology_1,lyrics range = Lyrics,True,True,PASS
+ref_ontology_1,other_release_of domain = MusicalManifestation,True,True,PASS
+ref_ontology_1,other_release_of range = MusicalManifestation,True,True,PASS
+ref_ontology_1,listened domain = Agent,True,True,PASS
+ref_ontology_1,listened range = Performance,True,True,PASS
+ref_ontology_1,translation_of domain = Expression,True,True,PASS
+ref_ontology_1,translation_of range = Expression,True,True,PASS
+ref_ontology_1,published domain = Agent,True,True,PASS
+ref_ontology_1,published range = MusicalManifestation,True,True,PASS
+ref_ontology_1,group domain = Membership,True,True,PASS
+ref_ontology_1,group range = Group,True,True,PASS
+ref_ontology_1,produced_signal domain = Recording,True,True,PASS
+ref_ontology_1,produced_signal range = Signal,True,True,PASS
+ref_ontology_1,media_type domain = MusicalManifestation,True,True,PASS
+ref_ontology_1,media_type range = MediaType,True,True,PASS
+ref_ontology_1,performed_in range = Performance,True,True,PASS
+ref_ontology_1,producer domain = MusicalManifestation,True,True,PASS
+ref_ontology_1,producer range = Agent,True,True,PASS
+ref_ontology_1,conductor domain = Performance,True,True,PASS
+ref_ontology_1,conductor range = Agent,True,True,PASS
+ref_ontology_1,produced_signal_group domain = RecordingSession,True,True,PASS
+ref_ontology_1,produced_signal_group range = SignalGroup,True,True,PASS
+ref_ontology_1,wikipedia range = Document,True,True,PASS
+ref_ontology_1,record domain = Release,True,True,PASS
+ref_ontology_1,record range = Record,True,True,PASS
+ref_ontology_1,imdb range = Document,True,True,PASS
+ref_ontology_1,sampled_version domain = AnalogSignal,True,True,PASS
+ref_ontology_1,sampled_version range = DigitalSignal,True,True,PASS
+ref_ontology_1,musicmoz range = Document,True,True,PASS
+ref_ontology_1,musicbrainz range = Document,True,True,PASS
+ref_ontology_1,publisher domain = MusicalManifestation,True,True,PASS
+ref_ontology_1,publisher range = Agent,True,True,PASS
+ref_ontology_1,discography domain = MusicArtist,True,True,PASS
+ref_ontology_1,discography range = Document,True,True,PASS
+ref_ontology_1,myspace domain = Agent,True,True,PASS
+ref_ontology_1,myspace range = Document,True,True,PASS
+ref_ontology_1,performer domain = Performance,True,True,PASS
+ref_ontology_1,performer range = Agent,True,True,PASS
+ref_ontology_1,arrangement_of domain = Arrangement,True,True,PASS
+ref_ontology_1,arrangement_of range = MusicalWork,True,True,PASS
 ref_ontology_1,signal domain = SignalGroup,True,True,PASS
 ref_ontology_1,signal range = Signal,True,True,PASS
+ref_ontology_1,homepage range = Document,True,True,PASS
+ref_ontology_1,track domain = Record,True,True,PASS
+ref_ontology_1,track range = Track,True,True,PASS
+ref_ontology_1,recorded_in domain = Sound,True,True,PASS
+ref_ontology_1,recorded_in range = Recording,True,True,PASS
+ref_ontology_1,discogs range = Document,True,True,PASS
+ref_ontology_1,composed_in domain = MusicalWork,True,True,PASS
+ref_ontology_1,composed_in range = Composition,True,True,PASS
+ref_ontology_1,performance_of domain = Performance,True,True,PASS
+ref_ontology_1,collaborated_with domain = Agent,True,True,PASS
+ref_ontology_1,collaborated_with range = Agent,True,True,PASS
+ref_ontology_1,movement domain = MusicalWork,True,True,PASS
+ref_ontology_1,movement range = Movement,True,True,PASS
+ref_ontology_1,publication_of domain = MusicalManifestation,True,True,PASS
+ref_ontology_1,publication_of range = MusicalExpression,True,True,PASS
+ref_ontology_1,remixed domain = MusicArtist,True,True,PASS
+ref_ontology_1,remixed range = Signal,True,True,PASS
+ref_ontology_1,produced domain = Agent,True,True,PASS
+ref_ontology_1,produced range = MusicalManifestation,True,True,PASS
+ref_ontology_1,membership domain = Agent,True,True,PASS
+ref_ontology_1,membership range = Membership,True,True,PASS
+ref_ontology_1,published_as domain = MusicalExpression,True,True,PASS
+ref_ontology_1,published_as range = MusicalManifestation,True,True,PASS
+ref_ontology_1,tribute_to domain = MusicalManifestation,True,True,PASS
+ref_ontology_1,tribute_to range = MusicArtist,True,True,PASS
+ref_ontology_1,encodes domain = MusicalItem,True,True,PASS
+ref_ontology_1,encodes range = Signal,True,True,PASS
+ref_ontology_1,conducted domain = Agent,True,True,PASS
+ref_ontology_1,conducted range = Performance,True,True,PASS
+ref_ontology_1,performed domain = Agent,True,True,PASS
+ref_ontology_1,performed range = Performance,True,True,PASS
+ref_ontology_1,primary_instrument range = Instrument,True,True,PASS
+ref_ontology_1,amazon_asin range = Document,True,True,PASS
+ref_ontology_1,preview domain = MusicalManifestation,True,True,PASS
+ref_ontology_1,preview range = MusicalItem,True,True,PASS
+ref_ontology_1,engineered domain = Agent,True,True,PASS
+ref_ontology_1,image range = Image,True,True,PASS
+ref_ontology_1,singer domain = Performance,True,True,PASS
+ref_ontology_1,singer range = Agent,True,True,PASS
 ref_ontology_1,arranged_in inverseOf arrangement_of,True,True,PASS
-ref_ontology_1,NEGATIVE: Performer NOT subClassOf Activity,False,False,PASS
-ref_ontology_1,NEGATIVE: Performer NOT subClassOf RecordingSession,False,False,PASS
-ref_ontology_2,Bed subClassOf Infrastructure,True,True,PASS
-ref_ontology_2,Prescription subClassOf History,True,True,PASS
-ref_ontology_2,Department subClassOf Infrastructure,True,True,PASS
-ref_ontology_2,Expenditure subClassOf Accounting,True,True,PASS
-ref_ontology_2,Room subClassOf Infrastructure,True,True,PASS
-ref_ontology_2,Nurse subClassOf Staff,True,True,PASS
-ref_ontology_2,Income subClassOf Accounting,True,True,PASS
-ref_ontology_2,HistoryUpdate subClassOf History,True,True,PASS
-ref_ontology_2,Salary subClassOf Expenditure,True,True,PASS
-ref_ontology_2,Staff subClassOf Person,True,True,PASS
+ref_ontology_1,NEGATIVE: Record NOT subClassOf Instrumentation,False,False,PASS
+ref_ontology_1,NEGATIVE: Record NOT subClassOf MusicalExpression,False,False,PASS
 ref_ontology_2,MiscellaneousOrder subClassOf Expenditure,True,True,PASS
-ref_ontology_2,Patient subClassOf Person,True,True,PASS
-ref_ontology_2,Appointment subClassOf Reception,True,True,PASS
-ref_ontology_2,Ward subClassOf Infrastructure,True,True,PASS
+ref_ontology_2,Bed subClassOf Infrastructure,True,True,PASS
+ref_ontology_2,Expenditure subClassOf Accounting,True,True,PASS
+ref_ontology_2,Department subClassOf Infrastructure,True,True,PASS
+ref_ontology_2,Salary subClassOf Expenditure,True,True,PASS
 ref_ontology_2,Record subClassOf History,True,True,PASS
-ref_ontology_2,Doctor subClassOf Staff,True,True,PASS
+ref_ontology_2,Nurse subClassOf Staff,True,True,PASS
+ref_ontology_2,Patient subClassOf Person,True,True,PASS
+ref_ontology_2,Prescription subClassOf History,True,True,PASS
 ref_ontology_2,Wing subClassOf Infrastructure,True,True,PASS
+ref_ontology_2,HistoryUpdate subClassOf History,True,True,PASS
+ref_ontology_2,Staff subClassOf Person,True,True,PASS
+ref_ontology_2,Room subClassOf Infrastructure,True,True,PASS
+ref_ontology_2,Appointment subClassOf Reception,True,True,PASS
+ref_ontology_2,Income subClassOf Accounting,True,True,PASS
+ref_ontology_2,Doctor subClassOf Staff,True,True,PASS
+ref_ontology_2,Ward subClassOf Infrastructure,True,True,PASS
