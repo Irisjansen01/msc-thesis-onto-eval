@@ -1,0 +1,3 @@
+direction,source,target,source_path,target_path,class_string_matching,property_string_matching,class_relative_hit,property_relative_hit,taxonomic_overlap,relation_overlap,source_class_lexical_entries,target_class_lexical_entries,source_property_lexical_entries,target_property_lexical_entries,exact_class_lexical_hits,exact_property_lexical_hits
+generated_to_reference,generated,reference,data/ontologies/hospital-final.ttl,data/ontologies/hospital-ref.owl,0.25434173669467786,0.2452178349712124,0.08823529411764706,0.0,0.07457983193277311,0.0,34,22,66,56,3,0
+reference_to_generated,reference,generated,data/ontologies/hospital-ref.owl,data/ontologies/hospital-final.ttl,0.3276219992129083,0.2950912373692069,0.13636363636363635,0.0,0.09253246753246752,0.0,22,34,56,66,3,0

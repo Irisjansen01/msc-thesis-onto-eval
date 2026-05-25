@@ -1,0 +1,21 @@
+ontology,characteristic,score
+ontology_1,Functional adequacy,3.556
+ontology_1,Reliability,2.667
+ontology_1,Usability,2.667
+ontology_1,Maintainability,3.0
+ontology_1,Portability,4.0
+ontology_2,Functional adequacy,3.667
+ontology_2,Reliability,2.667
+ontology_2,Usability,2.667
+ontology_2,Maintainability,3.333
+ontology_2,Portability,3.417
+ref_ontology_1,Functional adequacy,3.778
+ref_ontology_1,Reliability,2.667
+ref_ontology_1,Usability,2.667
+ref_ontology_1,Maintainability,3.333
+ref_ontology_1,Portability,3.417
+ref_ontology_2,Functional adequacy,2.472
+ref_ontology_2,Reliability,3.667
+ref_ontology_2,Usability,2.667
+ref_ontology_2,Maintainability,3.0
+ref_ontology_2,Portability,2.75

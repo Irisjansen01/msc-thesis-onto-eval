@@ -1,0 +1,123 @@
+direction,kind,source_label,best_target_label,string_matching,exact_hit
+generated_to_reference,property,awarded by,hasOrderDate,0.2,False
+generated_to_reference,property,city name,patientAge,0.2222222222222222,False
+generated_to_reference,property,contains article,wingHasDepartment,0.25,False
+generated_to_reference,property,country name,givenPillName,0.25,False
+generated_to_reference,property,date of the seminar occurrence,worksIn,0.0,False
+generated_to_reference,property,degree date,hasOrderDate,0.36363636363636365,False
+generated_to_reference,property,degree of,worksIn,0.0,False
+generated_to_reference,property,employed at,hasOrderDate,0.18181818181818182,False
+generated_to_reference,property,employment start date,currentPatientState,0.2631578947368421,False
+generated_to_reference,property,evaluates,roomHasBeds,0.1111111111111111,False
+generated_to_reference,property,has article,hasTotalBill,0.36363636363636365,False
+generated_to_reference,property,has city,hasSpeciality,0.25,False
+generated_to_reference,property,has date,hasOrderDate,0.375,False
+generated_to_reference,property,has degree,hasOrderDate,0.4,False
+generated_to_reference,property,has degree (reified),hasAffiliatedPatient,0.25,False
+generated_to_reference,property,has employee,hasTotalCost,0.3333333333333333,False
+generated_to_reference,property,has employer,hasTotalCost,0.3333333333333333,False
+generated_to_reference,property,has evaluatee (employee),hasAffiliatedDepartment,0.34782608695652173,False
+generated_to_reference,property,has evaluation date,hasRelantionshipType,0.3684210526315789,False
+generated_to_reference,property,has evaluation statement,hasAffiliatedDepartment,0.43478260869565216,False
+generated_to_reference,property,has evaluator (doctor),hasAffiliateDoctor,0.3888888888888889,False
+generated_to_reference,property,has member,hasOrderDate,0.2,False
+generated_to_reference,property,has member (person),hasPrescription,0.26666666666666666,False
+generated_to_reference,property,has membership,hasPrescription,0.2857142857142857,False
+generated_to_reference,property,has name,patientAge,0.125,False
+generated_to_reference,property,has occurrence,hasMedicalCase,0.2857142857142857,False
+generated_to_reference,property,has page count,hasPaymentAmount,0.42857142857142855,False
+generated_to_reference,property,has presentation,hasPrescription,0.6,False
+generated_to_reference,property,has publication date,hasAffiliatedDepart,0.3684210526315789,False
+generated_to_reference,property,has role,hasOrderDate,0.125,False
+generated_to_reference,property,has start date,hasUpdateDate,0.5384615384615384,False
+generated_to_reference,property,has union,hasAccountID,0.2222222222222222,False
+generated_to_reference,property,has union (organization),hasAffiliatedDepartment,0.21739130434782608,False
+generated_to_reference,property,has union membership,hasAffiliatedDepart,0.2631578947368421,False
+generated_to_reference,property,has version,hasPrescription,0.36363636363636365,False
+generated_to_reference,property,held at,headOfDept,0.14285714285714285,False
+generated_to_reference,property,held at hospital,hasHistoryUpdates,0.1875,False
+generated_to_reference,property,held by,worksIn,0.0,False
+generated_to_reference,property,holds degree association,hasAffiliatedPatient,0.1,False
+generated_to_reference,property,is employee of,isInvolvedIn,0.16666666666666666,False
+generated_to_reference,property,is employer of,isInvolvedIn,0.16666666666666666,False
+generated_to_reference,property,is located in country,hasAppointedPatient,0.15789473684210525,False
+generated_to_reference,property,is part of article collection,worksIn,0.0,False
+generated_to_reference,property,is presented in,hasPrescription,0.26666666666666666,False
+generated_to_reference,property,isMemberOf,isInvolvedIn,0.1,False
+generated_to_reference,property,isRoleOf,isInvolvedIn,0.125,False
+generated_to_reference,property,isUnionOf,isInvolvedIn,0.1111111111111111,False
+generated_to_reference,property,located in city,hasSpeciality,0.23076923076923078,False
+generated_to_reference,property,member of union,hasPrescription,0.2,False
+generated_to_reference,property,membership end date,currentPatientState,0.3157894736842105,False
+generated_to_reference,property,membership of person,patientIsAttendedIn,0.10526315789473684,False
+generated_to_reference,property,membership of union,departmentHasPhone,0.1111111111111111,False
+generated_to_reference,property,membership start date,hasHistoryUpdates,0.17647058823529413,False
+generated_to_reference,property,occurrence at location,currentPatientState,0.3157894736842105,False
+generated_to_reference,property,occurrence of seminar,currentPatientState,0.21052631578947367,False
+generated_to_reference,property,page count,hasAccountID,0.4,False
+generated_to_reference,property,presentation venue,currentPatientState,0.3888888888888889,False
+generated_to_reference,property,presented article,hasBilledPatient,0.25,False
+generated_to_reference,property,presented at seminar,patientDateAdmitted,0.3157894736842105,False
+generated_to_reference,property,presented by,patientWeight,0.3333333333333333,False
+generated_to_reference,property,presented presentation,patientDateDischarged,0.23809523809523808,False
+generated_to_reference,property,publication year,patientGender,0.23076923076923078,False
+generated_to_reference,property,represents union,departmentHasPhone,0.375,False
+generated_to_reference,property,seminar date,personHasName,0.25,False
+generated_to_reference,property,stored in library,isEspeciallyTreats,0.23529411764705882,False
+generated_to_reference,property,title,worksIn,0.0,False
+reference_to_generated,property,bedHasSize,has article,0.2,False
+reference_to_generated,property,currentPatientState,presentation venue,0.3888888888888889,False
+reference_to_generated,property,departmentHasName,represents union,0.3125,False
+reference_to_generated,property,departmentHasPhone,represents union,0.375,False
+reference_to_generated,property,departmentUseWard,represents union,0.3125,False
+reference_to_generated,property,givenInstructions,represents union,0.25,False
+reference_to_generated,property,givenPillName,country name,0.25,False
+reference_to_generated,property,hasAccountID,page count,0.4,False
+reference_to_generated,property,hasAffiliateDoctor,has evaluator (doctor),0.3888888888888889,False
+reference_to_generated,property,hasAffiliatedDepart,has publication date,0.3684210526315789,False
+reference_to_generated,property,hasAffiliatedDepartment,has evaluation statement,0.43478260869565216,False
+reference_to_generated,property,hasAffiliatedPatient,has publication date,0.35,False
+reference_to_generated,property,hasAffiliatedStaff,has publication date,0.3333333333333333,False
+reference_to_generated,property,hasAppointedDate,has start date,0.42857142857142855,False
+reference_to_generated,property,hasAppointedDoctor,has evaluator (doctor),0.2777777777777778,False
+reference_to_generated,property,hasAppointedPatient,has presentation,0.375,False
+reference_to_generated,property,hasAppointmentID,has presentation,0.3125,False
+reference_to_generated,property,hasBilledPatient,has presentation,0.4375,False
+reference_to_generated,property,hasHistoryRecID,has start date,0.35714285714285715,False
+reference_to_generated,property,hasHistoryUpdateID,has start date,0.42857142857142855,False
+reference_to_generated,property,hasHistoryUpdates,has start date,0.5,False
+reference_to_generated,property,hasMedicalCase,has start date,0.35714285714285715,False
+reference_to_generated,property,hasOrderDate,has start date,0.4166666666666667,False
+reference_to_generated,property,hasPaymentAmount,has page count,0.42857142857142855,False
+reference_to_generated,property,hasPrescription,has presentation,0.6,False
+reference_to_generated,property,hasRelantionshipType,has evaluation date,0.3684210526315789,False
+reference_to_generated,property,hasSpeciality,has presentation,0.3076923076923077,False
+reference_to_generated,property,hasTotalBill,has article,0.36363636363636365,False
+reference_to_generated,property,hasTotalCost,has start date,0.3333333333333333,False
+reference_to_generated,property,hasUpdateDate,has start date,0.5384615384615384,False
+reference_to_generated,property,headOfDept,has degree,0.2,False
+reference_to_generated,property,infrastructureHasID,presented at seminar,0.10526315789473684,False
+reference_to_generated,property,isEspeciallyInvolvedIn,is located in country,0.14285714285714285,False
+reference_to_generated,property,isEspeciallyTreats,stored in library,0.23529411764705882,False
+reference_to_generated,property,isInvolvedIn,is presented in,0.16666666666666666,False
+reference_to_generated,property,isPatientType,is presented in,0.23076923076923078,False
+reference_to_generated,property,nurseInspectWard,contains article,0.1875,False
+reference_to_generated,property,patientAge,city name,0.2222222222222222,False
+reference_to_generated,property,patientDateAdmitted,presented at seminar,0.3157894736842105,False
+reference_to_generated,property,patientDateDischarged,presented at seminar,0.25,False
+reference_to_generated,property,patientGender,presented by,0.3333333333333333,False
+reference_to_generated,property,patientHasAnAssignedBed,presented presentation,0.18181818181818182,False
+reference_to_generated,property,patientIsAttendedBy,presentation venue,0.2777777777777778,False
+reference_to_generated,property,patientIsAttendedIn,presentation venue,0.2777777777777778,False
+reference_to_generated,property,patientWeight,presented by,0.3333333333333333,False
+reference_to_generated,property,personHasAddress,represents union,0.1875,False
+reference_to_generated,property,personHasID,presented by,0.18181818181818182,False
+reference_to_generated,property,personHasName,seminar date,0.25,False
+reference_to_generated,property,personHasPhone,represents union,0.21428571428571427,False
+reference_to_generated,property,roomHasBeds,evaluates,0.1111111111111111,False
+reference_to_generated,property,roomHasSize,has article,0.18181818181818182,False
+reference_to_generated,property,theDoctorComments,presentation venue,0.23529411764705882,False
+reference_to_generated,property,wardHasRooms,has employer,0.16666666666666666,False
+reference_to_generated,property,wingHasDepartment,contains article,0.25,False
+reference_to_generated,property,wingHasWard,seminar date,0.09090909090909091,False
+reference_to_generated,property,worksIn,title,0.0,False

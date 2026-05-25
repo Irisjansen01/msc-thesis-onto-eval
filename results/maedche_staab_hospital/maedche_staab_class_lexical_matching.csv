@@ -1,0 +1,57 @@
+direction,kind,source_label,best_target_label,string_matching,exact_hit
+generated_to_reference,class,Agent,Patient,0.2,False
+generated_to_reference,class,Article,Patient,0.2857142857142857,False
+generated_to_reference,class,Article Collection,MiscellaneousOrder,0.05555555555555555,False
+generated_to_reference,class,Article Presentation,Wing,0.0,False
+generated_to_reference,class,Book,Room,0.5,False
+generated_to_reference,class,CD,Wing,0.0,False
+generated_to_reference,class,Certified Nurse Degree,Wing,0.0,False
+generated_to_reference,class,City,Wing,0.25,False
+generated_to_reference,class,Country,History,0.2857142857142857,False
+generated_to_reference,class,Doctor,Doctor,1.0,True
+generated_to_reference,class,Employee,Wing,0.0,False
+generated_to_reference,class,Employment Event,Appointment,0.18181818181818182,False
+generated_to_reference,class,Evaluation,Reception,0.3333333333333333,False
+generated_to_reference,class,Evaluation Statement,Wing,0.0,False
+generated_to_reference,class,Event,Patient,0.2,False
+generated_to_reference,class,Hospital,History,0.14285714285714285,False
+generated_to_reference,class,Institution,Prescription,0.36363636363636365,False
+generated_to_reference,class,Library,History,0.42857142857142855,False
+generated_to_reference,class,Location,Reception,0.5,False
+generated_to_reference,class,Medical Degree,MiscellaneousOrder,0.07142857142857142,False
+generated_to_reference,class,Nurse,Nurse,1.0,True
+generated_to_reference,class,Nursing Assistant Degree,Wing,0.0,False
+generated_to_reference,class,Organization,Prescription,0.4166666666666667,False
+generated_to_reference,class,Person,Person,1.0,True
+generated_to_reference,class,Person‑Degree Association,Wing,0.0,False
+generated_to_reference,class,Publication,Prescription,0.36363636363636365,False
+generated_to_reference,class,Role,Room,0.5,False
+generated_to_reference,class,Seminar,Salary,0.16666666666666666,False
+generated_to_reference,class,Seminar Occurrence,MiscellaneousOrder,0.05555555555555555,False
+generated_to_reference,class,Union,Person,0.2,False
+generated_to_reference,class,Union Group,Expenditure,0.09090909090909091,False
+generated_to_reference,class,Union Membership,Wing,0.0,False
+generated_to_reference,class,Union Membership (temporal),Wing,0.0,False
+generated_to_reference,class,Union Representative,MiscellaneousOrder,0.05555555555555555,False
+reference_to_generated,class,Accounting,Evaluation,0.3,False
+reference_to_generated,class,Appointment,Publication,0.18181818181818182,False
+reference_to_generated,class,Bed,Union Representative,0.0,False
+reference_to_generated,class,Department,Location,0.125,False
+reference_to_generated,class,Doctor,Doctor,1.0,True
+reference_to_generated,class,Expenditure,Evaluation,0.1,False
+reference_to_generated,class,History,Library,0.42857142857142855,False
+reference_to_generated,class,HistoryUpdate,Union Representative,0.0,False
+reference_to_generated,class,Income,Union,0.2,False
+reference_to_generated,class,Infrastructure,Institution,0.18181818181818182,False
+reference_to_generated,class,MiscellaneousOrder,Medical Degree,0.07142857142857142,False
+reference_to_generated,class,Nurse,Nurse,1.0,True
+reference_to_generated,class,Patient,Location,0.2857142857142857,False
+reference_to_generated,class,Person,Person,1.0,True
+reference_to_generated,class,Prescription,Organization,0.4166666666666667,False
+reference_to_generated,class,Reception,Location,0.5,False
+reference_to_generated,class,Record,Doctor,0.3333333333333333,False
+reference_to_generated,class,Room,Role,0.5,False
+reference_to_generated,class,Salary,Library,0.3333333333333333,False
+reference_to_generated,class,Staff,Union Representative,0.0,False
+reference_to_generated,class,Ward,Union Representative,0.0,False
+reference_to_generated,class,Wing,City,0.25,False

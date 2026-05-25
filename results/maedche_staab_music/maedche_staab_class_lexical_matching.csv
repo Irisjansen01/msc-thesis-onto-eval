@@ -1,0 +1,103 @@
+direction,kind,source_label,best_target_label,string_matching,exact_hit
+generated_to_reference,class,Album,label,0.2,False
+generated_to_reference,class,Album Recording Event,recording session,0.17647058823529413,False
+generated_to_reference,class,Artist,Agent,0.2,False
+generated_to_reference,class,Artist (person or group),transcription,0.0,False
+generated_to_reference,class,Band,sound,0.25,False
+generated_to_reference,class,Band Membership (reified),transcription,0.0,False
+generated_to_reference,class,Band membership (person‑role‑band‑time),transcription,0.0,False
+generated_to_reference,class,City,Vinyl,0.25,False
+generated_to_reference,class,Cl_CompositionEvent,composition,0.18181818181818182,False
+generated_to_reference,class,Cl_CriticRecordStatement,musical manifestation,0.047619047619047616,False
+generated_to_reference,class,Cl_Entity,activity,0.25,False
+generated_to_reference,class,Cl_Song,Person,0.16666666666666666,False
+generated_to_reference,class,Cl_Statement,arrangement,0.36363636363636365,False
+generated_to_reference,class,Critic,lyrics,0.16666666666666666,False
+generated_to_reference,class,"Event (e.g., concert, recording session)",transcription,0.0,False
+generated_to_reference,class,Individual musician,digital signal,0.2857142857142857,False
+generated_to_reference,class,Instrument,Instrument,1.0,True
+generated_to_reference,class,Live Performance,performance,0.45454545454545453,False
+generated_to_reference,class,Location,composition,0.25,False
+generated_to_reference,class,Music album,MusicalItem,0.6363636363636364,False
+generated_to_reference,class,Musical group / band,musical expression,0.3333333333333333,False
+generated_to_reference,class,Musician,activity,0.25,False
+generated_to_reference,class,Performance,performance,0.9090909090909091,False
+generated_to_reference,class,Performance (Live Event),transcription,0.0,False
+generated_to_reference,class,Person,Person,1.0,True
+generated_to_reference,class,Record,record,0.8333333333333334,False
+generated_to_reference,class,Region,Person,0.5,False
+generated_to_reference,class,Role (musical function),solo music artist,0.29411764705882354,False
+generated_to_reference,class,Song‑in‑Performance,performance,0.18181818181818182,False
+generated_to_reference,class,Time interval,release event,0.15384615384615385,False
+generated_to_reference,class,Track,track,0.8,False
+generated_to_reference,class,Track (Song),transcription,0.16666666666666666,False
+generated_to_reference,class,Track / song,transcription,0.25,False
+reference_to_generated,class,Agent,Artist,0.2,False
+reference_to_generated,class,CD,Track / song,0.0,False
+reference_to_generated,class,DAT,Track / song,0.0,False
+reference_to_generated,class,DCC,Track / song,0.0,False
+reference_to_generated,class,DVDA,Track / song,0.0,False
+reference_to_generated,class,Document,Instrument,0.375,False
+reference_to_generated,class,ED2K,Track / song,0.0,False
+reference_to_generated,class,Event,Track / song,0.0,False
+reference_to_generated,class,Expression,Location,0.125,False
+reference_to_generated,class,Festival,Musician,0.25,False
+reference_to_generated,class,Genre,Record,0.2,False
+reference_to_generated,class,Group,Track,0.2,False
+reference_to_generated,class,Instrument,Instrument,1.0,True
+reference_to_generated,class,MD,Track / song,0.0,False
+reference_to_generated,class,MagneticTape,Music album,0.09090909090909091,False
+reference_to_generated,class,Manifestation,Music album,0.09090909090909091,False
+reference_to_generated,class,Medium,Region,0.3333333333333333,False
+reference_to_generated,class,MusicalItem,Music album,0.6363636363636364,False
+reference_to_generated,class,Organization,Track / song,0.25,False
+reference_to_generated,class,Person,Person,1.0,True
+reference_to_generated,class,Release type,Performance,0.09090909090909091,False
+reference_to_generated,class,SACD,Track / song,0.0,False
+reference_to_generated,class,Show,Track / song,0.0,False
+reference_to_generated,class,Stream,Person,0.16666666666666666,False
+reference_to_generated,class,Torrent,Person,0.16666666666666666,False
+reference_to_generated,class,Vinyl,City,0.25,False
+reference_to_generated,class,Work,Track / song,0.0,False
+reference_to_generated,class,activity,Musician,0.25,False
+reference_to_generated,class,analogue signal,Individual musician,0.13333333333333333,False
+reference_to_generated,class,arrangement,Cl_Statement,0.36363636363636365,False
+reference_to_generated,class,arranger,Performance,0.125,False
+reference_to_generated,class,audio file,Music album,0.2,False
+reference_to_generated,class,composer,Location,0.125,False
+reference_to_generated,class,composition,Location,0.25,False
+reference_to_generated,class,conductor,Location,0.125,False
+reference_to_generated,class,corporate body,Track / song,0.08333333333333333,False
+reference_to_generated,class,digital signal,Individual musician,0.2857142857142857,False
+reference_to_generated,class,instrumentation,Instrument,0.4,False
+reference_to_generated,class,label,Album,0.2,False
+reference_to_generated,class,libretto,Location,0.125,False
+reference_to_generated,class,listened,Musician,0.125,False
+reference_to_generated,class,lyrics,Track,0.2,False
+reference_to_generated,class,membership,Performance,0.1,False
+reference_to_generated,class,movement,Instrument,0.25,False
+reference_to_generated,class,music artist,Music album,0.45454545454545453,False
+reference_to_generated,class,music group,Music album,0.5454545454545454,False
+reference_to_generated,class,musical expression,Musical group / band,0.3333333333333333,False
+reference_to_generated,class,musical manifestation,Musical group / band,0.3,False
+reference_to_generated,class,musical work,Music album,0.36363636363636365,False
+reference_to_generated,class,orchestration,Location,0.125,False
+reference_to_generated,class,performance,Performance,0.9090909090909091,False
+reference_to_generated,class,performer,Performance,0.4444444444444444,False
+reference_to_generated,class,published libretto,Individual musician,0.05555555555555555,False
+reference_to_generated,class,published lyrics,Live Performance,0.0625,False
+reference_to_generated,class,published score,Track / song,0.0,False
+reference_to_generated,class,record,Record,0.8333333333333334,False
+reference_to_generated,class,recording,Record,0.3333333333333333,False
+reference_to_generated,class,recording session,Individual musician,0.17647058823529413,False
+reference_to_generated,class,release,Track / song,0.0,False
+reference_to_generated,class,release event,Cl_Statement,0.3333333333333333,False
+reference_to_generated,class,release status,Live Performance,0.07142857142857142,False
+reference_to_generated,class,score,Record,0.4,False
+reference_to_generated,class,signal,Region,0.16666666666666666,False
+reference_to_generated,class,signal group,Music album,0.18181818181818182,False
+reference_to_generated,class,solo music artist,Role (musical function),0.29411764705882354,False
+reference_to_generated,class,sound,Band,0.25,False
+reference_to_generated,class,sound engineer,Time interval,0.07692307692307693,False
+reference_to_generated,class,track,Track,0.8,False
+reference_to_generated,class,transcription,Track / song,0.25,False

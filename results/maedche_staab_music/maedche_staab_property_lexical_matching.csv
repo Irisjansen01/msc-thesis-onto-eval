@@ -1,0 +1,220 @@
+direction,kind,source_label,best_target_label,string_matching,exact_hit
+generated_to_reference,property,album release date,other_release_of,0.3125,False
+generated_to_reference,property,composes song,composed in,0.6363636363636364,False
+generated_to_reference,property,contains song,recorded sound,0.23076923076923078,False
+generated_to_reference,property,date of composition,productOfComposition,0.47368421052631576,False
+generated_to_reference,property,end date (optional),sampled version of,0.16666666666666666,False
+generated_to_reference,property,has album,has_track,0.3333333333333333,False
+generated_to_reference,property,has band,has_track,0.375,False
+generated_to_reference,property,has composition date,productOfComposition,0.3,False
+generated_to_reference,property,has composition event,productOfComposition,0.25,False
+generated_to_reference,property,has location,publicationOf,0.4166666666666667,False
+generated_to_reference,property,has member,track number,0.4,False
+generated_to_reference,property,has member (person),sampled version of,0.2777777777777778,False
+generated_to_reference,property,has membership,membership,0.6,False
+generated_to_reference,property,has name,homepage,0.375,False
+generated_to_reference,property,has performance,usedInPerformance,0.5333333333333333,False
+generated_to_reference,property,has recording event,has record number,0.5882352941176471,False
+generated_to_reference,property,has role (musical function),universally unique identifier,0.14814814814814814,False
+generated_to_reference,property,has state,has_track,0.4444444444444444,False
+generated_to_reference,property,has time interval,has interpeter,0.35714285714285715,False
+generated_to_reference,property,has track,has_track,0.8888888888888888,False
+generated_to_reference,property,hasCritic,want_item,0.3333333333333333,False
+generated_to_reference,property,hasRecord,has_track,0.3333333333333333,False
+generated_to_reference,property,instrument name,instrument,0.5,False
+generated_to_reference,property,is track of,track count,0.36363636363636365,False
+generated_to_reference,property,located in,recorded in,0.5,False
+generated_to_reference,property,member of,member_of,0.8888888888888888,False
+generated_to_reference,property,member of membership,movement number,0.13333333333333333,False
+generated_to_reference,property,membership end date,publishingLocation,0.16666666666666666,False
+generated_to_reference,property,membership of band,publishingLocation,0.2222222222222222,False
+generated_to_reference,property,membership start date,primary instrument,0.16666666666666666,False
+generated_to_reference,property,performance (in SongInPerformance),universally unique identifier,0.034482758620689655,False
+generated_to_reference,property,performance date,performance of,0.7142857142857143,False
+generated_to_reference,property,"performance location (city, state, country)",wikipedia,0.0,False
+generated_to_reference,property,performance of band,performance of,0.6428571428571429,False
+generated_to_reference,property,performed at,performed in,0.8333333333333334,False
+generated_to_reference,property,performed by,performed in,0.8333333333333334,False
+generated_to_reference,property,performed in,performed in,1.0,True
+generated_to_reference,property,performed song,performed in,0.75,False
+generated_to_reference,property,performed track,performed in,0.5833333333333334,False
+generated_to_reference,property,performs,performer,0.75,False
+generated_to_reference,property,plays instrument,primary instrument,0.6875,False
+generated_to_reference,property,recorded album,recorded sound,0.6428571428571429,False
+generated_to_reference,property,recorded during,recorded sound,0.6428571428571429,False
+generated_to_reference,property,recording end date,recorded sound,0.2857142857142857,False
+generated_to_reference,property,recording start date,primary instrument,0.2222222222222222,False
+generated_to_reference,property,release date,release_type,0.6666666666666666,False
+generated_to_reference,property,reviewed by,recorded in,0.45454545454545453,False
+generated_to_reference,property,role in band,release_type,0.25,False
+generated_to_reference,property,song (in SongInPerformance),usedInPerformance,0.17647058823529413,False
+generated_to_reference,property,start date,sampleRate,0.4,False
+generated_to_reference,property,statementText,arrangement of,0.3076923076923077,False
+generated_to_reference,property,track composition date,productOfComposition,0.35,False
+generated_to_reference,property,track of,trackNum,0.625,False
+generated_to_reference,property,track of album,track number,0.4166666666666667,False
+generated_to_reference,property,track release / composition date,universally unique identifier,0.034482758620689655,False
+reference_to_generated,property,GRid,track release / composition date,0.0,False
+reference_to_generated,property,Musicbrainz GUID,has recording event,0.1875,False
+reference_to_generated,property,activity,start date,0.125,False
+reference_to_generated,property,activity end,role in band,0.25,False
+reference_to_generated,property,activity start,contains song,0.15384615384615385,False
+reference_to_generated,property,amazon_asin,has location,0.2727272727272727,False
+reference_to_generated,property,arranged in,located in,0.5,False
+reference_to_generated,property,arrangement of,statementText,0.3076923076923077,False
+reference_to_generated,property,artist,track release / composition date,0.0,False
+reference_to_generated,property,availableAs,has album,0.1111111111111111,False
+reference_to_generated,property,available_as,release date,0.08333333333333333,False
+reference_to_generated,property,biography,hasCritic,0.1111111111111111,False
+reference_to_generated,property,bitsPerSample,has performance,0.15384615384615385,False
+reference_to_generated,property,bpm,track release / composition date,0.0,False
+reference_to_generated,property,catalogue number,instrument name,0.2,False
+reference_to_generated,property,channels,has name,0.25,False
+reference_to_generated,property,collaborated_with,performance date,0.125,False
+reference_to_generated,property,compilation_of,composes song,0.3076923076923077,False
+reference_to_generated,property,compiled,has band,0.125,False
+reference_to_generated,property,compiler,has member,0.125,False
+reference_to_generated,property,composed in,composes song,0.6363636363636364,False
+reference_to_generated,property,composer,composes song,0.25,False
+reference_to_generated,property,conducted,hasRecord,0.2222222222222222,False
+reference_to_generated,property,conductor,hasRecord,0.2222222222222222,False
+reference_to_generated,property,contains_sample_from,date of composition,0.15789473684210525,False
+reference_to_generated,property,derived from,reviewed by,0.2727272727272727,False
+reference_to_generated,property,discography,is track of,0.18181818181818182,False
+reference_to_generated,property,discogs,performs,0.14285714285714285,False
+reference_to_generated,property,djmix_of,track of,0.25,False
+reference_to_generated,property,djmixed,track release / composition date,0.0,False
+reference_to_generated,property,djmixed_by,reviewed by,0.4,False
+reference_to_generated,property,download,hasRecord,0.125,False
+reference_to_generated,property,duration,track of,0.25,False
+reference_to_generated,property,ean,track release / composition date,0.0,False
+reference_to_generated,property,encodes,performs,0.2857142857142857,False
+reference_to_generated,property,encoding,performs,0.125,False
+reference_to_generated,property,engineer,has name,0.125,False
+reference_to_generated,property,engineered,has member,0.2,False
+reference_to_generated,property,event homepage,performance date,0.14285714285714285,False
+reference_to_generated,property,eventHomePage,release date,0.16666666666666666,False
+reference_to_generated,property,exchange_item,release date,0.16666666666666666,False
+reference_to_generated,property,fanpage,has name,0.2857142857142857,False
+reference_to_generated,property,free download,role in band,0.25,False
+reference_to_generated,property,freedownload,role in band,0.25,False
+reference_to_generated,property,genre,track release / composition date,0.0,False
+reference_to_generated,property,group,track release / composition date,0.0,False
+reference_to_generated,property,gtin,track release / composition date,0.0,False
+reference_to_generated,property,has interpeter,has time interval,0.35714285714285715,False
+reference_to_generated,property,has media type,has membership,0.42857142857142855,False
+reference_to_generated,property,has record number,has recording event,0.5882352941176471,False
+reference_to_generated,property,has record side,has recording event,0.4666666666666667,False
+reference_to_generated,property,has_movement,has member,0.4,False
+reference_to_generated,property,has_track,has track,0.8888888888888888,False
+reference_to_generated,property,headliner,hasRecord,0.2222222222222222,False
+reference_to_generated,property,homepage,has name,0.375,False
+reference_to_generated,property,image,track release / composition date,0.0,False
+reference_to_generated,property,imdb,track release / composition date,0.0,False
+reference_to_generated,property,instrument,instrument name,0.5,False
+reference_to_generated,property,ipi,track release / composition date,0.0,False
+reference_to_generated,property,ismn,track release / composition date,0.0,False
+reference_to_generated,property,isrc,track release / composition date,0.0,False
+reference_to_generated,property,iswc,track release / composition date,0.0,False
+reference_to_generated,property,item,track release / composition date,0.0,False
+reference_to_generated,property,key,track release / composition date,0.0,False
+reference_to_generated,property,label,track release / composition date,0.0,False
+reference_to_generated,property,lc,track release / composition date,0.0,False
+reference_to_generated,property,licence,has name,0.14285714285714285,False
+reference_to_generated,property,listened,hasRecord,0.25,False
+reference_to_generated,property,listener,hasRecord,0.25,False
+reference_to_generated,property,lyrics,track release / composition date,0.0,False
+reference_to_generated,property,mailorder,member of,0.2222222222222222,False
+reference_to_generated,property,mashup_of,member of,0.3333333333333333,False
+reference_to_generated,property,medley_of,member of,0.5555555555555556,False
+reference_to_generated,property,member,member of,0.5,False
+reference_to_generated,property,member_of,member of,0.8888888888888888,False
+reference_to_generated,property,membership,has membership,0.6,False
+reference_to_generated,property,meter,track release / composition date,0.0,False
+reference_to_generated,property,movement number,instrument name,0.4,False
+reference_to_generated,property,movementNum,statementText,0.2727272727272727,False
+reference_to_generated,property,musicbrainz,has location,0.18181818181818182,False
+reference_to_generated,property,musicmoz,track of,0.125,False
+reference_to_generated,property,myspace,has name,0.2857142857142857,False
+reference_to_generated,property,olga,track release / composition date,0.0,False
+reference_to_generated,property,onlinecommunity,has performance,0.2,False
+reference_to_generated,property,opus,track release / composition date,0.0,False
+reference_to_generated,property,origin,track release / composition date,0.0,False
+reference_to_generated,property,other_release_of,album release date,0.3125,False
+reference_to_generated,property,paid download,role in band,0.16666666666666666,False
+reference_to_generated,property,paiddownload,role in band,0.16666666666666666,False
+reference_to_generated,property,performance of,performance date,0.7142857142857143,False
+reference_to_generated,property,performed,performs,0.75,False
+reference_to_generated,property,performed in,performed in,1.0,True
+reference_to_generated,property,performer,performs,0.75,False
+reference_to_generated,property,possess_item,release date,0.16666666666666666,False
+reference_to_generated,property,preview,reviewed by,0.14285714285714285,False
+reference_to_generated,property,preview download,reviewed by,0.18181818181818182,False
+reference_to_generated,property,primary instrument,plays instrument,0.6875,False
+reference_to_generated,property,produced,track of,0.125,False
+reference_to_generated,property,produced score,performed song,0.42857142857142855,False
+reference_to_generated,property,produced signal,performed song,0.35714285714285715,False
+reference_to_generated,property,produced signal group,track composition date,0.14285714285714285,False
+reference_to_generated,property,produced sound,performed song,0.5,False
+reference_to_generated,property,produced work,performed song,0.38461538461538464,False
+reference_to_generated,property,producer,track of,0.125,False
+reference_to_generated,property,producesSignal,performed song,0.21428571428571427,False
+reference_to_generated,property,producesSound,role in band,0.25,False
+reference_to_generated,property,producesWork,performed track,0.16666666666666666,False
+reference_to_generated,property,productOfComposition,date of composition,0.47368421052631576,False
+reference_to_generated,property,publication of,has location,0.3333333333333333,False
+reference_to_generated,property,publicationOf,has location,0.4166666666666667,False
+reference_to_generated,property,published,hasRecord,0.1111111111111111,False
+reference_to_generated,property,published as,performed at,0.4166666666666667,False
+reference_to_generated,property,publishedAs,reviewed by,0.18181818181818182,False
+reference_to_generated,property,publisher,has member,0.1111111111111111,False
+reference_to_generated,property,publishingLocation,membership of band,0.2222222222222222,False
+reference_to_generated,property,puid,track release / composition date,0.0,False
+reference_to_generated,property,record count,recorded during,0.4166666666666667,False
+reference_to_generated,property,recorded as,recorded album,0.6363636363636364,False
+reference_to_generated,property,recorded in,recorded during,0.6363636363636364,False
+reference_to_generated,property,recorded sound,recorded during,0.6428571428571429,False
+reference_to_generated,property,recordedAs,recorded album,0.4,False
+reference_to_generated,property,records,performs,0.42857142857142855,False
+reference_to_generated,property,release,release date,0.2857142857142857,False
+reference_to_generated,property,releaseStatus,release date,0.6666666666666666,False
+reference_to_generated,property,releaseType,release date,0.6363636363636364,False
+reference_to_generated,property,release_status,release date,0.5833333333333334,False
+reference_to_generated,property,release_type,release date,0.6666666666666666,False
+reference_to_generated,property,released record,release date,0.4166666666666667,False
+reference_to_generated,property,remaster_of,member of,0.4444444444444444,False
+reference_to_generated,property,remix_of,member of,0.375,False
+reference_to_generated,property,remixed,reviewed by,0.14285714285714285,False
+reference_to_generated,property,remixer,member of,0.14285714285714285,False
+reference_to_generated,property,review,reviewed by,0.16666666666666666,False
+reference_to_generated,property,sampleRate,start date,0.4,False
+reference_to_generated,property,sample_rate,start date,0.3,False
+reference_to_generated,property,sampled,has band,0.14285714285714285,False
+reference_to_generated,property,sampled version,has membership,0.2857142857142857,False
+reference_to_generated,property,sampled version of,has member (person),0.2777777777777778,False
+reference_to_generated,property,sampledVersionOf,has membership,0.21428571428571427,False
+reference_to_generated,property,sampler,has member,0.14285714285714285,False
+reference_to_generated,property,sell_item,hasCritic,0.2222222222222222,False
+reference_to_generated,property,signal,track release / composition date,0.0,False
+reference_to_generated,property,signalTime,has album,0.2222222222222222,False
+reference_to_generated,property,similar_to,start date,0.2,False
+reference_to_generated,property,singer,track release / composition date,0.0,False
+reference_to_generated,property,supporting_musician,recording end date,0.2222222222222222,False
+reference_to_generated,property,tempo,track release / composition date,0.0,False
+reference_to_generated,property,text,track release / composition date,0.0,False
+reference_to_generated,property,time,track release / composition date,0.0,False
+reference_to_generated,property,track,track of,0.4,False
+reference_to_generated,property,track count,track of,0.5,False
+reference_to_generated,property,track number,track of album,0.4166666666666667,False
+reference_to_generated,property,trackNum,track of,0.625,False
+reference_to_generated,property,translation_of,has location,0.25,False
+reference_to_generated,property,tribute_to,member of,0.1111111111111111,False
+reference_to_generated,property,trmid,track release / composition date,0.0,False
+reference_to_generated,property,universally unique identifier,has role (musical function),0.14814814814814814,False
+reference_to_generated,property,upc,track release / composition date,0.0,False
+reference_to_generated,property,usedInPerformance,has performance,0.5333333333333333,False
+reference_to_generated,property,usedInRecording,recorded during,0.26666666666666666,False
+reference_to_generated,property,usesSound,has band,0.25,False
+reference_to_generated,property,usesWork,performs,0.25,False
+reference_to_generated,property,want_item,hasCritic,0.3333333333333333,False
+reference_to_generated,property,wikipedia,located in,0.2222222222222222,False

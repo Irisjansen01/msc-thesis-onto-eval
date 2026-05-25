@@ -1,0 +1,41 @@
+ontology,subcharacteristic,score
+ontology_1,Formal adequacy,5.0
+ontology_1,Domain adequacy,3.0
+ontology_1,Formal correctness,2.667
+ontology_1,Consistency,2.667
+ontology_1,Modularity,3.333
+ontology_1,Reusability,4.0
+ontology_1,Understandability,3.333
+ontology_1,Operability,2.0
+ontology_1,Adaptability,2.667
+ontology_1,Replaceability,4.0
+ontology_2,Formal adequacy,5.0
+ontology_2,Domain adequacy,3.0
+ontology_2,Formal correctness,3.0
+ontology_2,Consistency,2.667
+ontology_2,Modularity,3.667
+ontology_2,Reusability,4.333
+ontology_2,Understandability,3.333
+ontology_2,Operability,2.0
+ontology_2,Adaptability,3.0
+ontology_2,Replaceability,2.5
+ref_ontology_1,Formal adequacy,5.0
+ref_ontology_1,Domain adequacy,3.0
+ref_ontology_1,Formal correctness,3.333
+ref_ontology_1,Consistency,2.667
+ref_ontology_1,Modularity,3.333
+ref_ontology_1,Reusability,4.333
+ref_ontology_1,Understandability,3.333
+ref_ontology_1,Operability,2.0
+ref_ontology_1,Adaptability,3.333
+ref_ontology_1,Replaceability,2.5
+ref_ontology_2,Formal adequacy,2.75
+ref_ontology_2,Domain adequacy,2.0
+ref_ontology_2,Formal correctness,2.667
+ref_ontology_2,Consistency,3.667
+ref_ontology_2,Modularity,3.333
+ref_ontology_2,Reusability,3.0
+ref_ontology_2,Understandability,3.333
+ref_ontology_2,Operability,2.0
+ref_ontology_2,Adaptability,2.667
+ref_ontology_2,Replaceability,2.5
