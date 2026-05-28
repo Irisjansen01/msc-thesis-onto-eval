@@ -1,9 +1,5 @@
 ontology,metric,value
-ontology_1,status,SKIPPED
-ontology_1,reason,not_implemented
-ontology_2,status,SKIPPED
-ontology_2,reason,not_implemented
-ref_ontology_1,status,SKIPPED
-ref_ontology_1,reason,not_implemented
-ref_ontology_2,status,SKIPPED
-ref_ontology_2,reason,not_implemented
+music,status,SKIPPED
+music,reason,not_implemented
+hospital,status,SKIPPED
+hospital,reason,not_implemented

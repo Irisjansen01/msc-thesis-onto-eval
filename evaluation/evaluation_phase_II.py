@@ -27,21 +27,23 @@ logging.getLogger("rdflib").setLevel(logging.ERROR)
 SEP = "=" * 72
 
 ONTOLOGIES = {
-    "ontology_1": "data/ontologies/music-final.ttl",
-    "ontology_2": "data/ontologies/hospital-final.ttl",
-    "ref_ontology_1": "data/ontologies/music-ref.rdfs",
-    "ref_ontology_2": "data/ontologies/hospital-ref.owl",
+    "music": "data/ontologies/music-final.ttl",
+    "hospital": "data/ontologies/hospital-final.ttl",
+    "music_reference": "data/ontologies/music-ref.rdfs",
+    "hospital_reference": "data/ontologies/hospital-ref.owl",
 }
+
+GENERATED_ONTOLOGY_KEYS = ("music", "hospital")
 
 DOMAIN_STORY_COMPARISONS = [
     {
         "comparison": "music_final_vs_music_story",
-        "ontology_key": "ontology_1",
+        "ontology_key": "music",
         "story_path": "data/domain story/music-story.txt",
     },
     {
         "comparison": "hospital_final_vs_hospital_story",
-        "ontology_key": "ontology_2",
+        "ontology_key": "hospital",
         "story_path": "data/domain story/hospital-story.txt",
     },
 ]
@@ -110,8 +112,8 @@ def load_ontology(path):
 
 def run_maedche_reference_comparisons():
     comparisons = [
-        ("music", ONTOLOGIES["ontology_1"], ONTOLOGIES["ref_ontology_1"], Path("results") / "maedche_staab_music"),
-        ("hospital", ONTOLOGIES["ontology_2"], ONTOLOGIES["ref_ontology_2"], Path("results") / "maedche_staab_hospital"),
+        ("music", ONTOLOGIES["music"], ONTOLOGIES["music_reference"], Path("results") / "maedche_staab_music"),
+        ("hospital", ONTOLOGIES["hospital"], ONTOLOGIES["hospital_reference"], Path("results") / "maedche_staab_hospital"),
     ]
     for label, generated_path, reference_path, output_dir in comparisons:
         print(f"\n{SEP}")
@@ -140,7 +142,7 @@ def run_vocabulary_profile_story_comparisons(loaded_ontologies=None):
     loaded_ontologies = loaded_ontologies or {
         label: load_ontology(path)
         for label, path in ONTOLOGIES.items()
-        if label in {comparison["ontology_key"] for comparison in DOMAIN_STORY_COMPARISONS}
+        if label in GENERATED_ONTOLOGY_KEYS
     }
     results = []
     for comparison in DOMAIN_STORY_COMPARISONS:
@@ -175,7 +177,8 @@ def run_default_evaluation():
     results_by_metric = {key: {} for key, *_ in METHODS}
     loaded_ontologies = {}
 
-    for ont_label, ont_path in ONTOLOGIES.items():
+    for ont_label in GENERATED_ONTOLOGY_KEYS:
+        ont_path = ONTOLOGIES[ont_label]
         print(f"\n\n{'#' * 72}")
         print(f"  ONTOLOGY: {ont_label}")
         print(f"  Path: {ont_path}")
@@ -198,7 +201,7 @@ def run_default_evaluation():
     write_metric_outputs(results_by_metric)
     vocabulary_profile_results = run_vocabulary_profile_story_comparisons(loaded_ontologies)
     for result in vocabulary_profile_results:
-        label = result["summary"]["ontology"]
+        label = result["summary"]["ontology_key"]
         all_results[label]["vocabulary_profile_similarity"] = wrap_method(
             result["summary"],
             VOCABULARY_PROFILE_METHOD_NAME,

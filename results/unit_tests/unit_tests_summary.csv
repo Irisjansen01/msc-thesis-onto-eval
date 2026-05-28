@@ -1,5 +1,3 @@
 ontology,passed,total,pass_rate
-ontology_1,99,99,1.0
-ontology_2,118,118,1.0
-ref_ontology_1,238,238,1.0
-ref_ontology_2,17,17,1.0
+music,99,99,1.0
+hospital,118,118,1.0

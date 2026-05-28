@@ -366,6 +366,8 @@
     .modal-body p { margin-bottom: 10px; }
     .modal-body ul { margin: 8px 0 12px 22px; }
     .modal-body li { margin-bottom: 4px; }
+    .modal-body a { color: #2f74c0; text-decoration: none; }
+    .modal-body a:hover { text-decoration: underline; }
     .modal-footer { padding: 12px 22px; border-top: 1px solid #eee;
                     display: flex; justify-content: flex-end; gap: 8px;
                     flex-shrink: 0; }
@@ -377,11 +379,20 @@
     .thanks-emphasis { font-size: 0.98rem; font-weight: 700; color: #16213e; margin-bottom: 4px; }
     .thanks-subtitle { margin: 0; color: #5f6a78; font-size: 0.88rem; }
     .thanks-note { font-size: 0.85rem; color: #5f6a78; line-height: 1.5; }
+    .thanks-steps { background: #f8f9fc; border: 1px solid #e0e3ec; border-radius: 8px;
+                    padding: 12px 14px; display: flex; flex-direction: column; gap: 9px; }
+    .thanks-step { display: flex; gap: 10px; line-height: 1.45; color: #4d5968; }
+    .thanks-step-num { width: 22px; height: 22px; border-radius: 50%; background: #e7eef8;
+                       color: #2f5f9b; display: inline-flex; align-items: center;
+                       justify-content: center; font-weight: 800; font-size: 0.72rem;
+                       flex-shrink: 0; }
+    .thanks-step strong { color: #16213e; }
     .thanks-modal-body a { color: #2f74c0; text-decoration: none; }
     .thanks-modal-body a:hover { text-decoration: underline; }
     .consent-box { background: #f8f9fc; border: 1px solid #e0e3ec;
                    border-radius: 6px; padding: 12px; margin-top: 14px;
-                   font-size: 0.82rem; }
+                   font-size: 0.82rem; display: flex; flex-direction: column;
+                   gap: 9px; }
     .consent-box label { display: flex; gap: 8px; cursor: pointer; }
     .consent-box input { margin-top: 3px; }
     .add-card-btn { width: 100%; background: white; border: 2px dashed #d0d3dc;
@@ -402,7 +413,7 @@
                       font-family: inherit; line-height: 1.5; outline: none;
                       resize: none; color: #16213e; transition: border-color 0.15s; }
     .ac-field input:focus, .ac-field textarea:focus { border-color: #4a90d9; }
-    .ac-field input.error { border-color: #e74c3c; }
+    .ac-field input.error, .ac-field textarea.error { border-color: #e74c3c; }
     .ac-actions { display: flex; gap: 6px; justify-content: flex-end; margin-top: 2px; }
 
     .empty-state { display: flex; flex-direction: column; align-items: center;
@@ -458,7 +469,7 @@
 
 <!-- WELCOME / CONSENT MODAL ─────────────────────────── -->
 <div class="modal-backdrop" id="welcome-modal">
-  <div class="modal" style="width: 600px;">
+  <div class="modal" style="width: 700px;">
     <div class="modal-header">
       <h2>Before you begin: data &amp; consent</h2>
     </div>
@@ -466,33 +477,39 @@
       <p style="font-size:0.78rem;color:#666;margin-bottom:14px;">
         <strong>Card sort study.</strong>
         Researcher: I.F. Jansen, MSc Information Studies, University of
-        Amsterdam (iris.jansen6@student.uva.nl). Supervisor: Dr. L. Stork.
+        Amsterdam (<a href="mailto:iris.jansen6@student.uva.nl">iris.jansen6@student.uva.nl</a>).
+        Supervisor: Dr. L. Stork (<a href="mailto:l.stork@uva.nl">l.stork@uva.nl</a>).
       </p>
 
-      <p>This study investigates how experts categorise automated ontology evaluation methods. The task takes approximately <strong>15 minutes</strong>. If you have any questions, contact the researcher at iris.jansen6@student.uva.nl.</p>
+      <p>You are invited to take part in a research study about how to categorise automated ontology evaluation methods. The task takes approximately <strong>15 minutes</strong>.</p>
+
+      <h3>What is involved?</h3>
+      <p>You will sort anonymised cards describing automated ontology evaluation methods into categories and optional subcategories. You may also suggest a missing method if you think one is absent.</p>
 
       <h3>How your data is handled</h3>
       <ul>
         <li>Your in-progress sort is stored only in your own browser. Nothing is uploaded automatically.</li>
-        <li>When you click Finish &amp; download, a JSON file is saved locally; you then email it to the researcher.</li>
+        <li>When you click Finish &amp; download, a JSON file is saved locally; you then upload or move it to the <a href="https://amsuni-my.sharepoint.com/:f:/r/personal/iris_jansen6_student_uva_nl/Documents/Card-Sort%20Ontology%20Evaluation%20Methods?csf=1&amp;web=1&amp;e=cbGNkT" target="_blank" rel="noopener">Drive folder</a>.</li>
         <li>Reopening the same browser may restore earlier work. Use the reset button if you need to start over.</li>
         <li>Anonymised data is retained on University of Amsterdam secure storage for the thesis project plus one year, and may appear in the MSc thesis and follow-up publications, always anonymised.</li>
       </ul>
 
       <h3>Your rights</h3>
       <ul>
-        <li>Participation is voluntary. You can stop at any time without giving a reason. You can withdraw your data within two weeks of the session by emailing the researcher.</li>
+        <li>Participation is voluntary. You can choose not to take part or stop at any time without giving a reason.</li>
+        <li>You can withdraw your data within two weeks of the session by emailing the researcher.</li>
+        <li>If you have questions or concerns, contact the researcher at <a href="mailto:iris.jansen6@student.uva.nl">iris.jansen6@student.uva.nl</a> or the supervisor at <a href="mailto:l.stork@uva.nl">l.stork@uva.nl</a>.</li>
       </ul>
 
       <div class="consent-box">
         <label>
           <input type="checkbox" id="c1" class="consent-required">
-          <span>I understand how my data will be handled and my rights as a participant, and I consent to take part in this card sort study.</span>
+          <span>I confirm that I am 18 years or older, have read and understood the information above, understand that participation is voluntary and that I can stop at any time, and consent to take part in this card sort study and to the use of my anonymised data as described above.</span>
         </label>
       </div>
     </div>
     <div class="modal-footer">
-      <button class="btn btn-primary" id="welcome-begin" disabled>Continue &#8594;</button>
+      <button class="btn btn-primary" id="welcome-begin" onclick="acceptWelcomeConsent(event)">Continue &#8594;</button>
     </div>
   </div>
 </div>
@@ -522,12 +539,25 @@
       <div class="thanks-hero">
         <div class="thanks-icon">✔</div>
         <div>
-          <p class="thanks-emphasis">Your card sort has been saved successfully.</p>
-          <p class="thanks-subtitle">A JSON file is waiting in your downloads folder.</p>
+          <p class="thanks-emphasis">Your card sort has been saved.</p>
+          <p class="thanks-subtitle">The JSON file is now in your downloads folder.</p>
         </div>
       </div>
-      <p>Please email that file to <a href="mailto:iris.jansen6@student.uva.nl">iris.jansen6@student.uva.nl</a> so it can be included in the analysis.</p>
-      <p class="thanks-note">If you want to revise your answers, reopen this page in the same browser. Your work is still saved locally and can be resumed.</p>
+      <div class="thanks-steps">
+        <div class="thanks-step">
+          <span class="thanks-step-num">1</span>
+          <span><strong>Find the JSON file</strong> in your downloads folder.</span>
+        </div>
+        <div class="thanks-step">
+          <span class="thanks-step-num">2</span>
+          <span><strong>Upload or move it to the <a href="https://amsuni-my.sharepoint.com/:f:/r/personal/iris_jansen6_student_uva_nl/Documents/Card-Sort%20Ontology%20Evaluation%20Methods?csf=1&amp;web=1&amp;e=cbGNkT" target="_blank" rel="noopener">Drive folder</a></strong> so it can be included in the analysis.</span>
+        </div>
+        <div class="thanks-step">
+          <span class="thanks-step-num">3</span>
+          <span><strong>Questions or withdrawal:</strong> contact the researcher, Iris, at <a href="mailto:iris.jansen6@student.uva.nl">iris.jansen6@student.uva.nl</a> or the supervisor at <a href="mailto:l.stork@uva.nl">l.stork@uva.nl</a>. You can withdraw your data within two weeks of this session.</span>
+        </div>
+      </div>
+      <p class="thanks-note">To revise your answers, reopen this page in the same browser. Your work is still saved locally and can be resumed.</p>
     </div>
     <div class="modal-footer">
       <button class="btn btn-primary" onclick="closeThanks()">Done</button>
@@ -568,9 +598,8 @@
     <!-- MAIN AREA: all top categories + set-aside box -->
     <div class="categories-area">
       <div class="cat-toolbar">
-        <span class="cat-toolbar-label">Top categories: pre-named evaluation approaches</span>
         <span class="cat-toolbar-hint">
-          <strong>Top category = main evaluation basis.</strong> Subcategory = quality concern. Sort by the card description, not by recognised tool names.
+          <strong>Top categories group cards by evaluation approach.</strong> Subcategories capture the specific quality concern. Please sort by the card description, not by method names you recognise.
         </span>
       </div>
 
@@ -584,7 +613,7 @@
 
 <script>
 // ═══════════════════════════════════════════════
-// Card data (39 cards). Participant-facing anonymised display fields only.
+// Card data (40 cards). Participant-facing anonymised display fields only.
 // ═══════════════════════════════════════════════
 const SAMPLES = [
   {
@@ -859,11 +888,18 @@ const SAMPLES = [
     "input": "Ontology schema.",
     "procedure": "For each declared object property and datatype property, check whether both a domain class and a range type are explicitly stated. For each group of sibling classes sharing the same parent class, check whether explicit statements are present declaring that membership in one class excludes membership in another. Compute a coverage ratio for each check separately.",
     "output": "Domain and range declaration coverage ratio for declared properties, and sibling class separation coverage ratio for classes sharing a parent."
+  },
+  {
+    "id": "M40",
+    "anon": "Term-focused module extraction",
+    "input": "Ontology file and a set of terms whose meaning is to be preserved, typically class or property names.",
+    "procedure": "The method identifies the smallest subset of axioms from the ontology that retains all logical entailments involving the selected terms. Axioms are tested one by one against a locality criterion: those that are not logically irrelevant to the current term set are pulled into the module, extending the covered terms until the subset is stable. The result is characterised by its size relative to the full ontology.",
+    "output": "An extracted module preserving entailments for the selected terms, and summary statistics: module size, proportion of the full ontology, and which terms the module covers."
   }
 ];
 
 // Researcher-only support note. Participant-facing cards are anonymised.
-// The active participant-facing set contains 39 cards in this version, so no inactive participant-facing card IDs are exported.
+// The active participant-facing set contains 40 cards in this version, so no inactive participant-facing card IDs are exported.
 const INACTIVE_CARDS = [];
 const EXPECTED_ACTIVE_CARD_IDS = SAMPLES.map(c => c.id);
 
@@ -895,34 +931,34 @@ const TOP_CATEGORIES_BASE = [
 // ═══════════════════════════════════════════════
 // Shared subcategory suggestions (quality concerns), available across all top categories.
 const SUBCATEGORY_SUGGESTIONS = [
-  { id: 'Q01', label: 'Language and formal compliance',
-    description: 'Whether the ontology follows required syntax, language rules, profile constraints, or formal representation requirements.' },
-  { id: 'Q02', label: 'Internal logical consistency',
-    description: 'Whether the ontology avoids contradictions, unsatisfiable classes, incompatible axioms, or other formal inconsistencies.' },
-  { id: 'Q03', label: 'Structural complexity',
-    description: 'Whether the ontology\'s hierarchy, relations, attributes, axioms, or graph structure have measurable structural properties.' },
+  { id: 'Q01', label: 'Compliance',
+    description: 'The ontology satisfies required syntax, language rules, and formal representation constraints of the chosen knowledge representation language.' },
+  { id: 'Q02', label: 'Complexity',
+    description: 'Measurable structural properties of the ontology including hierarchy depth, breadth, fan-outness, size, and relation richness.' },
+  { id: 'Q03', label: 'Internal consistency',
+    description: 'Absence of contradictions, circularity errors, unsatisfiable classes, and formal incompatibilities within the ontology.' },
   { id: 'Q04', label: 'Modularity',
-    description: 'Whether the ontology is organised into separable, coherent, or reusable parts.' },
-  { id: 'Q05', label: 'Conciseness and non-redundancy',
-    description: 'Whether the ontology avoids unnecessary, duplicate, redundant, or unsupported elements.' },
-  { id: 'Q06', label: 'Coverage and completeness',
-    description: 'Whether the ontology includes the expected domain content, such as relevant concepts, relations, constraints, terms, or mappings.' },
-  { id: 'Q07', label: 'Accuracy and correctness',
-    description: 'Whether the ontology represents the intended domain correctly.' },
-  { id: 'Q08', label: 'Comprehensibility and intelligibility',
-    description: 'Whether human users can understand the ontology through clear labels, definitions, naming, documentation, and modelling choices.' },
-  { id: 'Q09', label: 'Reusability',
-    description: 'Whether the ontology, or parts of it, can be reused beyond the original context.' },
-  { id: 'Q10', label: 'Adaptability and extendibility',
-    description: 'Whether the ontology can be extended, modified, or specialised without damaging existing commitments.' },
-  { id: 'Q11', label: 'Functional adequacy and task fitness',
-    description: 'Whether the ontology supports the intended task, application, requirement, or competency questions.' },
-  { id: 'Q12', label: 'Efficiency and scalability',
-    description: 'Whether the ontology or its automated evaluation remains computationally feasible in terms of time, size, memory, or processing limits.' },
-  { id: 'Q13', label: 'Provenance, credibility, and maintenance',
-    description: 'Whether the ontology records source, authorship, version, derivation, change-history, or other trust-related information.' },
-  { id: 'Q14', label: 'Accessibility, findability, and publication readiness',
-    description: 'Whether the ontology can be found, accessed, resolved, linked, cited, and reused as a published artefact.' }
+    description: 'Organisation of the ontology into separable, coherent parts that can be understood or processed independently.' },
+  { id: 'Q05', label: 'Conciseness',
+    description: 'Absence of unnecessary, duplicate, or redundant definitions and axioms; no element is present that could be removed without loss of intended content.' },
+  { id: 'Q06', label: 'Coverage',
+    description: 'Presence of the concepts, relations, and constraints required to represent the intended domain.' },
+  { id: 'Q07', label: 'External consistency',
+    description: 'The ontology does not contradict accepted domain knowledge or facts outside the ontology itself.' },
+  { id: 'Q08', label: 'Accuracy',
+    description: 'The ontology correctly represents the intended domain when compared with an external reference or gold standard.' },
+  { id: 'Q09', label: 'Relevancy',
+    description: 'The ontology supports the intended use requirements for which it was developed.' },
+  { id: 'Q10', label: 'Functional completeness',
+    description: 'The ontology answers the competency questions or fulfils the functional tasks it was designed to support.' },
+  { id: 'Q11', label: 'Comprehensibility',
+    description: 'Human interpretability of the ontology through labels, definitions, naming conventions, and documentation.' },
+  { id: 'Q12', label: 'Adaptability and efficiency',
+    description: 'Possibility of modifying or extending the ontology without breaking existing commitments, and computational feasibility in terms of size, time, or processing.' },
+  { id: 'Q13', label: 'Credibility',
+    description: 'Availability of source, authorship, versioning, and derivation information that supports trust in the ontology.' },
+  { id: 'Q14', label: 'Accessibility',
+    description: 'Possibility of finding, accessing, and resolving the ontology as a published resource.' }
 ];
 
 const ASIDE_REASONS = [
@@ -944,6 +980,9 @@ function buildCard(c) {
            procedure: c.procedure, output: c.output };
 }
 
+const SCHEMA_VERSION = 'card-sort/v11-add-m40-module-extraction';
+const CONSENT_VERSION = 'ethics-info/v3-one-checkbox-2026-05-28';
+
 let S = {
   cards: {},
   topCategories: [],          // [{ letter, color, name, description,
@@ -959,8 +998,9 @@ let S = {
   drag: null,
   userCounter: 0,
   consent: false,
+  consentVersion: null,
   startedAt: null,
-  schemaVersion: 'card-sort/v10-closed-hybrid-cleaned'
+  schemaVersion: SCHEMA_VERSION
 };
 
 function isUserCard(c) {
@@ -978,29 +1018,9 @@ function init() {
     if (saved) S = JSON.parse(saved);
   } catch(e) {}
 
-  const savedIds = S.cards ? Object.keys(S.cards).filter(id => !id.startsWith('u')).sort() : [];
-  const expectedIds = [...EXPECTED_ACTIVE_CARD_IDS].sort();
-  const activeSetMatches = savedIds.length === expectedIds.length &&
-    savedIds.every((id, idx) => id === expectedIds[idx]);
-  if (!S.cards || Object.keys(S.cards).length === 0 ||
-      !S.topCategories || S.topCategories.length === 0 ||
-      S.schemaVersion !== 'card-sort/v10-closed-hybrid-cleaned' ||
-      !activeSetMatches) {
-    applySamples();
-  }
+  ensureStateReady();
 
-  if (!S.setAside) S.setAside = [];
-  if (!S.asideReasons) S.asideReasons = {};
-  if (!S.reflection) S.reflection = {};
-  if (!S.userCounter) S.userCounter = 0;
-  if (!S.startedAt) S.startedAt = new Date().toISOString();
-
-  // Force fixed alphabetical category order, even when loading a saved state
-  S.topCategoryOrder = S.topCategories.map(t => t.letter).sort();
-
-  S.drag = null;
-
-  if (!S.consent) {
+  if (!S.consent || S.consentVersion !== CONSENT_VERSION) {
     setupWelcome();
   } else {
     document.getElementById('welcome-modal').classList.add('hidden');
@@ -1016,30 +1036,44 @@ function setupWelcome() {
 
   modal.classList.remove('hidden');
   btn.innerHTML = 'Continue &#8594;';
-  btn.disabled = true;
 
   const refresh = () => {
-    btn.disabled = !Array.from(required).every(x => x.checked);
+    btn.classList.toggle('disabled-look', !Array.from(required).every(x => x.checked));
   };
 
   required.forEach(x => {
     x.checked = false;
-    x.onchange = refresh;
+    x.addEventListener('change', refresh);
+    x.addEventListener('input', refresh);
+    x.addEventListener('click', () => setTimeout(refresh, 0));
   });
 
   refresh();
 
-  btn.onclick = () => {
-    if (!Array.from(required).every(x => x.checked)) return;
+  btn.onclick = acceptWelcomeConsent;
+}
 
-    S.consent = true;
-    S.startedAt = new Date().toISOString();
-    persist();
+function acceptWelcomeConsent(event) {
+  if (event && event.preventDefault) event.preventDefault();
 
-    modal.classList.add('hidden');
-    render();
-    startTour();
-  };
+  const modal = document.getElementById('welcome-modal');
+  const required = modal.querySelectorAll('.consent-required');
+  if (!Array.from(required).every(x => x.checked)) {
+    if (required[0]) required[0].focus();
+    return false;
+  }
+
+  ensureStateReady();
+  S.consent = true;
+  S.consentVersion = CONSENT_VERSION;
+  S.startedAt = new Date().toISOString();
+  persist();
+
+  modal.classList.add('hidden');
+  render();
+  startTimer();
+  startTour();
+  return false;
 }
 
 function persist() {
@@ -1050,6 +1084,65 @@ function persist() {
 // ═══════════════════════════════════════════════
 // Timer
 // ═══════════════════════════════════════════════
+function ensureStateReady() {
+  const savedIds = S.cards ? Object.keys(S.cards).filter(id => !id.startsWith('u')).sort() : [];
+  const expectedIds = [...EXPECTED_ACTIVE_CARD_IDS].sort();
+  const activeSetMatches = savedIds.length === expectedIds.length &&
+    savedIds.every((id, idx) => id === expectedIds[idx]);
+
+  if (!S.cards || Object.keys(S.cards).length === 0 ||
+      !S.topCategories || S.topCategories.length === 0 ||
+      S.schemaVersion !== SCHEMA_VERSION ||
+      !activeSetMatches) {
+    applySamples();
+  }
+
+  S.schemaVersion = SCHEMA_VERSION;
+  if (!S.unsorted) S.unsorted = [];
+  if (!S.unsortedDisplayOrder) S.unsortedDisplayOrder = [...S.unsorted];
+  if (!S.setAside) S.setAside = [];
+  if (!S.asideReasons) S.asideReasons = {};
+  if (!S.reflection) S.reflection = {};
+  if (!S.userCounter) S.userCounter = 0;
+  if (!S.startedAt) S.startedAt = new Date().toISOString();
+
+  S.topCategories.forEach(t => {
+    if (!t.directCardIds) t.directCardIds = [];
+    if (!t.subInstances) t.subInstances = [];
+    t.subInstances.forEach(si => {
+      if (!si.cardIds) si.cardIds = [];
+    });
+  });
+
+  repairMissingCardPlacements();
+  S.topCategoryOrder = S.topCategories.map(t => t.letter).sort();
+  S.drag = null;
+}
+
+function repairMissingCardPlacements() {
+  const allCardIds = Object.keys(S.cards || {});
+  const placed = new Set();
+
+  S.unsorted = (S.unsorted || []).filter(id => S.cards[id]);
+  S.setAside = (S.setAside || []).filter(id => S.cards[id]);
+  S.unsorted.forEach(id => placed.add(id));
+  S.setAside.forEach(id => placed.add(id));
+
+  (S.topCategories || []).forEach(t => {
+    t.directCardIds = (t.directCardIds || []).filter(id => S.cards[id]);
+    t.directCardIds.forEach(id => placed.add(id));
+    t.subInstances = (t.subInstances || []).map(si => {
+      si.cardIds = (si.cardIds || []).filter(id => S.cards[id]);
+      si.cardIds.forEach(id => placed.add(id));
+      return si;
+    });
+  });
+
+  allCardIds.forEach(id => {
+    if (!placed.has(id)) S.unsorted.push(id);
+  });
+}
+
 let _timerInterval = null;
 
 function _fmtHMS(sec) {
@@ -1182,8 +1275,8 @@ function showAddForm(btn) {
     </p>
     <div class="ac-field"><label>Method name <span style="color:#e74c3c">*</span></label>
       <input id="ac-name" type="text" autocomplete="off"></div>
-    <div class="ac-field"><label>Why this method belongs in the set</label>
-      <textarea id="ac-reason" rows="2" placeholder="Optional. What does it evaluate that other cards do not?"></textarea></div>
+    <div class="ac-field"><label>Why this method belongs in the set <span style="color:#e74c3c">*</span></label>
+      <textarea id="ac-reason" rows="2" placeholder="What does it evaluate that other cards do not?"></textarea></div>
     <div class="ac-field"><label>Input</label>
       <textarea id="ac-input" rows="2" placeholder="What goes in"></textarea></div>
     <div class="ac-field"><label>Procedure</label>
@@ -1196,16 +1289,23 @@ function showAddForm(btn) {
     </div>`;
   btn.replaceWith(f);
   const name = f.querySelector('#ac-name'); name.focus();
+  const reason = f.querySelector('#ac-reason');
   name.addEventListener('input', () => name.classList.remove('error'));
+  reason.addEventListener('input', () => reason.classList.remove('error'));
   f.querySelector('#ac-cancel').addEventListener('click',
     () => f.replaceWith(makeAddBtn()));
   f.querySelector('#ac-save').addEventListener('click', () => {
     const t = name.value.trim();
-    if (!t) { name.classList.add('error'); name.focus(); return; }
+    const r = reason.value.trim();
+    if (!t || !r) {
+      if (!t) name.classList.add('error');
+      if (!r) reason.classList.add('error');
+      (!t ? name : reason).focus();
+      return;
+    }
     S.userCounter += 1;
     const id = 'u' + Date.now();
     const card = { id, title: t, userCreated: true, uNumber: S.userCounter };
-    const r = f.querySelector('#ac-reason').value.trim();
     const i = f.querySelector('#ac-input').value.trim();
     const p = f.querySelector('#ac-proc').value.trim();
     const o = f.querySelector('#ac-output').value.trim();
@@ -1989,6 +2089,7 @@ function actuallyDownload() {
   }));
 
   const exportedAt = new Date().toISOString();
+  const exportCode = makeExportCode();
   const durationSec = S.startedAt
     ? Math.max(0, Math.floor((new Date(exportedAt) - new Date(S.startedAt)) / 1000))
     : null;
@@ -1996,12 +2097,14 @@ function actuallyDownload() {
   const result = {
     schema: S.schemaVersion,
     schemaVersion: S.schemaVersion,
-    sort_kind: 'closed-hybrid',
+    sort_kind: 'ontology-card-sort',
+    export_code: exportCode,
     exported_at: exportedAt,
     started_at: S.startedAt || null,
     duration_seconds: durationSec,
     duration_hms: durationSec !== null ? _fmtHMS(durationSec) : null,
     consent_given: !!S.consent,
+    consent_version: S.consentVersion || null,
     active_card_count: EXPECTED_ACTIVE_CARD_IDS.length,
     active_card_ids: EXPECTED_ACTIVE_CARD_IDS,
     inactive_cards: INACTIVE_CARDS,
@@ -2025,7 +2128,7 @@ function actuallyDownload() {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = 'card-sort-closed-' + new Date().toISOString().slice(0,10) + '.json';
+  a.download = 'card-sort-ontology-' + exportCode + '.json';
   a.click();
   URL.revokeObjectURL(url);
   document.getElementById('thanks-modal').classList.remove('hidden');
@@ -2034,6 +2137,17 @@ function actuallyDownload() {
 // ═══════════════════════════════════════════════
 // Toast
 // ═══════════════════════════════════════════════
+function makeExportCode() {
+  const alphabet = '0123456789abcdefghijklmnopqrstuvwxyz';
+  const bytes = new Uint8Array(4);
+  if (window.crypto && window.crypto.getRandomValues) {
+    window.crypto.getRandomValues(bytes);
+  } else {
+    for (let i = 0; i < bytes.length; i++) bytes[i] = Math.floor(Math.random() * 256);
+  }
+  return Array.from(bytes, b => alphabet[b % alphabet.length]).join('');
+}
+
 let _toastTimer;
 function toast(msg) {
   const el = document.getElementById('toast');
@@ -2056,7 +2170,7 @@ const TOUR_STEPS = [
   },
   {
     title: 'Your unsorted cards',
-    body: 'The <strong>left panel</strong> holds all 39 cards. Each card describes one automated ontology evaluation method. Scroll down to see them all.',
+    body: 'The <strong>left panel</strong> holds all 40 cards. Each card describes one automated ontology evaluation method. Scroll down to see them all.',
     target: '.unsorted-panel',
     position: 'right'
   },
@@ -2092,7 +2206,7 @@ const TOUR_STEPS = [
   },
   {
     title: 'Finishing up',
-    body: 'When you have sorted all cards, click <strong>Finish &amp; download</strong> to save your results as a JSON file, then email it to the researcher.<br><br>Use the <strong>&#8635;</strong> button to reset and start over. The <strong>?</strong> button replays this tour at any time.',
+    body: 'When you have sorted all cards, click <strong>Finish &amp; download</strong> to save your results as a JSON file, then upload or move it to the <a href="https://amsuni-my.sharepoint.com/:f:/r/personal/iris_jansen6_student_uva_nl/Documents/Card-Sort%20Ontology%20Evaluation%20Methods?csf=1&amp;web=1&amp;e=cbGNkT" target="_blank" rel="noopener">Drive folder</a>.<br><br>Use the <strong>&#8635;</strong> button to reset and start over. The <strong>?</strong> button replays this tour at any time.',
     target: '.header-actions',
     position: 'bottom'
   },

@@ -1,9 +1,5 @@
 ontology,metric,value
-ontology_1,typed,39
-ontology_1,invalid,0
-ontology_2,typed,25
-ontology_2,invalid,0
-ref_ontology_1,typed,0
-ref_ontology_1,invalid,0
-ref_ontology_2,typed,535
-ref_ontology_2,invalid,0
+music,typed,39
+music,invalid,0
+hospital,typed,25
+hospital,invalid,0
