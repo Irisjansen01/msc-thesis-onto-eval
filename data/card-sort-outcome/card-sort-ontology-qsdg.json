@@ -1,0 +1,486 @@
+{
+  "schema": "card-sort/v11-add-m40-module-extraction",
+  "schemaVersion": "card-sort/v11-add-m40-module-extraction",
+  "sort_kind": "ontology-card-sort",
+  "export_code": "qsdg",
+  "exported_at": "2026-05-29T07:59:48.810Z",
+  "started_at": "2026-05-29T07:20:30.968Z",
+  "duration_seconds": 2357,
+  "duration_hms": "39:17",
+  "consent_given": true,
+  "consent_version": "ethics-info/v6-quality-concern-wording-2026-05-28",
+  "active_card_count": 40,
+  "active_card_ids": [
+    "M01",
+    "M02",
+    "M03",
+    "M04",
+    "M05",
+    "M06",
+    "M07",
+    "M08",
+    "M09",
+    "M10",
+    "M11",
+    "M12",
+    "M13",
+    "M14",
+    "M15",
+    "M16",
+    "M17",
+    "M18",
+    "M19",
+    "M20",
+    "M21",
+    "M22",
+    "M23",
+    "M24",
+    "M25",
+    "M26",
+    "M27",
+    "M28",
+    "M29",
+    "M30",
+    "M31",
+    "M32",
+    "M33",
+    "M34",
+    "M35",
+    "M36",
+    "M37",
+    "M38",
+    "M39",
+    "M40"
+  ],
+  "inactive_cards": [],
+  "top_category_display_order": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "subcategory_suggestion_set": [
+    {
+      "id": "Q01",
+      "label": "Compliance",
+      "description": "The ontology satisfies required syntax, language rules, and formal representation constraints of the chosen knowledge representation language."
+    },
+    {
+      "id": "Q02",
+      "label": "Complexity",
+      "description": "Measurable structural properties of the ontology including hierarchy depth, breadth, fan-outness, size, and relation richness."
+    },
+    {
+      "id": "Q03",
+      "label": "Internal consistency",
+      "description": "Absence of contradictions, circularity errors, unsatisfiable classes, and formal incompatibilities within the ontology."
+    },
+    {
+      "id": "Q04",
+      "label": "Modularity",
+      "description": "Organisation of the ontology into separable, coherent parts that can be understood or processed independently."
+    },
+    {
+      "id": "Q05",
+      "label": "Conciseness",
+      "description": "Absence of unnecessary, duplicate, or redundant definitions and axioms; no element is present that could be removed without loss of intended content."
+    },
+    {
+      "id": "Q06",
+      "label": "Coverage",
+      "description": "Presence of the concepts, relations, and constraints required to represent the intended domain."
+    },
+    {
+      "id": "Q07",
+      "label": "External consistency",
+      "description": "The ontology does not contradict accepted domain knowledge or facts outside the ontology itself."
+    },
+    {
+      "id": "Q08",
+      "label": "Accuracy",
+      "description": "The ontology correctly represents the intended domain when compared with an external reference or gold standard."
+    },
+    {
+      "id": "Q09",
+      "label": "Relevancy",
+      "description": "The ontology supports the intended use requirements for which it was developed."
+    },
+    {
+      "id": "Q10",
+      "label": "Functional completeness",
+      "description": "The ontology answers the competency questions or fulfils the functional tasks it was designed to support."
+    },
+    {
+      "id": "Q11",
+      "label": "Comprehensibility",
+      "description": "Human interpretability of the ontology through labels, definitions, naming conventions, and documentation."
+    },
+    {
+      "id": "Q12",
+      "label": "Adaptability and efficiency",
+      "description": "Possibility of modifying or extending the ontology without breaking existing commitments, and computational feasibility in terms of size, time, or processing."
+    },
+    {
+      "id": "Q13",
+      "label": "Credibility",
+      "description": "Availability of source, authorship, versioning, and derivation information that supports trust in the ontology."
+    },
+    {
+      "id": "Q14",
+      "label": "Accessibility",
+      "description": "Possibility of finding, accessing, and resolving the ontology as a published resource."
+    }
+  ],
+  "top_categories": [
+    {
+      "letter": "A",
+      "name": "Reference-based evaluation",
+      "description": "Methods that evaluate an ontology by comparing it with another ontology, taxonomy, mapping set, or expected reference structure.",
+      "direct_cards": [
+        {
+          "id": "M26",
+          "title": "Mapping-based reference comparison"
+        },
+        {
+          "id": "M22",
+          "title": "Expected parent-child link comparison"
+        },
+        {
+          "id": "M23",
+          "title": "Expected mapping evaluation"
+        },
+        {
+          "id": "M24",
+          "title": "Graph edit distance from comparison source"
+        },
+        {
+          "id": "M17",
+          "title": "Known design error catalogue check"
+        }
+      ],
+      "subcategory_instances": [
+        {
+          "instance_id": "A_Q04_mpqljr3qmzxn",
+          "source_chip_id": "Q04",
+          "is_custom_label": false,
+          "label": "Modularity",
+          "cards": [
+            {
+              "id": "M19",
+              "title": "Reusable modelling-template check"
+            },
+            {
+              "id": "M29",
+              "title": "Reuse of established shared terms"
+            }
+          ]
+        },
+        {
+          "instance_id": "A_Q08_mpqlm0w36cvg",
+          "source_chip_id": "Q08",
+          "is_custom_label": false,
+          "label": "Accuracy",
+          "cards": [
+            {
+              "id": "M25",
+              "title": "Embedding-based similarity to comparison ontology"
+            }
+          ]
+        },
+        {
+          "instance_id": "A_Q02_mpqlromxrs5e",
+          "source_chip_id": "Q02",
+          "is_custom_label": false,
+          "label": "Complexity",
+          "cards": [
+            {
+              "id": "M21",
+              "title": "Multi-measure similarity to other ontology"
+            }
+          ]
+        },
+        {
+          "instance_id": "A_Q06_mpqlyzb394s2",
+          "source_chip_id": "Q06",
+          "is_custom_label": false,
+          "label": "Coverage",
+          "cards": [
+            {
+              "id": "M27",
+              "title": "Expected domain term coverage"
+            },
+            {
+              "id": "M13",
+              "title": "Asserted and inferred hierarchy comparison"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "letter": "B",
+      "name": "Corpus/data-based evaluation",
+      "description": "Methods that evaluate an ontology by comparing it with source texts, domain documents, extracted terms, or a corpus representing the domain.",
+      "direct_cards": [
+        {
+          "id": "M04",
+          "title": "Allowed formal construct check"
+        },
+        {
+          "id": "M31",
+          "title": "Vocabulary-profile similarity to source text"
+        },
+        {
+          "id": "M40",
+          "title": "Term-focused module extraction"
+        }
+      ],
+      "subcategory_instances": [
+        {
+          "instance_id": "B_Q06_mpqm8t23v1bv",
+          "source_chip_id": "Q06",
+          "is_custom_label": false,
+          "label": "Coverage",
+          "cards": [
+            {
+              "id": "M28",
+              "title": "Source-text term coverage"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "letter": "C",
+      "name": "Task/application-based evaluation",
+      "description": "Methods that evaluate an ontology through its ability to support a task, use case, competency questions, requirements, or application behaviour.",
+      "direct_cards": [],
+      "subcategory_instances": [
+        {
+          "instance_id": "C_Q06_mpqlgwhhblj4",
+          "source_chip_id": "Q06",
+          "is_custom_label": false,
+          "label": "Coverage",
+          "cards": [
+            {
+              "id": "M37",
+              "title": "Scope coverage and out-of-scope term check"
+            }
+          ]
+        },
+        {
+          "instance_id": "C_Q10_mpqmrzrmnebo",
+          "source_chip_id": "Q10",
+          "is_custom_label": false,
+          "label": "Functional completeness",
+          "cards": [
+            {
+              "id": "M34",
+              "title": "Requirement-based test generation"
+            },
+            {
+              "id": "M32",
+              "title": "Expected question answerability check"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "letter": "D",
+      "name": "Criteria-based evaluation",
+      "description": "Methods that evaluate an ontology against predefined quality criteria, structural properties, formal conditions, metadata requirements, modelling principles, or quality models.",
+      "direct_cards": [
+        {
+          "id": "M03",
+          "title": "Formal construct profile check"
+        },
+        {
+          "id": "M38",
+          "title": "Unused schema element check"
+        },
+        {
+          "id": "M39",
+          "title": "Constraint axiom coverage check"
+        },
+        {
+          "id": "M33",
+          "title": "Ontology unit test suite"
+        },
+        {
+          "id": "M16",
+          "title": "Graph constraint conformance check"
+        },
+        {
+          "id": "M15",
+          "title": "Evaluator-defined condition checks"
+        }
+      ],
+      "subcategory_instances": [
+        {
+          "instance_id": "D_Q03_mpqli3p9qud8",
+          "source_chip_id": "Q03",
+          "is_custom_label": false,
+          "label": "Internal consistency",
+          "cards": [
+            {
+              "id": "M12",
+              "title": "Contradiction and unusable-class check"
+            },
+            {
+              "id": "M18",
+              "title": "Logical error pattern check"
+            },
+            {
+              "id": "M14",
+              "title": "Expected entailment check"
+            }
+          ]
+        },
+        {
+          "instance_id": "D_Q05_mpqlp7yrnlub",
+          "source_chip_id": "Q05",
+          "is_custom_label": false,
+          "label": "Conciseness",
+          "cards": [
+            {
+              "id": "M20",
+              "title": "Lexical error pattern check"
+            }
+          ]
+        },
+        {
+          "instance_id": "D_Q02_mpqlquimraes",
+          "source_chip_id": "Q02",
+          "is_custom_label": false,
+          "label": "Complexity",
+          "cards": [
+            {
+              "id": "M07",
+              "title": "Hierarchy imbalance check"
+            },
+            {
+              "id": "M06",
+              "title": "Hierarchy depth and branching check"
+            },
+            {
+              "id": "M05",
+              "title": "Relation and attribute density check"
+            },
+            {
+              "id": "M11",
+              "title": "Circular hierarchy path check"
+            }
+          ]
+        },
+        {
+          "instance_id": "D_Q01_mpqltap9yd79",
+          "source_chip_id": "Q01",
+          "is_custom_label": false,
+          "label": "Compliance",
+          "cards": [
+            {
+              "id": "M01",
+              "title": "Input format check"
+            }
+          ]
+        },
+        {
+          "instance_id": "D_Q11_mpqm0xaqs4uc",
+          "source_chip_id": "Q11",
+          "is_custom_label": false,
+          "label": "Comprehensibility",
+          "cards": [
+            {
+              "id": "M10",
+              "title": "Description coverage check"
+            },
+            {
+              "id": "M09",
+              "title": "Name regularity check"
+            }
+          ]
+        },
+        {
+          "instance_id": "D_Q14_mpqmj086j7uw",
+          "source_chip_id": "Q14",
+          "is_custom_label": false,
+          "label": "Accessibility",
+          "cards": [
+            {
+              "id": "M35",
+              "title": "Publication and identifier readiness check"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "set_aside": [
+    {
+      "id": "M30",
+      "title": "External reference resolvability check",
+      "set_aside_reason": "no_fitting_top_cat"
+    },
+    {
+      "id": "M02",
+      "title": "Basic ontology statistics",
+      "set_aside_reason": "not_an_evaluation"
+    },
+    {
+      "id": "M36",
+      "title": "Source and change-history check",
+      "set_aside_reason": "other",
+      "set_aside_note": "can be in criteria-based evaluation and accessibility, but perhaps needs a separate category"
+    },
+    {
+      "id": "M08",
+      "title": "Quality-model aggregation",
+      "set_aside_reason": "not_an_evaluation"
+    }
+  ],
+  "unsorted": [],
+  "unsorted_display_order_at_start": [
+    "M37",
+    "M12",
+    "M19",
+    "M30",
+    "M20",
+    "M25",
+    "M02",
+    "M07",
+    "M21",
+    "M01",
+    "M29",
+    "M06",
+    "M36",
+    "M27",
+    "M05",
+    "M04",
+    "M11",
+    "M10",
+    "M31",
+    "M18",
+    "M38",
+    "M03",
+    "M14",
+    "M28",
+    "M26",
+    "M22",
+    "M40",
+    "M08",
+    "M13",
+    "M17",
+    "M32",
+    "M15",
+    "M34",
+    "M09",
+    "M33",
+    "M24",
+    "M16",
+    "M39",
+    "M23",
+    "M35"
+  ],
+  "suggested_methods": []
+}
