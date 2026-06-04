@@ -4,6 +4,7 @@ music,object_properties,35
 music,datatype_properties,18
 music,annotation_properties,0
 music,named_individuals,0
+music,typed_individuals,43
 music,named_subClassOf,13
 music,bnode_subClassOf,5
 music,equivalentClass,7
@@ -20,6 +21,7 @@ hospital,object_properties,45
 hospital,datatype_properties,19
 hospital,annotation_properties,0
 hospital,named_individuals,0
+hospital,typed_individuals,17
 hospital,named_subClassOf,20
 hospital,bnode_subClassOf,4
 hospital,equivalentClass,11

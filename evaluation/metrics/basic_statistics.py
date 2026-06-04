@@ -17,6 +17,11 @@ def method_basic_statistics(onto, label):
     dt_props = {s for s in g.subjects(RDF.type, OWL.DatatypeProperty) if isinstance(s, URIRef)}
     ann_props = {s for s in g.subjects(RDF.type, OWL.AnnotationProperty) if isinstance(s, URIRef)}
     individuals = {s for s in g.subjects(RDF.type, OWL.NamedIndividual) if isinstance(s, URIRef)}
+    typed_individuals = {
+        s
+        for s, typ in g.subject_objects(RDF.type)
+        if isinstance(s, URIRef) and typ in named_classes and s not in named_classes
+    }
     
     equiv   = list(g.triples((None, OWL.equivalentClass, None)))
     disjoint = list(g.triples((None, OWL.disjointWith, None)))
@@ -47,6 +52,7 @@ def method_basic_statistics(onto, label):
         "datatype_properties": len(dt_props),
         "annotation_properties": len(ann_props),
         "named_individuals": len(individuals),
+        "typed_individuals": len(individuals | typed_individuals),
         "named_subClassOf":  named_sub,
         "bnode_subClassOf":  bnode_sub,
         "equivalentClass":   len(equiv),
