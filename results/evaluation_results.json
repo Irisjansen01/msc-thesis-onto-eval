@@ -8,6 +8,7 @@
         "datatype_properties": 18,
         "annotation_properties": 0,
         "named_individuals": 0,
+        "typed_individuals": 43,
         "named_subClassOf": 13,
         "bnode_subClassOf": 5,
         "equivalentClass": 7,
@@ -21,823 +22,15 @@
         "total_triples": 653
       }
     },
-    "stats": {
-      "method_name": "RDF syntax parseability (RDFLib)",
-      "method_number": 1,
-      "result": {
-        "status": "PASS"
-      }
-    },
-    "ontoqa": {
-      "method_name": "OntoQA Schema-level Metrics",
-      "method_number": 3,
-      "result": {
-        "classes": 25,
-        "object_properties": 35,
-        "datatype_properties": 18,
-        "subclass_edges": 13,
-        "relationship_richness": 0.7291666666666666,
-        "attribute_richness": 0.72,
-        "inheritance_richness": 0.52,
-        "class_richness": 0.72
-      }
-    },
-    "yang": {
-      "method_name": "Ontology Complexity Metrics",
-      "method_number": 4,
-      "result": {
-        "T": 0.12,
-        "ABF": 3.25,
-        "LR": 0.84,
-        "max_depth": 2,
-        "avg_depth": 0.44
-      }
-    },
-    "consistency": {
-      "method_name": "Logical Consistency Check (placeholder)",
-      "result": {
-        "status": "SKIPPED",
-        "reason": "not_implemented"
-      }
-    },
-    "sparql": {
-      "method_name": "SPARQL-Based Structural Constraint Checks",
-      "method_number": 7,
-      "result": {
-        "op_no_domain": [],
-        "op_no_range": [],
-        "dp_no_domain": [],
-        "dp_no_range": [],
-        "isolated_roots": [
-          "Cl_AlbumRecording",
-          "Cl_Membership",
-          "Cl_TimeInterval",
-          "Cl_BandMembership",
-          "Cl_Role",
-          "Cl_SongInPerformance",
-          "Cl_Location",
-          "Cl_City",
-          "Cl_Performance",
-          "Cl_Track",
-          "Cl_Region",
-          "Cl_Event",
-          "Cl_Instrument"
-        ]
-      }
-    },
-    "shacl": {
-      "method_name": "SHACL Shapes Constraint Language Validation",
-      "method_number": 8,
-      "result": {
-        "status": "SKIPPED",
-        "reason": "requires_manual_shapes"
-      }
-    },
-    "unit_tests": {
-      "method_name": "Unit Tests for Ontologies",
-      "method_number": 9,
-      "result": {
-        "passed": 99,
-        "total": 99,
-        "tests": [
-          {
-            "desc": "Cl_Song subClassOf Cl_Entity",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "Cl_Record subClassOf Cl_Entity",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "Cl_Statement subClassOf Cl_Entity",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "Cl_Band subClassOf Cl_Entity",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "Cl_Critic subClassOf Cl_Entity",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "Cl_Person subClassOf Cl_Artist",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "Cl_Band subClassOf Cl_Artist",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "Cl_Musician subClassOf Cl_Person",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "Cl_Album subClassOf Cl_Entity",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "Cl_CriticRecordStatement subClassOf Cl_Statement",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "Cl_Person subClassOf Cl_Entity",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "Cl_CompositionEvent subClassOf Cl_Entity",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "Cl_Musician subClassOf Cl_Artist",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "Cl_Song disjointWith Cl_CompositionEvent",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "Cl_Person disjointWith Cl_CompositionEvent",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "Cl_Album disjointWith Cl_CompositionEvent",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasLocation domain = Cl_Performance",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasLocation range = Cl_Location",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasBand domain = Cl_Membership",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasBand range = Cl_Band",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "performedSong domain = Cl_Performance",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "performedSong range = Cl_Track",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasCompositionEvent domain = Cl_Song",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasCompositionEvent range = Cl_CompositionEvent",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "memberOf domain = Cl_Artist",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "memberOf domain = Cl_Musician",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "memberOf domain = Cl_Person",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "memberOf range = Cl_Band",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasTimeInterval domain = Cl_Membership",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasTimeInterval range = Cl_TimeInterval",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasSong domain = Cl_SongInPerformance",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasSong range = Cl_Track",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "trackOfAlbum domain = Cl_Track",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "trackOfAlbum range = Cl_Album",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "membershipOfBand domain = Cl_BandMembership",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "membershipOfBand range = Cl_Band",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "performedBy domain = Cl_Album",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "performedBy domain = Cl_Performance",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "performedBy range = Cl_Artist",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "performedBy range = Cl_Band",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasMembership domain = Cl_Band",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasMembership range = Cl_BandMembership",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "playsInstrument domain = Cl_Musician",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "playsInstrument range = Cl_Instrument",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "recordedDuring domain = Cl_Album",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "recordedDuring range = Cl_Event",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasCritic domain = Cl_CriticRecordStatement",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasCritic range = Cl_Critic",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "composesSong domain = Cl_CompositionEvent",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "composesSong range = Cl_Song",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "containsSong domain = Cl_Album",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "containsSong range = Cl_Song",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "performs domain = Cl_Band",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "performs range = Cl_Performance",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "performanceOfBand domain = Cl_Performance",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "performanceOfBand range = Cl_Band",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasMember domain = Cl_Band",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasMember domain = Cl_BandMembership",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasMember domain = Cl_Membership",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasMember range = Cl_Artist",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasMember range = Cl_Musician",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasMember range = Cl_Person",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "reviewedBy domain = Cl_Album",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "reviewedBy range = Cl_Critic",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "performedTrack domain = Cl_Performance",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "performedTrack range = Cl_Track",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasRecord domain = Cl_CriticRecordStatement",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasRecord range = Cl_Record",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasTrack domain = Cl_Album",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasTrack domain = Cl_Record",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasTrack range = Cl_Track",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "performedIn domain = Cl_Track",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "performedIn range = Cl_Performance",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "performedAt domain = Cl_Performance",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "performedAt range = string",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "trackOf domain = Cl_Track",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "trackOf range = Cl_Album",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "isTrackOf domain = Cl_Track",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "isTrackOf range = Cl_Album",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasAlbum domain = Cl_Band",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasAlbum range = Cl_Album",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasRecordingEvent domain = Cl_Album",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasRecordingEvent range = Cl_AlbumRecording",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasRole domain = Cl_Membership",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasRole range = Cl_Role",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasState domain = Cl_City",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasState range = Cl_Region",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "locatedIn domain = Cl_City",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "locatedIn range = Cl_Region",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "memberOfMembership domain = Cl_Musician",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "memberOfMembership range = Cl_BandMembership",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasPerformance domain = Cl_Band",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasPerformance domain = Cl_SongInPerformance",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasPerformance range = Cl_Performance",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "recordedAlbum domain = Cl_AlbumRecording",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "recordedAlbum range = Cl_Album",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasMembership inverseOf membershipOfBand",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "NEGATIVE: Cl_AlbumRecording NOT subClassOf Cl_Entity",
-            "expected": false,
-            "got": false,
-            "status": "PASS"
-          },
-          {
-            "desc": "NEGATIVE: Cl_AlbumRecording NOT subClassOf Cl_Membership",
-            "expected": false,
-            "got": false,
-            "status": "PASS"
-          }
-        ]
-      }
-    },
-    "cq_coverage": {
-      "method_name": "Competency Question Coverage",
-      "method_number": 11,
-      "result": {
-        "satisfied": 12,
-        "total": 15,
-        "coverage_pct": 80.0,
-        "cq_source": "data\\CQs\\music-cq.txt",
-        "details": [
-          {
-            "cq_id": "CQ1",
-            "question": "What instruments does a certain person play?",
-            "satisfied": true,
-            "classes_present": true,
-            "object_properties_present": true,
-            "datatype_properties_present": true
-          },
-          {
-            "cq_id": "CQ2",
-            "question": "What are the members of a certain band at a certain point in time?",
-            "satisfied": true,
-            "classes_present": true,
-            "object_properties_present": true,
-            "datatype_properties_present": true
-          },
-          {
-            "cq_id": "CQ3",
-            "question": "What role does a certain person have in a certain band at a certain point in time?",
-            "satisfied": true,
-            "classes_present": true,
-            "object_properties_present": true,
-            "datatype_properties_present": true
-          },
-          {
-            "cq_id": "CQ4",
-            "question": "During what time period was a certain album recorded?",
-            "satisfied": true,
-            "classes_present": true,
-            "object_properties_present": true,
-            "datatype_properties_present": true
-          },
-          {
-            "cq_id": "CQ5",
-            "question": "How many tracks does a particular album contain?",
-            "satisfied": true,
-            "classes_present": true,
-            "object_properties_present": true,
-            "datatype_properties_present": true
-          },
-          {
-            "cq_id": "CQ6",
-            "question": "When was a certain album released?",
-            "satisfied": true,
-            "classes_present": true,
-            "object_properties_present": true,
-            "datatype_properties_present": true
-          },
-          {
-            "cq_id": "CQ7",
-            "question": "What song is a specific track a recording of?",
-            "satisfied": false,
-            "classes_present": true,
-            "object_properties_present": false,
-            "datatype_properties_present": true
-          },
-          {
-            "cq_id": "CQ8",
-            "question": "When was a certain song composed?",
-            "satisfied": true,
-            "classes_present": true,
-            "object_properties_present": true,
-            "datatype_properties_present": true
-          },
-          {
-            "cq_id": "CQ9",
-            "question": "What does a certain critic say about a certain record?",
-            "satisfied": false,
-            "classes_present": false,
-            "object_properties_present": false,
-            "datatype_properties_present": true
-          },
-          {
-            "cq_id": "CQ10",
-            "question": "When did a certain performance take place?",
-            "satisfied": true,
-            "classes_present": true,
-            "object_properties_present": true,
-            "datatype_properties_present": true
-          },
-          {
-            "cq_id": "CQ11",
-            "question": "What songs were played in a certain performance?",
-            "satisfied": true,
-            "classes_present": true,
-            "object_properties_present": true,
-            "datatype_properties_present": true
-          },
-          {
-            "cq_id": "CQ12",
-            "question": "Where did a certain performance take place?",
-            "satisfied": true,
-            "classes_present": true,
-            "object_properties_present": true,
-            "datatype_properties_present": true
-          },
-          {
-            "cq_id": "CQ13",
-            "question": "In what region is a certain city located?",
-            "satisfied": true,
-            "classes_present": true,
-            "object_properties_present": true,
-            "datatype_properties_present": true
-          },
-          {
-            "cq_id": "CQ14",
-            "question": "In what country is a certain region located?",
-            "satisfied": false,
-            "classes_present": false,
-            "object_properties_present": false,
-            "datatype_properties_present": true
-          },
-          {
-            "cq_id": "CQ15",
-            "question": "A record always contains at least one track.",
-            "satisfied": true,
-            "classes_present": true,
-            "object_properties_present": true,
-            "datatype_properties_present": true
-          }
-        ]
-      }
-    },
     "oquare": {
       "method_name": "OQuaRE Ontology Quality Model",
       "result": {
         "raw": {
           "ANOnto": 1.44,
           "AROnto": 0.72,
-          "CROnto": 0.0,
+          "CROnto": 0.72,
           "DITOnto": 2,
-          "INROnto": 0.0,
+          "INROnto": 1.2285714285714286,
           "LCOMOnto": 0.87,
           "NACOnto": 0.6,
           "NOCOnto": 0.52,
@@ -852,9 +45,9 @@
         "scaled": {
           "ANOnto": 5,
           "AROnto": 5,
-          "CROnto": 2,
+          "CROnto": 5,
           "DITOnto": 3,
-          "INROnto": 2,
+          "INROnto": 3,
           "LCOMOnto": 2,
           "NACOnto": 2,
           "NOCOnto": 3,
@@ -868,65 +61,189 @@
         },
         "subchars": {
           "Formal adequacy": 5.0,
-          "Domain adequacy": 3.0,
+          "Domain adequacy": 4.333,
           "Formal correctness": 2.667,
           "Consistency": 2.667,
           "Modularity": 3.333,
           "Reusability": 4.0,
-          "Understandability": 3.333,
-          "Operability": 2.0,
+          "Understandability": 4.333,
+          "Operability": 4.0,
           "Adaptability": 2.667,
           "Replaceability": 4.0
         },
         "chars": {
-          "Functional adequacy": 3.556,
+          "Functional adequacy": 4.0,
           "Reliability": 2.667,
-          "Usability": 2.667,
+          "Usability": 4.167,
           "Maintainability": 3.0,
           "Portability": 4.0
         }
       }
     },
-    "completeness": {
-      "method_name": "Column Completeness / Annotation Completeness",
-      "method_number": 12,
+    "cq_coverage": {
+      "method_name": "Competency Question Coverage",
+      "method_number": 11,
       "result": {
-        "rdfs:label": {
-          "count": 70,
-          "total": 78,
-          "pct": 89.7
-        },
-        "rdfs:comment": {
-          "count": 5,
-          "total": 78,
-          "pct": 6.4
-        },
-        "owl:deprecated": {
-          "count": 0,
-          "total": 78,
-          "pct": 0.0
-        }
-      }
-    },
-    "ext_vocab": {
-      "method_name": "External Vocabulary Usage Rate",
-      "method_number": 13,
-      "result": {
-        "ext_rate_pct": 85.0,
-        "proprietary": 98,
-        "total": 653
-      }
-    },
-    "literals": {
-      "method_name": "Syntactic Validity of Typed Literals",
-      "method_number": 14,
-      "result": {
-        "typed": 39,
-        "invalid": 0
+        "satisfied": 13,
+        "total": 15,
+        "coverage_pct": 86.7,
+        "cq_source": "data\\CQs\\music-cq.txt",
+        "details": [
+          {
+            "cq_id": "CQ1",
+            "question": "What instruments does a certain person play?",
+            "answerable": true,
+            "satisfied": true,
+            "result_count": 7,
+            "answers": "person=Anthony_Kiedis; instrument=Vocals | person=Chad_Smith; instrument=Drums | person=John_Frusciante; instrument=Guitar | person=Flea; instrument=Bass | person=Flea; instrument=Keyboards | person=Flea; instrument=Trumpet | person=Flea; instrument=Vocals",
+            "query_error": "",
+            "sparql": "PREFIX : <http://www.example.org/ontology/music#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?person ?instrument WHERE {\n              ?person a :Cl_Musician ; :playsInstrument ?instrument .\n            }"
+          },
+          {
+            "cq_id": "CQ2",
+            "question": "What are the members of a certain band at a certain point in time?",
+            "answerable": true,
+            "satisfied": true,
+            "result_count": 12,
+            "answers": "band=Red_Hot_Chili_Peppers; member=Anthony_Kiedis; startDate=1983-01-01 | band=Red_Hot_Chili_Peppers; member=Chad_Smith; startDate=1990-01-01 | band=Red_Hot_Chili_Peppers; member=Flea; startDate=1983-01-01 | band=Red_Hot_Chili_Peppers; member=Hillel_Slovak; startDate=1983-01-01; endDate=1988-01-01 | band=Red_Hot_Chili_Peppers; member=Jack_Irons; startDate=1983-01-01; endDate=1990-01-01 | band=Red_Hot_Chili_Peppers; member=John_Frusciante; startDate=1988-01-01 | band=The_Mars_Volta; member=John_Frusciante; startDate=2000-01-01 | band=Red_Hot_Chili_Peppers; member=D_H_Peligo; startDate=1990-01-01; endDate=1990-06-01 | band=RedHotChiliPeppers; member=Anthony_Kiedis | band=RedHotChiliPeppers; member=Chad_Smith | band=RedHotChiliPeppers; member=Flea | band=RedHotChiliPeppers; member=John_Frusciante",
+            "query_error": "",
+            "sparql": "PREFIX : <http://www.example.org/ontology/music#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?band ?member ?startDate ?endDate WHERE {\n              {\n                ?membership a :Cl_Membership ;\n                  :hasBand ?band ;\n                  :hasMember ?member .\n                OPTIONAL {\n                  ?membership :hasTimeInterval ?interval .\n                  OPTIONAL { ?interval :startDate ?startDate . }\n                  OPTIONAL { ?interval :endDate ?endDate . }\n                }\n              }\n              UNION {\n                ?band a :Cl_Band ; :hasMember ?member .\n              }\n            }"
+          },
+          {
+            "cq_id": "CQ3",
+            "question": "What role does a certain person have in a certain band at a certain point in time?",
+            "answerable": true,
+            "satisfied": true,
+            "result_count": 10,
+            "answers": "band=Red_Hot_Chili_Peppers; person=Anthony_Kiedis; role=Vocals; startDate=1983-01-01 | band=Red_Hot_Chili_Peppers; person=Chad_Smith; role=Drums; startDate=1990-01-01 | band=Red_Hot_Chili_Peppers; person=Flea; role=Keyboards; startDate=1983-01-01 | band=Red_Hot_Chili_Peppers; person=Flea; role=Bass; startDate=1983-01-01 | band=Red_Hot_Chili_Peppers; person=Flea; role=Trumpet; startDate=1983-01-01 | band=Red_Hot_Chili_Peppers; person=Hillel_Slovak; role=Guitar; startDate=1983-01-01; endDate=1988-01-01 | band=Red_Hot_Chili_Peppers; person=Jack_Irons; role=Drums; startDate=1983-01-01; endDate=1990-01-01 | band=Red_Hot_Chili_Peppers; person=John_Frusciante; role=Guitar; startDate=1988-01-01 | band=The_Mars_Volta; person=John_Frusciante; role=Vocals; startDate=2000-01-01 | band=Red_Hot_Chili_Peppers; person=D_H_Peligo; role=Drums; startDate=1990-01-01; endDate=1990-06-01",
+            "query_error": "",
+            "sparql": "PREFIX : <http://www.example.org/ontology/music#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?band ?person ?role ?startDate ?endDate WHERE {\n              ?membership a :Cl_Membership ;\n                :hasBand ?band ;\n                :hasMember ?person ;\n                :hasRole ?role .\n              OPTIONAL {\n                ?membership :hasTimeInterval ?interval .\n                OPTIONAL { ?interval :startDate ?startDate . }\n                OPTIONAL { ?interval :endDate ?endDate . }\n              }\n            }"
+          },
+          {
+            "cq_id": "CQ4",
+            "question": "During what time period was a certain album recorded?",
+            "answerable": true,
+            "satisfied": true,
+            "result_count": 1,
+            "answers": "album=Stadium_Arcadium; startDate=2004-09-01; endDate=2006-05-05",
+            "query_error": "",
+            "sparql": "PREFIX : <http://www.example.org/ontology/music#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?album ?startDate ?endDate WHERE {\n              ?album a :Cl_Album ; :hasRecordingEvent ?recording .\n              ?recording :recordingStartDate ?startDate ;\n                :recordingEndDate ?endDate .\n            }"
+          },
+          {
+            "cq_id": "CQ5",
+            "question": "How many tracks does a particular album contain?",
+            "answerable": true,
+            "satisfied": true,
+            "result_count": 1,
+            "answers": "album=Stadium_Arcadium; trackCount=1",
+            "query_error": "",
+            "sparql": "PREFIX : <http://www.example.org/ontology/music#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?album (COUNT(?track) AS ?trackCount) WHERE {\n              ?album a :Cl_Album ; :hasTrack ?track .\n            }\n            GROUP BY ?album"
+          },
+          {
+            "cq_id": "CQ6",
+            "question": "When was a certain album released?",
+            "answerable": true,
+            "satisfied": true,
+            "result_count": 1,
+            "answers": "album=Stadium_Arcadium; releaseDate=2006-05-05",
+            "query_error": "",
+            "sparql": "PREFIX : <http://www.example.org/ontology/music#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?album ?releaseDate WHERE {\n              ?album a :Cl_Album .\n              {\n                ?album :releaseDate ?releaseDate .\n              }\n              UNION {\n                ?album :albumReleaseDate ?releaseDate .\n              }\n            }"
+          },
+          {
+            "cq_id": "CQ7",
+            "question": "What song is a specific track a recording of?",
+            "answerable": true,
+            "satisfied": true,
+            "result_count": 1,
+            "answers": "track=Hump_de_Bump; song=Hump_de_Bump",
+            "query_error": "",
+            "sparql": "PREFIX : <http://www.example.org/ontology/music#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?track ?song WHERE {\n              {\n                ?track a :Cl_Track ; :trackOfSong ?song .\n              }\n              UNION {\n                ?track a :Cl_Track ; :recordingOf ?song .\n              }\n              UNION {\n                ?track a :Cl_Track ; :isSongOf ?song .\n              }\n              UNION {\n                ?track a :Cl_Track, :Cl_Song .\n                BIND(?track AS ?song)\n              }\n            }"
+          },
+          {
+            "cq_id": "CQ8",
+            "question": "When was a certain song composed?",
+            "answerable": true,
+            "satisfied": true,
+            "result_count": 1,
+            "answers": "song=Hump_de_Bump; compositionDate=2004-01-26",
+            "query_error": "",
+            "sparql": "PREFIX : <http://www.example.org/ontology/music#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?song ?compositionDate WHERE {\n              ?song a :Cl_Song .\n              {\n                ?song :composedDate ?compositionDate .\n              }\n              UNION {\n                ?song :trackCompositionDate ?compositionDate .\n              }\n              UNION {\n                ?song :hasCompositionEvent ?event .\n                ?event :hasCompositionDate ?compositionDate .\n              }\n            }"
+          },
+          {
+            "cq_id": "CQ9",
+            "question": "What does a certain critic say about a certain record?",
+            "answerable": true,
+            "satisfied": true,
+            "result_count": 1,
+            "answers": "critic=Crian_Hiatt; record=Stadium_Arcadium; statement=the most ambitious work in his twenty-three-year career",
+            "query_error": "",
+            "sparql": "PREFIX : <http://www.example.org/ontology/music#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?critic ?record ?statement WHERE {\n              ?review a :Cl_CriticRecordStatement ;\n                :hasCritic ?critic ;\n                :hasRecord ?record ;\n                :statementText ?statement .\n            }"
+          },
+          {
+            "cq_id": "CQ10",
+            "question": "When did a certain performance take place?",
+            "answerable": true,
+            "satisfied": true,
+            "result_count": 1,
+            "answers": "performance=Performance_Portland_2006; date=2006-08-11",
+            "query_error": "",
+            "sparql": "PREFIX : <http://www.example.org/ontology/music#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?performance ?date WHERE {\n              ?performance a :Cl_Performance ; :performanceDate ?date .\n            }"
+          },
+          {
+            "cq_id": "CQ11",
+            "question": "What songs were played in a certain performance?",
+            "answerable": true,
+            "satisfied": true,
+            "result_count": 1,
+            "answers": "performance=Performance_Portland_2006; song=Hump_de_Bump",
+            "query_error": "",
+            "sparql": "PREFIX : <http://www.example.org/ontology/music#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?performance ?song WHERE {\n              {\n                ?performance a :Cl_Performance ; :performedSong ?song .\n              }\n              UNION {\n                ?event a :Cl_SongInPerformance ;\n                  :hasPerformance ?performance ;\n                  :hasSong ?song .\n              }\n            }"
+          },
+          {
+            "cq_id": "CQ12",
+            "question": "Where did a certain performance take place?",
+            "answerable": true,
+            "satisfied": true,
+            "result_count": 1,
+            "answers": "performance=Performance_Portland_2006; location=Portland, Oregon, US",
+            "query_error": "",
+            "sparql": "PREFIX : <http://www.example.org/ontology/music#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?performance ?location WHERE {\n              ?performance a :Cl_Performance .\n              {\n                ?performance :performanceLocation ?location .\n              }\n              UNION {\n                ?performance :hasLocation ?location .\n              }\n            }"
+          },
+          {
+            "cq_id": "CQ13",
+            "question": "In what region is a certain city located?",
+            "answerable": false,
+            "satisfied": false,
+            "result_count": 0,
+            "answers": "",
+            "query_error": "",
+            "sparql": "PREFIX : <http://www.example.org/ontology/music#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?city ?region WHERE {\n              ?city a :Cl_City .\n              {\n                ?city :locatedIn ?region .\n              }\n              UNION {\n                ?city :hasState ?region .\n              }\n            }"
+          },
+          {
+            "cq_id": "CQ14",
+            "question": "In what country is a certain region located?",
+            "answerable": false,
+            "satisfied": false,
+            "result_count": 0,
+            "answers": "",
+            "query_error": "",
+            "sparql": "PREFIX : <http://www.example.org/ontology/music#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?region ?country WHERE {\n              ?region a :Cl_Region .\n              {\n                ?region :locatedInCountry ?country .\n              }\n              UNION {\n                ?region :inCountry ?country .\n              }\n            }"
+          },
+          {
+            "cq_id": "CQ15",
+            "question": "A record always contains at least one track.",
+            "answerable": true,
+            "satisfied": true,
+            "result_count": 1,
+            "answers": "record=Stadium_Arcadium; trackCount=1",
+            "query_error": "",
+            "sparql": "PREFIX : <http://www.example.org/ontology/music#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?record (COUNT(DISTINCT ?track) AS ?trackCount) WHERE {\n              ?record a ?recordType ; :hasTrack ?track .\n              VALUES ?recordType { :Cl_Record :Cl_Album }\n            }\n            GROUP BY ?record"
+          }
+        ]
       }
     },
     "vocabulary_profile_similarity": {
-      "method_name": "Vocabulary-profile similarity to source text",
+      "method_name": "Brewster-style vocabulary profile similarity to source text",
       "method_number": 31,
       "result": {
         "comparison": "music_final_vs_music_story",
@@ -946,7 +263,7 @@
         "weighted_f1": 0.14035087719298245,
         "unique_term_jaccard": 0.10256410256410256,
         "top_missing_source_terms": "red|hot|chili|pepper|frusciante|vocal|guitar|chad|smith|replaced|stadium|arcadium|production|configuration|anthony|kiedi|flea|bass|trumpet|keyboard|john|drum|line|changed|few|hillel|slovak|jack|iron|left|briefly|peligo|until|found|addition|playing|also|contributed|mar|volta|vocalist|some|september|started|released|may|include|hump|bump|composed|january|crian|hiatt|defined|most|ambitiou|work|twenty|three|year|career|august|gave|portland|oregon|featuring",
-        "top_ontology_only_terms": "date|membership|event|composition|member|performed|person|role|release|statement|instrument|musician|record|musical|location|end|start|interval|name|function|recorded|group|artist|city|state|entity|play|perform|individual|reviewed|concert|session|compos|reified|country|text|located|optional|region",
+        "top_ontology_only_terms": "date|membership|event|performed|composition|member|person|role|release|record|instrument|statement|end|musical|location|musician|start|name|artist|group|city|function|interval|state|recorded|reified|perform|play|region|concert|session|text|entity|individual|located|country|reviewed|optional|compos",
         "source_character_count": 1011,
         "ontology_key": "music"
       }
@@ -961,6 +278,7 @@
         "datatype_properties": 19,
         "annotation_properties": 0,
         "named_individuals": 0,
+        "typed_individuals": 17,
         "named_subClassOf": 20,
         "bnode_subClassOf": 4,
         "equivalentClass": 11,
@@ -974,935 +292,15 @@
         "total_triples": 715
       }
     },
-    "stats": {
-      "method_name": "RDF syntax parseability (RDFLib)",
-      "method_number": 1,
-      "result": {
-        "status": "PASS"
-      }
-    },
-    "ontoqa": {
-      "method_name": "OntoQA Schema-level Metrics",
-      "method_number": 3,
-      "result": {
-        "classes": 33,
-        "object_properties": 45,
-        "datatype_properties": 19,
-        "subclass_edges": 20,
-        "relationship_richness": 0.6923076923076923,
-        "attribute_richness": 0.5151515151515151,
-        "inheritance_richness": 0.6060606060606061,
-        "class_richness": 0.42424242424242425
-      }
-    },
-    "yang": {
-      "method_name": "Ontology Complexity Metrics",
-      "method_number": 4,
-      "result": {
-        "T": 0.1212,
-        "ABF": 2.2222,
-        "LR": 0.7273,
-        "max_depth": 2,
-        "avg_depth": 0.6061
-      }
-    },
-    "consistency": {
-      "method_name": "Logical Consistency Check (placeholder)",
-      "result": {
-        "status": "SKIPPED",
-        "reason": "not_implemented"
-      }
-    },
-    "sparql": {
-      "method_name": "SPARQL-Based Structural Constraint Checks",
-      "method_number": 7,
-      "result": {
-        "op_no_domain": [],
-        "op_no_range": [],
-        "dp_no_domain": [],
-        "dp_no_range": [],
-        "isolated_roots": [
-          "Cl_Library",
-          "Cl_Article",
-          "Cl_Union",
-          "Cl_PersonDegree",
-          "Cl_Evaluation",
-          "Cl_EvaluationStatement",
-          "Cl_Institution",
-          "Cl_ArticlePresentation",
-          "Cl_EmploymentEvent",
-          "Cl_SeminarOccurrence",
-          "Cl_UnionMembership"
-        ]
-      }
-    },
-    "shacl": {
-      "method_name": "SHACL Shapes Constraint Language Validation",
-      "method_number": 8,
-      "result": {
-        "status": "SKIPPED",
-        "reason": "requires_manual_shapes"
-      }
-    },
-    "unit_tests": {
-      "method_name": "Unit Tests for Ontologies",
-      "method_number": 9,
-      "result": {
-        "passed": 118,
-        "total": 118,
-        "tests": [
-          {
-            "desc": "Cl_Hospital subClassOf Cl_Location",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "Cl_UnionRepresentative subClassOf Cl_Person",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "Cl_CD subClassOf Cl_Publication",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "Cl_Employee subClassOf Cl_Person",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "Cl_Doctor subClassOf Cl_Person",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "Cl_Nurse subClassOf Cl_Person",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "Cl_Book subClassOf Cl_ArticleCollection",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "Cl_CertifiedNurseDegree subClassOf Cl_MedicalDegree",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "Cl_CD subClassOf Cl_ArticleCollection",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "Cl_Seminar subClassOf Cl_Event",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "Cl_Doctor subClassOf Cl_Employee",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "Cl_Person subClassOf Cl_Agent",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "Cl_ArticleCollection subClassOf Cl_Publication",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "Cl_Country subClassOf Cl_Location",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "Cl_Nurse subClassOf Cl_Employee",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "Cl_UnionGroup subClassOf Cl_Organization",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "Cl_Role subClassOf Cl_Agent",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "Cl_Book subClassOf Cl_Publication",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "Cl_NursingAssistantDegree subClassOf Cl_MedicalDegree",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "Cl_City subClassOf Cl_Location",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "Cl_Doctor disjointWith Cl_Employee",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "Cl_City disjointWith Cl_Article",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "Cl_Hospital disjointWith Cl_Article",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "awardedBy domain = Cl_PersonDegree",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "awardedBy range = Cl_Institution",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasEvaluator domain = Cl_EvaluationStatement",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasEvaluator range = Cl_Doctor",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "evaluates domain = Cl_Doctor",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "evaluates range = Cl_Person",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasPresentedArticle domain = Cl_ArticlePresentation",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasPresentedArticle range = Cl_Article",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasEmployer domain = Cl_EmploymentEvent",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasEmployer range = Cl_Hospital",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "membershipOfUnion domain = Cl_UnionMembership",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "membershipOfUnion range = Cl_Union",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasArticle domain = Cl_ArticleCollection",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasArticle range = Cl_Article",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "occurrenceOfSeminar domain = Cl_SeminarOccurrence",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "occurrenceOfSeminar range = Cl_Seminar",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "degreeOf domain = Cl_MedicalDegree",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "degreeOf range = Cl_Person",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasMembership domain = Cl_Person",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasMembership range = Cl_UnionMembership",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "presentedPresentation domain = Cl_Person",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "presentedPresentation range = Cl_ArticlePresentation",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasUnion domain = Cl_UnionMembership",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasUnion range = Cl_UnionGroup",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasUnionMembership domain = Cl_Union",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasUnionMembership range = Cl_UnionMembership",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "isUnionOf domain = Cl_UnionGroup",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "isUnionOf range = Cl_UnionMembership",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "presentedAtSeminar domain = Cl_Article",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "presentedAtSeminar range = Cl_Seminar",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasDegree domain = Cl_Person",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasDegree domain = Cl_PersonDegree",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasDegree range = Cl_MedicalDegree",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "heldBy domain = Cl_PersonDegree",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "heldBy range = Cl_Person",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "presentedBy domain = Cl_ArticlePresentation",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "presentedBy range = Cl_Person",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasPresentationVenue domain = Cl_ArticlePresentation",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasPresentationVenue range = Cl_Seminar",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "locatedInCity domain = Cl_Hospital",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "locatedInCity range = Cl_City",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasMember domain = Cl_UnionMembership",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasMember range = Cl_Person",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "isRoleOf domain = Cl_Role",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "isRoleOf range = Cl_UnionMembership",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "representsUnion domain = Cl_UnionRepresentative",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "representsUnion range = Cl_Union",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "isPresentedIn domain = Cl_Article",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "isPresentedIn range = Cl_ArticlePresentation",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasOccurrence domain = Cl_Seminar",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasOccurrence range = Cl_SeminarOccurrence",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "op_heldAt domain = Cl_Seminar",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "op_heldAt range = Cl_Hospital",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasRole domain = Cl_UnionMembership",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasRole range = Cl_Role",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "occurrenceAtLocation domain = Cl_SeminarOccurrence",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "occurrenceAtLocation range = Cl_Location",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "op_hasCity domain = Cl_Country",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "op_hasCity range = Cl_City",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "containsArticle domain = Cl_ArticleCollection",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "containsArticle range = Cl_Article",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "memberOfUnion domain = Cl_Person",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "memberOfUnion range = Cl_Union",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "isEmployerOf domain = Cl_Hospital",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "isEmployerOf range = Cl_EmploymentEvent",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "membershipOfPerson domain = Cl_UnionMembership",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "membershipOfPerson range = Cl_Person",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasVersion domain = Cl_ArticleCollection",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasVersion range = Cl_Publication",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasArticleCollection domain = Cl_Article",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasArticleCollection range = Cl_ArticleCollection",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "heldAtHospital domain = Cl_Seminar",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "heldAtHospital range = Cl_Hospital",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "op_isLocatedInCountry domain = Cl_City",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "op_isLocatedInCountry range = Cl_Country",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "isMemberOf domain = Cl_Person",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "isMemberOf range = Cl_UnionMembership",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "holdsDegreeAssociation domain = Cl_Person",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "holdsDegreeAssociation range = Cl_PersonDegree",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasPresentation domain = Cl_Seminar",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasPresentation range = Cl_ArticlePresentation",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "employedAt domain = Cl_Person",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "employedAt range = Cl_Hospital",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "isEmployeeOf domain = Cl_Person",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "isEmployeeOf range = Cl_EmploymentEvent",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasEmployee domain = Cl_EmploymentEvent",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasEmployee domain = Cl_Hospital",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasEmployee range = Cl_Person",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasEvaluatee domain = Cl_EvaluationStatement",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "hasEvaluatee range = Cl_Employee",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "storedInLibrary domain = Cl_Evaluation",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "storedInLibrary range = Cl_Library",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "employedAt inverseOf hasEmployee",
-            "expected": true,
-            "got": true,
-            "status": "PASS"
-          },
-          {
-            "desc": "NEGATIVE: Cl_UnionRepresentative NOT subClassOf Cl_CertifiedNurseDegree",
-            "expected": false,
-            "got": false,
-            "status": "PASS"
-          },
-          {
-            "desc": "NEGATIVE: Cl_UnionRepresentative NOT subClassOf Cl_Library",
-            "expected": false,
-            "got": false,
-            "status": "PASS"
-          }
-        ]
-      }
-    },
-    "cq_coverage": {
-      "method_name": "Competency Question Coverage",
-      "method_number": 11,
-      "result": {
-        "satisfied": 9,
-        "total": 15,
-        "coverage_pct": 60.0,
-        "cq_source": "data\\CQs\\hospital-cq.txt",
-        "details": [
-          {
-            "cq_id": "CQ1",
-            "question": "What medical degrees does a certain person have?",
-            "satisfied": true,
-            "classes_present": true,
-            "object_properties_present": true,
-            "datatype_properties_present": true
-          },
-          {
-            "cq_id": "CQ2",
-            "question": "During what time period did a certain person study for a specific degree?",
-            "satisfied": false,
-            "classes_present": false,
-            "object_properties_present": false,
-            "datatype_properties_present": true
-          },
-          {
-            "cq_id": "CQ3",
-            "question": "When was a certain person first employed at a certain hospital?",
-            "satisfied": true,
-            "classes_present": true,
-            "object_properties_present": true,
-            "datatype_properties_present": true
-          },
-          {
-            "cq_id": "CQ4",
-            "question": "In what city is a certain hospital located?",
-            "satisfied": true,
-            "classes_present": true,
-            "object_properties_present": true,
-            "datatype_properties_present": true
-          },
-          {
-            "cq_id": "CQ5",
-            "question": "In what country is a certain city located?",
-            "satisfied": true,
-            "classes_present": true,
-            "object_properties_present": true,
-            "datatype_properties_present": true
-          },
-          {
-            "cq_id": "CQ6",
-            "question": "Who are the members of a certain union at a certain point in time?",
-            "satisfied": false,
-            "classes_present": true,
-            "object_properties_present": true,
-            "datatype_properties_present": false
-          },
-          {
-            "cq_id": "CQ7",
-            "question": "What role does a certain person have within a certain union group at a certain point in time?",
-            "satisfied": false,
-            "classes_present": true,
-            "object_properties_present": true,
-            "datatype_properties_present": false
-          },
-          {
-            "cq_id": "CQ8",
-            "question": "What is the evaluation statement given by a certain doctor for a certain employee?",
-            "satisfied": false,
-            "classes_present": true,
-            "object_properties_present": false,
-            "datatype_properties_present": true
-          },
-          {
-            "cq_id": "CQ9",
-            "question": "What articles is a specific book or CD composed of?",
-            "satisfied": true,
-            "classes_present": true,
-            "object_properties_present": true,
-            "datatype_properties_present": true
-          },
-          {
-            "cq_id": "CQ10",
-            "question": "How many pages does a particular book contain?",
-            "satisfied": false,
-            "classes_present": true,
-            "object_properties_present": false,
-            "datatype_properties_present": false
-          },
-          {
-            "cq_id": "CQ11",
-            "question": "When was a certain book or CD published?",
-            "satisfied": false,
-            "classes_present": true,
-            "object_properties_present": false,
-            "datatype_properties_present": true
-          },
-          {
-            "cq_id": "CQ12",
-            "question": "When did a certain seminar take place?",
-            "satisfied": true,
-            "classes_present": true,
-            "object_properties_present": true,
-            "datatype_properties_present": true
-          },
-          {
-            "cq_id": "CQ13",
-            "question": "What articles were presented in a certain seminar?",
-            "satisfied": true,
-            "classes_present": true,
-            "object_properties_present": true,
-            "datatype_properties_present": true
-          },
-          {
-            "cq_id": "CQ14",
-            "question": "Where did a certain seminar take place?",
-            "satisfied": true,
-            "classes_present": true,
-            "object_properties_present": true,
-            "datatype_properties_present": true
-          },
-          {
-            "cq_id": "CQ15",
-            "question": "At least one article is always presented at each seminar.",
-            "satisfied": true,
-            "classes_present": true,
-            "object_properties_present": true,
-            "datatype_properties_present": true
-          }
-        ]
-      }
-    },
     "oquare": {
       "method_name": "OQuaRE Ontology Quality Model",
       "result": {
         "raw": {
           "ANOnto": 1.5454545454545454,
           "AROnto": 2.515151515151515,
-          "CROnto": 0.0,
+          "CROnto": 0.42424242424242425,
           "DITOnto": 3,
-          "INROnto": 0.0,
+          "INROnto": 0.37777777777777777,
           "LCOMOnto": 0.946969696969697,
           "NACOnto": 0.7272727272727273,
           "NOCOnto": 0.6060606060606061,
@@ -1917,7 +315,7 @@
         "scaled": {
           "ANOnto": 5,
           "AROnto": 5,
-          "CROnto": 2,
+          "CROnto": 4,
           "DITOnto": 4,
           "INROnto": 2,
           "LCOMOnto": 1,
@@ -1933,65 +331,189 @@
         },
         "subchars": {
           "Formal adequacy": 5.0,
-          "Domain adequacy": 3.0,
+          "Domain adequacy": 3.667,
           "Formal correctness": 3.0,
           "Consistency": 2.667,
           "Modularity": 3.667,
           "Reusability": 4.333,
-          "Understandability": 3.333,
-          "Operability": 2.0,
+          "Understandability": 4.0,
+          "Operability": 3.0,
           "Adaptability": 3.0,
           "Replaceability": 2.5
         },
         "chars": {
-          "Functional adequacy": 3.667,
+          "Functional adequacy": 3.889,
           "Reliability": 2.667,
-          "Usability": 2.667,
+          "Usability": 3.5,
           "Maintainability": 3.333,
           "Portability": 3.417
         }
       }
     },
-    "completeness": {
-      "method_name": "Column Completeness / Annotation Completeness",
-      "method_number": 12,
+    "cq_coverage": {
+      "method_name": "Competency Question Coverage",
+      "method_number": 11,
       "result": {
-        "rdfs:label": {
-          "count": 94,
-          "total": 97,
-          "pct": 96.9
-        },
-        "rdfs:comment": {
-          "count": 13,
-          "total": 97,
-          "pct": 13.4
-        },
-        "owl:deprecated": {
-          "count": 0,
-          "total": 97,
-          "pct": 0.0
-        }
-      }
-    },
-    "ext_vocab": {
-      "method_name": "External Vocabulary Usage Rate",
-      "method_number": 13,
-      "result": {
-        "ext_rate_pct": 95.0,
-        "proprietary": 36,
-        "total": 715
-      }
-    },
-    "literals": {
-      "method_name": "Syntactic Validity of Typed Literals",
-      "method_number": 14,
-      "result": {
-        "typed": 25,
-        "invalid": 0
+        "satisfied": 11,
+        "total": 15,
+        "coverage_pct": 73.3,
+        "cq_source": "data\\CQs\\hospital-cq.txt",
+        "details": [
+          {
+            "cq_id": "CQ1",
+            "question": "What medical degrees does a certain person have?",
+            "answerable": false,
+            "satisfied": false,
+            "result_count": 0,
+            "answers": "",
+            "query_error": "",
+            "sparql": "PREFIX : <http://www.example.org/ontology/hospital#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?person ?degree WHERE {\n              ?person a :Cl_Person ; :hasDegree ?degree .\n            }"
+          },
+          {
+            "cq_id": "CQ2",
+            "question": "During what time period did a certain person study for a specific degree?",
+            "answerable": false,
+            "satisfied": false,
+            "result_count": 0,
+            "answers": "",
+            "query_error": "",
+            "sparql": "PREFIX : <http://www.example.org/ontology/hospital#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?person ?degree ?startDate ?endDate WHERE {\n              ?person a :Cl_Person .\n              {\n                ?association a :Cl_PersonDegree ;\n                  :heldBy ?person ;\n                  :hasDegree ?degree .\n                OPTIONAL { ?association :degreeDate ?startDate . }\n              }\n              UNION {\n                ?person :hasDegree ?degree .\n              }\n              OPTIONAL { ?association :startDate ?startDate . }\n              OPTIONAL { ?association :endDate ?endDate . }\n            }"
+          },
+          {
+            "cq_id": "CQ3",
+            "question": "When was a certain person first employed at a certain hospital?",
+            "answerable": true,
+            "satisfied": true,
+            "result_count": 1,
+            "answers": "person=Pasquale_Di_Gennaro; hospital=Ospedale_Riunito_delle_Tre_Valli; startDate=2001-09-21",
+            "query_error": "",
+            "sparql": "PREFIX : <http://www.example.org/ontology/hospital#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?person ?hospital ?startDate WHERE {\n              {\n                ?event a :Cl_EmploymentEvent ;\n                  :hasEmployee ?person ;\n                  :hasEmployer ?hospital ;\n                  :startDate ?startDate .\n              }\n              UNION {\n                ?person a :Cl_Person ;\n                  :employedAt ?hospital .\n                OPTIONAL {\n                  ?event a :Cl_EmploymentEvent ;\n                    :hasEmployee ?person ;\n                    :hasEmployer ?hospital ;\n                    :startDate ?startDate .\n                }\n              }\n            }"
+          },
+          {
+            "cq_id": "CQ4",
+            "question": "In what city is a certain hospital located?",
+            "answerable": true,
+            "satisfied": true,
+            "result_count": 1,
+            "answers": "hospital=Ospedale_Riunito_delle_Tre_Valli; city=Nocera_Inferiore",
+            "query_error": "",
+            "sparql": "PREFIX : <http://www.example.org/ontology/hospital#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?hospital ?city WHERE {\n              ?hospital a :Cl_Hospital ; :locatedInCity ?city .\n            }"
+          },
+          {
+            "cq_id": "CQ5",
+            "question": "In what country is a certain city located?",
+            "answerable": false,
+            "satisfied": false,
+            "result_count": 0,
+            "answers": "",
+            "query_error": "",
+            "sparql": "PREFIX : <http://www.example.org/ontology/hospital#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?city ?country WHERE {\n              {\n                ?city a :Cl_City ; :op_isLocatedInCountry ?country .\n              }\n              UNION {\n                ?country a :Cl_Country ; :op_hasCity ?city .\n              }\n            }"
+          },
+          {
+            "cq_id": "CQ6",
+            "question": "Who are the members of a certain union at a certain point in time?",
+            "answerable": true,
+            "satisfied": true,
+            "result_count": 2,
+            "answers": "union=Union_MaleNurses; member=Pasquale_Di_Gennaro; startDate=2002-01-01 | union=Union_MaleNurses_OspedaleRiunito; member=Pasquale_Di_Gennaro; startDate=2002-01-01",
+            "query_error": "",
+            "sparql": "PREFIX : <http://www.example.org/ontology/hospital#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?union ?member ?startDate ?endDate WHERE {\n              ?membership a :Cl_UnionMembership ;\n                :hasUnion ?union ;\n                :hasMember ?member .\n              OPTIONAL { ?membership :membershipStartDate ?startDate . }\n              OPTIONAL { ?membership :membershipEndDate ?endDate . }\n            }"
+          },
+          {
+            "cq_id": "CQ7",
+            "question": "What role does a certain person have within a certain union group at a certain point in time?",
+            "answerable": true,
+            "satisfied": true,
+            "result_count": 2,
+            "answers": "person=Pasquale_Di_Gennaro; union=Union_MaleNurses; role=UnionRepresentative_MaleNurses; startDate=2002-01-01 | person=Pasquale_Di_Gennaro; union=Union_MaleNurses_OspedaleRiunito; role=UnionRepresentative_MaleNurses; startDate=2002-01-01",
+            "query_error": "",
+            "sparql": "PREFIX : <http://www.example.org/ontology/hospital#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?person ?union ?role ?startDate ?endDate WHERE {\n              ?membership a :Cl_UnionMembership ;\n                :hasMember ?person ;\n                :hasUnion ?union ;\n                :hasRole ?role .\n              OPTIONAL { ?membership :membershipStartDate ?startDate . }\n              OPTIONAL { ?membership :membershipEndDate ?endDate . }\n            }"
+          },
+          {
+            "cq_id": "CQ8",
+            "question": "What is the evaluation statement given by a certain doctor for a certain employee?",
+            "answerable": false,
+            "satisfied": false,
+            "result_count": 0,
+            "answers": "",
+            "query_error": "",
+            "sparql": "PREFIX : <http://www.example.org/ontology/hospital#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?doctor ?employee ?statement WHERE {\n              ?evaluation a :Cl_EvaluationStatement ;\n                :hasEvaluator ?doctor ;\n                :hasEvaluatee ?employee ;\n                :hasStatement ?statement .\n            }"
+          },
+          {
+            "cq_id": "CQ9",
+            "question": "What articles is a specific book or CD composed of?",
+            "answerable": true,
+            "satisfied": true,
+            "result_count": 1,
+            "answers": "collection=ArticleCollection_2008; article=Article_By_Pasquale",
+            "query_error": "",
+            "sparql": "PREFIX : <http://www.example.org/ontology/hospital#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?collection ?article WHERE {\n              ?collection a ?collectionType .\n              VALUES ?collectionType { :Cl_Book :Cl_CD :Cl_ArticleCollection }\n              {\n                ?collection :containsArticle ?article .\n              }\n              UNION {\n                ?collection :hasArticle ?article .\n              }\n            }"
+          },
+          {
+            "cq_id": "CQ10",
+            "question": "How many pages does a particular book contain?",
+            "answerable": true,
+            "satisfied": true,
+            "result_count": 1,
+            "answers": "book=ArticleCollection_2008; pageCount=346",
+            "query_error": "",
+            "sparql": "PREFIX : <http://www.example.org/ontology/hospital#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?book ?pageCount WHERE {\n              ?book a :Cl_Book .\n              {\n                ?book :hasPageCount ?pageCount .\n              }\n              UNION {\n                ?book :dp_pageCount ?pageCount .\n              }\n              UNION {\n                ?book :pageCount ?pageCount .\n              }\n            }"
+          },
+          {
+            "cq_id": "CQ11",
+            "question": "When was a certain book or CD published?",
+            "answerable": true,
+            "satisfied": true,
+            "result_count": 1,
+            "answers": "publication=Book_NursePractices2008; published=2008-01-01",
+            "query_error": "",
+            "sparql": "PREFIX : <http://www.example.org/ontology/hospital#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?publication ?published WHERE {\n              ?publication a ?publicationType .\n              VALUES ?publicationType { :Cl_Book :Cl_CD :Cl_Publication }\n              {\n                ?publication :hasPublicationDate ?published .\n              }\n              UNION {\n                ?publication :publicationYear ?published .\n              }\n            }"
+          },
+          {
+            "cq_id": "CQ12",
+            "question": "When did a certain seminar take place?",
+            "answerable": true,
+            "satisfied": true,
+            "result_count": 2,
+            "answers": "seminar=Seminar_2008_December; date=2008-12-01 | seminar=Seminar_Dec2008; date=2008-12-01",
+            "query_error": "",
+            "sparql": "PREFIX : <http://www.example.org/ontology/hospital#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?seminar ?date WHERE {\n              ?seminar a :Cl_Seminar .\n              {\n                ?seminar :seminarDate ?date .\n              }\n              UNION {\n                ?seminar :dp_hasDate ?date .\n              }\n              UNION {\n                ?seminar :hasStartDate ?date .\n              }\n              UNION {\n                ?seminar :hasOccurrence ?occurrence .\n                ?occurrence :occurrenceDate ?date .\n              }\n            }"
+          },
+          {
+            "cq_id": "CQ13",
+            "question": "What articles were presented in a certain seminar?",
+            "answerable": true,
+            "satisfied": true,
+            "result_count": 2,
+            "answers": "seminar=Seminar_Dec2008; article=Article_Pasquale_2008 | seminar=Seminar_Dec2008; article=Article_By_Pasquale",
+            "query_error": "",
+            "sparql": "PREFIX : <http://www.example.org/ontology/hospital#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?seminar ?article WHERE {\n              {\n                ?presentation :hasPresentationVenue ?seminar ;\n                  :hasPresentedArticle ?article .\n              }\n              UNION {\n                ?article :presentedAtSeminar ?seminar .\n              }\n            }"
+          },
+          {
+            "cq_id": "CQ14",
+            "question": "Where did a certain seminar take place?",
+            "answerable": true,
+            "satisfied": true,
+            "result_count": 3,
+            "answers": "seminar=Seminar_2008_December; location=Ospedale_Riunito_delle_Tre_Valli | seminar=Seminar_Dec2008; location=Ospedale_Riunito_delle_Tre_Valli | seminar=Seminar_Dec2008; location=Hospital_Ospedale_Riunito_delle_Tre_Valli",
+            "query_error": "",
+            "sparql": "PREFIX : <http://www.example.org/ontology/hospital#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?seminar ?location WHERE {\n              ?seminar a :Cl_Seminar .\n              {\n                ?seminar :heldAtHospital ?location .\n              }\n              UNION {\n                ?seminar :op_heldAt ?location .\n              }\n              UNION {\n                ?seminar :hasOccurrence ?occurrence .\n                ?occurrence :occurrenceAtLocation ?location .\n              }\n            }"
+          },
+          {
+            "cq_id": "CQ15",
+            "question": "At least one article is always presented at each seminar.",
+            "answerable": true,
+            "satisfied": true,
+            "result_count": 2,
+            "answers": "seminar=Seminar_Dec2008; article=Article_Pasquale_2008 | seminar=Seminar_Dec2008; article=Article_By_Pasquale",
+            "query_error": "",
+            "sparql": "PREFIX : <http://www.example.org/ontology/hospital#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?seminar ?article WHERE {\n              {\n                ?presentation :hasPresentationVenue ?seminar ;\n                  :hasPresentedArticle ?article .\n              }\n              UNION {\n                ?article :presentedAtSeminar ?seminar .\n              }\n            }"
+          }
+        ]
       }
     },
     "vocabulary_profile_similarity": {
-      "method_name": "Vocabulary-profile similarity to source text",
+      "method_name": "Brewster-style vocabulary profile similarity to source text",
       "method_number": 31,
       "result": {
         "comparison": "hospital_final_vs_hospital_story",
@@ -2011,7 +533,7 @@
         "weighted_f1": 0.27450980392156865,
         "unique_term_jaccard": 0.225,
         "top_missing_source_terms": "pasquale|gennaro|ospedale|riunito|delle|tre|valli|care|become|working|nocera|inferiore|nurs|patient|both|entitled|cancer|italian|setting|first|studied|after|some|decided|continue|studying|took|may|september|organising|staff|male|senior|all|these|written|reference|constantly|update|knowledge|read|research|can|found|available|electronically|practice|longitudinal|study|published|program|improving|experience|direction|discussing|new|number|december|such",
-        "top_ontology_only_terms": "date|membership|person|occurrence|evaluation|presentation|member|country|name|publication|role|start|count|association|event|located|employment|employer|organization|location|evaluator|agent|group|venue|end|awarded|title|reified|represent|medical|part|institution|evaluatee|temporal",
+        "top_ontology_only_terms": "date|membership|occurrence|person|member|presentation|evaluation|role|publication|count|start|country|name|located|location|association|event|employment|organization|employer|group|venue|represent|temporal|part|title|evaluator|agent|evaluatee|end|medical|institution|awarded|reified",
         "source_character_count": 1431,
         "ontology_key": "hospital"
       }

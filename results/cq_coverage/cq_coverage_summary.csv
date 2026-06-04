@@ -1,9 +1,9 @@
 ontology,metric,value
-music,satisfied,12
+music,satisfied,13
 music,total,15
-music,coverage_pct,80.0
+music,coverage_pct,86.7
 music,cq_source,data\CQs\music-cq.txt
-hospital,satisfied,9
+hospital,satisfied,11
 hospital,total,15
-hospital,coverage_pct,60.0
+hospital,coverage_pct,73.3
 hospital,cq_source,data\CQs\hospital-cq.txt

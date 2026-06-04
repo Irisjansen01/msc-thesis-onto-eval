@@ -1,9 +1,9 @@
 ontology,metric,score
 music,ANOnto,5
 music,AROnto,5
-music,CROnto,2
+music,CROnto,5
 music,DITOnto,3
-music,INROnto,2
+music,INROnto,3
 music,LCOMOnto,2
 music,NACOnto,2
 music,NOCOnto,3
@@ -16,7 +16,7 @@ music,CBOOnto,2
 music,POnto,5
 hospital,ANOnto,5
 hospital,AROnto,5
-hospital,CROnto,2
+hospital,CROnto,4
 hospital,DITOnto,4
 hospital,INROnto,2
 hospital,LCOMOnto,1

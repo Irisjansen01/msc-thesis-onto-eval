@@ -1,21 +1,21 @@
 ontology,subcharacteristic,score
 music,Formal adequacy,5.0
-music,Domain adequacy,3.0
+music,Domain adequacy,4.333
 music,Formal correctness,2.667
 music,Consistency,2.667
 music,Modularity,3.333
 music,Reusability,4.0
-music,Understandability,3.333
-music,Operability,2.0
+music,Understandability,4.333
+music,Operability,4.0
 music,Adaptability,2.667
 music,Replaceability,4.0
 hospital,Formal adequacy,5.0
-hospital,Domain adequacy,3.0
+hospital,Domain adequacy,3.667
 hospital,Formal correctness,3.0
 hospital,Consistency,2.667
 hospital,Modularity,3.667
 hospital,Reusability,4.333
-hospital,Understandability,3.333
-hospital,Operability,2.0
+hospital,Understandability,4.0
+hospital,Operability,3.0
 hospital,Adaptability,3.0
 hospital,Replaceability,2.5

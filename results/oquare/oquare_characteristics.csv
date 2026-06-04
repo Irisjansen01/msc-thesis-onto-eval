@@ -1,11 +1,11 @@
 ontology,characteristic,score
-music,Functional adequacy,3.556
+music,Functional adequacy,4.0
 music,Reliability,2.667
-music,Usability,2.667
+music,Usability,4.167
 music,Maintainability,3.0
 music,Portability,4.0
-hospital,Functional adequacy,3.667
+hospital,Functional adequacy,3.889
 hospital,Reliability,2.667
-hospital,Usability,2.667
+hospital,Usability,3.5
 hospital,Maintainability,3.333
 hospital,Portability,3.417

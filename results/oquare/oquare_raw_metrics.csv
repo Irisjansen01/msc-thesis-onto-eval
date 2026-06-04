@@ -1,9 +1,9 @@
 ontology,metric,value
 music,ANOnto,1.44
 music,AROnto,0.72
-music,CROnto,0.0
+music,CROnto,0.72
 music,DITOnto,2
-music,INROnto,0.0
+music,INROnto,1.2285714285714286
 music,LCOMOnto,0.87
 music,NACOnto,0.6
 music,NOCOnto,0.52
@@ -16,9 +16,9 @@ music,CBOOnto,2.56
 music,POnto,0.75
 hospital,ANOnto,1.5454545454545454
 hospital,AROnto,2.515151515151515
-hospital,CROnto,0.0
+hospital,CROnto,0.42424242424242425
 hospital,DITOnto,3
-hospital,INROnto,0.0
+hospital,INROnto,0.37777777777777777
 hospital,LCOMOnto,0.946969696969697
 hospital,NACOnto,0.7272727272727273
 hospital,NOCOnto,0.6060606060606061

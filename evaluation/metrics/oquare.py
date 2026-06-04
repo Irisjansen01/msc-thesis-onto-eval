@@ -27,8 +27,14 @@ def _annotation_properties(g):
     return {s for s in g.subjects(RDF.type, OWL.AnnotationProperty) if isinstance(s, URIRef)}
 
 
-def _individuals(g):
-    return {s for s in g.subjects(RDF.type, OWL.NamedIndividual) if isinstance(s, URIRef)}
+def _individuals(g, classes):
+    explicit = {s for s in g.subjects(RDF.type, OWL.NamedIndividual) if isinstance(s, URIRef)}
+    domain_typed = {
+        s
+        for s, typ in g.subject_objects(RDF.type)
+        if isinstance(s, URIRef) and typ in classes and s not in classes
+    }
+    return explicit | domain_typed
 
 
 def _subclass_edges(g):
@@ -301,7 +307,7 @@ def method_oquare(onto, label):
     obj_props = _object_properties(g)
     data_props = _datatype_properties(g)
     ann_props = _annotation_properties(g)
-    individuals = _individuals(g)
+    individuals = _individuals(g, classes)
     sc_edges = _subclass_edges(g)
 
     raw = {
@@ -367,4 +373,3 @@ def write_oquare_outputs(results_by_label, output_dir):
             writer = csv.DictWriter(f, fieldnames=fieldnames)
             writer.writeheader()
             writer.writerows(rows)
-

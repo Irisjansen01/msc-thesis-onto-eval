@@ -1,31 +1,423 @@
-ontology,cq_id,question,satisfied,classes_present,object_properties_present,datatype_properties_present
-music,CQ1,What instruments does a certain person play?,True,True,True,True
-music,CQ2,What are the members of a certain band at a certain point in time?,True,True,True,True
-music,CQ3,What role does a certain person have in a certain band at a certain point in time?,True,True,True,True
-music,CQ4,During what time period was a certain album recorded?,True,True,True,True
-music,CQ5,How many tracks does a particular album contain?,True,True,True,True
-music,CQ6,When was a certain album released?,True,True,True,True
-music,CQ7,What song is a specific track a recording of?,False,True,False,True
-music,CQ8,When was a certain song composed?,True,True,True,True
-music,CQ9,What does a certain critic say about a certain record?,False,False,False,True
-music,CQ10,When did a certain performance take place?,True,True,True,True
-music,CQ11,What songs were played in a certain performance?,True,True,True,True
-music,CQ12,Where did a certain performance take place?,True,True,True,True
-music,CQ13,In what region is a certain city located?,True,True,True,True
-music,CQ14,In what country is a certain region located?,False,False,False,True
-music,CQ15,A record always contains at least one track.,True,True,True,True
-hospital,CQ1,What medical degrees does a certain person have?,True,True,True,True
-hospital,CQ2,During what time period did a certain person study for a specific degree?,False,False,False,True
-hospital,CQ3,When was a certain person first employed at a certain hospital?,True,True,True,True
-hospital,CQ4,In what city is a certain hospital located?,True,True,True,True
-hospital,CQ5,In what country is a certain city located?,True,True,True,True
-hospital,CQ6,Who are the members of a certain union at a certain point in time?,False,True,True,False
-hospital,CQ7,What role does a certain person have within a certain union group at a certain point in time?,False,True,True,False
-hospital,CQ8,What is the evaluation statement given by a certain doctor for a certain employee?,False,True,False,True
-hospital,CQ9,What articles is a specific book or CD composed of?,True,True,True,True
-hospital,CQ10,How many pages does a particular book contain?,False,True,False,False
-hospital,CQ11,When was a certain book or CD published?,False,True,False,True
-hospital,CQ12,When did a certain seminar take place?,True,True,True,True
-hospital,CQ13,What articles were presented in a certain seminar?,True,True,True,True
-hospital,CQ14,Where did a certain seminar take place?,True,True,True,True
-hospital,CQ15,At least one article is always presented at each seminar.,True,True,True,True
+ontology,cq_id,question,satisfied,answerable,result_count,answers,query_error,sparql
+music,CQ1,What instruments does a certain person play?,True,True,7,person=Anthony_Kiedis; instrument=Vocals | person=Chad_Smith; instrument=Drums | person=John_Frusciante; instrument=Guitar | person=Flea; instrument=Bass | person=Flea; instrument=Keyboards | person=Flea; instrument=Trumpet | person=Flea; instrument=Vocals,,"PREFIX : <http://www.example.org/ontology/music#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?person ?instrument WHERE {
+              ?person a :Cl_Musician ; :playsInstrument ?instrument .
+            }"
+music,CQ2,What are the members of a certain band at a certain point in time?,True,True,12,band=Red_Hot_Chili_Peppers; member=Anthony_Kiedis; startDate=1983-01-01 | band=Red_Hot_Chili_Peppers; member=Chad_Smith; startDate=1990-01-01 | band=Red_Hot_Chili_Peppers; member=Flea; startDate=1983-01-01 | band=Red_Hot_Chili_Peppers; member=Hillel_Slovak; startDate=1983-01-01; endDate=1988-01-01 | band=Red_Hot_Chili_Peppers; member=Jack_Irons; startDate=1983-01-01; endDate=1990-01-01 | band=Red_Hot_Chili_Peppers; member=John_Frusciante; startDate=1988-01-01 | band=The_Mars_Volta; member=John_Frusciante; startDate=2000-01-01 | band=Red_Hot_Chili_Peppers; member=D_H_Peligo; startDate=1990-01-01; endDate=1990-06-01 | band=RedHotChiliPeppers; member=Anthony_Kiedis | band=RedHotChiliPeppers; member=Chad_Smith | band=RedHotChiliPeppers; member=Flea | band=RedHotChiliPeppers; member=John_Frusciante,,"PREFIX : <http://www.example.org/ontology/music#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT DISTINCT ?band ?member ?startDate ?endDate WHERE {
+              {
+                ?membership a :Cl_Membership ;
+                  :hasBand ?band ;
+                  :hasMember ?member .
+                OPTIONAL {
+                  ?membership :hasTimeInterval ?interval .
+                  OPTIONAL { ?interval :startDate ?startDate . }
+                  OPTIONAL { ?interval :endDate ?endDate . }
+                }
+              }
+              UNION {
+                ?band a :Cl_Band ; :hasMember ?member .
+              }
+            }"
+music,CQ3,What role does a certain person have in a certain band at a certain point in time?,True,True,10,band=Red_Hot_Chili_Peppers; person=Anthony_Kiedis; role=Vocals; startDate=1983-01-01 | band=Red_Hot_Chili_Peppers; person=Chad_Smith; role=Drums; startDate=1990-01-01 | band=Red_Hot_Chili_Peppers; person=Flea; role=Keyboards; startDate=1983-01-01 | band=Red_Hot_Chili_Peppers; person=Flea; role=Bass; startDate=1983-01-01 | band=Red_Hot_Chili_Peppers; person=Flea; role=Trumpet; startDate=1983-01-01 | band=Red_Hot_Chili_Peppers; person=Hillel_Slovak; role=Guitar; startDate=1983-01-01; endDate=1988-01-01 | band=Red_Hot_Chili_Peppers; person=Jack_Irons; role=Drums; startDate=1983-01-01; endDate=1990-01-01 | band=Red_Hot_Chili_Peppers; person=John_Frusciante; role=Guitar; startDate=1988-01-01 | band=The_Mars_Volta; person=John_Frusciante; role=Vocals; startDate=2000-01-01 | band=Red_Hot_Chili_Peppers; person=D_H_Peligo; role=Drums; startDate=1990-01-01; endDate=1990-06-01,,"PREFIX : <http://www.example.org/ontology/music#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?band ?person ?role ?startDate ?endDate WHERE {
+              ?membership a :Cl_Membership ;
+                :hasBand ?band ;
+                :hasMember ?person ;
+                :hasRole ?role .
+              OPTIONAL {
+                ?membership :hasTimeInterval ?interval .
+                OPTIONAL { ?interval :startDate ?startDate . }
+                OPTIONAL { ?interval :endDate ?endDate . }
+              }
+            }"
+music,CQ4,During what time period was a certain album recorded?,True,True,1,album=Stadium_Arcadium; startDate=2004-09-01; endDate=2006-05-05,,"PREFIX : <http://www.example.org/ontology/music#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?album ?startDate ?endDate WHERE {
+              ?album a :Cl_Album ; :hasRecordingEvent ?recording .
+              ?recording :recordingStartDate ?startDate ;
+                :recordingEndDate ?endDate .
+            }"
+music,CQ5,How many tracks does a particular album contain?,True,True,1,album=Stadium_Arcadium; trackCount=1,,"PREFIX : <http://www.example.org/ontology/music#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?album (COUNT(?track) AS ?trackCount) WHERE {
+              ?album a :Cl_Album ; :hasTrack ?track .
+            }
+            GROUP BY ?album"
+music,CQ6,When was a certain album released?,True,True,1,album=Stadium_Arcadium; releaseDate=2006-05-05,,"PREFIX : <http://www.example.org/ontology/music#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT DISTINCT ?album ?releaseDate WHERE {
+              ?album a :Cl_Album .
+              {
+                ?album :releaseDate ?releaseDate .
+              }
+              UNION {
+                ?album :albumReleaseDate ?releaseDate .
+              }
+            }"
+music,CQ7,What song is a specific track a recording of?,True,True,1,track=Hump_de_Bump; song=Hump_de_Bump,,"PREFIX : <http://www.example.org/ontology/music#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT DISTINCT ?track ?song WHERE {
+              {
+                ?track a :Cl_Track ; :trackOfSong ?song .
+              }
+              UNION {
+                ?track a :Cl_Track ; :recordingOf ?song .
+              }
+              UNION {
+                ?track a :Cl_Track ; :isSongOf ?song .
+              }
+              UNION {
+                ?track a :Cl_Track, :Cl_Song .
+                BIND(?track AS ?song)
+              }
+            }"
+music,CQ8,When was a certain song composed?,True,True,1,song=Hump_de_Bump; compositionDate=2004-01-26,,"PREFIX : <http://www.example.org/ontology/music#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT DISTINCT ?song ?compositionDate WHERE {
+              ?song a :Cl_Song .
+              {
+                ?song :composedDate ?compositionDate .
+              }
+              UNION {
+                ?song :trackCompositionDate ?compositionDate .
+              }
+              UNION {
+                ?song :hasCompositionEvent ?event .
+                ?event :hasCompositionDate ?compositionDate .
+              }
+            }"
+music,CQ9,What does a certain critic say about a certain record?,True,True,1,critic=Crian_Hiatt; record=Stadium_Arcadium; statement=the most ambitious work in his twenty-three-year career,,"PREFIX : <http://www.example.org/ontology/music#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?critic ?record ?statement WHERE {
+              ?review a :Cl_CriticRecordStatement ;
+                :hasCritic ?critic ;
+                :hasRecord ?record ;
+                :statementText ?statement .
+            }"
+music,CQ10,When did a certain performance take place?,True,True,1,performance=Performance_Portland_2006; date=2006-08-11,,"PREFIX : <http://www.example.org/ontology/music#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?performance ?date WHERE {
+              ?performance a :Cl_Performance ; :performanceDate ?date .
+            }"
+music,CQ11,What songs were played in a certain performance?,True,True,1,performance=Performance_Portland_2006; song=Hump_de_Bump,,"PREFIX : <http://www.example.org/ontology/music#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT DISTINCT ?performance ?song WHERE {
+              {
+                ?performance a :Cl_Performance ; :performedSong ?song .
+              }
+              UNION {
+                ?event a :Cl_SongInPerformance ;
+                  :hasPerformance ?performance ;
+                  :hasSong ?song .
+              }
+            }"
+music,CQ12,Where did a certain performance take place?,True,True,1,"performance=Performance_Portland_2006; location=Portland, Oregon, US",,"PREFIX : <http://www.example.org/ontology/music#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?performance ?location WHERE {
+              ?performance a :Cl_Performance .
+              {
+                ?performance :performanceLocation ?location .
+              }
+              UNION {
+                ?performance :hasLocation ?location .
+              }
+            }"
+music,CQ13,In what region is a certain city located?,False,False,0,,,"PREFIX : <http://www.example.org/ontology/music#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?city ?region WHERE {
+              ?city a :Cl_City .
+              {
+                ?city :locatedIn ?region .
+              }
+              UNION {
+                ?city :hasState ?region .
+              }
+            }"
+music,CQ14,In what country is a certain region located?,False,False,0,,,"PREFIX : <http://www.example.org/ontology/music#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?region ?country WHERE {
+              ?region a :Cl_Region .
+              {
+                ?region :locatedInCountry ?country .
+              }
+              UNION {
+                ?region :inCountry ?country .
+              }
+            }"
+music,CQ15,A record always contains at least one track.,True,True,1,record=Stadium_Arcadium; trackCount=1,,"PREFIX : <http://www.example.org/ontology/music#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?record (COUNT(DISTINCT ?track) AS ?trackCount) WHERE {
+              ?record a ?recordType ; :hasTrack ?track .
+              VALUES ?recordType { :Cl_Record :Cl_Album }
+            }
+            GROUP BY ?record"
+hospital,CQ1,What medical degrees does a certain person have?,False,False,0,,,"PREFIX : <http://www.example.org/ontology/hospital#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?person ?degree WHERE {
+              ?person a :Cl_Person ; :hasDegree ?degree .
+            }"
+hospital,CQ2,During what time period did a certain person study for a specific degree?,False,False,0,,,"PREFIX : <http://www.example.org/ontology/hospital#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?person ?degree ?startDate ?endDate WHERE {
+              ?person a :Cl_Person .
+              {
+                ?association a :Cl_PersonDegree ;
+                  :heldBy ?person ;
+                  :hasDegree ?degree .
+                OPTIONAL { ?association :degreeDate ?startDate . }
+              }
+              UNION {
+                ?person :hasDegree ?degree .
+              }
+              OPTIONAL { ?association :startDate ?startDate . }
+              OPTIONAL { ?association :endDate ?endDate . }
+            }"
+hospital,CQ3,When was a certain person first employed at a certain hospital?,True,True,1,person=Pasquale_Di_Gennaro; hospital=Ospedale_Riunito_delle_Tre_Valli; startDate=2001-09-21,,"PREFIX : <http://www.example.org/ontology/hospital#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT DISTINCT ?person ?hospital ?startDate WHERE {
+              {
+                ?event a :Cl_EmploymentEvent ;
+                  :hasEmployee ?person ;
+                  :hasEmployer ?hospital ;
+                  :startDate ?startDate .
+              }
+              UNION {
+                ?person a :Cl_Person ;
+                  :employedAt ?hospital .
+                OPTIONAL {
+                  ?event a :Cl_EmploymentEvent ;
+                    :hasEmployee ?person ;
+                    :hasEmployer ?hospital ;
+                    :startDate ?startDate .
+                }
+              }
+            }"
+hospital,CQ4,In what city is a certain hospital located?,True,True,1,hospital=Ospedale_Riunito_delle_Tre_Valli; city=Nocera_Inferiore,,"PREFIX : <http://www.example.org/ontology/hospital#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?hospital ?city WHERE {
+              ?hospital a :Cl_Hospital ; :locatedInCity ?city .
+            }"
+hospital,CQ5,In what country is a certain city located?,False,False,0,,,"PREFIX : <http://www.example.org/ontology/hospital#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?city ?country WHERE {
+              {
+                ?city a :Cl_City ; :op_isLocatedInCountry ?country .
+              }
+              UNION {
+                ?country a :Cl_Country ; :op_hasCity ?city .
+              }
+            }"
+hospital,CQ6,Who are the members of a certain union at a certain point in time?,True,True,2,union=Union_MaleNurses; member=Pasquale_Di_Gennaro; startDate=2002-01-01 | union=Union_MaleNurses_OspedaleRiunito; member=Pasquale_Di_Gennaro; startDate=2002-01-01,,"PREFIX : <http://www.example.org/ontology/hospital#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT DISTINCT ?union ?member ?startDate ?endDate WHERE {
+              ?membership a :Cl_UnionMembership ;
+                :hasUnion ?union ;
+                :hasMember ?member .
+              OPTIONAL { ?membership :membershipStartDate ?startDate . }
+              OPTIONAL { ?membership :membershipEndDate ?endDate . }
+            }"
+hospital,CQ7,What role does a certain person have within a certain union group at a certain point in time?,True,True,2,person=Pasquale_Di_Gennaro; union=Union_MaleNurses; role=UnionRepresentative_MaleNurses; startDate=2002-01-01 | person=Pasquale_Di_Gennaro; union=Union_MaleNurses_OspedaleRiunito; role=UnionRepresentative_MaleNurses; startDate=2002-01-01,,"PREFIX : <http://www.example.org/ontology/hospital#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT DISTINCT ?person ?union ?role ?startDate ?endDate WHERE {
+              ?membership a :Cl_UnionMembership ;
+                :hasMember ?person ;
+                :hasUnion ?union ;
+                :hasRole ?role .
+              OPTIONAL { ?membership :membershipStartDate ?startDate . }
+              OPTIONAL { ?membership :membershipEndDate ?endDate . }
+            }"
+hospital,CQ8,What is the evaluation statement given by a certain doctor for a certain employee?,False,False,0,,,"PREFIX : <http://www.example.org/ontology/hospital#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?doctor ?employee ?statement WHERE {
+              ?evaluation a :Cl_EvaluationStatement ;
+                :hasEvaluator ?doctor ;
+                :hasEvaluatee ?employee ;
+                :hasStatement ?statement .
+            }"
+hospital,CQ9,What articles is a specific book or CD composed of?,True,True,1,collection=ArticleCollection_2008; article=Article_By_Pasquale,,"PREFIX : <http://www.example.org/ontology/hospital#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?collection ?article WHERE {
+              ?collection a ?collectionType .
+              VALUES ?collectionType { :Cl_Book :Cl_CD :Cl_ArticleCollection }
+              {
+                ?collection :containsArticle ?article .
+              }
+              UNION {
+                ?collection :hasArticle ?article .
+              }
+            }"
+hospital,CQ10,How many pages does a particular book contain?,True,True,1,book=ArticleCollection_2008; pageCount=346,,"PREFIX : <http://www.example.org/ontology/hospital#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?book ?pageCount WHERE {
+              ?book a :Cl_Book .
+              {
+                ?book :hasPageCount ?pageCount .
+              }
+              UNION {
+                ?book :dp_pageCount ?pageCount .
+              }
+              UNION {
+                ?book :pageCount ?pageCount .
+              }
+            }"
+hospital,CQ11,When was a certain book or CD published?,True,True,1,publication=Book_NursePractices2008; published=2008-01-01,,"PREFIX : <http://www.example.org/ontology/hospital#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?publication ?published WHERE {
+              ?publication a ?publicationType .
+              VALUES ?publicationType { :Cl_Book :Cl_CD :Cl_Publication }
+              {
+                ?publication :hasPublicationDate ?published .
+              }
+              UNION {
+                ?publication :publicationYear ?published .
+              }
+            }"
+hospital,CQ12,When did a certain seminar take place?,True,True,2,seminar=Seminar_2008_December; date=2008-12-01 | seminar=Seminar_Dec2008; date=2008-12-01,,"PREFIX : <http://www.example.org/ontology/hospital#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT DISTINCT ?seminar ?date WHERE {
+              ?seminar a :Cl_Seminar .
+              {
+                ?seminar :seminarDate ?date .
+              }
+              UNION {
+                ?seminar :dp_hasDate ?date .
+              }
+              UNION {
+                ?seminar :hasStartDate ?date .
+              }
+              UNION {
+                ?seminar :hasOccurrence ?occurrence .
+                ?occurrence :occurrenceDate ?date .
+              }
+            }"
+hospital,CQ13,What articles were presented in a certain seminar?,True,True,2,seminar=Seminar_Dec2008; article=Article_Pasquale_2008 | seminar=Seminar_Dec2008; article=Article_By_Pasquale,,"PREFIX : <http://www.example.org/ontology/hospital#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT DISTINCT ?seminar ?article WHERE {
+              {
+                ?presentation :hasPresentationVenue ?seminar ;
+                  :hasPresentedArticle ?article .
+              }
+              UNION {
+                ?article :presentedAtSeminar ?seminar .
+              }
+            }"
+hospital,CQ14,Where did a certain seminar take place?,True,True,3,seminar=Seminar_2008_December; location=Ospedale_Riunito_delle_Tre_Valli | seminar=Seminar_Dec2008; location=Ospedale_Riunito_delle_Tre_Valli | seminar=Seminar_Dec2008; location=Hospital_Ospedale_Riunito_delle_Tre_Valli,,"PREFIX : <http://www.example.org/ontology/hospital#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT DISTINCT ?seminar ?location WHERE {
+              ?seminar a :Cl_Seminar .
+              {
+                ?seminar :heldAtHospital ?location .
+              }
+              UNION {
+                ?seminar :op_heldAt ?location .
+              }
+              UNION {
+                ?seminar :hasOccurrence ?occurrence .
+                ?occurrence :occurrenceAtLocation ?location .
+              }
+            }"
+hospital,CQ15,At least one article is always presented at each seminar.,True,True,2,seminar=Seminar_Dec2008; article=Article_Pasquale_2008 | seminar=Seminar_Dec2008; article=Article_By_Pasquale,,"PREFIX : <http://www.example.org/ontology/hospital#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT DISTINCT ?seminar ?article WHERE {
+              {
+                ?presentation :hasPresentationVenue ?seminar ;
+                  :hasPresentedArticle ?article .
+              }
+              UNION {
+                ?article :presentedAtSeminar ?seminar .
+              }
+            }"
