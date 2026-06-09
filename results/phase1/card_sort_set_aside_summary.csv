@@ -1,0 +1,13 @@
+export_code,source_file,set_aside_count,reason_no_fitting_top_cat,reason_other,reason_unspecified,reason_fits_multiple_groups,reason_unclear_wording,reason_not_an_evaluation,reason_too_broad
+1vtb,card-sort-ontology-1vtb.json,4,1,2,1,0,0,0,0
+2gqa,card-sort-ontology-2gqa.json,0,0,0,0,0,0,0,0
+80gv,card-sort-ontology-80gv.json,1,0,0,1,0,0,0,0
+8qhw,card-sort-ontology-8qhw.json,0,0,0,0,0,0,0,0
+hfb3,card-sort-ontology-hfb3.json,2,0,0,0,1,1,0,0
+hklh,card-sort-ontology-hklh.json,0,0,0,0,0,0,0,0
+lscq,card-sort-ontology-lscq.json,0,0,0,0,0,0,0,0
+o5k9,card-sort-ontology-o5k9.json,0,0,0,0,0,0,0,0
+qsdg,card-sort-ontology-qsdg.json,4,1,1,0,0,0,2,0
+r0pn,card-sort-ontology-r0pn.json,1,0,0,0,0,0,0,1
+t7xv,card-sort-ontology-t7xv.json,5,0,2,0,0,0,2,1
+t9je,card-sort-ontology-t9je.json,0,0,0,0,0,0,0,0

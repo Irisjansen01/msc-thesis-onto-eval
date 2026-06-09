@@ -1,17 +1,17 @@
 # Results
 
-The active result folders are:
+The active result folders are under `phase2/`:
 
-1. `basic_statistics/`
-2. `oquare/`
-3. `cq_coverage/`
-4. `vocabulary_profile_similarity/`
-5. `maedche_staab_music/`
-6. `maedche_staab_hospital/`
-7. `oops/`
-8. `foops/`
+1. `phase2/basic_statistics/`
+2. `phase2/oquare/`
+3. `phase2/cq_coverage/`
+4. `phase2/vocabulary_profile_similarity/`
+5. `phase2/maedche_staab_music/`
+6. `phase2/maedche_staab_hospital/`
+7. `phase2/oops/`
+8. `phase2/foops/`
 
-`evaluation_results.json` stores the per-ontology JSON output for the active metrics that run directly on each generated ontology, plus the Brewster-style vocabulary profile summaries.
+`phase2/evaluation_results.json` stores the per-ontology JSON output for the active metrics that run directly on each generated ontology, plus the Brewster-style vocabulary profile summaries.
 
 The Maedche-Staab comparison writes detailed CSV files directly to the two `maedche_staab_*` folders.
 
@@ -19,4 +19,4 @@ The `oops/` and `foops/` folders are reserved for external tool outputs and are 
 
 Any other result folders are legacy outputs from earlier exploratory metrics unless they are explicitly kept.
 
-The root-level `card_sort_heatmap.*` files and `heatmap.py` are card-sort study artifacts, not active ontology evaluation outputs.
+The card-sort study artifacts now live under `results/phase1/`, and the analysis logic is kept in `scripts/phase1/` rather than in `results/`. The old root-level `card_sort_heatmap.*` files are legacy placeholders and should be treated as generated outputs only.

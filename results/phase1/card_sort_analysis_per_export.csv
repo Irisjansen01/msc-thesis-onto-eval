@@ -1,0 +1,13 @@
+export_code,source_file,duration_seconds,duration_hms,active_card_count,placed_cards,set_aside_count,unsorted_count,A_count,B_count,C_count,D_count,used_quality_dimensions,set_aside_reasons
+1vtb,card-sort-ontology-1vtb.json,689,11:29,40,36,4,0,10,6,1,19,6,"{'no_fitting_top_cat': 1, 'other': 2, 'unspecified': 1}"
+2gqa,card-sort-ontology-2gqa.json,960,16:00,40,40,0,0,13,2,3,22,0,{}
+80gv,card-sort-ontology-80gv.json,873,14:33,40,39,1,0,8,10,7,14,0,{'unspecified': 1}
+8qhw,card-sort-ontology-8qhw.json,1165,19:25,40,40,0,0,11,4,3,22,0,{}
+hfb3,card-sort-ontology-hfb3.json,1487,24:47,40,38,2,0,11,11,4,12,0,"{'unclear_wording': 1, 'fits_multiple_groups': 1}"
+hklh,card-sort-ontology-hklh.json,1434,23:54,40,40,0,0,11,7,5,17,5,{}
+lscq,card-sort-ontology-lscq.json,1163,19:23,40,40,0,0,12,3,3,22,0,{}
+o5k9,card-sort-ontology-o5k9.json,1073,17:53,40,40,0,0,9,6,3,22,0,{}
+qsdg,card-sort-ontology-qsdg.json,2357,39:17,40,36,4,0,11,4,3,18,10,"{'no_fitting_top_cat': 1, 'not_an_evaluation': 2, 'other': 1}"
+r0pn,card-sort-ontology-r0pn.json,794,13:14,40,39,1,0,15,10,2,12,0,{'too_broad': 1}
+t7xv,card-sort-ontology-t7xv.json,258,04:18,40,35,5,0,8,2,3,22,0,"{'not_an_evaluation': 2, 'too_broad': 1, 'other': 2}"
+t9je,card-sort-ontology-t9je.json,829,13:49,40,40,0,0,9,3,7,21,0,{}

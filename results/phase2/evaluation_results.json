@@ -87,7 +87,7 @@
         "satisfied": 13,
         "total": 15,
         "coverage_pct": 86.7,
-        "cq_source": "data\\CQs\\music-cq.txt",
+        "cq_source": "data\\phase2\\competency-questions\\music-cq.txt",
         "details": [
           {
             "cq_id": "CQ1",
@@ -247,8 +247,8 @@
       "method_number": 31,
       "result": {
         "comparison": "music_final_vs_music_story",
-        "ontology_path": "data\\ontologies\\music-final.ttl",
-        "story_path": "data/domain story/music-story.txt",
+        "ontology_path": "data\\phase2\\ontologies\\music-generated.ttl",
+        "story_path": "data/phase2/domain-stories/music-story.txt",
         "classes": 25,
         "properties": 53,
         "ontology_labels": 99,
@@ -263,7 +263,7 @@
         "weighted_f1": 0.14035087719298245,
         "unique_term_jaccard": 0.10256410256410256,
         "top_missing_source_terms": "red|hot|chili|pepper|frusciante|vocal|guitar|chad|smith|replaced|stadium|arcadium|production|configuration|anthony|kiedi|flea|bass|trumpet|keyboard|john|drum|line|changed|few|hillel|slovak|jack|iron|left|briefly|peligo|until|found|addition|playing|also|contributed|mar|volta|vocalist|some|september|started|released|may|include|hump|bump|composed|january|crian|hiatt|defined|most|ambitiou|work|twenty|three|year|career|august|gave|portland|oregon|featuring",
-        "top_ontology_only_terms": "date|membership|event|performed|composition|member|person|role|release|record|instrument|statement|end|musical|location|musician|start|name|artist|group|city|function|interval|state|recorded|reified|perform|play|region|concert|session|text|entity|individual|located|country|reviewed|optional|compos",
+        "top_ontology_only_terms": "date|membership|event|performed|composition|member|person|role|release|location|instrument|record|start|musical|statement|musician|end|name|interval|function|state|artist|group|city|recorded|reviewed|perform|play|concert|session|country|entity|individual|reified|region|text|optional|located|compos",
         "source_character_count": 1011,
         "ontology_key": "music"
       }
@@ -357,7 +357,7 @@
         "satisfied": 11,
         "total": 15,
         "coverage_pct": 73.3,
-        "cq_source": "data\\CQs\\hospital-cq.txt",
+        "cq_source": "data\\phase2\\competency-questions\\hospital-cq.txt",
         "details": [
           {
             "cq_id": "CQ1",
@@ -517,8 +517,8 @@
       "method_number": 31,
       "result": {
         "comparison": "hospital_final_vs_hospital_story",
-        "ontology_path": "data\\ontologies\\hospital-final.ttl",
-        "story_path": "data/domain story/hospital-story.txt",
+        "ontology_path": "data\\phase2\\ontologies\\hospital-generated.ttl",
+        "story_path": "data/phase2/domain-stories/hospital-story.txt",
         "classes": 33,
         "properties": 64,
         "ontology_labels": 113,
@@ -533,7 +533,7 @@
         "weighted_f1": 0.27450980392156865,
         "unique_term_jaccard": 0.225,
         "top_missing_source_terms": "pasquale|gennaro|ospedale|riunito|delle|tre|valli|care|become|working|nocera|inferiore|nurs|patient|both|entitled|cancer|italian|setting|first|studied|after|some|decided|continue|studying|took|may|september|organising|staff|male|senior|all|these|written|reference|constantly|update|knowledge|read|research|can|found|available|electronically|practice|longitudinal|study|published|program|improving|experience|direction|discussing|new|number|december|such",
-        "top_ontology_only_terms": "date|membership|occurrence|person|member|presentation|evaluation|role|publication|count|start|country|name|located|location|association|event|employment|organization|employer|group|venue|represent|temporal|part|title|evaluator|agent|evaluatee|end|medical|institution|awarded|reified",
+        "top_ontology_only_terms": "date|membership|occurrence|person|member|presentation|evaluation|start|name|count|country|publication|role|employment|event|organization|location|employer|association|located|reified|title|agent|institution|part|represent|group|medical|temporal|awarded|end|evaluatee|venue|evaluator",
         "source_character_count": 1431,
         "ontology_key": "hospital"
       }

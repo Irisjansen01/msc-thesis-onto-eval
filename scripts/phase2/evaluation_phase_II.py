@@ -1,4 +1,4 @@
-from pathlib import Path
+﻿from pathlib import Path
 import argparse
 import json
 import logging
@@ -15,12 +15,13 @@ from metrics.maedche_staab_similarity import run_maedche_staab_evaluation
 logging.getLogger("rdflib").setLevel(logging.ERROR)
 
 SEP = "=" * 72
+RESULTS_DIR = Path("results") / "phase2"
 
 ONTOLOGIES = {
-    "music": "data/ontologies/music-final.ttl",
-    "hospital": "data/ontologies/hospital-final.ttl",
-    "music_reference": "data/ontologies/music-ref.rdfs",
-    "hospital_reference": "data/ontologies/hospital-ref.owl",
+    "music": "data/phase2/ontologies/music-generated.ttl",
+    "hospital": "data/phase2/ontologies/hospital-generated.ttl",
+    "music_reference": "data/phase2/ontologies/music-reference.rdfs",
+    "hospital_reference": "data/phase2/ontologies/hospital-reference.owl",
 }
 
 GENERATED_ONTOLOGY_KEYS = ("music", "hospital")
@@ -29,12 +30,12 @@ DOMAIN_STORY_COMPARISONS = [
     {
         "comparison": "music_final_vs_music_story",
         "ontology_key": "music",
-        "story_path": "data/domain story/music-story.txt",
+        "story_path": "data/phase2/domain-stories/music-story.txt",
     },
     {
         "comparison": "hospital_final_vs_hospital_story",
         "ontology_key": "hospital",
-        "story_path": "data/domain story/hospital-story.txt",
+        "story_path": "data/phase2/domain-stories/hospital-story.txt",
     },
 ]
 
@@ -92,8 +93,8 @@ def load_ontology(path):
 
 def run_maedche_reference_comparisons():
     comparisons = [
-        ("music", ONTOLOGIES["music"], ONTOLOGIES["music_reference"], Path("results") / "maedche_staab_music"),
-        ("hospital", ONTOLOGIES["hospital"], ONTOLOGIES["hospital_reference"], Path("results") / "maedche_staab_hospital"),
+        ("music", ONTOLOGIES["music"], ONTOLOGIES["music_reference"], RESULTS_DIR / "maedche_staab_music"),
+        ("hospital", ONTOLOGIES["hospital"], ONTOLOGIES["hospital_reference"], RESULTS_DIR / "maedche_staab_hospital"),
     ]
     for label, generated_path, reference_path, output_dir in comparisons:
         print(f"\n{SEP}")
@@ -103,9 +104,9 @@ def run_maedche_reference_comparisons():
 
 
 def write_metric_outputs(results_by_metric):
-    basic_statistics_metric.write_basic_statistics_outputs(results_by_metric["basic"], Path("results") / "basic_statistics")
-    oquare_metric.write_oquare_outputs(results_by_metric["oquare"], Path("results") / "oquare")
-    cq_coverage_metric.write_cq_coverage_outputs(results_by_metric["cq_coverage"], Path("results") / "cq_coverage")
+    basic_statistics_metric.write_basic_statistics_outputs(results_by_metric["basic"], RESULTS_DIR / "basic_statistics")
+    oquare_metric.write_oquare_outputs(results_by_metric["oquare"], RESULTS_DIR / "oquare")
+    cq_coverage_metric.write_cq_coverage_outputs(results_by_metric["cq_coverage"], RESULTS_DIR / "cq_coverage")
 
 
 def run_vocabulary_profile_story_comparisons(loaded_ontologies=None):
@@ -137,7 +138,7 @@ def run_vocabulary_profile_story_comparisons(loaded_ontologies=None):
         results.append(result)
     vocabulary_profile_metric.write_vocabulary_profile_outputs(
         results,
-        Path("results") / "vocabulary_profile_similarity",
+        RESULTS_DIR / "vocabulary_profile_similarity",
     )
     return results
 
@@ -163,7 +164,7 @@ def run_default_evaluation():
             ontology_results[key] = wrap_method(result, method_name, method_number)
         all_results[ont_label] = ontology_results
 
-    results_path = Path("results") / "evaluation_results.json"
+    results_path = RESULTS_DIR / "evaluation_results.json"
     results_path.parent.mkdir(parents=True, exist_ok=True)
     with open(results_path, "w", encoding="utf-8") as f:
         json.dump(all_results, f, indent=2, default=str)
@@ -181,7 +182,7 @@ def run_default_evaluation():
         json.dump(all_results, f, indent=2, default=str)
     run_maedche_reference_comparisons()
     print(f"\n\nResults saved to {results_path}")
-    print("Per-metric CSV outputs saved to results/<metric_name>/")
+    print("Per-metric CSV outputs saved to results/phase2/<metric_name>/")
 
 
 def parse_args():
@@ -190,7 +191,7 @@ def parse_args():
     parser.add_argument("--reference-ontology", help="Reference ontology path for Maedche and Staab comparison.")
     parser.add_argument(
         "--maedche-output-dir",
-        default=str(Path("results") / "maedche_staab"),
+        default=str(RESULTS_DIR / "maedche_staab"),
         help="Directory for Maedche and Staab CSV outputs.",
     )
     parser.add_argument(

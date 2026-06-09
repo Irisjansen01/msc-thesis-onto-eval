@@ -10,7 +10,7 @@ from .shared import (
 )
 
 
-CQ_DIR = Path("data") / "CQs"
+CQ_DIR = Path("data") / "phase2" / "competency-questions"
 
 
 DOMAIN_PREFIXES = {

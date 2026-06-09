@@ -2,8 +2,8 @@ ontology,metric,value
 music,satisfied,13
 music,total,15
 music,coverage_pct,86.7
-music,cq_source,data\CQs\music-cq.txt
+music,cq_source,data\phase2\competency-questions\music-cq.txt
 hospital,satisfied,11
 hospital,total,15
 hospital,coverage_pct,73.3
-hospital,cq_source,data\CQs\hospital-cq.txt
+hospital,cq_source,data\phase2\competency-questions\hospital-cq.txt
