@@ -15,7 +15,7 @@ import numpy as np
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_INPUT_DIR = PROJECT_ROOT / "data" / "card-sort-outcome"
+DEFAULT_INPUT_DIR = Path(__file__).resolve().parent / "card-sort-outcome"
 DEFAULT_OUTPUT = Path(__file__).with_name("card_sort_heatmap.png")
 DEFAULT_CSV_OUTPUT = Path(__file__).with_name("card_sort_heatmap.csv")
 SPECIAL_PLACEMENTS = ("Set aside", "Unsorted")
@@ -243,3 +243,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
