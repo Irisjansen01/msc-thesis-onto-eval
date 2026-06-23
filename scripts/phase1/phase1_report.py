@@ -105,24 +105,7 @@ def write_per_export_tables(exports: list[dict]) -> pd.DataFrame:
 
 def write_card_tables(card_table: pd.DataFrame) -> pd.DataFrame:
     card_table.to_csv(OUTPUT_DIR / "card_sort_per_card_agreement.csv", index=False)
-
-    plurality_rows = []
-    for _, row in card_table.iterrows():
-        plurality_rows.append({
-            "card_id": row["card_id"],
-            "plurality_label": row["majority_label"],
-            "plurality_count": row["majority_count"],
-            "total_votes": row["total_placed_votes"],
-            "plurality_share": row["agreement_rate"],
-            "agreement_band": agreement_band(row["agreement_rate"]),
-        })
-    plurality_df = pd.DataFrame(plurality_rows)
-    plurality_df.sort_values(["agreement_band", "card_id"]).to_csv(
-        OUTPUT_DIR / "card_sort_plurality_bands.csv", index=False
-    )
-
     band_table = build_agreement_band_table(card_table)
-    band_table.to_csv(OUTPUT_DIR / "card_sort_agreement_bands.csv", index=False)
     return band_table
 
 
@@ -141,9 +124,7 @@ def write_category_distribution(exports: list[dict], n_participants: int) -> pd.
             "placement_count": count,
             "mean_per_participant": count / n_participants,
         })
-    df = pd.DataFrame(rows)
-    df.to_csv(OUTPUT_DIR / "card_sort_category_distribution.csv", index=False)
-    return df
+    return pd.DataFrame(rows)
 
 
 def write_boundary_votes(card_table: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
@@ -324,7 +305,6 @@ def write_cooccurrence_outputs(
     card_table: pd.DataFrame,
     n_participants: int,
 ) -> None:
-    cooccurrence.to_csv(OUTPUT_DIR / "cooccurrence_matrix.csv")
     ordered = plot_cooccurrence_matrix(cooccurrence, card_table, n_participants)
     ordered.to_csv(OUTPUT_DIR / "cooccurrence_matrix_ordered.csv")
 

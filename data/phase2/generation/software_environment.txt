@@ -1,0 +1,24 @@
+Software Environment — Ontology Generation (Phase 2)
+=====================================================
+
+Component               Version / Setting
+-----------------------  ------------------------------------------
+Python                   3.12.13
+Runtime                  Google Colab
+Groq Python package      1.4.0
+Generation model         openai/gpt-oss-120b (via Groq API)
+Temperature              0.0
+Max continuations        3 (auto-retry if output appeared truncated)
+RDFLib                   7.6.0  (used for module merging post-generation)
+OOPS!                    Web service  (accessed 16 May 2026)
+FOOPS!                   Web service  (accessed 16 May 2026)
+
+Generation procedure
+--------------------
+One LLM call per competency question (15 calls per domain).
+Each call was stateless — {rdf} slot passed as empty string.
+Per-CQ Turtle outputs were merged post-hoc using rdflib Graph addition,
+which deduplicates triples that appear in multiple modules.
+
+See scripts/phase2/generate_ontologies.ipynb for the full implementation.
+See data/phase2/generation/prompt_template.txt for the exact prompt used.

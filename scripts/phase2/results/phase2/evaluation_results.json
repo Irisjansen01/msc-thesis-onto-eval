@@ -1,0 +1,66 @@
+{
+  "music": {
+    "basic": {
+      "method_name": "Basic Ontology Statistics",
+      "result": {
+        "error": "[Errno 2] No such file or directory: 'C:\\\\Users\\\\irisf\\\\OneDrive\\\\Documents\\\\GitHub\\\\thesis-ontology-evaluation-comparison\\\\scripts\\\\data\\\\phase2\\\\ontologies\\\\music-generated.ttl'"
+      }
+    },
+    "oquare": {
+      "method_name": "OQuaRE Ontology Quality Model",
+      "result": {
+        "error": "[Errno 2] No such file or directory: 'C:\\\\Users\\\\irisf\\\\OneDrive\\\\Documents\\\\GitHub\\\\thesis-ontology-evaluation-comparison\\\\scripts\\\\data\\\\phase2\\\\ontologies\\\\music-generated.ttl'"
+      }
+    },
+    "cq_coverage": {
+      "method_name": "Competency Question Coverage",
+      "method_number": 11,
+      "result": {
+        "error": "[Errno 2] No such file or directory: 'C:\\\\Users\\\\irisf\\\\OneDrive\\\\Documents\\\\GitHub\\\\thesis-ontology-evaluation-comparison\\\\scripts\\\\data\\\\phase2\\\\ontologies\\\\music-generated.ttl'"
+      }
+    },
+    "vocabulary_profile_similarity": {
+      "method_name": "Brewster-style vocabulary profile similarity to source text",
+      "method_number": 31,
+      "result": {
+        "comparison": "music_final_vs_music_story",
+        "ontology": "music_final_vs_music_story",
+        "story_path": "data/phase2/domain-stories/music-story.txt",
+        "error": "[Errno 2] No such file or directory: 'C:\\\\Users\\\\irisf\\\\OneDrive\\\\Documents\\\\GitHub\\\\thesis-ontology-evaluation-comparison\\\\scripts\\\\data\\\\phase2\\\\ontologies\\\\music-generated.ttl'",
+        "ontology_key": "music"
+      }
+    }
+  },
+  "hospital": {
+    "basic": {
+      "method_name": "Basic Ontology Statistics",
+      "result": {
+        "error": "[Errno 2] No such file or directory: 'C:\\\\Users\\\\irisf\\\\OneDrive\\\\Documents\\\\GitHub\\\\thesis-ontology-evaluation-comparison\\\\scripts\\\\data\\\\phase2\\\\ontologies\\\\hospital-generated.ttl'"
+      }
+    },
+    "oquare": {
+      "method_name": "OQuaRE Ontology Quality Model",
+      "result": {
+        "error": "[Errno 2] No such file or directory: 'C:\\\\Users\\\\irisf\\\\OneDrive\\\\Documents\\\\GitHub\\\\thesis-ontology-evaluation-comparison\\\\scripts\\\\data\\\\phase2\\\\ontologies\\\\hospital-generated.ttl'"
+      }
+    },
+    "cq_coverage": {
+      "method_name": "Competency Question Coverage",
+      "method_number": 11,
+      "result": {
+        "error": "[Errno 2] No such file or directory: 'C:\\\\Users\\\\irisf\\\\OneDrive\\\\Documents\\\\GitHub\\\\thesis-ontology-evaluation-comparison\\\\scripts\\\\data\\\\phase2\\\\ontologies\\\\hospital-generated.ttl'"
+      }
+    },
+    "vocabulary_profile_similarity": {
+      "method_name": "Brewster-style vocabulary profile similarity to source text",
+      "method_number": 31,
+      "result": {
+        "comparison": "hospital_final_vs_hospital_story",
+        "ontology": "hospital_final_vs_hospital_story",
+        "story_path": "data/phase2/domain-stories/hospital-story.txt",
+        "error": "[Errno 2] No such file or directory: 'C:\\\\Users\\\\irisf\\\\OneDrive\\\\Documents\\\\GitHub\\\\thesis-ontology-evaluation-comparison\\\\scripts\\\\data\\\\phase2\\\\ontologies\\\\hospital-generated.ttl'",
+        "ontology_key": "hospital"
+      }
+    }
+  }
+}

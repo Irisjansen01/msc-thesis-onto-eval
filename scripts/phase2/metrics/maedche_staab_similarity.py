@@ -398,8 +398,6 @@ def run_maedche_staab_evaluation(generated_path, reference_path, output_dir):
               ["direction", "class_label", "formula", "taxonomic_overlap", "exact_hit", "source_uris", "target_uris"])
     write_csv(output_dir / "maedche_staab_per_relation_overlap.csv", ro_rows,
               ["direction", "relation_label", "formula", "relation_overlap", "exact_hit", "source_uris", "target_uris"])
-    write_csv(output_dir / "maedche_staab_diagnostics.csv", diag_rows,
-              ["direction", "diagnostic", "value", "details"])
 
     for row in summary:
         print(

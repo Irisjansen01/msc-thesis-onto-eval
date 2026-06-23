@@ -1,0 +1,83 @@
+Prompt Template — LLM Ontology Generation
+==========================================
+
+This is the exact prompt template used to generate both the music and hospital
+ontologies. One call was made per competency question (CQ-by-CQ, stateless).
+The {rdf} slot was always passed as an empty string; module merging was done
+post-hoc via rdflib (see scripts/phase2/generate_ontologies.ipynb, Cell 12).
+
+The template has three slots:
+  {CQ}    — the competency question text for this call
+  {story} — the full domain story (see data/phase2/domain-stories/)
+  {rdf}   — accumulated ontology from prior calls (empty string for all calls
+             in the thesis run — each CQ was solved independently)
+
+---
+
+Your task is to contribute to creating a piece of well-structured ontology by
+reading information that appeared in the given story, requirements, and
+restrictions (if there are any).
+
+The way you approach this is first you pick this competency question "{CQ}" and
+read the given turtle RDF to know what is the current ontology till this stage
+(it can be empty at the beginning). Then you add or change the RDF so it can
+answer this competency question. Your output at each stage is an append to the
+previous ones, just do not repeat. You only need to solve the question number
+so do not touch the next questions since they belong to the next stages of
+development.
+
+Classes are the keywords/classes that are going to be node types in the
+knowledge graph ontology. Try to extract all classes; in addition, classes can
+also be defined for reification. We use Turtle Syntax for representation.
+Hierarchies are rdfs:subClassOf in the turtle syntax. They can be used to
+classify similar classes in one superclass. Mostly the lengthier the hierarchy
+the better. Important: Class names have Cl_ as the prefix, for example
+Cl_Professors. Also keep in mind you can add Equivalent To, General class
+axioms, Disjoint with, and Disjoint Union of, for each class.
+
+In your ontology modeling, for each competency question, when faced with
+complex scenarios that involve more than two entities or a combination of
+entities and datatypes, apply reification. Specifically, create a pivot class
+to act as an intermediary for these entities, ensuring the nuanced
+relationships are accurately captured.
+
+Then you need to create properties (owl:Property). In this step, you use
+classes from the previous stage and create object and data properties to
+connect them and establish the ontology. Always output a turtle syntax. Data
+properties are between classes and data types such as xsd:string, xsd:integer,
+xsd:decimal, xsd:dateTime, xsd:date, xsd:time, xsd:boolean. Object properties
+are between classes. Feel free to use rdfs:subPropertyOf for creating
+hierarchies for relations. For modeling properties use these relation
+characteristics when applicable: Functional, Inverse functional, Transitive,
+Symmetric, Asymmetric, Reflexive, Irreflexive.
+
+Upon implementation of restrictions, feel free to use owl:equivalentClass with
+owl:Restriction, owl:allValuesFrom, owl:someValuesFrom, and general class
+axioms.
+
+Use these prefixes:
+@prefix : <http://www.example.org/ontology/hospital#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+Important: before writing the OWL code, write this text: "is this competency
+question answerable by the previous version of the RDF (given below) or not?"
+(most likely not). If no, write a reification class for this question if
+needed, then solve it. If it was answerable, simply rewrite the given RDF in
+the output without changing it.
+
+Here is the story:
+{story}
+End of story
+
+Here is the last RDF:
+{rdf}
+
+---
+
+Note on prefix: the hospital domain uses the prefix shown above. The music
+domain used the same template with:
+@prefix : <http://www.example.org/ontology/music#> .
+(all other prefixes identical)

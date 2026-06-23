@@ -196,20 +196,3 @@ def write_vocabulary_profile_outputs(results, output_dir):
         writer.writeheader()
         writer.writerows(term_rows)
 
-    for result in results:
-        comparison = result["summary"]["comparison"]
-        comparison_dir = output_dir / comparison
-        comparison_dir.mkdir(parents=True, exist_ok=True)
-
-        with open(comparison_dir / "summary.csv", "w", newline="", encoding="utf-8") as f:
-            writer = csv.DictWriter(f, fieldnames=list(result["summary"].keys()))
-            writer.writeheader()
-            writer.writerow(result["summary"])
-
-        with open(comparison_dir / "terms.csv", "w", newline="", encoding="utf-8") as f:
-            writer = csv.DictWriter(
-                f,
-                fieldnames=["comparison", "term", "ontology_count", "source_text_count", "in_both"],
-            )
-            writer.writeheader()
-            writer.writerows(result["terms"])
