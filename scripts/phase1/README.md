@@ -22,7 +22,7 @@ python scripts/phase1/phase1_report.py
 | `card_sort_set_aside_summary.csv` | Set-aside reasons per participant |
 | `card_sort_quality_dimensions.csv` | Quality-concern (subcategory) use per participant |
 | `card_sort_category_distribution.csv` | Total A/B/C/D placements |
-| `card_sort_boundary_votes.csv` | Vote breakdown for cards with plurality &lt; 60% (auto-selected) |
+| `card_sort_boundary_votes.csv` | Vote breakdown for boundary (k∈{7,8}) and unstable (k≤6) cards |
 | `cooccurrence_matrix.csv` | Full 40×40 matrix (M01–M40 order) |
 | `cooccurrence_matrix_ordered.csv` / `.png` | Same matrix, cards grouped by plurality category (A→B→C→D) with dividers and colour-coded labels |
 | `cooccurrence_by_category_groups.csv` / `.png` | 4×4 summary: mean co-occurrence between taxonomy groups |

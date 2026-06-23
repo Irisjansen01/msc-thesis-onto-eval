@@ -21,8 +21,12 @@ TOP_CATEGORY_LABELS = {
     "D": "Criteria-based evaluation",
 }
 
-# Cards with plurality agreement below this threshold are reported as boundary cases.
-BOUNDARY_AGREEMENT_THRESHOLD = 0.60
+# Stability thresholds from a one-tailed binomial test against chance (p0=0.25, N=13).
+# stable:   k ≥ 9 (≥69.2%)  — significant after Bonferroni correction (α_corr = 0.05/40 = 0.00125)
+# boundary: k ∈ {7, 8}      — 53.8–61.5%, intermediate zone
+# unstable: k ≤ 6 (≤46.2%) — cannot reject chance placement at α = 0.05
+STABLE_K_MIN = 9
+BOUNDARY_K_MIN = 7
 
 CATEGORY_CODES = ("A", "B", "C", "D")
 HEATMAP_CATEGORY_CODES = ("A", "B", "C", "D", "SA")
@@ -138,11 +142,11 @@ def build_card_vote_table(exports: list[dict], n_participants: int) -> pd.DataFr
         else:
             majority_letter, majority_count = "", 0
 
-        # Set-aside is missing, not disagreement: exclude from the plurality denominator.
-        plurality_denominator = n_participants - sa_votes
-        agreement_rate = (
-            majority_count / plurality_denominator if plurality_denominator > 0 else 0.0
-        )
+        # Denominator is always N (total participants). Set-asides are treated as missing,
+        # not removed from N, so per-card k/N rates align with the binomial stability
+        # test that is parameterised on N=13 (see STABLE_K_MIN / BOUNDARY_K_MIN).
+        plurality_denominator = n_participants
+        agreement_rate = majority_count / n_participants if n_participants > 0 else 0.0
 
         rows.append({
             "card_id": card_id,
@@ -151,6 +155,7 @@ def build_card_vote_table(exports: list[dict], n_participants: int) -> pd.DataFr
             "majority_count": majority_count,
             "plurality_denominator": plurality_denominator,
             "agreement_rate": agreement_rate,
+            "stability": card_stability(majority_count),
             "A_votes": category_votes["A"],
             "B_votes": category_votes["B"],
             "C_votes": category_votes["C"],
@@ -192,14 +197,23 @@ def build_agreement_band_table(card_table: pd.DataFrame) -> pd.DataFrame:
     return summary.sort_values("agreement_band").reset_index(drop=True)
 
 
-def boundary_card_ids(
-    card_table: pd.DataFrame,
-    threshold: float = BOUNDARY_AGREEMENT_THRESHOLD,
-) -> list[str]:
-    """Cards with plurality agreement strictly below *threshold* (default 60%)."""
-    return sorted(
-        card_table.loc[card_table["agreement_rate"] < threshold, "card_id"].tolist()
-    )
+def card_stability(k: int) -> str:
+    """Stable / boundary / unstable per Bonferroni-corrected binomial thresholds (N=13, p0=0.25)."""
+    if k >= STABLE_K_MIN:
+        return "stable"
+    if k >= BOUNDARY_K_MIN:
+        return "boundary"
+    return "unstable"
+
+
+def boundary_card_ids(card_table: pd.DataFrame) -> list[str]:
+    """Cards with boundary placement: k∈{7,8}, 53.8–61.5% with N=13."""
+    return sorted(card_table.loc[card_table["stability"] == "boundary", "card_id"].tolist())
+
+
+def unstable_card_ids(card_table: pd.DataFrame) -> list[str]:
+    """Cards with unstable placement: k≤6, ≤46.2% with N=13."""
+    return sorted(card_table.loc[card_table["stability"] == "unstable", "card_id"].tolist())
 
 
 def krippendorff_alpha_nominal(

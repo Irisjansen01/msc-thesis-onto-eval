@@ -1,7 +1,11 @@
-card_id,majority_category,majority_label,majority_count,agreement_rate,A_votes,B_votes,C_votes,D_votes,SA_votes,total_placed_votes
-M13,A,A. Reference-based evaluation,6,0.46153846153846156,6,1,1,4,1,12
-M14,D,D. Criteria-based evaluation,6,0.46153846153846156,2,1,4,6,0,13
-M33,D,D. Criteria-based evaluation,5,0.38461538461538464,2,0,4,5,2,11
-M34,C,C. Task/application-based evaluation,7,0.5384615384615384,2,0,7,3,1,12
-M36,D,D. Criteria-based evaluation,6,0.46153846153846156,1,3,1,6,2,11
-M37,C,C. Task/application-based evaluation,6,0.46153846153846156,2,3,6,2,0,13
+card_id,majority_category,majority_label,majority_count,plurality_denominator,agreement_rate,stability,A_votes,B_votes,C_votes,D_votes,SA_votes,total_placed_votes
+M13,A,A. Reference-based evaluation,6,13,0.46153846153846156,unstable,6,1,1,4,1,12
+M14,D,D. Criteria-based evaluation,6,13,0.46153846153846156,unstable,2,1,4,6,0,13
+M15,D,D. Criteria-based evaluation,8,13,0.6153846153846154,boundary,1,0,4,8,0,13
+M29,A,A. Reference-based evaluation,8,13,0.6153846153846154,boundary,8,5,0,0,0,13
+M30,D,D. Criteria-based evaluation,7,13,0.5384615384615384,boundary,2,0,2,7,2,11
+M33,D,D. Criteria-based evaluation,5,13,0.38461538461538464,unstable,2,0,4,5,2,11
+M34,C,C. Task/application-based evaluation,7,13,0.5384615384615384,boundary,2,0,7,3,1,12
+M36,D,D. Criteria-based evaluation,6,13,0.46153846153846156,unstable,1,3,1,6,2,11
+M37,C,C. Task/application-based evaluation,6,13,0.46153846153846156,unstable,2,3,6,2,0,13
+M40,B,B. Corpus/data-based evaluation,8,13,0.6153846153846154,boundary,1,8,3,0,1,12

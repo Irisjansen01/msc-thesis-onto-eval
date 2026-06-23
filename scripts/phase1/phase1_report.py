@@ -34,13 +34,14 @@ from scipy.cluster.hierarchy import dendrogram, linkage
 from scipy.spatial.distance import squareform
 
 from card_sort_common import (
-    BOUNDARY_AGREEMENT_THRESHOLD,
+    BOUNDARY_K_MIN,
     CARD_IDS,
     CATEGORY_CODES,
     CATEGORY_COLORS,
     EXPORT_DIR,
     HEATMAP_CATEGORY_CODES,
     OUTPUT_DIR,
+    STABLE_K_MIN,
     TOP_CATEGORY_LABELS,
     agreement_band,
     boundary_card_ids,
@@ -59,6 +60,7 @@ from card_sort_common import (
     load_exports,
     majority_by_card,
     ordered_cards_by_majority,
+    unstable_card_ids,
 )
 
 
@@ -144,12 +146,12 @@ def write_category_distribution(exports: list[dict], n_participants: int) -> pd.
     return df
 
 
-def write_boundary_votes(card_table: pd.DataFrame) -> pd.DataFrame:
-    ids = boundary_card_ids(card_table)
-    boundary = card_table[card_table["card_id"].isin(ids)].copy()
-    boundary["boundary_reason"] = f"plurality < {BOUNDARY_AGREEMENT_THRESHOLD:.0%}"
-    boundary.to_csv(OUTPUT_DIR / "card_sort_boundary_votes.csv", index=False)
-    return boundary
+def write_boundary_votes(card_table: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
+    boundary = card_table[card_table["stability"] == "boundary"].copy()
+    unstable = card_table[card_table["stability"] == "unstable"].copy()
+    non_stable = pd.concat([boundary, unstable]).sort_values("card_id")
+    non_stable.to_csv(OUTPUT_DIR / "card_sort_boundary_votes.csv", index=False)
+    return boundary, unstable
 
 
 def build_plurality_vote_matrix(card_table: pd.DataFrame) -> pd.DataFrame:
@@ -429,6 +431,7 @@ def write_summary_report(
     band_table: pd.DataFrame,
     category_df: pd.DataFrame,
     boundary_df: pd.DataFrame,
+    unstable_df: pd.DataFrame,
     alpha: float,
     d_o: float,
     d_e: float,
@@ -437,6 +440,7 @@ def write_summary_report(
 ) -> None:
     mean_agreement = card_table["agreement_rate"].mean()
     cards_ge_80 = int((card_table["agreement_rate"] >= 0.80).sum())
+    stable_count = int((card_table["stability"] == "stable").sum())
 
     lines = [
         "Phase 1 — Card Sort Analysis Summary",
@@ -455,14 +459,16 @@ def write_summary_report(
         lines.append(
             f"{row['card_id']}: {row['majority_category']} "
             f"({int(row['majority_count'])}/{int(row['plurality_denominator'])} = {row['agreement_rate']:.1%}; "
-            f"SA={int(row['SA_votes'])})"
+            f"SA={int(row['SA_votes'])}; {row['stability']})"
         )
 
     lines.extend([
         "",
-        f"Mean agreement rate (majority / (N − set-aside)) = {mean_agreement:.1%}",
+        f"Mean agreement rate (majority_count / N) = {mean_agreement:.1%}",
+        f"Stable cards (k≥{STABLE_K_MIN}, ≥{STABLE_K_MIN/n_participants:.1%}) = {stable_count}",
         f"Cards at ≥80% agreement = {cards_ge_80}",
-        f"Boundary cards (plurality < {BOUNDARY_AGREEMENT_THRESHOLD:.0%}) = {len(boundary_df)}",
+        f"Boundary cards (k∈{{{BOUNDARY_K_MIN},{STABLE_K_MIN-1}}}) = {len(boundary_df)}",
+        f"Unstable cards (k≤{BOUNDARY_K_MIN-1}) = {len(unstable_df)}",
         "",
         "Agreement band table",
         "-" * 42,
@@ -500,12 +506,24 @@ def write_summary_report(
         f"Total suggested-criteria instances created = {quality_stats['suggested_instances']}",
         f"Participants who did not use quality concerns = {quality_stats['unused']}",
         "",
-        "Boundary card vote counts",
-        f"(plurality < {BOUNDARY_AGREEMENT_THRESHOLD:.0%}; set-aside excluded from denominator)",
+        f"Boundary card vote counts (k∈{{{BOUNDARY_K_MIN},{STABLE_K_MIN-1}}}, {BOUNDARY_K_MIN/n_participants:.1%}–{(STABLE_K_MIN-1)/n_participants:.1%} with N={n_participants})",
         "-" * 42,
     ])
 
-    for _, row in boundary_df.iterrows():
+    for _, row in boundary_df.sort_values("card_id").iterrows():
+        lines.append(
+            f"{row['card_id']}: A={int(row['A_votes'])}, B={int(row['B_votes'])}, "
+            f"C={int(row['C_votes'])}, D={int(row['D_votes'])}, SA={int(row['SA_votes'])} "
+            f"(majority {row['majority_category']} at {row['agreement_rate']:.1%})"
+        )
+
+    lines.extend([
+        "",
+        f"Unstable card vote counts (k≤{BOUNDARY_K_MIN-1}, ≤{(BOUNDARY_K_MIN-1)/n_participants:.1%} with N={n_participants})",
+        "-" * 42,
+    ])
+
+    for _, row in unstable_df.sort_values("card_id").iterrows():
         lines.append(
             f"{row['card_id']}: A={int(row['A_votes'])}, B={int(row['B_votes'])}, "
             f"C={int(row['C_votes'])}, D={int(row['D_votes'])}, SA={int(row['SA_votes'])} "
@@ -565,7 +583,7 @@ def main() -> None:
     card_table = build_card_vote_table(exports, n_participants)
     band_table = write_card_tables(card_table)
     category_df = write_category_distribution(exports, n_participants)
-    boundary_df = write_boundary_votes(card_table)
+    boundary_df, unstable_df = write_boundary_votes(card_table)
 
     alpha, d_o, d_e = krippendorff_alpha_nominal(participants, participant_matrix)
 
@@ -591,6 +609,7 @@ def main() -> None:
         band_table=band_table,
         category_df=category_df,
         boundary_df=boundary_df,
+        unstable_df=unstable_df,
         alpha=alpha,
         d_o=d_o,
         d_e=d_e,
