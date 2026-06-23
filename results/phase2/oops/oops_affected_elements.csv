@@ -1,0 +1,233 @@
+domain,pitfall_code,severity,element_uri,note
+music,P04,Minor,http://www.example.org/ontology/music#Cl_Entity,
+music,P05,Critical,http://www.example.org/ontology/music#trackOfAlbum,may not be inverse of #hasTrack
+music,P05,Critical,http://www.example.org/ontology/music#hasMember,may not be inverse of #memberOf
+music,P05,Critical,http://www.example.org/ontology/music#performs,may not be inverse of #performedBy
+music,P05,Critical,http://www.example.org/ontology/music#hasTrack,may not be inverse of #trackOf
+music,P05,Critical,http://www.example.org/ontology/music#performanceOfBand,may not be inverse of #hasPerformance
+music,P08,Minor,http://www.example.org/ontology/music#Cl_Entity,no rdfs:label or rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#Cl_CriticRecordStatement,no rdfs:label or rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#Cl_Statement,no rdfs:label or rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#Cl_CompositionEvent,no rdfs:label or rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#Cl_Song,no rdfs:label or rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#hasCritic,no rdfs:label or rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#hasRecord,no rdfs:label or rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#statementText,no rdfs:label or rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#Cl_Location,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#Cl_Track,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#Cl_Band,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#Cl_Role,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#Cl_Person,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#Cl_Record,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#Cl_TimeInterval,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#Cl_Membership,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#Cl_AlbumRecording,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#Cl_Critic,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#Cl_Musician,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#Cl_BandMembership,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#Cl_SongInPerformance,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#Cl_Instrument,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#Cl_Event,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#Cl_Album,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#Cl_Artist,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#memberOfMembership,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#hasRole,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#performedAt,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#performedIn,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#composesSong,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#memberOf,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#trackOf,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#membershipOfBand,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#trackOfAlbum,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#recordedDuring,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#performedTrack,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#hasMembership,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#hasAlbum,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#hasMember,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#recordedAlbum,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#performs,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#hasTimeInterval,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#reviewedBy,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#isTrackOf,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#hasSong,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#hasBand,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#hasLocation,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#performedBy,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#hasTrack,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#playsInstrument,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#hasPerformance,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#performedSong,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#hasRecordingEvent,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#hasCompositionEvent,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#containsSong,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#performanceOfBand,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#performanceDate,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#role,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#recordingEndDate,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#hasCompositionDate,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#recordingStartDate,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#trackCompositionDate,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#membershipStartDate,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#membershipEndDate,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#trackReleaseDate,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#albumReleaseDate,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#composedDate,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#instrumentName,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#hasName,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#releaseDate,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#endDate,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#performanceLocation,no rdfs:comment
+music,P08,Minor,http://www.example.org/ontology/music#startDate,no rdfs:comment
+music,P13,Minor,http://www.example.org/ontology/music#composesSong,suggestion: inverse of #hasCompositionEvent
+music,P13,Minor,http://www.example.org/ontology/music#hasRole,no suggestion
+music,P13,Minor,http://www.example.org/ontology/music#hasState,no suggestion
+music,P13,Minor,http://www.example.org/ontology/music#performedAt,no suggestion
+music,P13,Minor,http://www.example.org/ontology/music#recordedDuring,no suggestion
+music,P13,Minor,http://www.example.org/ontology/music#performedTrack,no suggestion
+music,P13,Minor,http://www.example.org/ontology/music#hasCritic,no suggestion
+music,P13,Minor,http://www.example.org/ontology/music#hasAlbum,no suggestion
+music,P13,Minor,http://www.example.org/ontology/music#hasRecord,no suggestion
+music,P13,Minor,http://www.example.org/ontology/music#hasTimeInterval,no suggestion
+music,P13,Minor,http://www.example.org/ontology/music#reviewedBy,no suggestion
+music,P13,Minor,http://www.example.org/ontology/music#isTrackOf,no suggestion
+music,P13,Minor,http://www.example.org/ontology/music#hasSong,no suggestion
+music,P13,Minor,http://www.example.org/ontology/music#hasBand,no suggestion
+music,P13,Minor,http://www.example.org/ontology/music#hasLocation,no suggestion
+music,P13,Minor,http://www.example.org/ontology/music#locatedIn,no suggestion
+music,P13,Minor,http://www.example.org/ontology/music#playsInstrument,no suggestion
+music,P13,Minor,http://www.example.org/ontology/music#containsSong,no suggestion
+music,P19,Critical,http://www.example.org/ontology/music#hasPerformance,multiple domains or ranges
+music,P19,Critical,http://www.example.org/ontology/music#hasTrack,multiple domains or ranges
+music,P19,Critical,http://www.example.org/ontology/music#performedBy,multiple domains or ranges
+music,P19,Critical,http://www.example.org/ontology/music#hasMember,multiple domains or ranges
+music,P19,Critical,http://www.example.org/ontology/music#memberOf,multiple domains or ranges
+music,P22,Minor,ontology-level,naming convention inconsistency
+music,P24,Important,http://www.example.org/ontology/music#Cl_Performance,recursive definition
+music,P24,Important,http://www.example.org/ontology/music#Cl_SongInPerformance,recursive definition
+music,P24,Important,http://www.example.org/ontology/music#Cl_Membership,recursive definition
+music,P35,Important,http://www.example.org/ontology/music#hasPart,untyped property
+music,P38,Important,ontology-level,no owl:Ontology declaration
+music,P39,Critical,ontology-level,no ontology URI or xml:base namespace
+music,P41,Important,ontology-level,no license declared
+hospital,P04,Minor,http://www.example.org/ontology/hospital#Cl_Organization,
+hospital,P04,Minor,http://www.example.org/ontology/hospital#Cl_Agent,
+hospital,P04,Minor,http://www.example.org/ontology/hospital#Cl_Event,
+hospital,P05,Critical,http://www.example.org/ontology/hospital#hasDegree,may not be inverse of #degreeOf
+hospital,P05,Critical,http://www.example.org/ontology/hospital#employedAt,may not be inverse of #hasEmployee
+hospital,P05,Critical,http://www.example.org/ontology/hospital#isEmployeeOf,may not be inverse of #hasEmployee
+hospital,P05,Critical,http://www.example.org/ontology/hospital#hasEmployee,may not be inverse of #isEmployeeOf
+hospital,P08,Minor,http://www.example.org/ontology/hospital#isUnionOf,no rdfs:label or rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#isRoleOf,no rdfs:label or rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#isMemberOf,no rdfs:label or rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#Cl_ArticlePresentation,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#Cl_Hospital,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#Cl_PersonDegree,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#Cl_Seminar,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#Cl_Organization,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#Cl_Evaluation,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#Cl_EmploymentEvent,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#Cl_Employee,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#Cl_Institution,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#Cl_Library,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#Cl_NursingAssistantDegree,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#Cl_Role,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#Cl_Person,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#Cl_CertifiedNurseDegree,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#Cl_Doctor,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#Cl_Nurse,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#Cl_SeminarOccurrence,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#Cl_Agent,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#Cl_EvaluationStatement,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#Cl_City,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#Cl_Event,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#Cl_MedicalDegree,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#Cl_UnionRepresentative,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#Cl_UnionGroup,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#Cl_Country,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#Cl_Union,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#Cl_Location,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#isPresentedIn,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#holdsDegreeAssociation,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#occurrenceOfSeminar,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#presentedBy,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#hasMembership,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#hasEvaluator,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#storedInLibrary,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#hasUnion,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#isEmployerOf,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#hasEvaluatee,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#hasEmployer,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#hasPresentationVenue,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#containsArticle,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#hasDegree,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#locatedInCity,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#presentedPresentation,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#membershipOfUnion,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#employedAt,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#hasUnionMembership,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#hasOccurrence,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#awardedBy,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#presentedAtSeminar,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#heldAtHospital,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#degreeOf,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#isEmployeeOf,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#hasEmployee,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#representsUnion,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#hasPresentedArticle,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#memberOfUnion,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#hasMember,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#hasArticleCollection,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#occurrenceAtLocation,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#hasRole,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#hasPresentation,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#membershipOfPerson,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#heldBy,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#evaluates,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#op_heldAt,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#hasName,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#occurrenceDate,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#publicationYear,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#hasTitle,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#dp_pageCount,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#hasStartDate,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#seminarDate,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#degreeDate,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#dp_hasDate,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#pageCount,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#membershipStartDate,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#membershipEndDate,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#startDate,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#hasStatement,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#hasEvaluationDate,no rdfs:comment
+hospital,P08,Minor,http://www.example.org/ontology/hospital#hasPageCount,no rdfs:comment
+hospital,P13,Minor,http://www.example.org/ontology/hospital#hasUnion,suggestion: inverse of #isUnionOf
+hospital,P13,Minor,http://www.example.org/ontology/hospital#containsArticle,suggestion: inverse of #hasArticleCollection
+hospital,P13,Minor,http://www.example.org/ontology/hospital#hasArticle,suggestion: inverse of #hasArticleCollection
+hospital,P13,Minor,http://www.example.org/ontology/hospital#isRoleOf,suggestion: inverse of #hasRole
+hospital,P13,Minor,http://www.example.org/ontology/hospital#hasMember,suggestion: inverse of #isMemberOf
+hospital,P13,Minor,http://www.example.org/ontology/hospital#hasVersion,no suggestion
+hospital,P13,Minor,http://www.example.org/ontology/hospital#hasEvaluator,no suggestion
+hospital,P13,Minor,http://www.example.org/ontology/hospital#storedInLibrary,no suggestion
+hospital,P13,Minor,http://www.example.org/ontology/hospital#hasEvaluatee,no suggestion
+hospital,P13,Minor,http://www.example.org/ontology/hospital#locatedInCity,no suggestion
+hospital,P13,Minor,http://www.example.org/ontology/hospital#awardedBy,no suggestion
+hospital,P13,Minor,http://www.example.org/ontology/hospital#presentedAtSeminar,no suggestion
+hospital,P13,Minor,http://www.example.org/ontology/hospital#heldAtHospital,no suggestion
+hospital,P13,Minor,http://www.example.org/ontology/hospital#representsUnion,no suggestion
+hospital,P13,Minor,http://www.example.org/ontology/hospital#memberOfUnion,no suggestion
+hospital,P13,Minor,http://www.example.org/ontology/hospital#occurrenceAtLocation,no suggestion
+hospital,P13,Minor,http://www.example.org/ontology/hospital#evaluates,no suggestion
+hospital,P13,Minor,http://www.example.org/ontology/hospital#op_heldAt,no suggestion
+hospital,P19,Critical,http://www.example.org/ontology/hospital#hasEmployee,multiple domains or ranges
+hospital,P19,Critical,http://www.example.org/ontology/hospital#hasDegree,multiple domains or ranges
+hospital,P22,Minor,ontology-level,naming convention inconsistency
+hospital,P24,Important,http://www.example.org/ontology/hospital#Cl_Union,recursive definition
+hospital,P24,Important,http://www.example.org/ontology/hospital#Cl_Country,recursive definition
+hospital,P24,Important,http://www.example.org/ontology/hospital#Cl_City,recursive definition
+hospital,P24,Important,http://www.example.org/ontology/hospital#Cl_SeminarOccurrence,recursive definition
+hospital,P24,Important,http://www.example.org/ontology/hospital#Cl_Seminar,recursive definition
+hospital,P24,Important,http://www.example.org/ontology/hospital#Cl_PersonDegree,recursive definition
+hospital,P24,Important,http://www.example.org/ontology/hospital#Cl_ArticlePresentation,recursive definition
+hospital,P38,Important,ontology-level,no owl:Ontology declaration
+hospital,P39,Critical,ontology-level,no ontology URI or xml:base namespace
+hospital,P41,Important,ontology-level,no license declared

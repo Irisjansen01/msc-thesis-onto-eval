@@ -1,0 +1,95 @@
+FOOPS! FAIR Ontology Assessment — Hospital Ontology
+Ontology: data/phase2/ontologies/hospital-generated.ttl
+Tool: https://foops.linkeddata.es/
+
+Overall: 2 of 15 checks pass (13%)
+
+============================================================
+FINDABLE
+============================================================
+
+F1: (meta)data are assigned a globally unique and persistent identifier
+
+  PURL1: Ontology has a persistent URL — 0%
+  The ontology URI does not follow any of the schemes for known persistent URI registers
+  (w3id.org, doi.org, purl.org, linked.data.gov.au, dbpedia.org, www.w3.org, perma.cc,
+  data.europa.eu). Checked: w3id, purl, DOI, W3C, perma.cc, linked.data.gov.au,
+  data.europa.eu, dbpedia.org.
+
+  VER1: A version IRI is declared in the ontology metadata — 0%
+  Version IRI not defined. Version information not found.
+
+F2: data are described with rich metadata
+
+  OM1: Ontology minimum metadata is declared — 0%
+  The following minimum metadata were not found: title, description, license,
+  version IRI, author, namespace URI.
+
+F3: metadata clearly and explicitly include the identifier of the data it describes
+
+  FIND1: Ontology prefix is declared — 0%
+  vann:preferredNamespacePrefix not declared in the ontology.
+
+============================================================
+ACCESSIBLE
+============================================================
+
+No checks were run for this category (ontology file was submitted, not a URI).
+
+============================================================
+INTEROPERABLE
+============================================================
+
+I1: (meta)data use a formal, accessible, shared, and broadly applicable language
+
+  RDF1: Ontology is available in RDF — 100% PASS
+  Ontology available in RDF (TTL serialization successfully loaded via OWLAPI).
+
+I2: (meta)data use vocabularies that follow FAIR principles
+
+  VOC1: Ontology reuses existing vocabularies for metadata annotations — 0%
+  The ontology does not reuse vocabularies for common metadata (Dublin Core, Schema.org,
+  VANN, PROV, BIBO, PAV, FOAF, DOAP, MOD, OWL, RDFS).
+
+  VOC2: Ontology imports or reuses well-established vocabularies — 100% PASS
+  The ontology reuses/extends existing vocabularies.
+  Imported/Reused URIs:
+    - http://www.example.org/ontology/hospital#
+
+============================================================
+REUSABLE
+============================================================
+
+R1: meta(data) are richly described with a plurality of accurate and relevant attributes
+
+  OM2: Ontology declares recommended metadata — 0%
+  The following recommended metadata were not found: namespace prefix, version info,
+  creation date, citation. Optional not found: contributor.
+
+  OM3: Ontology declares detailed metadata — 0%
+  The following detailed metadata were not found: DOI, publisher, logo, status, source,
+  issued date. Optional not found: previous version, backwards compatibility, modified date.
+
+  VOC3: Ontology documentation — all terms have labels — 0%
+  No ontology terms found with rdfs:label or skos:prefLabel.
+
+  VOC4: Ontology documentation — all terms have definitions — 0%
+  No ontology terms found with rdfs:comment, skos:definition, or obo:IAO_0000118.
+
+R1.1: (meta)data are released with a clear and accessible data usage license
+
+  OM4_1: Ontology has a license available — 0%
+  License or rights not found (dcterms:license, schema:license, doap:license,
+  cc:license, dc:rights, dcterms:rights, dcterms:accessRights).
+
+  OM4_2: Ontology license is resolvable — 0%
+  License or rights not found.
+
+R1.2: (meta)data are associated with detailed provenance
+
+  OM5_1: Ontology declares basic provenance metadata — 0%
+  The following provenance information was not found: creation date, author.
+  Optional not found: contributor, previous version.
+
+  OM5_2: Ontology declares detailed provenance metadata — 0%
+  The following provenance information was not found: issued date, publisher.
