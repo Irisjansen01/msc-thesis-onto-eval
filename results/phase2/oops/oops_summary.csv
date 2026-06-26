@@ -1,0 +1,12 @@
+pitfall_code,description,severity,music_count,music_scope,hospital_count,hospital_scope
+P04,Creating unconnected ontology elements,Minor,1,element,3,element
+P05,Defining wrong inverse relationships,Critical,5,element,4,element
+P08,Missing annotations,Minor,73,element,84,element
+P13,Inverse relationships not explicitly declared,Minor,19,element,23,element
+P19,Defining multiple domains or ranges in properties,Critical,5,element,2,element
+P22,Using different naming conventions in the ontology,Minor,1,ontology,1,ontology
+P24,Using recursive definitions,Important,3,element,7,element
+P35,Untyped property,Important,1,element,0,
+P38,No OWL ontology declaration,Important,1,ontology,1,ontology
+P39,Ambiguous namespace,Critical,1,ontology,1,ontology
+P41,No license declared,Important,1,ontology,1,ontology

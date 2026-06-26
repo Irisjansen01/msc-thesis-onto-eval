@@ -1,0 +1,16 @@
+check_id,fair_principle,description,music_score_pct,hospital_score_pct
+PURL1,F1,Ontology has a persistent URL,0,0
+VER1,F1,A version IRI is declared in the ontology metadata,0,0
+OM1,F2,Ontology minimum metadata is declared,0,0
+FIND1,F3,Ontology prefix is declared,0,0
+RDF1,I1,Ontology is available in RDF,100,100
+VOC1,I2,Ontology reuses existing vocabularies for metadata annotations,0,0
+VOC2,I2,Ontology imports or reuses well-established vocabularies,100,100
+OM2,R1,Ontology declares recommended metadata,0,0
+OM3,R1,Ontology declares detailed metadata,0,0
+VOC3,R1,Ontology documentation — all terms have labels,0,0
+VOC4,R1,Ontology documentation — all terms have definitions,0,0
+OM4_1,R1.1,Ontology has a license available,0,0
+OM4_2,R1.1,Ontology license is resolvable,0,0
+OM5_1,R1.2,Ontology declares basic provenance metadata,0,0
+OM5_2,R1.2,Ontology declares detailed provenance metadata,0,0

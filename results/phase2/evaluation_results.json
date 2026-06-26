@@ -263,7 +263,7 @@
         "weighted_f1": 0.14035087719298245,
         "unique_term_jaccard": 0.10256410256410256,
         "top_missing_source_terms": "red|hot|chili|pepper|frusciante|vocal|guitar|chad|smith|replaced|stadium|arcadium|production|configuration|anthony|kiedi|flea|bass|trumpet|keyboard|john|drum|line|changed|few|hillel|slovak|jack|iron|left|briefly|peligo|until|found|addition|playing|also|contributed|mar|volta|vocalist|some|september|started|released|may|include|hump|bump|composed|january|crian|hiatt|defined|most|ambitiou|work|twenty|three|year|career|august|gave|portland|oregon|featuring",
-        "top_ontology_only_terms": "date|membership|performed|composition|event|member|person|role|release|statement|location|musical|end|instrument|record|start|musician|interval|city|state|group|recorded|name|artist|function|reviewed|country|optional|located|compos|region|reified|text|entity|individual|play|concert|session|perform",
+        "top_ontology_only_terms": "date|membership|event|composition|performed|member|person|release|role|musician|end|musical|location|record|start|instrument|statement|artist|group|function|city|state|interval|name|recorded|perform|located|region|reviewed|country|individual|text|reified|entity|compos|play|optional|concert|session",
         "source_character_count": 1011,
         "ontology_key": "music"
       }
@@ -533,7 +533,7 @@
         "weighted_f1": 0.27450980392156865,
         "unique_term_jaccard": 0.225,
         "top_missing_source_terms": "pasquale|gennaro|ospedale|riunito|delle|tre|valli|care|become|working|nocera|inferiore|nurs|patient|both|entitled|cancer|italian|setting|first|studied|after|some|decided|continue|studying|took|may|september|organising|staff|male|senior|all|these|written|reference|constantly|update|knowledge|read|research|can|found|available|electronically|practice|longitudinal|study|published|program|improving|experience|direction|discussing|new|number|december|such",
-        "top_ontology_only_terms": "date|membership|person|occurrence|evaluation|presentation|member|role|count|publication|start|country|name|association|location|employer|located|event|organization|employment|awarded|evaluatee|end|group|reified|institution|venue|title|agent|represent|medical|evaluator|part|temporal",
+        "top_ontology_only_terms": "date|membership|occurrence|person|evaluation|member|presentation|count|name|role|start|publication|country|located|employer|event|employment|organization|association|location|evaluatee|institution|awarded|reified|group|title|end|represent|evaluator|part|agent|temporal|venue|medical",
         "source_character_count": 1431,
         "ontology_key": "hospital"
       }
